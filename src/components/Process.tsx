@@ -3,6 +3,7 @@
 import { Database, Lightbulb, Zap, ArrowRight, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import Container from "./Container";
+import { InteractiveGrid } from "./InteractiveGrid";
 
 const steps = [
   {
@@ -27,7 +28,8 @@ const steps = [
 
 export default function Process() {
   return (
-    <section className="bg-white section-padding">
+    <section className="section-padding relative">
+         <InteractiveGrid />
       <Container>
         <div className="text-center max-w-3xl mx-auto mb-20">
           <motion.div
@@ -48,8 +50,6 @@ export default function Process() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
-          {/* Connecting Line (Desktop) */}
-          <div className="hidden md:block absolute top-1/4 left-[15%] right-[15%] h-0.5 bg-slate-100 -z-10" />
           
             {steps.map((step, i) => (
               <motion.div 
