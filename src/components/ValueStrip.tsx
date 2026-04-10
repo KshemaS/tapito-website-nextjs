@@ -61,14 +61,14 @@ function FeatureCard({ item, index }: { item: typeof items[0], index: number }) 
       <div
         className="absolute inset-0 pointer-events-none transition-opacity duration-500"
         style={{
-          background: `radial-gradient(circle 150px at ${mousePos.x}px ${mousePos.y}px, rgba(37, 99, 235, 0.2), transparent)`,
+          background: `radial-gradient(circle 150px at ${mousePos.x}px ${mousePos.y}px, rgba(5, 160, 236, 0.2), transparent)`,
           opacity: isHovered ? 1 : 0
         }}
       />
 
       <div className={cn(
         "w-14 h-14 shrink-0 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center transition-colors duration-500",
-        (isLeft || isTop) ? "group-hover:text-blue-400" : "group-hover:text-purple-400"
+        (isLeft || isTop) ? "group-hover:text-[#05a0ec]" : "group-hover:text-[#06dcc3]"
       )}>
         <item.icon size={26} className="text-slate-400 group-hover:text-inherit transition-colors" />
       </div>
@@ -114,7 +114,7 @@ export default function ValueStrip() {
               <div className="relative w-[320px] h-[320px] md:w-[600px] md:h-[600px] flex items-center justify-center">
                 <div className="absolute inset-0 z-0 scale-110">
                   <Orb
-                    hue={360}
+                    hue={25} 
                     hoverIntensity={0}
                     backgroundColor="#020617"
                     forceHoverState={true}
@@ -125,7 +125,7 @@ export default function ValueStrip() {
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 1, ease: "easeOut" }}
-                    viewport={{ once: true }}
+                    // viewPort={{ once: true }}
                     className="space-y-4"
                   >
                     <span className="text-[14px] md:text-xs font-black text-slate-400 uppercase tracking-[0.4em] block mb-2">INSTANT VALUE STRIP</span>
@@ -159,8 +159,8 @@ export default function ValueStrip() {
       </Container>
 
       {/* Small background accents */}
-      <div className="absolute top-0 left-0 w-64 h-64 bg-blue-600/10 blur-[100px] -z-10" />
-      <div className="absolute bottom-0 right-0 w-64 h-64 bg-purple-600/10 blur-[100px] -z-10" />
+      <div className="absolute top-0 left-0 w-64 h-64 bg-[#05a0ec]/10 blur-[100px] -z-10" />
+      <div className="absolute bottom-0 right-0 w-64 h-64 bg-[#06dcc3]/10 blur-[100px] -z-10" />
     </section>
   );
 }

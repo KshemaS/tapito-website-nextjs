@@ -11,21 +11,21 @@ const coreCapabilities = [
     title: "Executive Dashboard",
     desc: "A high-fidelity vantage point for your entire operation. Real-time metrics presented with uncompromising clarity.",
     icon: LineChart,
-    color: "from-blue-600 to-indigo-600",
+    color: "from-[#09358c] to-[#05a0ec]",
     delay: 0
   },
   {
     title: "Smart Analytics",
     desc: "Deep neural networks analyzing millions of data points to predict your next multi-million dollar opportunity.",
     icon: PieChart,
-    color: "from-purple-600 to-fuchsia-600",
+    color: "from-[#05a0ec] to-[#06dcc3]",
     delay: 0.1
   },
   {
     title: "Auto-Engagement",
     desc: "A tireless workforce that personalizes every interaction, turning first-time buyers into lifelong advocates.",
     icon: Send,
-    color: "from-blue-400 to-emerald-400",
+    color: "from-[#06dcc3] to-[#09358c]",
     delay: 0.2
   }
 ];
@@ -43,7 +43,7 @@ export default function Capabilities() {
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-bold mb-6"
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-[#05a0ec] text-xs font-bold mb-6"
              >
                <Sparkles size={14} />
                CORE CAPABILITIES
@@ -72,7 +72,7 @@ export default function Capabilities() {
               <div className={cn("w-16 h-16 rounded-[20px] flex items-center justify-center mb-10 bg-gradient-to-br shadow-lg transition-all duration-500 group-hover:scale-110 group-hover:rotate-6", cap.color)}>
                 <cap.icon className="text-white" size={32} />
               </div>
-              <h4 className="text-2xl font-bold mb-6 group-hover:text-blue-600 transition-colors">{cap.title}</h4>
+              <h4 className="text-2xl font-bold mb-6 group-hover:text-[#05a0ec] transition-colors">{cap.title}</h4>
               <p className="text-slate-500 text-lg leading-relaxed mb-10">{cap.desc}</p>
               
               <div className="relative h-64 rounded-2xl overflow-hidden border border-slate-100 bg-slate-50 mb-8">
@@ -87,7 +87,7 @@ export default function Capabilities() {
 
               <div className="pt-6 border-t border-slate-100 flex items-center justify-between group-hover:border-blue-100 transition-colors">
                  <span className="text-sm font-bold text-slate-400 uppercase tracking-widest group-hover:text-[#000]">Learn More</span>
-                 <div className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                 <div className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-[#05a0ec] group-hover:text-white transition-all">
                     <ArrowRight size={16} />
                  </div>
               </div>

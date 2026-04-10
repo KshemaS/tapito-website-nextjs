@@ -11,7 +11,7 @@ type HeroProps = {
 
 export default function Hero({ keyHighlights }: HeroProps) {
   return (
-    <section className="relative pb-20 bg-[#fafbfc] min-h-sreen pt-15 xl:pt-20 2xl:pt-40">
+    <section className="relative pb-20 bg-[#fafbfc] min-h-sreen pt-15 xl:pt-20 2xl:pt-40 min-h-screen">
       <Container className="relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 justify-between items-center overflow-hidden">
           {/* Left Column: Content */}
@@ -24,17 +24,17 @@ export default function Hero({ keyHighlights }: HeroProps) {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="mb-8 px-4 py-1.5 rounded-full bg-indigo-50 border border-indigo-100/50 flex items-center gap-2"
+              className="mb-8 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100/50 flex items-center gap-2"
             >
-              <Sparkles size={14} className="text-indigo-600" />
-              <span className="text-xs font-bold text-indigo-900 uppercase tracking-[0.2em]">
+                <Sparkles size={14} color="#09358c" />
+              <span className="text-xs font-bold text-[#09358c] uppercase tracking-[0.2em]">
                 The Future of Retail AI
               </span>
             </motion.div>
 
             <h1 className="text-[40px] lg:text-[36px] xl:text-[40px] 2xl:text-[48px] 4xl:text-7xl font-black tracking-tighter text-slate-900 mb-8 leading-[1.1]">
               Turn Your Retail Data Into Revenue <br />
-              <span className="gradient-text pb-2 px-1 inline-block">— Automatically </span>
+              <span className="text-[#09358c] pb-2 px-1 inline-block"> Automatically </span>
             </h1>
 
             <p className="text-xl lg:text-[18px] xl:text-[20px] 4xl:text-2xl text-slate-500 mb-10 max-w-xl leading-relaxed">
@@ -60,7 +60,7 @@ export default function Hero({ keyHighlights }: HeroProps) {
             initial={{ opacity: 0, scale: 0.9, x: 50 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.2 }}
-            className="w-full lg:max-w-[520px] xl:max-w-[580px] 2xl:max-w-[640px] 3xl:max-w-[700px] 4xl:max-w-[750px] relative lg:block hidden object-contain py-10"
+            className="relative lg:block hidden object-contain py-10"
           >
             <DashboardPreview keyHighlights={keyHighlights} />
           </motion.div>

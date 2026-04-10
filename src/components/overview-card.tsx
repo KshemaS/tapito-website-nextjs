@@ -47,10 +47,10 @@ const ItemBox = ({ icon, title, color, className, delay = 0 }: ItemBoxProps) => 
     )}
     style={{ borderColor: color }}
   >
-    <div className="p-2 rounded-xl" style={{ color: color, backgroundColor: `${color}10` }}>
-      {React.isValidElement(icon) ? React.cloneElement(icon as React.ReactElement<any>, { size: 28, strokeWidth: 2.5 }) : icon}
+    <div className="p-2 rounded-md" style={{ color: color, backgroundColor: `${color}10` }}>
+      {React.isValidElement(icon) ? React.cloneElement(icon as React.ReactElement<any>, { size: 20, strokeWidth: 2.5 }) : icon}
     </div>
-    <span className="font-bold text-slate-800 text-xl tracking-tight">{title}</span>
+    <span className="font-bold text-slate-800 text-[18px] tracking-tight">{title}</span>
   </motion.div>
 );
 
@@ -65,7 +65,7 @@ const GroupIcon = ({ label, icons, colorClass = "text-blue-500" }: { label: stri
         ))}
       </div>
     </div>
-    <span className="text-[10px] font-black text-slate-700 uppercase tracking-[0.2em]">{label}</span>
+    <span className="text-[12px] font-black text-slate-700 uppercase tracking-[0.2em]">{label}</span>
   </div>
 );
 
@@ -82,7 +82,7 @@ const RightItem = ({ icon: Icon, label, colorClass = "text-blue-500" }: { icon: 
 
 export default function OverViewCard() {
   return (
-    <div className="relative w-full max-w-[960px] mx-auto bg-white rounded-[4rem] shadow-2xl shadow-slate-200/50 border border-slate-100 overflow-hidden min-h-[640px]">
+    <div className="relative w-full max-w-[960px] mx-auto rounded-[4rem] overflow-hidden min-h-[640px]">
       {/* Dynamic Connector Lines */}
       <svg
         className="absolute inset-0 w-full h-full pointer-events-none"
@@ -91,7 +91,7 @@ export default function OverViewCard() {
         xmlns="http://www.w3.org/2000/svg"
       >
         <g transform="translate(222.626, 260) rotate(270) scale(1.6, 1.4) translate(-160, -41.500)"> 
-          <g stroke="#166df8" strokeDasharray="0.1 5" strokeDashoffset="1" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" mask="url(#fade_mask)">
+          <g stroke="#05a0ec" strokeDasharray="0.1 5" strokeDashoffset="1" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" mask="url(#fade_mask)">
             <animate attributeName="stroke-dashoffset" values="0;5000" dur="300s" calcMode="linear" repeatCount="indefinite"></animate>
             <path stroke="transparent" d="M0 1V0"></path>
             <path d="M124 81V62a16 16 0 00-12.436-15.598l-83.128-18.92A16 16 0 0116 11.884V1"></path>
@@ -116,7 +116,7 @@ export default function OverViewCard() {
         </g>
         
         <g transform="translate(760, 260) rotate(90) scale(1.6, 1.4) translate(-160, -41.500)"> 
-          <g stroke="#166df8" strokeDasharray="0.1 5" strokeDashoffset="1" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" mask="url(#fade_mask_2)">
+          <g stroke="#05a0ec" strokeDasharray="0.1 5" strokeDashoffset="1" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" mask="url(#fade_mask_2)">
             <animate attributeName="stroke-dashoffset" values="0;5000" dur="300s" calcMode="linear" repeatCount="indefinite"></animate>
             <path stroke="transparent" d="M0 1V0"></path>
             <path d="M124 81V62a16 16 0 00-12.436-15.598l-83.128-18.92A16 16 0 0116 11.884V1"></path>
@@ -147,7 +147,7 @@ export default function OverViewCard() {
         <div className="flex flex-col gap-5">
           <GroupIcon
             label="ERP / CRM"
-            colorClass="text-indigo-600"
+            colorClass="text-[#09358c]"
             icons={[<Building2 key="1" />, <Box key="2" />, <Database key="3" />, <Network key="4" />]}
           />
           <GroupIcon
@@ -172,20 +172,21 @@ export default function OverViewCard() {
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            className="w-full max-w-[250px] border-2 border-slate-100 rounded-[3rem] p-1.5"
+            className="w-full max-w-[250px] rounded-[3rem] p-1.5"
           >
-            <div className="bg-white rounded-[3.2rem] flex flex-col items-center justify-center gap-10">
+            <div className="rounded-[3.2rem] flex flex-col items-center justify-center gap-10">
 
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white font-black text-2xl shadow-lg shadow-blue-500/20">T</div>
-                <span className="text-3xl font-black tracking-tight text-slate-900 uppercase">tapito</span>
+                <div className="w-10 h-10 flex items-center justify-center">
+                  <img src="/logo.svg" alt="Tapito Logo" className="w-full h-full object-contain" />
+                </div>
               </div>
 
               <div className="w-full flex flex-col gap-4 w-[230px]">
-                <ItemBox icon={<Network />} title="Data Integration" color="#22c55e" delay={0.1} />
-                <ItemBox icon={<Zap />} title="Campaign Automation" color="#06b6d4" delay={0.2} />
-                <ItemBox icon={<TrendingUp />} title="Live Analytics" color="#3b82f6" delay={0.3} />
-                <ItemBox icon={<UserCheck />} title="Decision Support" color="#a855f7" delay={0.4} />
+                <ItemBox icon={<Network />} title="Data Integration" color="#06dcc3" delay={0.1} />
+                <ItemBox icon={<Zap />} title="Campaign Automation" color="#05a0ec" delay={0.2} />
+                <ItemBox icon={<TrendingUp />} title="Live Analytics" color="#09358c" delay={0.3} />
+                <ItemBox icon={<UserCheck />} title="Decision Support" color="#05a0ec" delay={0.4} />
               </div>
             </div>
           </motion.div>
@@ -193,9 +194,9 @@ export default function OverViewCard() {
 
         {/* Right Column: Key Outputs - Colorful */}
         <div className="flex flex-col gap-12 items-center">
-          <RightItem icon={BarChart3} label="CEO View" colorClass="text-blue-600" />
-          <RightItem icon={PieChart} label="Reports" colorClass="text-purple-600" />
-          <RightItem icon={Bell} label="Alerts" colorClass="text-rose-600" />
+          <RightItem icon={BarChart3} label="CEO View" colorClass="text-[#09358c]" />
+          <RightItem icon={PieChart} label="Reports" colorClass="text-[#05a0ec]" />
+          <RightItem icon={Bell} label="Alerts" colorClass="text-[#06dcc3]" />
           <RightItem icon={FileSpreadsheet} label="Exports" colorClass="text-emerald-600" />
         </div>
 

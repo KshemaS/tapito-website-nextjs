@@ -42,7 +42,7 @@ export default function SlidingHero() {
           <Container>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div className="space-y-8">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-600 text-xs font-bold uppercase tracking-widest">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-[#05a0ec] text-xs font-bold uppercase tracking-widest">
                   <BarChart3 size={14} />
                   PLATFORM OVERVIEW
                 </div>
@@ -56,13 +56,13 @@ export default function SlidingHero() {
                 </p>
                 <div className="grid grid-cols-2 gap-6 pt-8">
                    <div className="p-6 bg-white rounded-3xl shadow-sm border border-slate-100">
-                      <TrendingUp className="text-blue-600 mb-4" />
-                      <h4 className="font-bold text-lg mb-1">24.2%</h4>
+                      <TrendingUp className="text-[#05a0ec] mb-4" />
+                      <h4 className="font-bold text-lg mb-1 text-slate-900">24.2%</h4>
                       <p className="text-xs text-slate-400 uppercase font-black">Average ROI Gain</p>
                    </div>
                    <div className="p-6 bg-white rounded-3xl shadow-sm border border-slate-100">
-                      <Zap className="text-purple-600 mb-4" />
-                      <h4 className="font-bold text-lg mb-1">1 sec</h4>
+                      <Zap className="text-[#06dcc3] mb-4" />
+                      <h4 className="font-bold text-lg mb-1 text-slate-900">1 sec</h4>
                       <p className="text-xs text-slate-400 uppercase font-black">Data Latency</p>
                    </div>
                 </div>
@@ -72,8 +72,12 @@ export default function SlidingHero() {
                 {/* Visual Representation of Platform Integration */}
                 <div className="aspect-square bg-white rounded-[3rem] shadow-2xl border border-slate-100 p-12 flex flex-col items-center justify-center overflow-hidden">
                    <div className="relative w-full h-full flex items-center justify-center">
-                      <div className="w-32 h-32 rounded-3xl bg-blue-600 shadow-2xl shadow-blue-600/20 flex items-center justify-center text-white z-10">
-                         <span className="text-4xl font-black">T</span>
+                      <div className="relative w-32 h-32 rounded-3xl bg-white shadow-2xl shadow-blue-600/10 flex items-center justify-center z-10 p-6 border border-slate-50">
+                         <img 
+                            src="/logo.svg" 
+                            alt="Tapito Logo" 
+                            className="w-full h-full object-contain"
+                         />
                       </div>
                       
                       {/* Connecting Orbs */}

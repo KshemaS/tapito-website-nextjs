@@ -12,17 +12,20 @@ export function Footer() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
                <div className="col-span-1 lg:col-span-1">
                   <Link href="/" className="flex items-center gap-2 mb-6">
-                     <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                        <span className="text-white font-bold text-xl">T</span>
+                     <div className="w-28 h-10 flex items-center justify-center">
+                        <img 
+                           src="/logo.svg" 
+                           alt="Tapito Logo" 
+                           className="w-full h-full object-contain"
+                        />
                      </div>
-                     <span className="text-xl font-bold tracking-tight text-slate-900">Tapito</span>
                   </Link>
                   <p className="text-slate-500 mb-8 leading-relaxed">
                      The AI-powered customer engagement platform for modern retail. Data → Insights → Action → Growth.
                   </p>
                   <div className="flex gap-4">
                      {[Share2, MessageCircle, Globe, Mail].map((Icon, i) => (
-                        <Link key={i} href="#" className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 hover:text-blue-600 hover:border-blue-600 transition-all">
+                        <Link key={i} href="#" className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 hover:text-[#05a0ec] hover:border-[#05a0ec] transition-all">
                            <Icon size={18} />
                         </Link>
                      ))}
@@ -33,7 +36,7 @@ export function Footer() {
                   <h5 className="font-bold text-slate-900 mb-6 uppercase text-xs tracking-widest">Product</h5>
                   <ul className="space-y-4">
                      {["BI Dashboard", "AI Analytics", "Automation Engine", "Revenue Intelligence", "Campaigns"].map((item, i) => (
-                        <li key={i}><Link href="#" className="text-slate-500 hover:text-blue-600 transition-colors">{item}</Link></li>
+                        <li key={i}><Link href="#" className="text-slate-500 hover:text-[#05a0ec] transition-colors">{item}</Link></li>
                      ))}
                   </ul>
                </div>
@@ -42,7 +45,7 @@ export function Footer() {
                   <h5 className="font-bold text-slate-900 mb-6 uppercase text-xs tracking-widest">Solutions</h5>
                   <ul className="space-y-4">
                      {["Retail Chains", "E-commerce", "Supermarkets", "Fashion", "Electronics"].map((item, i) => (
-                        <li key={i}><Link href="#" className="text-slate-500 hover:text-blue-600 transition-colors">{item}</Link></li>
+                        <li key={i}><Link href="#" className="text-slate-500 hover:text-[#05a0ec] transition-colors">{item}</Link></li>
                      ))}
                   </ul>
                </div>
@@ -51,8 +54,8 @@ export function Footer() {
                   <h5 className="font-bold text-slate-900 mb-6 uppercase text-xs tracking-widest">Connect with Us</h5>
                   <p className="text-sm text-slate-500 mb-4">Stay updated with the latest in retail AI.</p>
                   <div className="flex gap-2">
-                     <input type="email" placeholder="Your email" className="bg-white border border-slate-200 rounded-lg px-4 py-2 text-sm flex-1 focus:outline-none focus:border-blue-300" />
-                     <button className="bg-blue-600 text-white rounded-lg px-4 py-2 text-sm font-bold"><ArrowRight size={16} /></button>
+                     <input type="email" placeholder="Your email" className="bg-white border border-slate-200 rounded-lg px-4 py-2 text-sm flex-1 focus:outline-none focus:border-[#05a0ec]" />
+                     <button className="bg-[#09358c] text-white rounded-lg px-4 py-2 text-sm font-bold hover:bg-[#05a0ec] transition-colors"><ArrowRight size={16} /></button>
                   </div>
                   <div className="mt-8 flex items-center gap-2 text-slate-400">
                      <Globe size={14} />

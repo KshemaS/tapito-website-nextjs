@@ -24,26 +24,36 @@ import highlightimg6 from '@/public/assets/images/dashboard7.jpg';
 const keyHighlights = [
   {
     name: "Real-time business intelligence",
+    subheading: "Live Performance Analytics",
+    description: "Real-time tracking of every transaction and KPI across your network.",
     image: highlightimg5,
     video: "/dashboard-overview.mp4"
   },
   {
     name: "AI-driven growth recommendations",
+    subheading: "Predictive Growth Engine",
+    description: "AI-powered insights that identify revenue leakage and expansion opportunities.",
     image: highlightimg,
     video: "/dashboard-overview.mp4"
   },
   {
     name: "Zero-effort campaign automation",
+    subheading: "Autonomous Marketing",
+    description: "Fully automated customer engagement workflows that run on autopilot.",
     image: highlightimg3,
     video: "/dashboard-overview.mp4"
   },
   {
     name: "Multi-store performance visibility",
+    subheading: "Global Inventory Control",
+    description: "Centralized view of stock levels and sales performance for all locations.",
     image: highlightimg6,
     video: "/dashboard-overview.mp4"
   },
   {
     name: "Voice-enabled AI assistant (mobile)",
+    subheading: "Natural Language Query",
+    description: "Talk to your data naturally and get instant answers on the move.",
     image: highlightimg4,
     video: "/dashboard-overview.mp4"
   }

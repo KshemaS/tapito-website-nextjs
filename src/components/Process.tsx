@@ -9,19 +9,19 @@ const steps = [
     title: "Clear business insights",
     desc: "Instantly visualize performance across all stores and channels without manual reporting or messy spreadsheets.",
     icon: Database,
-    color: "bg-blue-100 text-blue-600"
+    color: "bg-[#05a0ec1a] text-[#05a0ec]"
   },
   {
     title: "Identified growth opportunities",
     desc: "Tap into AI that highlights underlying trends and pinpoints exactly where your next revenue boost is hiding.",
     icon: Lightbulb,
-    color: "bg-amber-100 text-amber-600"
+    color: "bg-[#06dcc31a] text-[#06dcc3]"
   },
   {
     title: "Automated actions",
     desc: "Let our engine trigger high-performing campaigns and operational tasks automatically based on real-time data.",
     icon: Zap,
-    color: "bg-purple-100 text-purple-600"
+    color: "bg-[#09358c1a] text-[#09358c]"
   }
 ];
 
@@ -34,13 +34,13 @@ export default function Process() {
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-blue-50 text-blue-600 text-xs font-bold mb-6 text-[14px]"
+              className="uppercase inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-[#09358c] text-xs font-bold mb-6 text-[14px]"
              >
-               <Sparkles size={14} />
+               <Sparkles size={14} color="#09358c" />
                So you stop guessing and start scaling
              </motion.div>
           <h3 className="text-4xl md:text-5xl font-black text-slate-900 mb-8 leading-tight">
-            From Data to Decisions<br /><span className="gradient-text">— In Seconds</span>
+            From Data to Decisions<br /><span className="text-[#09358c]">— In Seconds</span>
           </h3>
           <p className="text-lg text-slate-600 font-medium leading-relaxed">
             Most businesses are drowning in data but starving for insights. Tapito closes that gap.
