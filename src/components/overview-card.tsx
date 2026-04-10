@@ -93,14 +93,54 @@ export default function OverViewCard() {
         <g transform="translate(222.626, 260) rotate(270) scale(1.6, 1.4) translate(-160, -41.500)"> 
           <g stroke="#05a0ec" strokeDasharray="0.1 5" strokeDashoffset="1" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" mask="url(#fade_mask)">
             <animate attributeName="stroke-dashoffset" values="0;5000" dur="300s" calcMode="linear" repeatCount="indefinite"></animate>
-            <path stroke="transparent" d="M0 1V0"></path>
-            <path d="M124 81V62a16 16 0 00-12.436-15.598l-83.128-18.92A16 16 0 0116 11.884V1"></path>
-            <path d="M136 81V55a20 20 0 00-13.856-19.033L74.85 21.437A16 16 0 0163.765 6.211V1"></path>
-            <path d="M148 81V49a24 24 0 00-13.769-21.71l-13.051-6.15A16 16 0 01112 6.694V1"></path>
-            <path d="M160 80V0"></path>
-            <path d="M172 81V49a24 24 0 0113.769-21.71l13.051-6.15A16 16 0 00208 6.694V1"></path>
-            <path d="M184 81V55a20 20 0 0113.856-19.033l47.206-15.238a16 16 0 0011.085-15.226V1"></path>
-            <path d="M196 81V62a16 16 0 0112.436-15.598l83.128-18.994A16 16 0 00304 11.884V1"></path>
+            <motion.path 
+              initial={{ pathLength: 0 }}
+              whileInView={{ pathLength: 1 }}
+              transition={{ duration: 2, ease: "easeInOut" }}
+              viewport={{ once: true }}
+              stroke="transparent" d="M0 1V0"></motion.path>
+            <motion.path 
+              initial={{ pathLength: 0 }}
+              whileInView={{ pathLength: 1 }}
+              transition={{ duration: 2, delay: 0.1, ease: "easeInOut" }}
+              viewport={{ once: true }}
+              d="M124 81V62a16 16 0 00-12.436-15.598l-83.128-18.92A16 16 0 0116 11.884V1"></motion.path>
+            <motion.path 
+              initial={{ pathLength: 0 }}
+              whileInView={{ pathLength: 1 }}
+              transition={{ duration: 2, delay: 0.2, ease: "easeInOut" }}
+              viewport={{ once: true }}
+              d="M136 81V55a20 20 0 00-13.856-19.033L74.85 21.437A16 16 0 0163.765 6.211V1"></motion.path>
+            <motion.path 
+              initial={{ pathLength: 0 }}
+              whileInView={{ pathLength: 1 }}
+              transition={{ duration: 2, delay: 0.3, ease: "easeInOut" }}
+              viewport={{ once: true }}
+              d="M148 81V49a24 24 0 00-13.769-21.71l-13.051-6.15A16 16 0 01112 6.694V1"></motion.path>
+            <motion.path 
+              initial={{ pathLength: 0 }}
+              whileInView={{ pathLength: 1 }}
+              transition={{ duration: 2, delay: 0.4, ease: "easeInOut" }}
+              viewport={{ once: true }}
+              d="M160 80V0"></motion.path>
+            <motion.path 
+              initial={{ pathLength: 0 }}
+              whileInView={{ pathLength: 1 }}
+              transition={{ duration: 2, delay: 0.3, ease: "easeInOut" }}
+              viewport={{ once: true }}
+              d="M172 81V49a24 24 0 0113.769-21.71l13.051-6.15A16 16 0 00208 6.694V1"></motion.path>
+            <motion.path 
+              initial={{ pathLength: 0 }}
+              whileInView={{ pathLength: 1 }}
+              transition={{ duration: 2, delay: 0.2, ease: "easeInOut" }}
+              viewport={{ once: true }}
+              d="M184 81V55a20 20 0 0113.856-19.033l47.206-15.238a16 16 0 0011.085-15.226V1"></motion.path>
+            <motion.path 
+              initial={{ pathLength: 0 }}
+              whileInView={{ pathLength: 1 }}
+              transition={{ duration: 2, delay: 0.1, ease: "easeInOut" }}
+              viewport={{ once: true }}
+              d="M196 81V62a16 16 0 0112.436-15.598l83.128-18.994A16 16 0 00304 11.884V1"></motion.path>
           </g>
           <defs>
             <linearGradient id="gradient" y2="1" x2="0">
@@ -118,14 +158,54 @@ export default function OverViewCard() {
         <g transform="translate(760, 260) rotate(90) scale(1.6, 1.4) translate(-160, -41.500)"> 
           <g stroke="#05a0ec" strokeDasharray="0.1 5" strokeDashoffset="1" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" mask="url(#fade_mask_2)">
             <animate attributeName="stroke-dashoffset" values="0;5000" dur="300s" calcMode="linear" repeatCount="indefinite"></animate>
-            <path stroke="transparent" d="M0 1V0"></path>
-            <path d="M124 81V62a16 16 0 00-12.436-15.598l-83.128-18.92A16 16 0 0116 11.884V1"></path>
-            <path d="M136 81V55a20 20 0 00-13.856-19.033L74.85 21.437A16 16 0 0163.765 6.211V1"></path>
-            <path d="M148 81V49a24 24 0 00-13.769-21.71l-13.051-6.15A16 16 0 01112 6.694V1"></path>
-            <path d="M160 80V0"></path>
-            <path d="M172 81V49a24 24 0 0113.769-21.71l13.051-6.15A16 16 0 00208 6.694V1"></path>
-            <path d="M184 81V55a20 20 0 0113.856-19.033l47.206-15.238a16 16 0 0011.085-15.226V1"></path>
-            <path d="M196 81V62a16 16 0 0112.436-15.598l83.128-18.994A16 16 0 00304 11.884V1"></path>
+            <motion.path 
+              initial={{ pathLength: 0 }}
+              whileInView={{ pathLength: 1 }}
+              transition={{ duration: 2, ease: "easeInOut" }}
+              viewport={{ once: true }}
+              stroke="transparent" d="M0 1V0"></motion.path>
+            <motion.path 
+              initial={{ pathLength: 0 }}
+              whileInView={{ pathLength: 1 }}
+              transition={{ duration: 2, delay: 0.1, ease: "easeInOut" }}
+              viewport={{ once: true }}
+              d="M124 81V62a16 16 0 00-12.436-15.598l-83.128-18.92A16 16 0 0116 11.884V1"></motion.path>
+            <motion.path 
+              initial={{ pathLength: 0 }}
+              whileInView={{ pathLength: 1 }}
+              transition={{ duration: 2, delay: 0.2, ease: "easeInOut" }}
+              viewport={{ once: true }}
+              d="M136 81V55a20 20 0 00-13.856-19.033L74.85 21.437A16 16 0 0163.765 6.211V1"></motion.path>
+            <motion.path 
+              initial={{ pathLength: 0 }}
+              whileInView={{ pathLength: 1 }}
+              transition={{ duration: 2, delay: 0.3, ease: "easeInOut" }}
+              viewport={{ once: true }}
+              d="M148 81V49a24 24 0 00-13.769-21.71l-13.051-6.15A16 16 0 01112 6.694V1"></motion.path>
+            <motion.path 
+              initial={{ pathLength: 0 }}
+              whileInView={{ pathLength: 1 }}
+              transition={{ duration: 2, delay: 0.4, ease: "easeInOut" }}
+              viewport={{ once: true }}
+              d="M160 80V0"></motion.path>
+            <motion.path 
+              initial={{ pathLength: 0 }}
+              whileInView={{ pathLength: 1 }}
+              transition={{ duration: 2, delay: 0.3, ease: "easeInOut" }}
+              viewport={{ once: true }}
+              d="M172 81V49a24 24 0 0113.769-21.71l13.051-6.15A16 16 0 00208 6.694V1"></motion.path>
+            <motion.path 
+              initial={{ pathLength: 0 }}
+              whileInView={{ pathLength: 1 }}
+              transition={{ duration: 2, delay: 0.2, ease: "easeInOut" }}
+              viewport={{ once: true }}
+              d="M184 81V55a20 20 0 0113.856-19.033l47.206-15.238a16 16 0 0011.085-15.226V1"></motion.path>
+            <motion.path 
+              initial={{ pathLength: 0 }}
+              whileInView={{ pathLength: 1 }}
+              transition={{ duration: 2, delay: 0.1, ease: "easeInOut" }}
+              viewport={{ once: true }}
+              d="M196 81V62a16 16 0 0112.436-15.598l83.128-18.994A16 16 0 00304 11.884V1"></motion.path>
           </g>
           <defs>
             <linearGradient id="gradient_2" y2="1" x2="0">
@@ -177,7 +257,7 @@ export default function OverViewCard() {
             <div className="rounded-[3.2rem] flex flex-col items-center justify-center gap-10">
 
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 flex items-center justify-center">
+                <div className="w-24 h-10 flex items-center justify-center">
                   <img src="/logo.svg" alt="Tapito Logo" className="w-full h-full object-contain" />
                 </div>
               </div>

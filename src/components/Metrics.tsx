@@ -18,7 +18,7 @@ export default function Metrics() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
            <div>
               <h2 className="text-sm font-bold uppercase tracking-widest text-blue-600 mb-4">Business Impact</h2>
-              <h3 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Real Results. <span className="gradient-text">Proven Scale.</span></h3>
+              <h3 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Real Results. <span className="text-[#09358c]">Proven Scale.</span></h3>
               <p className="text-lg text-slate-600 mb-10">
                 Companies using Tapito see an immediate impact on their bottom line through automated intelligence and better decision making.
               </p>

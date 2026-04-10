@@ -13,7 +13,7 @@ interface CTASectionProps {
 }
 
 export default function CTASection({ 
-  title = <>Stop Guessing. <br /> <span className="text-violet-400">Start Growing.</span></>,
+  title = <>Stop Guessing. <br /> <span className="text-[#06dcc3]">Start Growing.</span></>,
   description = "Join hundreds of retail giants who have transformed their data into a revenue engine with Tapito.",
   isCentered = false,
   className

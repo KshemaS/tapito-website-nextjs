@@ -15,6 +15,7 @@ const queries = [
       value: "$142,500",
       trend: "+12.4%",
       isPositive: true,
+      chartType: 'line',
       chartData: [30, 50, 40, 70, 45, 60, 90, 55, 80]
     }
   },
@@ -26,6 +27,7 @@ const queries = [
       value: "Downtown Wing",
       trend: "-4.2%",
       isPositive: false,
+      chartType: 'bar',
       chartData: [80, 70, 85, 40, 35, 30, 45, 20, 15]
     }
   },
@@ -37,6 +39,7 @@ const queries = [
       value: "842 Patrons",
       trend: "+8.1%",
       isPositive: true,
+      chartType: 'circle',
       chartData: [20, 30, 45, 40, 55, 70, 65, 85, 95]
     }
   },
@@ -48,6 +51,7 @@ const queries = [
       value: "+15% Needed",
       trend: "+25.0%",
       isPositive: true,
+      chartType: 'line',
       chartData: [40, 45, 50, 60, 75, 80, 85, 95, 100]
     }
   },
@@ -189,17 +193,75 @@ export default function AIAssistant() {
                                            {activeResult.trend}
                                         </div>
                                      </div>
-                                     <div className="h-16 flex items-end gap-1.5">
-                                        {activeResult.chartData.map((h, i) => (
-                                           <motion.div 
-                                              key={i}
-                                              initial={{ height: 0 }}
-                                              animate={{ height: `${h}%` }}
-                                              transition={{ duration: 0.8, delay: 0.4 + i * 0.05 }}
-                                              className={cn("flex-1 rounded-t-sm bg-gradient-to-t", activeResult.isPositive ? "from-blue-600 to-indigo-400" : "from-rose-600 to-rose-400")}
-                                           />
-                                        ))}
-                                     </div>
+                                     <div className="h-20 flex flex-col justify-end">
+                                        {queries[currentQuery].result.chartType === 'line' ? (
+                                          <div className="h-full w-full pt-4">
+                                            <svg className="w-full h-full" viewBox="0 0 100 40" preserveAspectRatio="none">
+                                              <motion.path
+                                                d={`M 0 40 ${activeResult.chartData.map((h, i) => `L ${(i / (activeResult.chartData.length - 1)) * 100} ${40 - (h / 2.5)}`).join(' ')}`}
+                                                fill="none"
+                                                stroke={activeResult.isPositive ? "#05a0ec" : "#f43f5e"}
+                                                strokeWidth="2"
+                                                initial={{ pathLength: 0 }}
+                                                animate={{ pathLength: 1 }}
+                                                transition={{ duration: 1.5, delay: 0.5 }}
+                                              />
+                                              <motion.path
+                                                d={`M 0 40 ${activeResult.chartData.map((h, i) => `L ${(i / (activeResult.chartData.length - 1)) * 100} ${40 - (h / 2.5)}`).join(' ')} L 100 40 Z`}
+                                                fill={`url(#gradient-${currentQuery})`}
+                                                initial={{ opacity: 0 }}
+                                                animate={{ opacity: 1 }}
+                                                transition={{ duration: 1 }}
+                                              />
+                                              <defs>
+                                                <linearGradient id={`gradient-${currentQuery}`} x1="0" y1="0" x2="0" y2="1">
+                                                  <stop offset="0%" stopColor={activeResult.isPositive ? "#05a0ec22" : "#f43f5e22"} />
+                                                  <stop offset="100%" stopColor="transparent" />
+                                                </linearGradient>
+                                              </defs>
+                                            </svg>
+                                          </div>
+                                        ) : activeResult.chartType === 'circle' ? (
+                                          <div className="flex items-center gap-4 h-full">
+                                             <div className="relative w-14 h-14">
+                                                <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100">
+                                                   <circle cx="50" cy="50" r="40" stroke="rgba(255,255,255,0.1)" strokeWidth="12" fill="none" />
+                                                   <motion.circle 
+                                                      cx="50" cy="50" r="40" 
+                                                      stroke="#06dcc3" 
+                                                      strokeWidth="12" 
+                                                      fill="none" 
+                                                      strokeDasharray="251.2"
+                                                      initial={{ strokeDashoffset: 251.2 }}
+                                                      animate={{ strokeDashoffset: 251.2 * (1 - 0.842) }}
+                                                      transition={{ duration: 1.5, delay: 0.5 }}
+                                                   />
+                                                </svg>
+                                                <div className="absolute inset-0 flex items-center justify-center text-[10px] font-black text-white">84%</div>
+                                             </div>
+                                             <div className="flex-1 space-y-1">
+                                                <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+                                                   <motion.div initial={{ width: 0 }} animate={{ width: "85%" }} className="h-full bg-[#06dcc3]" transition={{ delay: 0.8 }} />
+                                                </div>
+                                                <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+                                                   <motion.div initial={{ width: 0 }} animate={{ width: "65%" }} className="h-full bg-[#05a0ec]" transition={{ delay: 1.0 }} />
+                                                </div>
+                                             </div>
+                                          </div>
+                                        ) : (
+                                          <div className="h-16 flex items-end gap-1.5">
+                                            {activeResult.chartData.map((h, i) => (
+                                              <motion.div 
+                                                  key={i}
+                                                  initial={{ height: 0 }}
+                                                  animate={{ height: `${h}%` }}
+                                                  transition={{ duration: 0.8, delay: 0.4 + i * 0.05 }}
+                                                  className={cn("flex-1 rounded-t-sm bg-gradient-to-t", activeResult.isPositive ? "from-blue-600 to-indigo-400" : "from-rose-600 to-rose-400")}
+                                              />
+                                            ))}
+                                          </div>
+                                        )}
+                                      </div>
                                   </div>
                                </div>
                             </div>
