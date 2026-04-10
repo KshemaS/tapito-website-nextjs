@@ -23,6 +23,7 @@ import Container from "@/components/Container";
 import { SolutionsHero } from "@/components/solutions/SolutionsHero";
 import CTASection from "@/components/CTASection";
 import ClientStrip from "@/components/ClientStrip";
+import { FeatureShowcase } from "@/components/solutions/FeatureShowcase";
 import { cn } from "@/lib/utils";
 
 const solutionDetails: Record<string, any> = {
@@ -165,7 +166,6 @@ export default function SolutionDetailPage() {
   const params = useParams();
   const slug = params.slug as string;
   const data = solutionDetails[slug] || defaultData;
-  const [activeIndex, setActiveIndex] = useState(0);
 
   return (
     <main className="min-h-screen bg-white">
@@ -180,95 +180,68 @@ export default function SolutionDetailPage() {
       {/* Client Logos Section */}
       <ClientStrip />
 
-      {/* Interactive Process Section */}
-      <section className="py-32 bg-white">
+      {/* Interactive Process Section - Redesigned to Immersive Pillars */}
+      <section className="py-32 bg-white overflow-hidden">
         <Container>
           {/* Centered Heading */}
-          <div className="text-center max-w-3xl mx-auto mb-24">
-            <span className="text-xs font-black tracking-[0.4em] uppercase text-violet-600 mb-6 block">STRATEGIC ADVANTAGE</span>
+          <div className="text-center max-w-3xl mx-auto mb-20">
+            <span className="text-xs font-black tracking-[0.4em] uppercase text-[#09358c] mb-6 block">STRATEGIC ADVANTAGE</span>
             <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tight leading-tight">
-              Which way we help <br /> the <span className="text-violet-600">{data.title}</span> vertical
+              Which way we help <br /> the <span className="text-[#09358c]">{data.title}</span> vertical
             </h2>
           </div>
 
-          <div className="flex flex-col lg:flex-row gap-20 items-center">
-            {/* Left Side: Just an Image Only */}
-            <div className="lg:w-1/2 w-full">
-              <div className="relative aspect-[4/3] w-full rounded-[3rem] overflow-hidden bg-slate-100 border border-slate-200 shadow-2xl">
-                {/* Visual Content - Using a more direct img tag approach */}
-                <div className="absolute inset-0">
-                  <AnimatePresence mode="wait">
-                    <motion.img
-                      key={activeIndex}
-                      src={data.howWeHelp[activeIndex].image}
-                      alt={data.howWeHelp[activeIndex].title}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.4 }}
-                      className="w-full h-full object-cover"
-                    />
-                  </AnimatePresence>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch h-full">
+            {data.howWeHelp.map((item: any, i: number) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: i * 0.15 }}
+                className="group relative h-[600px] rounded-[18px] overflow-hidden cursor-pointer shadow-2xl shadow-slate-200/50"
+              >
+                {/* Background Image */}
+                <div className="absolute inset-0 transition-transform duration-1000 group-hover:scale-110">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover"
+                  />
+                  {/* Overlays */}
+                  <div className="absolute inset-0 bg-slate-950/40 group-hover:bg-slate-950/20 transition-colors duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-100 transition-opacity" />
                 </div>
-                
-                {/* Fallback Icon (Behind Image) */}
-                <div className="absolute inset-0 flex items-center justify-center -z-10 bg-slate-50">
-                   <ImageIcon size={48} className="text-slate-200 animate-pulse" />
-                </div>
-                
-                {/* Premium Overlay Filter */}
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent pointer-events-none z-20" />
-              </div>
-            </div>
 
-            {/* Right Side: Process Descriptions */}
-            <div className="lg:w-1/2">
-              <div className="space-y-4">
-                {data.howWeHelp.map((item: any, i: number) => (
-                  <div
-                    key={i}
-                    onMouseEnter={() => setActiveIndex(i)}
-                    className={cn(
-                      "p-8 rounded-[2rem] border transition-all duration-500 cursor-pointer relative group overflow-hidden",
-                      activeIndex === i 
-                        ? "bg-white border-violet-100 shadow-[0_30px_60px_-15px_rgba(124,58,237,0.1)] translate-x-4" 
-                        : "bg-transparent border-transparent hover:bg-slate-50 hover:border-slate-100"
-                    )}
-                  >
-                    {/* Active Accent Bar */}
-                    {activeIndex === i && (
-                      <motion.div 
-                        layoutId="activeBar"
-                        className="absolute left-0 top-0 bottom-0 w-2 bg-violet-600"
-                      />
-                    )}
-
-                    <div className="flex items-start gap-6">
-                      <div className={cn(
-                        "text-3xl font-black transition-colors duration-500",
-                        activeIndex === i ? "text-violet-600" : "text-slate-300 group-hover:text-slate-400"
-                      )}>
-                        0{i + 1}
-                      </div>
-                      <div>
-                        <h4 className={cn(
-                          "text-2xl font-black mb-3 transition-colors duration-500",
-                          activeIndex === i ? "text-slate-900" : "text-slate-400 group-hover:text-slate-600"
-                        )}>
-                          {item.title}
-                        </h4>
-                        <p className={cn(
-                          "text-lg transition-all duration-500 leading-relaxed font-medium overflow-hidden",
-                          activeIndex === i ? "text-slate-600 h-auto" : "text-slate-400 h-0 group-hover:h-auto"
-                        )}>
-                          {item.desc}
-                        </p>
-                      </div>
+                {/* Content Container */}
+                <div className="absolute inset-0 p-10 flex flex-col justify-end">
+                  {/* Numbering */}
+                  <div className="text-white/40 font-black text-4xl mb-4 group-hover:text-white transition-colors font-medium">0{i + 1}</div>
+                  
+                  {/* Title and Expansion Description */}
+                  <div className="space-y-4">
+                    <h3 className="text-3xl md:text-4xl font-black text-white leading-tight font-medium">
+                      {item.title}
+                    </h3>
+                    
+                    <div className="max-h-0 opacity-0 group-hover:max-h-[200px] group-hover:opacity-100 transition-all duration-700 ease-in-out overflow-hidden">
+                      <p className="text-lg text-slate-200 font-medium leading-relaxed">
+                        {item.desc}
+                      </p>
+                      
+                      <button className="mt-8 flex items-center gap-2 text-white font-black text-xs uppercase tracking-widest bg-white/10 backdrop-blur-md px-6 py-3 rounded-full hover:bg-white hover:text-[#09358c] transition-all">
+                        Learn Detail <ArrowRight size={14} />
+                      </button>
                     </div>
                   </div>
-                ))}
-              </div>
-            </div>
+                </div>
+
+                {/* Top Right Icon/Badge */}
+                <div className="absolute top-8 right-8 w-14 h-14 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl flex items-center justify-center text-white scale-0 group-hover:scale-100 transition-transform duration-500">
+                  <Rocket size={24} />
+                </div>
+              </motion.div>
+            ))}
           </div>
         </Container>
       </section>
@@ -278,8 +251,8 @@ export default function SolutionDetailPage() {
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
         <Container>
           <div className="text-center mb-20">
-            <span className="text-xs font-black tracking-[0.3em] uppercase text-violet-600 mb-4 block">THE CHALLENGE</span>
-            <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight">Why <span className="text-violet-600">{data.title}</span> <br /> <span className="gradient-text">Struggles to Scale</span></h2>
+            <span className="text-xs font-black tracking-[0.3em] uppercase text-[#09358c] mb-4 block">THE CHALLENGE</span>
+            <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-[51px]">Why <span className="text-[#09358c]">{data.title}</span> <br /> <span className="text-black">Struggles to Scale</span></h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -301,13 +274,13 @@ export default function SolutionDetailPage() {
         <Container>
           <div className="flex flex-col lg:flex-row gap-20 items-center">
             <div className="lg:w-1/2">
-              <span className="text-xs font-black tracking-[0.3em] uppercase text-violet-600 mb-6 block">CORE CAPABILITIES</span>
-              <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-8 leading-tight">Advanced Logic for <span className="gradient-text">Absolute Growth</span></h2>
+              <span className="text-xs font-black tracking-[0.3em] uppercase text-[#09358c] mb-6 block">CORE CAPABILITIES</span>
+              <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-8 leading-tight">Advanced Logic for <br /> <span className="text-[#09358c]">Absolute Growth</span></h2>
 
               <div className="space-y-12 mt-12">
                 {data.features.map((feature: any, i: number) => (
                   <div key={i} className="flex gap-6 group">
-                    <div className="w-14 h-14 shrink-0 rounded-2xl bg-violet-600 text-white flex items-center justify-center shadow-lg shadow-violet-500/20 group-hover:rotate-6 transition-transform">
+                    <div className="w-14 h-14 shrink-0 rounded-2xl bg-[#09358c] text-white flex items-center justify-center shadow-lg shadow-blue-500/20 group-hover:rotate-6 transition-transform">
                       <feature.icon size={26} />
                     </div>
                     <div>
@@ -323,26 +296,26 @@ export default function SolutionDetailPage() {
               <div className="aspect-square bg-slate-100 rounded-[3rem] overflow-hidden relative border-4 border-white shadow-2xl">
                 <div className="absolute inset-0 bg-grid opacity-10" />
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-64 h-64 bg-violet-600/10 blur-[100px] animate-pulse" />
+                  <div className="w-64 h-64 bg-[#05a0ec]/10 blur-[100px] animate-pulse" />
                 </div>
                 {/* Placeholder for an actual screenshot or interactive illustration */}
                 <div className="absolute inset-x-8 top-8 bottom-8 bg-white/80 backdrop-blur shadow-xl rounded-2xl border border-white/50 flex flex-col p-8 overflow-hidden">
                   <div className="flex justify-between items-center mb-10">
                     <div className="w-32 h-4 bg-slate-200 rounded-full" />
-                    <div className="w-10 h-10 bg-violet-600 rounded-lg" />
+                    <div className="w-10 h-10 bg-[#09358c] rounded-lg" />
                   </div>
                   <div className="flex-1 space-y-6">
                     <div className="w-full h-8 bg-slate-100 rounded-lg" />
                     <div className="w-4/5 h-8 bg-slate-100 rounded-lg" />
                     <div className="grid grid-cols-2 gap-4 pt-10">
-                      <div className="h-24 bg-violet-50 rounded-xl" />
-                      <div className="h-24 bg-violet-50 rounded-xl" />
+                      <div className="h-24 bg-blue-50 rounded-xl" />
+                      <div className="h-24 bg-blue-50 rounded-xl" />
                     </div>
                   </div>
                 </div>
               </div>
               {/* Decorative badgets */}
-              <div className="absolute -right-8 top-1/4 bg-white p-6 rounded-2xl shadow-xl flex items-center gap-4 border border-violet-100">
+              <div className="absolute -right-8 top-1/4 bg-white p-6 rounded-2xl shadow-xl flex items-center gap-4 border border-blue-100">
                 <div className="w-10 h-10 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center">
                   <TrendingUp size={20} />
                 </div>
@@ -356,19 +329,22 @@ export default function SolutionDetailPage() {
         </Container>
       </section>
 
+      {/* Feature Showcase Section */}
+      <FeatureShowcase />
+
       {/* Impact / Stats Section */}
       <section className="py-32 bg-slate-950 text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-grid opacity-[0.03]" />
         <Container className="relative z-10">
           <div className="text-center mb-24">
-            <span className="text-xs font-black tracking-[0.4em] uppercase text-violet-400 mb-6 block">THE TAPITO IMPACT</span>
-            <h2 className="text-4xl md:text-6xl font-black tracking-tight mb-8 text-white">Metrics that <span className="text-violet-500">Matter</span></h2>
+            <span className="text-xs font-black tracking-[0.4em] uppercase text-[#09358c] mb-6 block">THE TAPITO IMPACT</span>
+            <h2 className="text-4xl md:text-6xl font-black tracking-tight mb-8 text-white">Metrics that <span className="text-[#06dcc3]">Matter</span></h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
             {data.impacts.map((impact: any, i: number) => (
               <div key={i} className="text-center group">
-                <div className="text-6xl md:text-8xl font-black mb-6 text-transparent bg-clip-text bg-gradient-to-br from-white to-white/40 group-hover:from-violet-400 group-hover:to-violet-600 transition-all duration-700">
+                <div className="text-6xl md:text-8xl font-black mb-6 text-transparent bg-clip-text bg-gradient-to-br from-white to-white/40 group-hover:from-[#05a0ec] group-hover:to-[#06dcc3] transition-all duration-700">
                   {impact.value}
                 </div>
                 <p className="text-xl text-slate-400 font-medium tracking-tight px-8">{impact.label}</p>

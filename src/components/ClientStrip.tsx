@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Container from "./Container";
+import { cn } from "@/lib/utils";
 
 const clientLogos = [
   { name: "Global Retail", url: "#" },
@@ -18,7 +19,7 @@ export default function ClientStrip() {
       <Container>
         <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-20">
           <div className="shrink-0">
-            <span className="text-[10px] font-black tracking-[0.3em] uppercase text-slate-400">Trusted By Global Leaders</span>
+            <span className="text-[10px] font-black tracking-[0.3em] uppercase text-[#09358c]">Trusted By Global Leaders</span>
           </div>
 
           <div className="flex-1 overflow-hidden relative">
@@ -37,8 +38,14 @@ export default function ClientStrip() {
             >
               {[...clientLogos, ...clientLogos, ...clientLogos].map((client, i) => (
                 <div key={i} className="flex items-center gap-2 group cursor-default">
-                  <div className="w-8 h-8 rounded-lg flex items-center justify-center transition-all bg-violet-50">
-                    <div className="w-4 h-4 rounded-sm bg-violet-400 group-hover:bg-violet-500 transition-colors" />
+                  <div className={cn(
+                    "w-8 h-8 rounded-lg flex items-center justify-center transition-all",
+                    i % 2 === 0 ? "bg-[#09358c]/10" : "bg-[#05a0ec]/10"
+                  )}>
+                    <div className={cn(
+                      "w-4 h-4 rounded-sm transition-colors",
+                      i % 2 === 0 ? "bg-[#09358c] group-hover:bg-[#05a0ec]" : "bg-[#05a0ec] group-hover:bg-[#09358c]"
+                    )} />
                   </div>
                   <span className="text-xl font-black text-slate-500 group-hover:text-slate-900 transition-colors tracking-tighter">
                     {client.name}

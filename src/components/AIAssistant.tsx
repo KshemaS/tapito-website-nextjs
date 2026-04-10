@@ -83,7 +83,7 @@ export default function AIAssistant() {
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-bold mb-8"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 border border-blue-200/50 text-[#09358c] text-sm font-bold mb-8"
             >
               <Sparkles size={16} />
               ARTIFICIAL INTELLIGENCE
