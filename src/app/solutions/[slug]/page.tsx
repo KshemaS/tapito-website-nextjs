@@ -28,6 +28,7 @@ import CTASection from "@/components/CTASection";
 import ClientStrip from "@/components/ClientStrip";
 import { FeatureShowcase } from "@/components/solutions/FeatureShowcase";
 import { IntegrationSection } from "@/components/solutions/IntegrationSection";
+import { SolutionTestimonials } from "@/components/solutions/SolutionTestimonials";
 import { cn } from "@/lib/utils";
 import Capabilities from "@/components/solution-detail/core-capabilities";
 import Impacts from "@/components/solution-detail/impacts";
@@ -40,7 +41,7 @@ const solutionDetails: Record<string, any> = {
       { 
         title: "Scale Contractor Loyalty", 
         desc: "Automate rewards based on purchase frequency and bulk volume, ensuring contractors stay committed to your brand.", 
-        image: "https://images.unsplash.com/photo-1581094794329-c8112a4e5190?q=80&w=1200&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1200&auto=format&fit=crop",
         icon: Users
       },
       { 
@@ -79,7 +80,7 @@ const solutionDetails: Record<string, any> = {
       { 
         title: "Predict Trend Surges", 
         desc: "Analyze social signals and velocity to identify 'viral' items before they stock out in-store.", 
-        image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1200&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1200&auto=format&fit=crop",
         icon: TrendingUp
       },
       { 
@@ -118,7 +119,7 @@ const solutionDetails: Record<string, any> = {
       { 
         title: "Attachment Rate Growth", 
         desc: "Automatically suggest the most relevant warranties and accessories during the 'hot' purchase window.", 
-        image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1468436139062-f60a71c5c892?q=80&w=1200&auto=format&fit=crop",
         icon: Target
       },
       { 
@@ -156,7 +157,7 @@ const defaultData = {
   title: "Vertical Growth",
   description: "Tapito transforms your industry-specific data into a strategic growth advantage with tailored AI logic.",
   howWeHelp: [
-    { title: "Predictive Optimization", desc: "Anticipate market shifts and adjust your strategy in real-time.", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop", icon: TrendingUp },
+    { title: "Predictive Optimization", desc: "Anticipate market shifts and adjust your strategy in real-time.", image: "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?q=80&w=1200&auto=format&fit=crop", icon: TrendingUp },
     { title: "Operational Clarity", desc: "Remove the fog of raw data with actionable, business-ready insights.", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop", icon: BarChart3 },
     { title: "Automated Execution", desc: "Let AI handle the execution of growth strategies without manual friction.", image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop", icon: Rocket }
   ],
@@ -184,18 +185,13 @@ export default function SolutionDetailPage() {
 
   return (
     <main className="min-h-screen bg-white">
-      {/* Hero Banner with Solution Name */}
       <SolutionsHero 
         badge="VERTICAL SOLUTION"
         titlePrimary={data.title}
         titleSecondary="Solutions"
         description={data.description}
       />
-
-      {/* Client Logos Section */}
       <ClientStrip />
-
-      {/* Interactive Process Section - Redesigned to Immersive Pillars */}
       <section className="py-32 bg-white overflow-hidden">
         <Container>
           {/* Centered Heading */}
@@ -260,10 +256,14 @@ export default function SolutionDetailPage() {
           </div>
         </Container>
       </section>
-
-      {/* Challenges Section */}
       <section id="challenges" className="section-padding bg-slate-50 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
+        {/* Animated Moving Line Border */}
+        <div className="absolute top-0 left-0 w-full h-[1px] bg-slate-200 opacity-50" />
+        <motion.div 
+          animate={{ left: ["-25%", "100%"] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
+          className="absolute top-0 w-1/4 h-[2px] bg-gradient-to-r from-transparent via-[#09358c] to-transparent z-10"
+        />
         <Container>
           <div className="text-center mb-20">
             <span className="text-xs font-black tracking-[0.3em] uppercase text-[#09358c] mb-4 block">THE CHALLENGE</span>
@@ -286,8 +286,7 @@ export default function SolutionDetailPage() {
       <Capabilities data={data} />
       <FeatureShowcase />
       <IntegrationSection />
-      {/* <Impacts data={data} /> */}
-      {/* CTA Section */}
+      <SolutionTestimonials />
       <CTASection
         title={<> Ready to solve your <br /> {data.title} challenges?</>}
         description="Speak with our solutions architects today and see how Tapito can transform your operations."
