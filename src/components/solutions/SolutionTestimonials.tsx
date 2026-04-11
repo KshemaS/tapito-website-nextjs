@@ -34,16 +34,16 @@ export const SolutionTestimonials = () => {
   const [active, setActive] = useState(0); 
 
   const next = () => {
-    if (active < testimonials.length - 1) {
-      setActive(prev => prev + 1);
-    }
+    if (active < testimonials.length - 1) setActive(prev => prev + 1);
   };
 
   const prev = () => {
-    if (active > 0) {
-      setActive(prev => prev - 1);
-    }
+    if (active > 0) setActive(prev => prev - 1);
   };
+
+  // Card configuration
+  const cardWidth = 800;
+  const gap = 32;
 
   return (
     <section className="py-40 bg-black text-white overflow-hidden w-full">
@@ -55,33 +55,32 @@ export const SolutionTestimonials = () => {
       </div>
 
       <div className="relative w-full">
-        <div className="flex justify-center items-center h-[420px] relative">
-          <div className="flex gap-8 px-4 md:px-20 w-full justify-center items-center">
-            {[-1, 0, 1].map((offset) => {
-              const index = active + offset;
-              const isCenter = offset === 0;
-
-              // Only render if index is within bounds
-              if (index < 0 || index >= testimonials.length) {
-                return <div key={offset} className="flex-shrink-0 w-full max-w-4xl" style={{ width: '700px' }} />;
-              }
-
+        {/* Sliding Track Viewport */}
+        <div className="relative h-[420px] w-full cursor-grab active:cursor-grabbing overflow-visible">
+          <motion.div 
+            animate={{ 
+              x: `calc(50vw - ${active * (cardWidth + gap)}px - ${cardWidth / 2}px)` 
+            }}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            className="flex gap-8 absolute top-0 left-0"
+          >
+            {testimonials.map((item, index) => {
+              const isCenter = active === index;
+              
               return (
                 <motion.div
-                  key={`${index}-${offset}`}
-                  initial={{ opacity: 0, x: offset * 100 }}
+                  key={index}
                   animate={{ 
-                    opacity: isCenter ? 1 : 0.4, 
-                    scale: isCenter ? 1 : 0.85,
-                    x: 0,
-                    zIndex: isCenter ? 20 : 10
+                    opacity: isCenter ? 1 : 0.4,
+                    scale: isCenter ? 1 : 0.9,
+                    filter: isCenter ? "blur(0px)" : "blur(2px) grayscale(100%)",
                   }}
-                  transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
+                  transition={{ duration: 0.4 }}
                   className={cn(
-                    "flex-shrink-0 w-full max-w-4xl bg-[#141414] rounded-[2.5rem] border border-white/5 overflow-hidden flex flex-col md:flex-row shadow-2xl transition-all duration-500",
-                    isCenter ? "shadow-blue-500/10" : "grayscale blur-[2px]"
+                    "flex-shrink-0 bg-[#141414] rounded-[2.5rem] border border-white/5 overflow-hidden flex flex-col md:flex-row shadow-2xl transition-all duration-500",
+                    isCenter ? "shadow-blue-500/10" : ""
                   )}
-                  style={{ width: isCenter ? '900px' : '700px' }}
+                  style={{ width: `${cardWidth}px` }}
                 >
                   {/* Left Side: Brand & Author */}
                   <div className="w-full md:w-[45%] p-10 relative flex flex-col justify-between border-r border-white/5 bg-[#1a1a1a]">
@@ -91,16 +90,16 @@ export const SolutionTestimonials = () => {
                       <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10">
                         <Zap size={20} className="text-blue-500" fill="currentColor" />
                       </div>
-                      <span className="text-xl font-black tracking-tighter uppercase text-white/90">{testimonials[index].company}</span>
+                      <span className="text-xl font-black tracking-tighter uppercase text-white/90">{item.company}</span>
                     </div>
 
                     <div className="relative z-10 flex items-center gap-4 pt-12">
                       <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/10 shadow-xl">
-                        <img src={testimonials[index].image} className="w-full h-full object-cover" alt="" />
+                        <img src={item.image} className="w-full h-full object-cover" alt="" />
                       </div>
                       <div>
-                        <div className="text-base font-black text-white leading-tight">{testimonials[index].author}</div>
-                        <div className="text-[10px] font-bold text-white/40 uppercase tracking-widest mt-1">Founder, {testimonials[index].company}</div>
+                        <div className="text-base font-black text-white leading-tight">{item.author}</div>
+                        <div className="text-[10px] font-bold text-white/40 uppercase tracking-widest mt-1">Founder, {item.company}</div>
                       </div>
                     </div>
                   </div>
@@ -113,14 +112,14 @@ export const SolutionTestimonials = () => {
                         "font-bold leading-relaxed text-white/90",
                         isCenter ? "text-xl md:text-2xl" : "text-lg md:text-xl"
                       )}>
-                        "{testimonials[index].quote}"
+                        "{item.quote}"
                       </p>
                     </div>
                   </div>
                 </motion.div>
               );
             })}
-          </div>
+          </motion.div>
         </div>
 
         {/* Navigation Arrows: Bottom Center */}
