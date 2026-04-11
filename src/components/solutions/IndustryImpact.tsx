@@ -15,6 +15,7 @@ import {
   ArrowRight
 } from "lucide-react";
 import Container from "@/components/Container";
+import { cn } from "@/lib/utils";
 
 const industries = [
   { name: "Building Materials", impact: "Improve dealer & contractor engagement", icon: Hammer, color: "bg-orange-50 text-orange-600" },
