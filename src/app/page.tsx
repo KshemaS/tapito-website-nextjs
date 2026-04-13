@@ -15,11 +15,16 @@ import InteractiveDashboard from "@/components/InteractiveDashboard";
 import CTASection, { Footer } from "@/components/Footer";
 import highlightimg from '@/public/assets/images/dashboard-1.avif';
 import highlightimg1 from '@/public/assets/images/dashboard.png';
+import highlightimg2 from '@/public/assets/images/dashboard-3.jpg';
+import highlightimg3 from '@/public/assets/images/dashboard4.jpg';
+import highlightimg4 from '@/public/assets/images/dashboard5.jpg';
+import highlightimg5 from '@/public/assets/images/dashboard6.jpg';
+import highlightimg6 from '@/public/assets/images/dashboard7.jpg';
 
 const keyHighlights = [
   {
     name: "Real-time business intelligence",
-    image: highlightimg1
+    image: highlightimg5
   },
   {
     name: "AI-driven growth recommendations",
@@ -27,15 +32,15 @@ const keyHighlights = [
   },
   {
     name: "Zero-effort campaign automation",
-    image: highlightimg1
+    image: highlightimg3
   },
   {
     name: "Multi-store performance visibility",
-    image: highlightimg
+    image: highlightimg6
   },
   {
     name: "Voice-enabled AI assistant (mobile)",
-    image: highlightimg1
+    image: highlightimg4
   }
 ];
 

@@ -35,9 +35,9 @@ export default function Navbar() {
         {/* Desktop Nav */}
         <div className="hidden lg:flex items-center gap-10">
           {["Features", "Solutions", "Resources", "Enterprise"].map((item) => (
-            <Link 
-              key={item} 
-              href={`#${item.toLowerCase()}`} 
+            <Link
+              key={item}
+              href={`#${item.toLowerCase()}`}
               className="text-sm font-bold text-slate-600 hover:text-blue-600 transition-colors uppercase tracking-widest relative group"
             >
               {item}
@@ -47,14 +47,14 @@ export default function Navbar() {
         </div>
 
         <div className="hidden lg:flex items-center gap-6">
-          <button className="text-sm font-black text-slate-900 uppercase tracking-widest hover:text-blue-600 transition-colors">Log in</button>
+          <button className="btn-premium py-3 px-8 text-sm uppercase tracking-widest font-black">Log in</button>
           <button className="btn-premium py-3 px-8 text-sm uppercase tracking-widest font-black">
-             Access Portal
+            Access Portal
           </button>
         </div>
 
         {/* Mobile Toggle */}
-        <button 
+        <button
           className="lg:hidden w-10 h-10 rounded-xl bg-slate-950 text-white flex items-center justify-center transition-transform active:scale-90"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
@@ -65,7 +65,7 @@ export default function Navbar() {
       {/* Mobile Menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.95, y: -20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: -20 }}
@@ -73,9 +73,9 @@ export default function Navbar() {
           >
             <div className="flex flex-col gap-8">
               {["Features", "Solutions", "Resources", "Enterprise"].map((item) => (
-                <Link 
-                  key={item} 
-                  href={`#${item.toLowerCase()}`} 
+                <Link
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
                   onClick={() => setMobileMenuOpen(false)}
                   className="text-2xl font-black text-slate-900"
                 >
