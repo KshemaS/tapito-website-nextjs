@@ -31,7 +31,7 @@ export default function SlidingHero() {
           style={{ x: heroX, opacity: heroOpacity }}
           className="absolute inset-0 w-full h-full z-20"
         >
-          <Hero />
+          <Hero keyHighlights={[]} />
         </motion.div>
 
         {/* The Overview Section that reveals */}
