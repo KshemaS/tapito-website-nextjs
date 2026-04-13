@@ -80,13 +80,13 @@ export default function Capabilities() {
                   src={i === 0 ? "/retail_ai_dashboard_premium_1775651628420.png" : i === 1 ? "/retail_customer_analytics_digital_overlay_1775651982487.png" : "/predictive_inventory_retail_ai_1775652149852.png"}
                   alt={cap.title}
                   fill
-                  className="object-cover opacity-80 group-hover:scale-110 transition-transform duration-700"
+                  className="object-cover opacity-100 group-hover:scale-110 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-white/40 to-transparent" />
               </div>
 
               <div className="pt-6 border-t border-slate-100 flex items-center justify-between group-hover:border-blue-100 transition-colors">
-                 <span className="text-sm font-bold text-slate-400 uppercase tracking-widest">Learn More</span>
+                 <span className="text-sm font-bold text-slate-400 uppercase tracking-widest group-hover:text-[#000]">Learn More</span>
                  <div className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-blue-600 group-hover:text-white transition-all">
                     <ArrowRight size={16} />
                  </div>

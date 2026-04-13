@@ -50,9 +50,9 @@ export default function Home() {
       <Navbar />
       <main className="flex flex-col w-full">
         <Hero keyHighlights={keyHighlights} />
+        <Process />
         <Overview />
         <ValueStrip />
-        <Process />
         <Capabilities />
         <Insights />
         <FeaturedVideo />

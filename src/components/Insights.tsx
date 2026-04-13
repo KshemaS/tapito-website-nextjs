@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { TrendingUp, Users, Gift, Lightbulb, Target, ArrowRight, ShieldCheck, Zap } from "lucide-react";
+import { TrendingUp, Users, Gift, Lightbulb, Target, ArrowRight, ShieldCheck, Zap, Activity, Sparkles } from "lucide-react";
 import Container from "./Container";
 
 const Item = ({ icon: Icon, title, desc, delay }: { icon: any, title: string, desc: string, delay: number }) => (
@@ -51,9 +51,9 @@ export default function Insights() {
             </p>
             
             <div className="grid grid-cols-1 gap-4">
-              <Item icon={TrendingUp} title="Profit Forensics" desc="Drill down into SKUs and department level margins." delay={0} />
-              <Item icon={Users} title="Human Capital" desc="Staff efficiency scoring and automated scheduling." delay={0.1} />
-              <Item icon={Gift} title="Incentive Logic" desc="Rules-based rewards that drive high-margin sales." delay={0.2} />
+              <Item icon={Activity} title="Health Score" desc="A composite index monitoring the operational vitality of your stores, from inventory flow to personnel efficiency." delay={0} />
+              <Item icon={TrendingUp} title="Growth Simulation" desc="Predictive forecasting that models expansion scenarios, allowing you to visualize ROI before a single dollar is spent." delay={0.1} />
+              <Item icon={Sparkles} title="Incentive Stimulation" desc="Neural-network driven rewards that automatically identify and motivate high-impact behaviors across your network." delay={0.2} />
             </div>
           </div>
           

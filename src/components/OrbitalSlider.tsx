@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
-import { Sparkles, ChevronRight, ChevronLeft } from "lucide-react";
+import { Sparkles, ArrowUpRight } from "lucide-react";
 
 type SliderItem = {
   name: string;
@@ -36,29 +36,28 @@ export default function OrbitalSlider({ items }: OrbitalSliderProps) {
     const diff = (index - activeIndex + items.length) % items.length;
     let pos = diff > items.length / 2 ? diff - items.length : diff;
 
-    const angleStep = 32;
+    const angleStep = 34; // Slightly wider spread
     const angle = (pos * angleStep) * (Math.PI / 180);
-    const radius = 900;
+    const radius = 950; // Larger orbit for grander movement
 
-    // Position cards to fill more of the right-side space aggressively
-    const x = (radius - (Math.cos(angle) * radius)) * 2.2;
+    const x = (radius - (Math.cos(angle) * radius)) * 2.4;
     const y = Math.sin(angle) * radius;
 
-    const scale = 1 - Math.abs(pos) * 0.08;
-    const opacity = 1 - Math.abs(pos) * 0.3;
+    const scale = 1 - Math.abs(pos) * 0.1;
+    const opacity = 1 - Math.abs(pos) * 0.4;
     const zIndex = 10 - Math.abs(pos);
-    const rotate = pos * -8;
+    const rotate = pos * -12;
 
     return { x, y, scale, opacity, zIndex, rotate };
   };
 
   return (
     <div className="relative h-[650px] w-full flex items-center justify-start perspective-2000">
-
       <div className="relative w-full h-full flex items-center justify-start">
         <AnimatePresence mode="popLayout" initial={false}>
           {items.map((item, index) => {
             const pos = getPosition(index);
+            const isActive = index === activeIndex;
             const diff = (index - activeIndex + items.length) % items.length;
             const normalizedDiff = diff > items.length / 2 ? diff - items.length : diff;
             const isVisible = Math.abs(normalizedDiff) <= 2;
@@ -80,56 +79,55 @@ export default function OrbitalSlider({ items }: OrbitalSliderProps) {
                 exit={{ opacity: 0, scale: 0.5, x: -100 }}
                 transition={{
                   type: "spring",
-                  stiffness: 150,
-                  damping: 28,
+                  stiffness: 140,
+                  damping: 24,
                 }}
-                className="absolute w-72 md:w-96 lg:w-[520px] cursor-pointer"
+                className="absolute w-72 md:w-96 lg:w-[480px] xl:w-[500px] 2xl:w-[550px] 4xl:w-[600px] cursor-pointer"
                 onClick={() => {
                   setActiveIndex(index);
                   setIsAutoPlaying(false);
                 }}
               >
-                <div className={`p-1 rounded-[2.5rem] transition-all duration-700 ${index === activeIndex
-                  ? 'bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 shadow-[0_25px_50px_-12px_rgba(37,99,235,0.25)]'
-                  : 'bg-white border border-slate-100 shadow-lg opacity-60 hover:opacity-100'
+                <div className={`group p-[2px] rounded-[3rem] transition-all duration-700 ${isActive
+                  ? 'bg-gradient-to-br from-indigo-500 via-blue-600 to-purple-600 shadow-[0_40px_80px_-20px_rgba(37,99,235,0.3)]'
+                  : 'bg-white border border-slate-100 shadow-xl opacity-60 hover:opacity-100'
                   }`}>
-                  <div className="bg-white rounded-[2.3rem] overflow-hidden p-2.5 h-[340px] lg:h-[400px] flex flex-col">
-                    <div className="relative flex-[1.4] rounded-[1.8rem] overflow-hidden bg-slate-50 mb-4">
+                  <div className="bg-white rounded-[2.8rem] overflow-hidden p-8 h-[400px] lg:h-[460px] xl:h-[550px] 4xl:h-[600px] flex flex-col justify-start gap-[20px]">
+                    {/* Top Content: Title Focus */}
+                    <div className="text-left">
+                      <div className="flex items-start gap-3 justify-between mb-6">
+                        {/* <div className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-500 ${isActive ? 'bg-indigo-600 text-white rotate-12' : 'bg-slate-50 text-slate-400'
+                          }`}>
+                         
+                        </div> */}
+                        <div className="mt-2"><Sparkles size={25} className={isActive ? 'animate-pulse' : ''} /></div>
+                        <h3 className={`text-[22px] lg:text-[26px] 2xl:text-[34px] 4xl:text-4xl font-black leading-[1.15] tracking-tight transition-all duration-700 capitalize ${isActive ? 'text-slate-900 scale-[1.02] origin-left' : 'text-slate-400'
+                          }`}>
+                          {item.name}
+                        </h3>
+                      </div>
+                    </div>
+
+                    {/* Bottom Content: Supporting Visual */}
+                    <motion.div
+                      className={`relative w-full h-[350px] aspect-video rounded-[2rem] overflow-hidden shadow-2xl transition-all duration-700 ${isActive ? 'scale-105 opacity-100' : 'scale-90 opacity-60'
+                        }`}
+                    >
                       <Image
                         src={item.image}
                         alt={item.name}
                         fill
-                        className="object-cover transition-transform duration-700 hover:scale-110"
+                        className="object-cover group-hover:scale-110 transition-transform duration-1000 h-[350px] "
                       />
-                    </div>
-                    <div className="px-4 pb-4 text-left">
-                      <h3 className={`capitalize text-lg lg:text-xl font-bold leading-tight ${index === activeIndex ? 'text-slate-900' : 'text-slate-600'
-                        }`}>
-                        {item.name}
-                      </h3>
-                    </div>
+                      <div className={`absolute inset-0 bg-gradient-to-t transition-opacity duration-700 ${isActive ? 'from-slate-900/20 to-transparent' : 'from-transparent to-transparent'
+                        }`} />
+                    </motion.div>
                   </div>
                 </div>
               </motion.div>
             );
           })}
         </AnimatePresence>
-
-        {/* Vertical Navigation Buttons - Placed on the Right Spacing */}
-        {/* <div className="absolute right-[-20px] lg:right-[-60px] top-1/2 -translate-y-1/2 flex flex-col gap-3 z-50">
-          <button 
-            onClick={(e) => { e.stopPropagation(); prevSlide(); setIsAutoPlaying(false); }}
-            className="w-12 h-12 rounded-xl bg-white border border-slate-100 shadow-xl flex items-center justify-center text-slate-400 hover:bg-slate-900 hover:text-white transition-all group pointer-events-auto"
-          >
-            <ChevronLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
-          </button>
-          <button 
-            onClick={(e) => { e.stopPropagation(); nextSlide(); setIsAutoPlaying(false); }}
-            className="w-12 h-12 rounded-xl bg-white border border-slate-100 shadow-xl flex items-center justify-center text-slate-400 hover:bg-slate-900 hover:text-white transition-all group pointer-events-auto"
-          >
-            <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform" />
-          </button>
-        </div> */}
       </div>
     </div>
   );
