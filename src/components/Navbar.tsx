@@ -2,9 +2,16 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X, ArrowRight, Sparkles } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
+
+const navLinks = [
+  { label: "Features", href: "/features" },
+  { label: "Solutions", href: "/solutions" },
+  { label: "Resources", href: "/resources" },
+  { label: "Enterprise", href: "/enterprise" },
+];
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -18,11 +25,11 @@ export default function Navbar() {
 
   return (
     <nav className={cn(
-      "fixed top-0 left-0 right-0 z-[100] transition-all duration-500 px-6 py-6",
+      "fixed top-0 left-0 right-0 z-100 transition-all duration-500 px-6 py-6",
       isScrolled ? "py-3" : "py-6"
     )}>
       <div className={cn(
-        "max-w-7xl mx-auto rounded-[2rem] transition-all duration-500 px-8 py-4 flex items-center justify-between",
+        "max-w-7xl mx-auto rounded-4xl transition-all duration-500 px-8 py-4 flex items-center justify-between",
         isScrolled ? "glass shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1)] border-white/40" : "bg-transparent"
       )}>
         <Link href="/" className="flex items-center gap-3 group">
@@ -34,13 +41,13 @@ export default function Navbar() {
 
         {/* Desktop Nav */}
         <div className="hidden lg:flex items-center gap-10">
-          {["Features", "Solutions", "Resources", "Enterprise"].map((item) => (
+          {navLinks.map((item) => (
             <Link 
-              key={item} 
-              href={`#${item.toLowerCase()}`} 
+              key={item.label} 
+              href={item.href}
               className="text-sm font-bold text-slate-600 hover:text-blue-600 transition-colors uppercase tracking-widest relative group"
             >
-              {item}
+              {item.label}
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full" />
             </Link>
           ))}
@@ -72,14 +79,14 @@ export default function Navbar() {
             className="lg:hidden absolute top-28 left-6 right-6 glass rounded-[2.5rem] p-10 shadow-2xl border-white/50"
           >
             <div className="flex flex-col gap-8">
-              {["Features", "Solutions", "Resources", "Enterprise"].map((item) => (
+              {navLinks.map((item) => (
                 <Link 
-                  key={item} 
-                  href={`#${item.toLowerCase()}`} 
+                  key={item.label} 
+                  href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
                   className="text-2xl font-black text-slate-900"
                 >
-                  {item}
+                  {item.label}
                 </Link>
               ))}
               <div className="flex flex-col gap-4 pt-4 border-t border-slate-100">
