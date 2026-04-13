@@ -20,9 +20,9 @@ const Container: React.FC<ContainerProps> = ({
           sm:px-[24px] 
           md:px-0
           md:max-w-[95%]
-          2xl:max-w-[calc(1680px-72px)]
-          3xl:max-w-[calc(1600px-78px)]
-          4xl:max-w-[1680px] 
+          2xl:max-w-[calc(1620px-200px)]
+          3xl:max-w-[calc(1620px-100px)]
+          4xl:max-w-[1620px] 
           mx-auto
         `,
         headerMargin &&
