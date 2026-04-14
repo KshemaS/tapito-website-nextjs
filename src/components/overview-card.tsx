@@ -146,7 +146,7 @@ export default function OverViewCard() {
         {/* Left Column: Input Sources - Colorful */}
         <div className="flex flex-col gap-5">
           <GroupIcon
-            label="ERP / Odoo"
+            label="ERP / CRM"
             colorClass="text-indigo-600"
             icons={[<Building2 key="1" />, <Box key="2" />, <Database key="3" />, <Network key="4" />]}
           />
@@ -183,7 +183,7 @@ export default function OverViewCard() {
 
               <div className="w-full flex flex-col gap-4 w-[230px]">
                 <ItemBox icon={<Network />} title="Data Integration" color="#22c55e" delay={0.1} />
-                <ItemBox icon={<Zap />} title="SOP Automation" color="#06b6d4" delay={0.2} />
+                <ItemBox icon={<Zap />} title="Campaign Automation" color="#06b6d4" delay={0.2} />
                 <ItemBox icon={<TrendingUp />} title="Live Analytics" color="#3b82f6" delay={0.3} />
                 <ItemBox icon={<UserCheck />} title="Decision Support" color="#a855f7" delay={0.4} />
               </div>
