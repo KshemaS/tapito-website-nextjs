@@ -24,12 +24,14 @@
     padding-top: 60px;
     padding-bottom: 60px;
   }
+
   @media (min-width: 1024px) {
     .section-padding {
       padding-top: 80px;
       padding-bottom: 80px;
     }
   }
+
   @media (min-width: 1536px) {
     .section-padding {
       padding-top: 120px;
@@ -152,6 +154,21 @@
     background-size: 200% auto;
     animation: textGradient 5s ease infinite;
   }
+}
+
+
+@keyframes border-dash-flow {
+  from {
+    stroke-dashoffset: 24;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-dash-flow {
+  animation: border-dash-flow 1s linear infinite;
 }
 
 @keyframes dashmove {

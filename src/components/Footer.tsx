@@ -1,41 +1,9 @@
-"use client";
-
 import { ArrowRight, Share2, MessageCircle, Globe, Mail } from "lucide-react";
 import Link from "next/link";
 import Container from "./Container";
+import CTASection from "./CTASection";
 
-export default function CTASection() {
-   return (
-      <section className="bg-white py-24">
-         <Container>
-            <div className="bg-slate-900 rounded-[3rem] p-12 lg:p-20 relative overflow-hidden">
-               {/* Background effects */}
-               <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_0%_0%,_rgba(37,99,235,0.15),transparent)] pointer-events-none" />
-               <div className="absolute -top-24 -left-24 w-96 h-96 bg-blue-600/10 blur-[100px] rounded-full" />
-               <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-indigo-600/10 blur-[100px] rounded-full" />
-
-               <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center text-left">
-                  <div>
-                     <h2 className="text-4xl md:text-6xl font-black text-white mb-6 leading-[1.1]">Stop Guessing. <br /> <span className="text-blue-400">Start Growing.</span></h2>
-                     <p className="text-xl text-slate-400 max-w-xl">
-                        Join hundreds of retail giants who have transformed their data into a revenue engine with Tapito.
-                     </p>
-                  </div>
-                  
-                  <div className="flex flex-col sm:flex-row items-center lg:justify-end gap-4">
-                     <button className="btn-premium px-10 py-5 text-lg whitespace-nowrap">
-                        Book a Demo
-                     </button>
-                     <button className="btn-secondary bg-transparent border-slate-700 text-white hover:bg-white/5 px-10 py-5 text-lg rounded-full whitespace-nowrap">
-                        Talk to Experts
-                     </button>
-                  </div>
-               </div>
-            </div>
-         </Container>
-      </section>
-   );
-}
+export { CTASection };
 
 export function Footer() {
    return (

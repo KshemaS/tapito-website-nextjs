@@ -12,7 +12,7 @@ import Audience from "@/components/Audience";
 import Metrics from "@/components/Metrics";
 import FeaturedVideo from "@/components/FeaturedVideo";
 import InteractiveDashboard from "@/components/InteractiveDashboard";
-import CTASection, { Footer } from "@/components/Footer";
+import { CTASection, Footer } from "@/components/Footer";
 import highlightimg from '@/public/assets/images/dashboard-1.avif';
 import highlightimg1 from '@/public/assets/images/dashboard.png';
 import highlightimg2 from '@/public/assets/images/dashboard-3.jpg';
