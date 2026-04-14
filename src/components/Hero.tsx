@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Play, ArrowRight, Sparkles } from "lucide-react";
 import Container from "@/components/Container";
-import OrbitalSlider from "@/components/OrbitalSlider";
+import DashboardPreview from "@/components/DashboardPreview";
 
 type HeroProps = {
   keyHighlights: any[];
@@ -55,10 +55,19 @@ export default function Hero({ keyHighlights }: HeroProps) {
             </div>
           </motion.div>
 
-          {/* Right Column: Orbital Slider */}
-          <div className="w-full">
-            <OrbitalSlider items={keyHighlights} />
-          </div>
+          {/* Right Column: Dashboard Preview */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, x: 50 }}
+            animate={{ opacity: 1, scale: 1, x: 0 }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="w-full relative lg:block hidden"
+          >
+            <DashboardPreview keyHighlights={keyHighlights} />
+
+            {/* Background elements to make it "pop" */}
+            <div className="absolute -z-10 -top-20 -right-20 w-[600px] h-[600px] bg-blue-500/5 blur-[120px] rounded-full" />
+            <div className="absolute -z-10 -bottom-20 -left-20 w-[400px] h-[400px] bg-indigo-500/5 blur-[100px] rounded-full" />
+          </motion.div>
         </div>
       </Container>
     </section>

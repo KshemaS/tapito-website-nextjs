@@ -55,37 +55,30 @@ export default function Navbar() {
         "max-w-7xl mx-auto rounded-[2.5rem] transition-all duration-500 px-8 py-5 flex items-center justify-between relative",
         isScrolled ? "bg-white/95 backdrop-blur-xl shadow-[0_25px_50px_-12px_rgba(0,0,0,0.1)] border border-white/50" : "bg-transparent py-7"
       )}>
-        <Link href="/" className="flex items-center gap-3 group" onClick={closeMenu}>
-          <div className="w-10 h-10 bg-linear-to-br from-purple-600 to-indigo-700 rounded-2xl flex items-center justify-center shadow-lg shadow-purple-600/20 group-hover:rotate-6 transition-transform">
-            <span className="text-white font-black text-2xl">T</span>
-          </div>
-          <span className="text-2xl font-black tracking-tighter text-slate-900 group-hover:text-purple-600 transition-colors">Tapito</span>
+        <Link onClick={closeMenu} href="/" className="flex items-center gap-3 group">
+          <div className="relative w-10 h-10 flex items-center justify-center">
+               <div className="absolute inset-0 bg-[#ff4dff] rotate-45 rounded-xl opacity-10 group-hover:rotate-90 transition-transform duration-500" />
+               <div className="relative w-7 h-7 flex items-center justify-center">
+                  <svg width="24" height="24" viewBox="0 0 32 32" fill="none" className="rotate-[15deg] group-hover:rotate-0 transition-transform duration-500">
+                    <path d="M16 4L26 22H6L16 4Z" fill="#ff4dff" className="drop-shadow-[0_0_8px_rgba(255,77,255,0.4)]" />
+                    <path d="M16 10L22 21H10L16 10Z" fill="white" />
+                  </svg>
+               </div>
+            </div>
+          <span className="text-2xl font-black tracking-tighter text-slate-900 group-hover:text-blue-600 transition-colors">Tapito</span>
         </Link>
 
         {/* Desktop Nav */}
         <div className="hidden lg:flex items-center gap-10">
-          {navLinks.map((item) => {
-            const isActive = pathname.startsWith(item.href);
-            return (
-              <div 
-                key={item.label}
-                onMouseEnter={() => handleMouseEnter(item.label)}
-                onMouseLeave={handleMouseLeave}
-                className="py-1"
-              >
-                <Link 
-                  href={item.href}
-                  onClick={closeMenu}
-                  className={cn(
-                    "text-[12.5px] font-black transition-all uppercase tracking-[0.12em]",
-                    isActive || activeMenu === item.label ? "text-purple-600" : "text-slate-500 hover:text-purple-600"
-                  )}
-                >
-                  {item.label}
-                </Link>
-              </div>
-            );
-          })}
+          {navLinks.map((item) => (
+            <Link
+              key={item.label}
+              href={item.href}
+              className="text-sm font-bold text-slate-600 hover:text-blue-600 transition-colors uppercase tracking-widest"
+            >
+              {item.label}
+            </Link>
+          ))}
         </div>
 
         <div className="hidden lg:flex items-center gap-6">
@@ -182,69 +175,14 @@ export default function Navbar() {
           >
             <div className="flex flex-col gap-4">
               {navLinks.map((item) => (
-                <div key={item.label} className="border-b border-slate-50 last:border-0 pb-2">
-                  {item.label === "Features" ? (
-                    <>
-                      <button 
-                        onClick={() => setMobileFeaturesOpen(!mobileFeaturesOpen)}
-                        className={cn(
-                            "w-full flex items-center justify-between py-4 text-2xl font-black transition-colors",
-                            pathname.startsWith(item.href) || mobileFeaturesOpen ? "text-purple-600" : "text-slate-900"
-                        )}
-                      >
-                        {item.label}
-                        <motion.div animate={{ rotate: mobileFeaturesOpen ? 180 : 0 }}>
-                            <ChevronDown size={24} />
-                        </motion.div>
-                      </button>
-                      
-                      <AnimatePresence>
-                        {mobileFeaturesOpen && (
-                          <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            className="overflow-hidden bg-slate-50/50 rounded-3xl mx-[-1rem] px-4"
-                          >
-                            <div className="py-4 grid grid-cols-1 gap-3">
-                              {features.map((feature) => (
-                                <Link
-                                  key={feature.slug}
-                                  href={`/features/${feature.slug}`}
-                                  onClick={closeMenu}
-                                  className="flex items-center gap-4 p-4 rounded-2xl bg-white border border-slate-100 active:scale-95 transition-all"
-                                >
-                                  <div className="w-10 h-10 bg-slate-50 rounded-xl flex items-center justify-center text-slate-900">
-                                    <feature.icon size={20} />
-                                  </div>
-                                  <span className="text-sm font-black text-slate-900">{feature.title}</span>
-                                </Link>
-                              ))}
-                              <Link 
-                                href="/features"
-                                onClick={closeMenu}
-                                className="flex items-center justify-center gap-2 p-4 text-purple-600 font-black text-sm uppercase tracking-widest"
-                              >
-                                View All Features <ArrowRight size={16} />
-                              </Link>
-                            </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </>
-                  ) : (
-                    <Link 
-                      href={item.href}
-                      onClick={closeMenu}
-                      className={cn(
-                        "block py-4 text-2xl font-black transition-colors",
-                        pathname.startsWith(item.href) ? "text-purple-600" : "text-slate-900"
-                      )}
-                    >
-                      {item.label}
-                    </Link>
-                  )}
-                </div>
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-2xl font-black text-slate-900"
+                >
+                  {item.label}
+                </Link>
               ))}
               
               <div className="mt-6 flex flex-col gap-4">
