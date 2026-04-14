@@ -33,22 +33,27 @@ export default function Navbar() {
         isScrolled ? "glass shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1)] border-white/40" : "bg-transparent"
       )}>
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 gradient-bg-anim rounded-2xl flex items-center justify-center shadow-lg shadow-blue-600/20 group-hover:rotate-6 transition-transform">
-            <span className="text-white font-black text-2xl">T</span>
-          </div>
-          <span className="text-2xl font-black tracking-tighter text-slate-900">Tapito</span>
+          <div className="relative w-10 h-10 flex items-center justify-center">
+               <div className="absolute inset-0 bg-[#ff4dff] rotate-45 rounded-xl opacity-10 group-hover:rotate-90 transition-transform duration-500" />
+               <div className="relative w-7 h-7 flex items-center justify-center">
+                  <svg width="24" height="24" viewBox="0 0 32 32" fill="none" className="rotate-[15deg] group-hover:rotate-0 transition-transform duration-500">
+                    <path d="M16 4L26 22H6L16 4Z" fill="#ff4dff" className="drop-shadow-[0_0_8px_rgba(255,77,255,0.4)]" />
+                    <path d="M16 10L22 21H10L16 10Z" fill="white" />
+                  </svg>
+               </div>
+            </div>
+          <span className="text-2xl font-black tracking-tighter text-slate-900 group-hover:text-blue-600 transition-colors">Tapito</span>
         </Link>
 
         {/* Desktop Nav */}
         <div className="hidden lg:flex items-center gap-10">
           {navLinks.map((item) => (
-            <Link 
-              key={item.label} 
+            <Link
+              key={item.label}
               href={item.href}
-              className="text-sm font-bold text-slate-600 hover:text-blue-600 transition-colors uppercase tracking-widest relative group"
+              className="text-sm font-bold text-slate-600 hover:text-blue-600 transition-colors uppercase tracking-widest"
             >
               {item.label}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full" />
             </Link>
           ))}
         </div>
@@ -80,8 +85,8 @@ export default function Navbar() {
           >
             <div className="flex flex-col gap-8">
               {navLinks.map((item) => (
-                <Link 
-                  key={item.label} 
+                <Link
+                  key={item.label}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
                   className="text-2xl font-black text-slate-900"
