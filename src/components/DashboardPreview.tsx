@@ -29,7 +29,7 @@ export default function DashboardPreview({ keyHighlights }: DashboardPreviewProp
    }, [keyHighlights.length]);
 
    return (
-      <div className="relative w-full max-w-[1000px] h-[550px] bg-[#f0f4f9] rounded-[1.5rem] shadow-[0_40px_80px_-15px_rgba(15,23,42,0.12)] border border-slate-200 flex transform lg:scale-105 xl:scale-110 origin-left overflow-hidden">
+      <div className="relative w-full h-[400px] bg-[#f0f4f9] rounded-[1.5rem] shadow-[0_40px_80px_-15px_rgba(15,23,42,0.12)] border border-slate-200 flex transform lg:scale-105 xl:scale-110 origin-left overflow-hidden">
 
          {/* Sidebar */}
          <div className="w-[180px] h-full bg-[#1e293b] flex flex-col shrink-0 rounded-l-[12px]">
@@ -98,7 +98,7 @@ export default function DashboardPreview({ keyHighlights }: DashboardPreviewProp
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
-                        className="text-[22px] lg:text-[24px] 2xl:text-[28px] font-black text-[#1e293b] leading-tight capitalize"
+                        className="text-[22px] lg:text-[24px] 2xl:text-[24px] 4xl:text-[34px] font-black text-[#1e293b] leading-tight capitalize"
                      >
                         {keyHighlights[activeIndex]?.name}
                      </motion.h3>

@@ -52,7 +52,6 @@ const keyHighlights = [
 export default function Home() {
   return (
     <div className="relative w-full overflow-x-hidden">
-      <Navbar />
       <main className="flex flex-col w-full">
         <Hero keyHighlights={keyHighlights} />
         <Process />
@@ -65,7 +64,7 @@ export default function Home() {
         <AIAssistant />
         <Audience />
         <Metrics />
-        <section className="section-padding bg-white">
+        {/* <section className="py-24 bg-white">
           <Container>
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4">Precision Control</h2>
@@ -73,10 +72,9 @@ export default function Home() {
             </div>
             <InteractiveDashboard />
           </Container>
-        </section>
+        </section> */}
         <CTASection />
       </main>
-      <Footer />
     </div>
   );
 }

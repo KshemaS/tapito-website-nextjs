@@ -154,6 +154,21 @@
   }
 }
 
+@keyframes dashmove {
+  from {
+    stroke-dashoffset: 40;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-dash-flow {
+  animation: dashmove 3s linear infinite;
+  stroke-dasharray: 6 6;
+}
+
 @keyframes textGradient {
   0% {
     background-position: 0% 50%;
