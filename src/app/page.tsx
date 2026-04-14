@@ -24,23 +24,28 @@ import highlightimg6 from '@/public/assets/images/dashboard7.jpg';
 const keyHighlights = [
   {
     name: "Real-time business intelligence",
-    image: highlightimg5
+    image: highlightimg5,
+    video: "/dashboard-overview.mp4"
   },
   {
     name: "AI-driven growth recommendations",
-    image: highlightimg
+    image: highlightimg,
+    video: "/dashboard-overview.mp4"
   },
   {
     name: "Zero-effort campaign automation",
-    image: highlightimg3
+    image: highlightimg3,
+    video: "/dashboard-overview.mp4"
   },
   {
     name: "Multi-store performance visibility",
-    image: highlightimg6
+    image: highlightimg6,
+    video: "/dashboard-overview.mp4"
   },
   {
     name: "Voice-enabled AI assistant (mobile)",
-    image: highlightimg4
+    image: highlightimg4,
+    video: "/dashboard-overview.mp4"
   }
 ];
 
