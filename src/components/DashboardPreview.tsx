@@ -47,7 +47,7 @@ export default function DashboardPreview({ keyHighlights }: DashboardPreviewProp
          </div>
 
          {/* Dashboard Container Box */}
-         <div className="relative w-full h-[450px] bg-[#f0f4f9] rounded-[1.5rem] shadow-[0_40px_80px_-15px_rgba(15,23,42,0.12)] border border-slate-200 flex overflow-hidden">
+         <div className="relative w-full bg-[#f0f4f9] rounded-[1.5rem] shadow-[0_40px_80px_-15px_rgba(15,23,42,0.12)] border border-slate-200 flex overflow-hidden">
             {/* Sidebar */}
             <div className="w-[180px] h-full bg-[#1e293b] flex flex-col shrink-0 rounded-l-[12px]">
                <div className="p-5 flex items-center gap-3">

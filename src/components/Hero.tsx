@@ -11,7 +11,7 @@ type HeroProps = {
 
 export default function Hero({ keyHighlights }: HeroProps) {
   return (
-    <section className="relative pt-16 lg:pt-40 pb-20 overflow-hidden bg-[#fafbfc]">
+    <section className="relative pb-20 bg-[#fafbfc] min-h-sreen pt-15 xl:pt-20 2xl:pt-40">
       <Container className="relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 justify-between items-center overflow-hidden">
           {/* Left Column: Content */}
@@ -60,7 +60,7 @@ export default function Hero({ keyHighlights }: HeroProps) {
             initial={{ opacity: 0, scale: 0.9, x: 50 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.2 }}
-            className="w-full lg:max-w-[520px] xl:max-w-[580px] 2xl:max-w-[640px] 3xl:max-w-[700px] 4xl:max-w-[750px] relative lg:block hidden h-[450px] object-contain"
+            className="w-full lg:max-w-[520px] xl:max-w-[580px] 2xl:max-w-[640px] 3xl:max-w-[700px] 4xl:max-w-[750px] relative lg:block hidden object-contain py-10"
           >
             <DashboardPreview keyHighlights={keyHighlights} />
           </motion.div>
