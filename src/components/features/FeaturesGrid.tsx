@@ -14,6 +14,12 @@ import {
   TrendingUp,
   Zap
 } from "lucide-react";
+import campaign from "@/public/assets/images/features/campaign.png"
+import dashboard from "@/public/assets/images/features/dashboard.png"
+import revenue from "@/public/assets/images/features/revenue.png"
+import smartAnalytics from "@/public/assets/images/features/smart-analytics.png"
+import gpAnalysis from "@/public/assets/images/features/gp-analysis.png"
+import aiAssistant from "@/public/assets/images/features/ai-assistant.png"
 
 export const featuresData = [
   {
@@ -23,7 +29,7 @@ export const featuresData = [
     icon: LayoutDashboard,
     slug: "business-intelligence-dashboard",
     benefits: ["Real-time KPI tracking", "Multi-store synchronization", "Custom report builder", "Predictive maintenance alerts"],
-    image: "/assets/images/features/dashboard.png",
+    image: dashboard,
     stats: [
       { value: "360°", label: "Business Visibility" },
       { value: "Real-time", label: "Data Sync" },
@@ -49,7 +55,7 @@ export const featuresData = [
     icon: BrainCircuit,
     slug: "ai-smart-analytics-engine",
     benefits: ["Business Health Score (out of 100)", "Revenue drivers identification", "Customer risk detection", "AI-generated recommendations"],
-    image: "/assets/images/features/revenue.png",
+    image: smartAnalytics,
     stats: [
       { value: "/100", label: "Health Score" },
       { value: "AI", label: "Recommendations" },
@@ -75,7 +81,7 @@ export const featuresData = [
     icon: Zap,
     slug: "campaign-automation",
     benefits: ["Auto customer segmentation", "Offer creation & targeting", "Multi-channel (WhatsApp, SMS, Email)", "Workflow automation engine"],
-    image: "/assets/images/features/campaign.png",
+    image: campaign,
     stats: [
       { value: "3x", label: "Higher Engagement" },
       { value: "Zero", label: "Manual Effort" },
@@ -101,7 +107,7 @@ export const featuresData = [
     icon: TrendingUp,
     slug: "revenue-growth-insights",
     benefits: ["Price optimization", "Bundle effectiveness", "Upsell opportunities", "Customer LTV mapping"],
-    image: "/assets/images/features/revenue.png",
+    image: revenue,
     stats: [
       { value: "Daily", label: "Revenue Tracking" },
       { value: "SKU-level", label: "Granularity" },
@@ -127,7 +133,7 @@ export const featuresData = [
     icon: Mic,
     slug: "ai-assistant-voice",
     benefits: ["Voice command support", "Intent analysis", "Hands-free operations", "Real-time query execution"],
-    image: "/assets/images/features/ai-assistant.png",
+    image: aiAssistant,
     stats: [
       { value: "Voice", label: "Enabled" },
       { value: "Multi-lang", label: "Support" },
@@ -184,6 +190,7 @@ export const featuresData = [
     longDescription: "Eliminate guesswork in sales planning. Tapito generates and simulates thousands of promotional schemes to find the one that clears inventory fastest while maintaining healthy margins.",
     icon: Sparkles,
     slug: "smart-scheme-generator",
+    image: gpAnalysis,
     benefits: ["Profitability simulations", "Automatic scheme generation", "Clearance optimization", "Margin protection"],
     stats: [
       { value: "1000s", label: "Simulations" },
