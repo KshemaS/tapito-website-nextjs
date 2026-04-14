@@ -117,142 +117,25 @@ const SolutionCard = ({ solution, index }: { solution: typeof SOLUTION_SEGMENTS[
     </section>
   );
 };
+import CTASection from "@/components/CTASection";
+import { SolutionsHero } from "@/components/solutions/SolutionsHero";
+import { SolutionsGrid } from "@/components/solutions/SolutionsGrid";
 
 export default function SolutionsPage() {
   return (
     <main className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative pt-32 pb-24 md:pt-48 md:pb-40 overflow-hidden bg-[#fcfcfd]">
-        <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:40px_40px] opacity-[0.4]" />
-        
-        <Container>
-          <div className="relative z-10 text-center max-w-4xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <div className="inline-block px-4 py-1.5 mb-8 text-[11px] font-bold uppercase tracking-[0.3em] text-blue-600 bg-blue-50/80 rounded-full border border-blue-100/50">
-                Transformative Results
-              </div>
-              <h1 className="text-5xl md:text-8xl font-black text-slate-900 mb-10 tracking-tighter leading-[0.95]">
-                Purpose-built tools for <br /> <span className="text-blue-600">modern retailers.</span>
-              </h1>
-              <p className="text-xl md:text-2xl text-slate-500 max-w-2xl mx-auto leading-relaxed font-medium mb-12">
-                We empower retail teams with deep data integration, predictive customer intelligence, and zero-effort orchestration.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                <button className="bg-slate-950 text-white px-10 py-5 rounded-2xl font-black text-base uppercase tracking-widest shadow-2xl hover:bg-black transition-all">
-                  Request a Solution Demo
-                </button>
-                <div className="flex -space-x-3">
-                   {[1,2,3,4].map(i => (
-                     <div key={i} className="w-10 h-10 rounded-full bg-slate-100 border-2 border-white" />
-                   ))}
-                   <div className="pl-6 flex flex-col items-start justify-center">
-                      <span className="text-xs font-black text-slate-900 tracking-tighter">Trusted by 500+</span>
-                      <span className="text-[10px] text-slate-400 font-bold uppercase tracking-widest leading-none">Global Retailers</span>
-                   </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </Container>
-      </section>
+      <SolutionsHero />
 
-      {/* Main Solution Segments */}
-      <div className="bg-white">
-        {SOLUTION_SEGMENTS.map((solution, index) => (
-          <SolutionCard key={index} solution={solution} index={index} />
-        ))}
-      </div>
+      {/* Solutions Grid Section - Now populated with Industry Verticals */}
+      <SolutionsGrid />
 
-      {/* Trust & Scale Section */}
-      <section className="py-32 bg-slate-950 text-white overflow-hidden">
-        <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-            <div>
-              <span className="text-blue-400 text-[11px] font-black uppercase tracking-[0.3em] mb-6 block">Enterprise Ready</span>
-              <h2 className="text-4xl md:text-6xl font-black mb-8 tracking-tight">Built to scale with your ambition.</h2>
-              <p className="text-slate-400 text-lg font-medium leading-relaxed mb-12">
-                Whether you’re managing a single flagship or coordinates 2,000 global locations, Tapito provides the infrastructure needed to maintain a high-performance retail environment.
-              </p>
-              
-              <div className="grid grid-cols-2 gap-8">
-                 <div className="border-l-2 border-blue-500 pl-6">
-                    <div className="text-3xl font-black mb-1">99.99%</div>
-                    <p className="text-xs font-bold text-slate-500 uppercase tracking-widest">Global Uptime</p>
-                 </div>
-                 <div className="border-l-2 border-indigo-500 pl-6">
-                    <div className="text-3xl font-black mb-1">2.4M+</div>
-                    <p className="text-xs font-bold text-slate-500 uppercase tracking-widest">Real-time syncs/day</p>
-                 </div>
-              </div>
-            </div>
-            
-            <div className="relative">
-               <div className="absolute inset-0 bg-blue-500/10 blur-[100px] rounded-full" />
-               <div className="relative p-10 rounded-[3rem] bg-white/5 border border-white/10 backdrop-blur-xl">
-                  <div className="flex gap-4 mb-10">
-                    <div className="w-3 h-3 rounded-full bg-red-500/50" />
-                    <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
-                    <div className="w-3 h-3 rounded-full bg-green-500/50" />
-                  </div>
-                  <div className="space-y-6">
-                     {[1,2,3].map(i => (
-                       <div key={i} className="h-4 bg-white/5 rounded-full w-full relative overflow-hidden">
-                          <motion.div 
-                            initial={{ width: 0 }} 
-                            whileInView={{ width: "70%" }} 
-                            viewport={{ once: true }}
-                            transition={{ duration: 1.5, delay: i * 0.2 }}
-                            className="absolute inset-y-0 left-0 bg-blue-500/40" 
-                          />
-                       </div>
-                     ))}
-                  </div>
-                  <p className="mt-8 text-sm font-bold text-slate-500 uppercase tracking-widest text-center italic">Processing network intelligence...</p>
-               </div>
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* Bottom CTA Section */}
-      <section className="py-40 bg-[#fcfcfd]">
-        <Container>
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-10 tracking-tighter">Ready to redesign <br /> your retail future?</h2>
-            <p className="text-xl text-slate-500 font-medium mb-12 max-w-2xl mx-auto">
-              Schedule a personalized walkthrough of the Tapito platform and see how AI can transform your specific retail operation.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-               <button className="w-full sm:w-auto bg-blue-600 text-white px-12 py-6 rounded-2xl font-black text-lg shadow-xl shadow-blue-600/30 hover:bg-blue-700 transition-all">
-                  Book a Strategy Call
-               </button>
-               <button className="w-full sm:w-auto bg-white border border-slate-200 text-slate-900 px-12 py-6 rounded-2xl font-black text-lg hover:bg-slate-50 transition-all">
-                  Contact Sales
-               </button>
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* Simple Footer Links */}
-      <footer className="py-20 border-t border-slate-100 bg-white">
-        <Container>
-          <div className="flex flex-col md:flex-row items-center justify-between gap-10">
-            <div className="text-2xl font-black text-slate-950 tracking-tighter">Tapito</div>
-            <div className="flex flex-wrap justify-center gap-8">
-               {['Platform', 'Solutions', 'Pricing', 'Resources', 'Legal'].map(link => (
-                 <a key={link} href="#" className="text-xs font-bold text-slate-400 uppercase tracking-widest hover:text-blue-600 transition-colors">{link}</a>
-               ))}
-            </div>
-            <div className="text-[10px] font-bold text-slate-300 uppercase tracking-[0.2em]">© 2026 Tapito AI. Global Operations.</div>
-          </div>
-        </Container>
-      </footer>
+      {/* Call to Action Section */}
+      <CTASection 
+        title={<> Ready to transform <br /> your retail empire?</>}
+        description="Join the new generation of retail leaders using Tapito to automate growth and reclaim their time."
+        className="bg-white"
+      />
     </main>
   );
 }

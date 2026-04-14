@@ -11,9 +11,9 @@ type HeroProps = {
 
 export default function Hero({ keyHighlights }: HeroProps) {
   return (
-    <section className="relative pt-16 lg:pt-24 pb-20 overflow-hidden bg-[#fafbfc]">
+    <section className="relative pb-20 bg-[#fafbfc] min-h-sreen pt-15 xl:pt-20 2xl:pt-40">
       <Container className="relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center min-h-[85vh]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 justify-between items-center overflow-hidden">
           {/* Left Column: Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -32,12 +32,12 @@ export default function Hero({ keyHighlights }: HeroProps) {
               </span>
             </motion.div>
 
-            <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-slate-900 mb-8 leading-[1.1]">
+            <h1 className="text-[40px] lg:text-[36px] xl:text-[40px] 2xl:text-[48px] 4xl:text-7xl font-black tracking-tighter text-slate-900 mb-8 leading-[1.1]">
               Turn Your Retail Data Into Revenue <br />
               <span className="gradient-text pb-2 px-1 inline-block">— Automatically </span>
             </h1>
 
-            <p className="text-xl md:text-2xl text-slate-500 mb-10 max-w-xl leading-relaxed">
+            <p className="text-xl lg:text-[18px] xl:text-[20px] 4xl:text-2xl text-slate-500 mb-10 max-w-xl leading-relaxed">
               AI-powered analytics, real-time insights, and fully automated customer engagement —built to grow your revenue without manual effort.
             </p>
 
@@ -60,13 +60,9 @@ export default function Hero({ keyHighlights }: HeroProps) {
             initial={{ opacity: 0, scale: 0.9, x: 50 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.2 }}
-            className="w-full relative lg:block hidden"
+            className="w-full lg:max-w-[520px] xl:max-w-[580px] 2xl:max-w-[640px] 3xl:max-w-[700px] 4xl:max-w-[750px] relative lg:block hidden object-contain py-10"
           >
             <DashboardPreview keyHighlights={keyHighlights} />
-
-            {/* Background elements to make it "pop" */}
-            <div className="absolute -z-10 -top-20 -right-20 w-[600px] h-[600px] bg-blue-500/5 blur-[120px] rounded-full" />
-            <div className="absolute -z-10 -bottom-20 -left-20 w-[400px] h-[400px] bg-indigo-500/5 blur-[100px] rounded-full" />
           </motion.div>
         </div>
       </Container>

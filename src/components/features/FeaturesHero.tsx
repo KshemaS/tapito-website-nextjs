@@ -4,13 +4,43 @@ import { motion } from "framer-motion";
 import { InteractiveGrid } from "@/components/InteractiveGrid";
 import Container from "@/components/Container";
 import Link from "next/link";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Sparkles, Zap, Shield, Globe } from "lucide-react";
+
+const FloatingBadge = ({ icon: Icon, text, delay, left }: any) => {
+    return (
+        <motion.div
+            initial={{ opacity: 0, y: 150 }}
+            animate={{ 
+                opacity: [0, 1, 1, 0],
+                y: [150, -100], // Rises 250px total
+                x: [0, 10, -10, 0] // Subtle side-to-side drift
+            }}
+            transition={{ 
+                duration: 12, 
+                delay, 
+                repeat: Infinity,
+                ease: "linear"
+            }}
+            className="absolute bottom-0 z-0 pointer-events-none hidden lg:flex items-center gap-2 px-4 py-2 bg-white/40 backdrop-blur-md rounded-full border border-white/40 shadow-sm"
+            style={{ left: `${left}%` }}
+        >
+            <Icon size={14} className="text-purple-600" />
+            <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 whitespace-nowrap">{text}</span>
+        </motion.div>
+    );
+};
 
 export const FeaturesHero = () => {
   return (
     <section className="relative lg:min-h-svh flex flex-col items-center justify-center pt-24 pb-12 overflow-hidden">
       <InteractiveGrid />
       
+      {/* Floating Elements Rising from the Bottom */}
+      <FloatingBadge icon={Zap} text="Real-time BI" delay={0} left={15} />
+      <FloatingBadge icon={Shield} text="AI-Powered Forecasting" delay={3} left={35} />
+      <FloatingBadge icon={Sparkles} text="Predictive Profitability" delay={6} left={60} />
+      <FloatingBadge icon={Globe} text="Campaign Automation" delay={9} left={80} />
+
       <Container className="relative z-10 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -31,7 +61,7 @@ export const FeaturesHero = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
-            <button className="bg-[#4112e0] hover:bg-indigo-700 text-white px-8 py-4 rounded-xl font-black text-base lg:text-lg shadow-xl shadow-indigo-500/10 transition-all hover:scale-105 active:scale-95">
+            <button className="bg-[#4112e0] hover:bg-indigo-700 text-white px-8 py-4 rounded-xl font-black text-base lg:text-lg shadow-xl shadow-indigo-500/10 transition-all hover:scale-105 active:scale-95 text-center">
               Get Started Now
             </button>
             <button className="bg-[#e9e9e9] hover:bg-slate-200 text-slate-900 px-8 py-4 rounded-xl font-black text-base lg:text-lg transition-all hover:scale-105 active:scale-95">

@@ -7,7 +7,7 @@ import Image from "next/image";
 
 export default function FeaturedVideo() {
   return (
-    <section className="bg-slate-950 py-32 relative overflow-hidden">
+    <section className="bg-slate-950 section-padding relative overflow-hidden">
       <div className="absolute inset-0 bg-blue-600/5 opacity-50" />
       
       <Container>

@@ -13,7 +13,7 @@ const stats = [
 
 export default function Metrics() {
   return (
-    <section className="bg-white py-24 lg:py-32">
+    <section className="bg-white">
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
            <div>

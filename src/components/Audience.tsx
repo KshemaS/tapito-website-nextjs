@@ -1,6 +1,6 @@
 "use client";
 
-import { Building2, ShoppingCart, Shirt, Utensils, Laptop, Sparkles } from "lucide-react";
+import { Building2, ShoppingCart, Shirt, Utensils, Laptop, Sparkles, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import Container from "./Container";
 
@@ -15,7 +15,7 @@ const industries = [
 
 export default function Audience() {
   return (
-    <section className="bg-slate-50 py-24 lg:py-32">
+    <section className="bg-slate-50 section-padding">
       <Container>
         <div className="text-center max-w-3xl mx-auto mb-20">
           <h2 className="text-sm font-bold uppercase tracking-widest text-blue-600 mb-4">Target Audience</h2>
@@ -25,7 +25,7 @@ export default function Audience() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {industries.map((item, i) => (
             <motion.div 
               key={i}
@@ -42,6 +42,21 @@ export default function Audience() {
               <p className="text-slate-500 leading-relaxed">{item.desc}</p>
             </motion.div>
           ))}
+        </div>
+
+        <div className="flex justify-center">
+          <motion.a
+            href="/solutions"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="btn-premium px-12 py-5 text-lg group flex items-center gap-3"
+          >
+            View More Solutions
+            <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform duration-300" />
+          </motion.a>
         </div>
       </Container>
     </section>

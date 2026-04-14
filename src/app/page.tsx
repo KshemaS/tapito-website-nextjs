@@ -12,7 +12,7 @@ import Audience from "@/components/Audience";
 import Metrics from "@/components/Metrics";
 import FeaturedVideo from "@/components/FeaturedVideo";
 import InteractiveDashboard from "@/components/InteractiveDashboard";
-import CTASection, { Footer } from "@/components/Footer";
+import { CTASection, Footer } from "@/components/Footer";
 import highlightimg from '@/public/assets/images/dashboard-1.avif';
 import highlightimg1 from '@/public/assets/images/dashboard.png';
 import highlightimg2 from '@/public/assets/images/dashboard-3.jpg';
@@ -51,28 +51,30 @@ const keyHighlights = [
 
 export default function Home() {
   return (
-    <main className="flex flex-col w-full">
-      <Hero keyHighlights={keyHighlights} />
-      <Process />
-      <Overview />
-      <ValueStrip />
-      <Capabilities />
-      <Insights />
-      <FeaturedVideo />
-      <Automation />
-      <AIAssistant />
-      <Audience />
-      <Metrics />
-      <section className="py-24 bg-white">
-        <Container>
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4">Precision Control</h2>
-            <p className="text-xl text-slate-500 max-w-2xl mx-auto">Experience the depth of our AI engine with interactive real-time data visualization.</p>
-          </div>
-          <InteractiveDashboard />
-        </Container>
-      </section>
-      <CTASection />
-    </main>
+    <div className="relative w-full overflow-x-hidden">
+      <main className="flex flex-col w-full">
+        <Hero keyHighlights={keyHighlights} />
+        <Process />
+        <Overview />
+        <ValueStrip />
+        <Capabilities />
+        <Insights />
+        <FeaturedVideo />
+        <Automation />
+        <AIAssistant />
+        <Audience />
+        <Metrics />
+        {/* <section className="py-24 bg-white">
+          <Container>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4">Precision Control</h2>
+              <p className="text-xl text-slate-500 max-w-2xl mx-auto">Experience the depth of our AI engine with interactive real-time data visualization.</p>
+            </div>
+            <InteractiveDashboard />
+          </Container>
+        </section> */}
+        <CTASection />
+      </main>
+    </div>
   );
 }

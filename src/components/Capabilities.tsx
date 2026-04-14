@@ -32,7 +32,7 @@ const coreCapabilities = [
 
 export default function Capabilities() {
   return (
-    <section className="bg-white py-24 lg:py-40 relative overflow-hidden">
+    <section className="bg-white py-[60px] lg:py-[80px] 2xl:py-[100px] 4xl:py-[120px] relative overflow-hidden">
       {/* Background Decor */}
       <div className="absolute top-0 right-0 w-1/2 h-full bg-slate-50/50 -skew-x-12 translate-x-1/4 -z-10" />
       

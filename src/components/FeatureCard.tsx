@@ -1,53 +1,82 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, LucideIcon } from "lucide-react";
+import { ArrowRight, LucideIcon, CheckCircle2 } from "lucide-react";
+import Link from "next/link";
 
 interface FeatureCardProps {
   title: string;
   description: string;
+  benefits?: string[];
   icon: LucideIcon;
   index: number;
-  onClick: () => void;
+  slug: string;
 }
 
-export const FeatureCard = ({ title, description, icon: Icon, index, onClick }: FeatureCardProps) => {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8, delay: index * 0.1, ease: [0.21, 0.47, 0.32, 0.98] }}
-      whileHover={{ y: -10 }}
-      className="group cursor-pointer relative"
-      onClick={onClick}
-    >
-      <div className="relative h-full p-10 rounded-[2.5rem] transition-all duration-700 flex flex-col justify-between min-h-[380px] overflow-hidden bg-white border border-slate-100 text-slate-900 shadow-[0_40px_60px_-15px_rgba(72,0,178,0.03)] group-hover:bg-linear-to-br group-hover:from-purple-600 group-hover:to-indigo-700 group-hover:text-white group-hover:shadow-2xl group-hover:shadow-purple-500/40">
-        {/* Animated Background Blur for Hovered State */}
-        <div className="absolute -right-10 -top-10 w-48 h-48 bg-white/20 rounded-full blur-[60px] opacity-0 scale-95 transition-all duration-700 group-hover:opacity-100 group-hover:scale-110" />
-        
-        <div className="relative z-10">
-          <div className="w-16 h-16 mb-10 flex items-center justify-center rounded-[1.25rem] transition-all duration-500 bg-purple-50 text-purple-600 group-hover:bg-white/20 group-hover:backdrop-blur-md group-hover:text-white group-hover:scale-110">
-            <Icon size={32} />
-          </div>
-          
-          <h3 className="text-2xl font-black mb-5 tracking-tight transition-colors duration-500 text-slate-900 group-hover:text-white">
-            {title}
-          </h3>
-          
-          <p className="text-sm font-medium leading-[1.7] mb-8 transition-colors duration-500 text-slate-500 group-hover:text-purple-100">
-            {description}
-          </p>
-        </div>
-        
-        <div className="relative z-10 flex items-center font-black text-sm tracking-[0.05em] transition-all duration-500 pb-2 text-purple-600 group-hover:text-white">
-          <span className="mr-2 text-[12px] font-bold">View Details</span>
-          <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
-        </div>
+// ─── Main Component ───────────────────────────────────────────────────────────
 
-        {/* Bottom indicator line */}
-        <div className="absolute bottom-0 left-0 w-full h-[3px] bg-white/40 origin-left scale-x-0 transition-transform duration-500 group-hover:scale-x-100" />
-      </div>
-    </motion.div>
+export const FeatureCard = ({ title, description, benefits, icon: Icon, index, slug }: FeatureCardProps) => {
+  return (
+    <Link href={`/features/${slug}`} className="block group">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: index * 0.05, ease: [0.21, 0.47, 0.32, 0.98] }}
+        whileHover={{ y: -8 }}
+        className="relative h-full"
+      >
+        <div className="relative h-full p-8 lg:p-10 rounded-[2.5rem] transition-all duration-700 flex flex-col justify-between min-h-[460px] overflow-hidden bg-white border border-slate-100 text-slate-900 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.03)] group-hover:shadow-[0_45px_90px_-20px_rgba(72,0,178,0.12)]">
+
+          {/* Subtle Hover Gradient */}
+          <div className="absolute inset-0 bg-linear-to-br from-purple-600/[0.03] to-indigo-600/[0.03] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
+          {/* Decorative Background Element */}
+          <div className="absolute -right-16 -top-16 w-64 h-64 bg-slate-50 rounded-full transition-all duration-700 group-hover:bg-purple-600/5 group-hover:scale-150" />
+
+          <div className="relative z-10">
+            {/* Top Bar: Icon + Micro-Animation */}
+            <div className="flex items-center justify-between mb-8">
+              <div className="w-16 h-16 flex items-center justify-center rounded-2xl transition-all duration-500 bg-slate-50 text-slate-900 group-hover:bg-purple-600 group-hover:text-white group-hover:scale-110 shadow-sm border border-slate-100">
+                <Icon size={32} />
+              </div>
+            </div>
+
+            <h3 className="text-2xl font-black mb-4 tracking-tight text-slate-900 group-hover:text-purple-600 transition-colors">
+              {title}
+            </h3>
+
+            <p className="text-[15px] font-medium leading-relaxed mb-8 text-slate-500 line-clamp-2">
+              {description}
+            </p>
+
+            {/* Elaborated Content: Benefits List */}
+            {benefits && (
+              <div className="space-y-3.5 mb-10">
+                {benefits.slice(0, 3).map((benefit, i) => (
+                  <div key={i} className="flex items-center gap-3">
+                    <CheckCircle2 size={18} className="text-slate-100 group-hover:text-purple-600 shrink-0 transition-colors duration-500" />
+                    <span className="text-[13px] font-extrabold text-slate-400 group-hover:text-slate-600 transition-colors duration-500">{benefit}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Footer Navigation */}
+          <div className="relative z-10 mt-auto pt-6 flex items-center justify-between border-t border-slate-50 group-hover:border-purple-100 transition-colors">
+            <div className="flex items-center gap-2">
+              <div className="w-1.5 h-1.5 rounded-full bg-slate-200 group-hover:bg-purple-600 transition-colors duration-500" />
+              <span className="font-black text-[11px] uppercase tracking-widest text-slate-400 group-hover:text-purple-600 transition-colors">
+                explore more
+              </span>
+            </div>
+            <div className="w-10 h-10 rounded-full border border-slate-100 bg-white flex items-center justify-center text-slate-400 group-hover:bg-purple-600 group-hover:text-white group-hover:border-purple-600 transition-all duration-300 shadow-sm">
+              <ArrowRight size={18} className="transition-transform group-hover:translate-x-0.5" />
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </Link>
   );
 };

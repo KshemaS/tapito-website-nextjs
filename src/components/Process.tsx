@@ -27,7 +27,7 @@ const steps = [
 
 export default function Process() {
   return (
-    <section className="bg-white py-24 lg:py-32">
+    <section className="bg-white section-padding">
       <Container>
         <div className="text-center max-w-3xl mx-auto mb-20">
           <motion.div
