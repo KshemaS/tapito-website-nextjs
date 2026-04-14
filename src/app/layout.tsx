@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Noto_Sans } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 
 const notoSans = Noto_Sans({ 
   subsets: ["latin"], 
@@ -22,7 +24,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${notoSans.variable} font-sans antialiased text-slate-900`}>
+        <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
