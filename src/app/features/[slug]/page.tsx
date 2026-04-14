@@ -1,9 +1,10 @@
 "use client";
 
+import { useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { features } from "@/components/features/FeaturesGrid";
 import Container from "@/components/Container";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   CheckCircle2,
   ChevronLeft,
@@ -25,6 +26,202 @@ const fadeUp = (delay = 0) => ({
   viewport: { once: true },
   transition: { duration: 0.7, ease: "easeOut" as const, delay },
 });
+
+const colorThemes = [
+  { bg: "bg-[#eff2fe]", border: "border-[#dce3fc]", title: "text-[#2e408d]", sub: "text-[#5164ad]", badgeBg: "bg-white/70" },
+  { bg: "bg-[#daf4e5]", border: "border-[#b2eac7]", title: "text-[#1e5836]", sub: "text-[#2e7d4d]", badgeBg: "bg-white/50" },
+  { bg: "bg-[#fdf3df]", border: "border-[#fce6bd]", title: "text-[#85611f]", sub: "text-[#b18330]", badgeBg: "bg-white/60" },
+  { bg: "bg-[#fbe7e7]", border: "border-[#fad2d2]", title: "text-[#7a2e2e]", sub: "text-[#a44545]", badgeBg: "bg-white/70" },
+  { bg: "bg-[#eee6f7]", border: "border-[#ddd0ef]", title: "text-[#56367c]", sub: "text-[#724a9e]", badgeBg: "bg-white/60" },
+  { bg: "bg-[#fdf5e6]", border: "border-[#fbdfb1]", title: "text-[#8a6423]", sub: "text-[#a87d32]", badgeBg: "bg-white/50" },
+  { bg: "bg-slate-50", border: "border-slate-200", title: "text-slate-800", sub: "text-slate-500", badgeBg: "bg-white/80" },
+];
+
+const FeatureGenericBento = ({ feature, fadeUp }: { feature: any; fadeUp: any }) => {
+  const [expandedId, setExpandedId] = useState<string | null>(null);
+
+  // Deterministic seed based on slug to keep layouts identical on refresh but different per feature
+  let hash = 0;
+  for (let i = 0; i < feature.slug.length; i++) {
+    hash = feature.slug.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  hash = Math.abs(hash);
+
+  const items: any[] = [];
+  if (feature.useCases) feature.useCases.forEach((u: any, i: number) => items.push({ type: 'usecase', data: u, id: `u-${i}` }));
+  if (feature.benefits) feature.benefits.forEach((b: any, i: number) => items.push({ type: 'benefit', data: b, id: `b-${i}` }));
+  
+  // Deterministic shuffle
+  const shuffled = [...items].sort((a, b) => {
+     const val1 = (hash + a.id.charCodeAt(0) + (a.id.charCodeAt(2) || 0)) % 10;
+     const val2 = (hash + b.id.charCodeAt(0) + (b.id.charCodeAt(2) || 0)) % 10;
+     return val1 - val2;
+  });
+
+  // Calculate missing spaces to form a complete box
+  let totalLgSpans = 0;
+  shuffled.forEach((item, idx) => {
+    totalLgSpans += item.type === 'usecase' || (idx % 4 === 0) ? 2 : 1;
+  });
+  
+  const remainder = totalLgSpans % 4;
+  if (remainder > 0) {
+    const fillerCount = 4 - remainder;
+    for (let i = 0; i < fillerCount; i++) {
+       shuffled.push({
+         id: `filler-${i}`,
+         type: 'benefit',
+         data: ['Enterprise Scale', 'Always Synced', 'Global Network'][i] || 'Platform Native',
+         isFiller: true
+       });
+    }
+  }
+
+  const expandedItem = shuffled.find(f => f.id === expandedId);
+  const expandedTheme = expandedItem ? colorThemes[(hash + shuffled.indexOf(expandedItem)) % colorThemes.length] : null;
+
+  return (
+    <section className="py-16 relative bg-slate-50 border-t border-slate-100">
+      <Container>
+        <div className="text-center mb-16 max-w-3xl mx-auto">
+          <motion.h2 {...fadeUp(0)} className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight mb-4">
+            Core Capabilities & Value
+          </motion.h2>
+          <motion.p {...fadeUp(0.1)} className="text-slate-500 font-medium text-lg lg:text-xl">
+            Click any card to explore the deep functionality of {feature.title}.
+          </motion.p>
+        </div>
+
+        {/* Dense Masonry-like Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 auto-rows-[250px] grid-flow-dense">
+           {shuffled.map((item, idx) => {
+              const themeParams = colorThemes[(hash + idx) % colorThemes.length];
+              const isLarge = item.type === 'usecase' || (!item.isFiller && idx % 4 === 0);
+              const lgSpan = isLarge ? 2 : 1;
+              const mdSpan = lgSpan > 1 ? 2 : 1;
+
+              let exactColSpan = "col-span-1 md:col-span-1 lg:col-span-1";
+              if (lgSpan === 2 && mdSpan === 2) exactColSpan = "col-span-1 md:col-span-2 lg:col-span-2";
+
+              return (
+                 <motion.div 
+                    key={item.id}
+                    onClick={() => setExpandedId(item.id)}
+                    {...fadeUp(idx * 0.05)}
+                    className={`cursor-pointer ${exactColSpan} ${themeParams.bg} rounded-[2rem] p-8 relative overflow-hidden group border ${themeParams.border} flex flex-col shadow-sm transition-transform duration-300 hover:scale-[1.02] hover:shadow-xl hover:z-10`}
+                 >
+                    {item.type === 'usecase' ? (
+                       <>
+                         <h3 className={`text-2xl font-black ${themeParams.title} mb-2`}>{item.data.title}</h3>
+                         <p className={`${themeParams.sub} font-medium line-clamp-3`}>{item.data.description}</p>
+                         
+                         <div className="mt-auto pt-6 flex items-end justify-between">
+                            <span className={`inline-flex items-center justify-center ${themeParams.badgeBg} px-4 py-2 rounded-xl ${themeParams.title} font-bold text-sm shadow-sm`}>
+                              {item.data.metric || 'Optimization'}
+                            </span>
+                            <div className={`w-10 h-10 rounded-full flex items-center justify-center bg-black/5 ${themeParams.title} opacity-60 group-hover:opacity-100 transition-opacity`}>
+                               <span className="text-xl font-bold">+</span>
+                            </div>
+                         </div>
+                       </>
+                    ) : (
+                       <>
+                         <h3 className={`text-xl font-black ${themeParams.title} mb-2 leading-tight`}>{item.data}</h3>
+                         <div className="mt-auto pt-6 flex justify-between items-end">
+                            <div className={`${themeParams.badgeBg} px-3 py-1.5 rounded-full font-bold text-xs ${themeParams.title} shadow-sm uppercase tracking-wider`}>Included</div>
+                            <div className={`w-10 h-10 rounded-full flex items-center justify-center bg-transparent border border-current ${themeParams.title} opacity-40 group-hover:opacity-100 group-hover:bg-black/5 transition-all`}>
+                               <span className="text-xl font-bold">+</span>
+                            </div>
+                         </div>
+                       </>
+                    )}
+                 </motion.div>
+              );
+           })}
+        </div>
+      </Container>
+
+      {/* Standard Popup Overlay (no layout layoutId snapping) */}
+      <AnimatePresence>
+        {expandedId && expandedItem && expandedTheme && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center px-4 py-8 pointer-events-none">
+            
+            <motion.div 
+              initial={{ opacity: 0 }} 
+              animate={{ opacity: 1 }} 
+              exit={{ opacity: 0 }} 
+              className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm pointer-events-auto" 
+              onClick={() => setExpandedId(null)} 
+            />
+
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 10 }}
+              transition={{ ease: "easeOut", duration: 0.2 }}
+              className={`relative pointer-events-auto w-full max-w-2xl max-h-[90vh] overflow-y-auto ${expandedTheme.bg} rounded-[2rem] p-8 md:p-12 shadow-2xl border ${expandedTheme.border} flex flex-col`}
+            >
+              <button 
+                onClick={() => setExpandedId(null)}
+                className="absolute top-6 right-6 w-10 h-10 rounded-full flex items-center justify-center bg-black/5 hover:bg-black/10 transition-colors"
+                aria-label="Close details"
+              >
+                <span className={`text-2xl font-bold ${expandedTheme.title}`}>×</span>
+              </button>
+
+              {expandedItem.type === 'usecase' ? (
+                <>
+                  <div className={`inline-flex self-start ${expandedTheme.badgeBg} px-4 py-2 rounded-xl mb-6 shadow-sm border ${expandedTheme.border}`}>
+                     <span className={`${expandedTheme.title} font-bold text-sm uppercase tracking-wider`}>{expandedItem.data.metric || 'Optimization'}</span>
+                  </div>
+                  <h3 className={`text-3xl md:text-4xl font-black ${expandedTheme.title} mb-4`}>
+                    {expandedItem.data.title}
+                  </h3>
+                  <p className={`${expandedTheme.sub} font-medium text-lg leading-relaxed mb-8`}>
+                    {expandedItem.data.description}
+                  </p>
+                  
+                  <div className="pt-8 border-t border-black/10">
+                    <h4 className={`text-xl font-bold ${expandedTheme.title} mb-3`}>Deep Dive Analysis</h4>
+                    <p className={`${expandedTheme.sub} font-medium leading-relaxed`}>
+                      By leveraging the "{expandedItem.data.title}" capability within the {feature.title} ecosystem, businesses can transition from raw manual oversight to an intelligent programmatic methodology. This unlocks granular visibility and reduces friction natively.
+                    </p>
+                    <ul className={`mt-6 space-y-3 ${expandedTheme.title} font-medium`}>
+                      <li className="flex items-start gap-3">
+                        <CheckCircle2 className="w-6 h-6 shrink-0 opacity-80" />
+                        Seamless integration across your existing workflows.
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <CheckCircle2 className="w-6 h-6 shrink-0 opacity-80" />
+                        Significantly reduces time-to-insight and operational lag.
+                      </li>
+                    </ul>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className={`inline-flex self-start ${expandedTheme.badgeBg} px-4 py-2 rounded-xl mb-6 shadow-sm border ${expandedTheme.border}`}>
+                     <span className={`${expandedTheme.title} font-bold text-sm uppercase tracking-wider`}>Included Capability</span>
+                  </div>
+                  <h3 className={`text-3xl md:text-4xl font-black ${expandedTheme.title} mb-6`}>
+                    {expandedItem.data}
+                  </h3>
+                  
+                  <div className="pt-8 border-t border-black/10 mt-auto">
+                    <h4 className={`text-xl font-bold ${expandedTheme.title} mb-3`}>How it extends the platform</h4>
+                    <p className={`${expandedTheme.sub} font-medium leading-relaxed`}>
+                      This capability integrates tightly with our core platform infrastructure. We've ensured that "{expandedItem.data}" offers immediate value extraction without requiring extensive, tedious configuration.
+                    </p>
+                  </div>
+                </>
+              )}
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+    </section>
+  );
+};
 
 export default function FeatureDetailPage() {
   const { slug } = useParams();
@@ -49,25 +246,11 @@ export default function FeatureDetailPage() {
     .slice(0, 3) as any[];
 
   return (
-    <div className="relative min-h-screen bg-white selection:bg-purple-100 selection:text-purple-900 overflow-x-hidden">
+    <div className="relative min-h-svh bg-white selection:bg-purple-100 selection:text-purple-900 overflow-x-hidden">
       <InteractiveGrid />
-
-      {/* ── BACK NAV ── */}
-      <nav className="relative z-10 pt-10 pb-4">
-        <Container>
-          <button
-            onClick={() => router.back()}
-            className="group inline-flex items-center text-slate-500 hover:text-slate-900 transition-colors font-bold text-sm"
-          >
-            <ChevronLeft size={18} className="mr-1 transition-transform group-hover:-translate-x-1" />
-            Back to Capabilities
-          </button>
-        </Container>
-      </nav>
-
       <main className="relative z-10">
         {/* ══ SECTION 1: HERO ══ */}
-        <section className="pb-16 pt-6">
+        <section className="pb-16 pt-26 min-h-svh flex items-center">
           <Container>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               {/* Left */}
@@ -140,25 +323,115 @@ export default function FeatureDetailPage() {
           </Container>
         </section>
 
-        {/* ══ SECTION 2: FEATURE IMAGE ══ */}
-        {feature.image && (
-          <section className="py-8">
+        {/* ══ SECTION 2: FEATURE DYNAMIC CONTENT ══ */}
+        {feature.slug === "ai-smart-analytics-engine" ? (
+          <section className="py-16 relative bg-white">
             <Container>
-              <motion.div
-                {...fadeUp(0)}
-                className="relative w-full rounded-[2rem] overflow-hidden border border-slate-100 shadow-2xl shadow-slate-200/70 aspect-video"
-              >
-                <Image
-                  src={feature.image}
-                  alt={`${feature.title} screenshot`}
-                  fill
-                  className="object-cover"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent" />
-              </motion.div>
+              <div className="text-center mb-16">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">
+                  Perform Deep Analysis and Uncover Critical Insights
+                </h2>
+              </div>
+      
+              <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-4 lg:gap-6 auto-rows-[200px]">
+                
+                {/* Behavior Analysis */}
+                <div className="md:col-span-6 lg:col-span-4 lg:row-span-1 bg-[#eff2fe] rounded-3xl p-6 relative overflow-hidden group border border-[#dce3fc] flex flex-col items-start shadow-sm">
+                  <h3 className="text-xl lg:text-2xl font-black text-[#2e408d] mb-1">Behavior Analysis</h3>
+                  <p className="text-[#5164ad] font-medium text-xs lg:text-sm">Understand How Customers Engage with Your Brand</p>
+                  <div className="mt-auto flex flex-wrap gap-2 text-[11px] font-bold text-[#445baf]">
+                    <span className="bg-white/70 px-3 py-1.5 rounded-full shadow-sm flex items-center gap-1">Added to Cart</span>
+                    <span className="bg-[#fbbf24]/20 px-3 py-1.5 rounded-full shadow-sm text-[#92400e] flex items-center gap-1">Opened Email</span>
+                  </div>
+                </div>
+      
+                {/* User Analysis */}
+                <div className="md:col-span-6 lg:col-span-5 lg:row-span-1 bg-[#daf4e5] rounded-3xl p-6 relative overflow-hidden group border border-[#b2eac7] flex flex-col shadow-sm">
+                  <h3 className="text-xl lg:text-2xl font-black text-[#1e5836] mb-1">User Analysis</h3>
+                  <p className="text-[#2e7d4d] font-medium text-xs lg:text-sm">Learn Who Your Users Really Are</p>
+                  <div className="mt-auto flex flex-wrap gap-2 text-[9px] lg:text-[10px] font-bold text-white uppercase tracking-wider">
+                     <span className="bg-[#1e5836] px-2 py-1.5 rounded">Demographics</span>
+                     <span className="bg-[#2e7d4d] px-2 py-1.5 rounded">Age, City, Gender, Income</span>
+                     <span className="bg-[#419462] px-2 py-1.5 rounded">Preferences</span>
+                  </div>
+                </div>
+      
+                {/* Retention Analysis */}
+                <div className="md:col-span-6 lg:col-span-3 lg:row-span-2 bg-[#fdf3df] rounded-3xl p-6 relative overflow-hidden group border border-[#fce6bd] flex flex-col shadow-sm hidden md:flex">
+                  <h3 className="text-xl lg:text-2xl font-black text-[#85611f] mb-1">Retention Analysis</h3>
+                  <p className="text-[#b18330] font-medium text-xs lg:text-sm mb-6">Understand the Retention Patterns of Your Customers</p>
+                  <div className="mt-auto bg-white/70 rounded-xl p-4 shadow-sm w-full h-32 border border-white flex items-end justify-between px-2 pb-2">
+                       <div className="w-[14%] bg-[#fcd34d] h-[90%] rounded-t-sm" />
+                       <div className="w-[14%] bg-[#fbbf24] h-[75%] rounded-t-sm" />
+                       <div className="w-[14%] bg-[#f59e0b] h-[60%] rounded-t-sm" />
+                       <div className="w-[14%] bg-[#d97706] h-[45%] rounded-t-sm" />
+                       <div className="w-[14%] bg-[#b45309] h-[30%] rounded-t-sm" />
+                       <div className="w-[14%] bg-[#92400e] h-[20%] rounded-t-sm" />
+                  </div>
+                </div>
+      
+                {/* Funnel Analysis */}
+                <div className="md:col-span-6 lg:col-span-3 lg:row-span-2 bg-[#fbe7e7] rounded-3xl p-6 relative overflow-hidden group border border-[#fad2d2] flex flex-col shadow-sm">
+                  <h3 className="text-xl lg:text-2xl font-black text-[#7a2e2e] mb-1">Funnel Analysis</h3>
+                  <p className="text-[#a44545] font-medium text-xs lg:text-sm mb-6">Identify Friction Points in Your Customer Journey</p>
+                  <div className="mt-auto bg-white/80 rounded-xl p-4 lg:p-5 shadow-sm border border-white flex flex-col gap-3">
+                     <div className="flex justify-between items-center text-[10px] font-bold text-[#7a2e2e]">
+                       <span>Session Started</span> <span>100%</span>
+                     </div>
+                     <div className="w-full bg-slate-100 h-2 rounded-full"><div className="bg-[#fb7185] h-full rounded-full w-full" /></div>
+      
+                     <div className="flex justify-between items-center text-[10px] font-bold text-[#7a2e2e]">
+                       <span>Viewed Product</span> <span>80%</span>
+                     </div>
+                     <div className="w-full bg-slate-100 h-2 rounded-full"><div className="bg-[#fb7185] h-full rounded-full w-4/5" /></div>
+      
+                     <div className="flex justify-between items-center text-[10px] font-bold text-[#7a2e2e]">
+                       <span>Added to Cart</span> <span>40%</span>
+                     </div>
+                     <div className="w-full bg-slate-100 h-2 rounded-full"><div className="bg-[#e11d48] h-full rounded-full w-2/5" /></div>
+                  </div>
+                </div>
+      
+                {/* User Path Analysis */}
+                <div className="md:col-span-6 lg:col-span-6 lg:row-span-1 bg-white rounded-3xl p-6 relative overflow-hidden group border border-slate-200 shadow-sm flex flex-col justify-center">
+                  <h3 className="text-xl lg:text-2xl font-black text-slate-800 mb-1">User Path Analysis</h3>
+                  <p className="text-slate-500 font-medium text-xs lg:text-sm">Visualize Every Step of Your Customer Journey</p>
+                  <div className="mt-auto flex flex-col lg:flex-row items-center justify-center pt-4 gap-2 lg:gap-0">
+                      <div className="bg-slate-100 flex-1 h-8 lg:rounded-l-full rounded-full flex items-center justify-center px-4 text-[10px] font-bold text-slate-500 shadow-inner w-full">Searched Category</div>
+                      <ArrowRight className="text-slate-300 mx-2 hidden lg:block" size={16} />
+                      <div className="bg-purple-100 flex-1 h-8 lg:rounded-none rounded-full flex items-center justify-center px-4 text-[10px] font-bold text-purple-600 shadow-inner w-full">Added to Cart</div>
+                      <ArrowRight className="text-slate-300 mx-2 hidden lg:block" size={16} />
+                      <div className="bg-green-100 flex-1 h-8 lg:rounded-r-full rounded-full flex items-center justify-center px-4 text-[10px] font-bold text-green-700 shadow-inner w-full">Made Purchase</div>
+                  </div>
+                </div>
+      
+                {/* Acquisition Analysis */}
+                <div className="md:col-span-3 lg:col-span-3 lg:row-span-1 bg-[#eee6f7] rounded-3xl p-6 relative overflow-hidden group border border-[#ddd0ef] flex flex-col shadow-sm">
+                  <h3 className="text-lg lg:text-xl font-black text-[#56367c] mb-1">Acquisition Analysis</h3>
+                  <p className="text-[#724a9e] font-medium text-[11px] lg:text-xs">Measure Effectiveness</p>
+                  <div className="mt-auto flex flex-col gap-2">
+                      <div className="bg-[#7c3aed] text-white text-[10px] font-bold py-1 px-3 rounded-full w-3/4">Campaign A</div>
+                      <div className="bg-[#6d28d9] text-white text-[10px] font-bold py-1 px-3 rounded-full w-full">Campaign B</div>
+                      <div className="bg-[#4c1d95] text-white text-[10px] font-bold py-1 px-3 rounded-full w-1/2">Campaign C</div>
+                  </div>
+                </div>
+      
+                {/* Uninstallation Analysis */}
+                <div className="md:col-span-3 lg:col-span-3 lg:row-span-1 bg-[#fdf5e6] rounded-3xl p-6 relative overflow-hidden group border border-[#fbdfb1] flex flex-col shadow-sm">
+                  <h3 className="text-lg lg:text-xl font-black text-[#8a6423] mb-1 leading-tight">Drop-off Analysis</h3>
+                  <p className="text-[#a87d32] font-medium text-[11px] lg:text-xs mt-1">Understand Attrition</p>
+                  <div className="mt-auto flex justify-between items-end gap-2 h-12 lg:h-16">
+                       <div className="w-1/3 bg-[#d97706] h-[60%] rounded-t-md" />
+                       <div className="w-1/3 bg-[#b45309] h-full rounded-t-md" />
+                       <div className="w-1/3 bg-[#78350f] h-[40%] rounded-t-md" />
+                  </div>
+                </div>
+      
+              </div>
             </Container>
           </section>
+        ) : (
+          <FeatureGenericBento feature={feature} fadeUp={fadeUp} />
         )}
 
         {/* ══ SECTION 3: HOW IT WORKS ══ */}
