@@ -47,9 +47,17 @@ export const FeaturesHero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <span className="inline-block mb-8 text-[10px] lg:text-sm font-black tracking-[0.4em] uppercase text-purple-600/80">
-            OUR CAPABILITIES
-          </span>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, y: 10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full border border-purple-500/20 bg-purple-500/10 mb-8"
+          >
+            <Sparkles size={14} className="text-purple-600" />
+            <span className="text-[10px] lg:text-xs font-black tracking-[0.2em] uppercase text-purple-700">
+              Our Capabilities
+            </span>
+          </motion.div>
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl 4xl:text-8xl font-black text-slate-900 leading-none mb-10 tracking-tight">
             All-in-One <br/>
             <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-600 via-indigo-600 to-purple-800">
