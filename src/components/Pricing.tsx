@@ -280,100 +280,14 @@ const Pricing = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-5 relative z-10 lg:px-4">
-          {plans.map((plan, index) => {
-            const Icon = plan.icon;
-            return (
-              <SpotlightCard 
-                key={plan.name} 
-                popular={plan.popular} 
-                hue={plan.hue}
-                className={cn(
-                  plan.popular ? "lg:z-10 lg:-mt-10 lg:-mb-10" : ""
-                )}
-              >
-
-                <div className="mb-8">
-                  <div className={cn(
-                    "w-14 h-14 rounded-2xl flex items-center justify-center mb-8 relative transition-all duration-300",
-                    plan.popular 
-                      ? "bg-gradient-to-br from-indigo-600 to-violet-600 text-white shadow-xl shadow-indigo-600/20" 
-                      : "bg-slate-50 text-slate-900 border border-slate-200/50"
-                  )}>
-                    <Icon size={28} strokeWidth={1.5} />
-                  </div>
-                  
-                  <h3 className="text-4xl font-bold text-slate-900 mb-3 leading-none tracking-tight">{plan.name}</h3>
-                  <div className="h-1.5 w-16 bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 rounded-full mb-8 shadow-sm shadow-indigo-500/20" />
-                  
-                  <p className="text-[11px] font-extrabold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-4 uppercase tracking-[0.15em]">{plan.description}</p>
-                  <p className="text-[13px] font-medium text-slate-500 leading-relaxed pr-4">{plan.idealFor}</p>
-                </div>
-
-                <div className="flex-grow">
-                  <div className="flex items-center gap-4 mb-6">
-                    <span className="text-[10px] font-bold text-slate-300 uppercase tracking-widest whitespace-nowrap">Plan Features</span>
-                    <div className="h-px w-full bg-slate-100" />
-                  </div>
-                  
-                  <ul className="space-y-3 mb-8">
-                    {plan.features.map((feature, fIndex) => (
-                      <motion.li 
-                        key={fIndex} 
-                        initial={{ opacity: 0, x: -10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: fIndex * 0.05, duration: 0.3 }}
-                        className="flex items-start gap-3.5 group/item"
-                      >
-                        <div className={cn(
-                          "mt-0.5 flex-shrink-0 w-5.5 h-5.5 rounded-lg flex items-center justify-center transition-all duration-300 group-hover/item:scale-110",
-                          plan.popular 
-                            ? "bg-gradient-to-br from-indigo-100 to-violet-100 text-indigo-600 group-hover/item:from-indigo-600 group-hover/item:to-violet-600 group-hover/item:text-white group-hover/item:shadow-md group-hover/item:shadow-indigo-500/25" 
-                            : "bg-blue-50 text-blue-600 group-hover/item:bg-blue-600 group-hover/item:text-white"
-                        )}>
-                          <Check size={11} strokeWidth={3.5} />
-                        </div>
-                        <span className="text-[13px] font-semibold text-slate-600 leading-snug group-hover/item:text-slate-800 transition-colors">
-                          {feature}
-                        </span>
-                      </motion.li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="mt-auto pt-4">
-                  <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className={cn(
-                      "w-full py-6 rounded-2xl font-black transition-all duration-500 flex items-center justify-center gap-3 group relative overflow-hidden",
-                      plan.popular 
-                        ? "btn-premium text-white shadow-[0_25px_50px_-12px_rgba(99,102,241,0.4)] border-none" 
-                        : "bg-slate-900 text-white hover:bg-slate-800 shadow-xl shadow-slate-900/20 border border-slate-800 hover:shadow-2xl hover:shadow-slate-900/30"
-                    )}
-                  >
-                    <span className="relative z-10 uppercase text-[11px] tracking-[0.2em]">{plan.cta}</span>
-                    <ArrowRight size={18} className="relative z-10 transition-all duration-500 group-hover:translate-x-1.5 group-hover:scale-110" />
-                    
-                    {/* Premium shine effect */}
-                    <motion.div 
-                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12"
-                      initial={{ x: "-200%" }}
-                      whileHover={{ x: "200%" }}
-                      transition={{ duration: 0.8, ease: "easeInOut" }}
-                    />
-                    
-                    {plan.popular && (
-                      <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/20" />
-                    )}
-                  </motion.button>
-                </div>
-              </SpotlightCard>
-            );
-          })}
+          <PricingCard plan={plans[0]} />
+          <PricingCard plan={plans[1]} />
+          <div className="relative lg:z-10 lg:-mt-10 lg:-mb-10">
+            <PricingCard plan={plans[2]} />
+          </div>
+          <PricingCard plan={plans[3]} />
         </div>
 
-        {/* FAQ Section */}
         <div className="mt-40 relative z-10 lg:px-4">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
             <div className="lg:col-span-5 xl:col-span-4">
@@ -462,5 +376,93 @@ const Pricing = () => {
     </section>
   );
 };
+
+const PricingCard = ({ plan }: { plan: typeof plans[0] }) => {
+  const Icon = plan.icon;
+  return (
+    <SpotlightCard 
+      popular={plan.popular} 
+      hue={plan.hue}
+    >
+      <div className="mb-8">
+        <div className={cn(
+          "w-14 h-14 rounded-2xl flex items-center justify-center mb-8 relative transition-all duration-300",
+          plan.popular 
+            ? "bg-gradient-to-br from-indigo-600 to-violet-600 text-white shadow-xl shadow-indigo-600/20" 
+            : "bg-slate-50 text-slate-900 border border-slate-200/50"
+        )}>
+          <Icon size={28} strokeWidth={1.5} />
+        </div>
+        
+        <h3 className="text-4xl font-bold text-slate-900 mb-3 leading-none tracking-tight">{plan.name}</h3>
+        <div className="h-1.5 w-16 bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 rounded-full mb-8 shadow-sm shadow-indigo-500/20" />
+        
+        <p className="text-[11px] font-extrabold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-4 uppercase tracking-[0.15em]">{plan.description}</p>
+        <p className="text-[13px] font-medium text-slate-500 leading-relaxed pr-4">{plan.idealFor}</p>
+      </div>
+
+      <div className="flex-grow">
+        <div className="flex items-center gap-4 mb-6">
+          <span className="text-[10px] font-bold text-slate-300 uppercase tracking-widest whitespace-nowrap">Plan Features</span>
+          <div className="h-px w-full bg-slate-100" />
+        </div>
+        
+        <ul className="space-y-3 mb-8">
+          {plan.features.map((feature, fIndex) => (
+            <motion.li 
+              key={fIndex} 
+              initial={{ opacity: 0, x: -10 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: fIndex * 0.05, duration: 0.3 }}
+              className="flex items-start gap-3.5 group/item"
+            >
+              <div className={cn(
+                "mt-0.5 flex-shrink-0 w-5.5 h-5.5 rounded-lg flex items-center justify-center transition-all duration-300 group-hover/item:scale-110",
+                plan.popular 
+                  ? "bg-gradient-to-br from-indigo-100 to-violet-100 text-indigo-600 group-hover/item:from-indigo-600 group-hover/item:to-violet-600 group-hover/item:text-white group-hover/item:shadow-md group-hover/item:shadow-indigo-500/25" 
+                  : "bg-blue-50 text-blue-600 group-hover/item:bg-blue-600 group-hover/item:text-white"
+              )}>
+                <Check size={11} strokeWidth={3.5} />
+              </div>
+              <span className="text-[13px] font-semibold text-slate-600 leading-snug group-hover/item:text-slate-800 transition-colors">
+                {feature}
+              </span>
+            </motion.li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="mt-auto pt-4">
+        <motion.button
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          className={cn(
+            "w-full py-6 rounded-2xl font-black transition-all duration-500 flex items-center justify-center gap-3 group relative overflow-hidden",
+            plan.popular 
+              ? "btn-premium text-white shadow-[0_25px_50px_-12px_rgba(99,102,241,0.4)] border-none" 
+              : "bg-slate-900 text-white hover:bg-slate-800 shadow-xl shadow-slate-900/20 border border-slate-800 hover:shadow-2xl hover:shadow-slate-900/30"
+          )}
+        >
+          <span className="relative z-10 uppercase text-[11px] tracking-[0.2em]">{plan.cta}</span>
+          <ArrowRight size={18} className="relative z-10 transition-all duration-500 group-hover:translate-x-1.5 group-hover:scale-110" />
+          
+          {/* Premium shine effect */}
+          <motion.div 
+            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12"
+            initial={{ x: "-200%" }}
+            whileHover={{ x: "200%" }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+          />
+          
+          {plan.popular && (
+            <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/20" />
+          )}
+        </motion.button>
+      </div>
+    </SpotlightCard>
+  );
+};
+
 
 export default Pricing;
