@@ -1,0 +1,92 @@
+.border-glow-container {
+  position: absolute;
+  inset: 0px;
+  border-radius: var(--border-radius);
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.border-glow-path {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: var(--border-width);
+  background: transparent;
+  /* More robust masking for a crisp border line */
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.border-glow-path::after,
+.border-glow-path::before {
+  content: "";
+  position: absolute;
+  aspect-ratio: 1 / 1;
+  width: var(--size);
+  background: linear-gradient(
+    to right,
+    var(--color-from),
+    var(--color-to),
+    transparent 70%
+  );
+  
+  /* Running animation along the border */
+  offset-path: rect(0 100% 100% 0 round var(--border-radius));
+  offset-anchor: 90% 50%;
+  animation: border-beam-anim var(--duration) linear infinite;
+  animation-delay: var(--delay);
+}
+
+.border-glow-path::before {
+  animation-delay: calc(var(--delay) - (var(--duration) / 2));
+}
+
+@keyframes border-beam-anim {
+  0% {
+    offset-distance: 0%;
+  }
+  100% {
+    offset-distance: 100%;
+  }
+}
+
+/* Subtler glow */
+.border-glow-blur {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  filter: blur(8px);
+  opacity: 0.3; /* Much more subtle */
+  z-index: -1;
+  /* We also mask the blur to keep it tight to the border */
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+}
+
+.border-glow-blur::after,
+.border-glow-blur::before {
+  content: "";
+  position: absolute;
+  aspect-ratio: 1 / 1;
+  width: var(--size);
+  background: linear-gradient(
+    to right,
+    var(--color-from),
+    var(--color-to),
+    transparent
+  );
+  offset-path: rect(0 100% 100% 0 round var(--border-radius));
+  offset-anchor: 90% 50%;
+  animation: border-beam-anim var(--duration) linear infinite;
+  animation-delay: var(--delay);
+}
+
+.border-glow-blur::before {
+  animation-delay: calc(var(--delay) - (var(--duration) / 2));
+}
