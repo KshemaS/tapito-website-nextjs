@@ -8,9 +8,11 @@ import {
   CheckCircle2,
   Mic,
   Play,
+  Quote,
   Sparkles,
   Waves,
 } from "lucide-react";
+import { featuresData } from "@/components/features/FeaturesGrid";
 import Container from "@/components/Container";
 import { InteractiveGrid } from "@/components/InteractiveGrid";
 
@@ -51,6 +53,9 @@ const bubbleVariant = (side: "left" | "right") => ({
 } as any);
 
 export default function AIAssistantPage() {
+  const feature = featuresData.find(f => f.slug === "ai-assistant");
+  if (!feature) return null;
+
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-white pt-24 text-slate-900 selection:bg-purple-100 selection:text-purple-900 font-inter">
       <InteractiveGrid />
@@ -213,16 +218,7 @@ export default function AIAssistantPage() {
         </Container>
       </section>
 
-      <section className="bg-gradient-to-br from-purple-50 via-white to-white py-24 px-4 overflow-hidden">
-        <Container>
-          <motion.div variants={revealVariant} initial="initial" whileInView="whileInView" viewport={{ once: true, amount: 0.4 }} className="rounded-[3.5rem] border border-purple-200 bg-white p-12 text-center shadow-[0_60px_150px_-80px_rgba(124,58,237,0.5)] lg:p-24 relative group overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/5 via-transparent to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-            <motion.div whileHover={{ scale: 1.2, rotate: 180 }} transition={{ duration: 1 }} className="mx-auto flex h-24 w-24 items-center justify-center rounded-[2.5rem] bg-purple-600 text-white shadow-2xl shadow-purple-500/40 relative z-10"><Sparkles size={36} /></motion.div>
-            <h2 className="mt-10 text-4xl font-black tracking-[-0.05em] text-slate-950 lg:text-6xl relative z-10 transition-transform group-hover:scale-[1.01]">Tapito answers business questions in a way that helps you run the business.</h2>
-            <p className="mx-auto mt-10 max-w-4xl text-xl font-medium leading-10 text-slate-600 relative z-10 opacity-80 group-hover:opacity-100">Generic chatbots can answer basic facts. Tapito understands retail tokens — profit, margin, LTV, and category shifts — and provides follow-up context without needing a prompt engineer.</p>
-          </motion.div>
-        </Container>
-      </section>
+
 
       <section className="py-24">
         <Container>
@@ -249,6 +245,31 @@ export default function AIAssistantPage() {
           </div>
         </Container>
       </section>
+
+      {feature.quote && (
+        <section className="py-16">
+          <Container>
+            <motion.div
+              {...fadeUp(0)}
+              className="bg-gradient-to-br from-purple-600 to-indigo-700 rounded-[2.5rem] p-10 md:p-14 lg:p-20 relative overflow-hidden"
+            >
+              {/* Decorative blobs */}
+              <div className="absolute top-0 right-0 w-64 h-64 rounded-full bg-white/5 translate-x-1/3 -translate-y-1/3" />
+              <div className="absolute bottom-0 left-0 w-48 h-48 rounded-full bg-white/5 -translate-x-1/3 translate-y-1/3" />
+
+              <div className="relative z-10 max-w-3xl">
+                <Quote size={48} className="text-white/20 mb-6" />
+                <blockquote className="text-2xl md:text-3xl lg:text-4xl font-black text-white leading-tight mb-8">
+                  {feature.quote.text}
+                </blockquote>
+                <p className="text-purple-200 font-bold text-base">
+                  — {feature.quote.author}
+                </p>
+              </div>
+            </motion.div>
+          </Container>
+        </section>
+      )}
 
       <ExploreMoreFeatures currentSlug="ai-assistant" />
     </div>
