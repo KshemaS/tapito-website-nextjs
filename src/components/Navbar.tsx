@@ -15,6 +15,7 @@ const navLinks = [
   { label: "Pricing", href: "/pricing" },
   { label: "Resources", href: "/resources" },
   { label: "Enterprise", href: "/enterprise" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export default function Navbar() {
