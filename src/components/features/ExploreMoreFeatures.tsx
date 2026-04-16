@@ -22,16 +22,16 @@ export const ExploreMoreFeatures = ({ currentSlug }: ExploreMoreFeaturesProps) =
   const otherFeatures = featuresData.filter(f => f.slug !== currentSlug).slice(0, 4);
 
   return (
-    <section className="py-24 relative overflow-hidden bg-slate-50/50">
+    <section className="py-16 md:py-20 2xl:py-28 relative overflow-hidden bg-slate-50/50">
       <Container>
         <div className="mb-16 text-center">
           <motion.p {...fadeUp()} className="text-xs font-black uppercase tracking-[0.3em] text-purple-600 mb-4">
             Next Generation Retail
           </motion.p>
-          <motion.h2 {...fadeUp(0.1)} className="text-4xl lg:text-5xl font-black text-slate-950 tracking-tight mb-6">
+          <motion.h2 {...fadeUp(0.1)} className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-950 tracking-tight mb-6">
             Explore More Features
           </motion.h2>
-          <motion.p {...fadeUp(0.2)} className="text-lg text-slate-600 max-w-2xl mx-auto font-medium">
+          <motion.p {...fadeUp(0.2)} className="text-base md:text-lg text-slate-600 max-w-2xl mx-auto font-medium">
             Discover other powerful modules designed to transform your retail operations and drive exponential growth.
           </motion.p>
         </div>
@@ -42,7 +42,7 @@ export const ExploreMoreFeatures = ({ currentSlug }: ExploreMoreFeaturesProps) =
               key={feature.slug}
               {...fadeUp(0.1 + idx * 0.1)}
               whileHover={{ y: -10, transition: { duration: 0.3 } }}
-              className="group relative bg-white rounded-[2.5rem] border border-slate-200 p-8 hover:border-purple-300 hover:shadow-[0_30px_70px_-20px_rgba(124,58,237,0.15)] transition-all flex flex-col h-full"
+              className="group relative bg-white rounded-[2rem] md:rounded-[2.5rem] border border-slate-200 p-8 hover:border-purple-300 hover:shadow-[0_30px_70px_-20px_rgba(124,58,237,0.15)] transition-all flex flex-col h-full"
             >
               <div className="mb-6 w-14 h-14 rounded-2xl bg-purple-50 flex items-center justify-center text-purple-600 group-hover:bg-purple-600 group-hover:text-white transition-all duration-500">
                 <feature.icon size={28} />

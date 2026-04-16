@@ -59,19 +59,19 @@ export default function AIAssistantPage() {
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-white pt-24 text-slate-900 selection:bg-purple-100 selection:text-purple-900 font-inter">
       <InteractiveGrid />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-[540px] bg-[radial-gradient(circle_at_top,rgba(168,85,247,0.16),transparent_38%),radial-gradient(circle_at_top_right,rgba(99,102,241,0.13),transparent_25%)]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[400px] lg:h-[540px] bg-[radial-gradient(circle_at_top,rgba(168,85,247,0.16),transparent_38%),radial-gradient(circle_at_top_right,rgba(99,102,241,0.13),transparent_25%)]" />
 
-      <section className="relative py-20 lg:py-30">
+      <section className="relative py-12 md:py-20 4xl:py-30">
         <Container>
-          <div className="grid items-center gap-16 lg:grid-cols-[0.92fr_1.08fr]">
+          <div className="grid items-center gap-8 lg:gap-16 lg:grid-cols-[0.92fr_1.08fr]">
             <div>
               <motion.div {...fadeUp()} className="mb-6 inline-flex items-center gap-2 rounded-full border border-purple-200 bg-purple-50 px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-purple-700 shadow-sm">
                 <Mic size={14} className="animate-pulse" /> Conversational interface preview
               </motion.div>
-              <motion.h1 {...fadeUp(0.08)} className="max-w-3xl text-5xl font-black tracking-[-0.06em] text-slate-950 lg:text-7xl">
+              <motion.h1 {...fadeUp(0.08)} className="max-w-3xl text-3xl sm:text-4xl md:text-5xl 4xl:text-7xl font-black tracking-[-0.06em] text-slate-950">
                 Ask Your Business Anything.
               </motion.h1>
-              <motion.p {...fadeUp(0.16)} className="mt-6 max-w-2xl text-lg font-medium leading-8 text-slate-600 lg:text-xl">
+              <motion.p {...fadeUp(0.16)} className="mt-6 max-w-2xl text-base md:text-lg 4xl:text-xl font-medium leading-7 md:leading-8 text-slate-600">
                 Turn everyday business questions into instant answers through voice and chat so insight reaches every manager, not just the analytics team.
               </motion.p>
               <motion.div {...fadeUp(0.24)} className="mt-10 flex flex-wrap items-center gap-4">
@@ -85,7 +85,7 @@ export default function AIAssistantPage() {
               </motion.div>
             </div>
 
-            <motion.div variants={revealVariant} initial="initial" whileInView="whileInView" viewport={{ once: true, amount: 0.3 }} className="rounded-[3rem] border border-slate-800 bg-slate-950 p-6 shadow-[0_50px_130px_-60px_rgba(15,23,42,0.95)] relative overflow-hidden group">
+            <motion.div variants={revealVariant} initial="initial" whileInView="whileInView" viewport={{ once: true, amount: 0.3 }} className="rounded-[2rem] lg:rounded-[3rem] border border-slate-800 bg-slate-950 p-6 shadow-[0_50px_130px_-60px_rgba(15,23,42,0.95)] relative overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-b from-purple-500/5 to-transparent pointer-events-none" />
               
               <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-5 py-4 relative z-10 transition-colors group-hover:bg-white/10">
@@ -137,7 +137,7 @@ export default function AIAssistantPage() {
         </Container>
       </section>
 
-      <section className="border-y border-slate-200 bg-slate-50/80 py-24">
+      <section className="border-y border-slate-200 bg-slate-50/80 py-16 4xl:py-24">
         <Container>
           <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="grid gap-6 lg:grid-cols-3">
             {[["Business problem", "Critical answers stay trapped behind dashboards, filters, and people who know how to navigate them.", "text-rose-500"], ["What Tapito detects", "Tapito detects intent, business context, and follow-up meaning inside voice or chat questions.", "text-purple-600"], ["What action it enables", "Anyone can get live business intelligence instantly, even while moving through the store floor.", "text-emerald-600"]].map(([title, text, tone], index) => (
@@ -199,7 +199,7 @@ export default function AIAssistantPage() {
       </section>
 
    
-      <section className="py-24 relative overflow-hidden">
+      <section className="py-16 4xl:py-24 relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle,rgba(168,85,247,0.02),transparent_70%)] pointer-events-none" />
         <Container>
           <div className="mb-14 text-center">
@@ -220,7 +220,7 @@ export default function AIAssistantPage() {
 
 
 
-      <section className="py-24">
+      <section className="py-16 4xl:py-24">
         <Container>
           <motion.div {...fadeUp()} className="mb-14 text-center"><h2 className="text-4xl font-black tracking-[-0.05em] text-slate-950 font-outfit uppercase tracking-tight">What Happens After You Enable This Feature?</h2></motion.div>
           <div className="grid overflow-hidden rounded-[3.5rem] border border-slate-200 shadow-[0_50px_140px_-60px_rgba(15,23,42,0.4)] md:grid-cols-2 relative h-full">

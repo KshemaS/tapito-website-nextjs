@@ -55,19 +55,19 @@ export default function CampaignAutomationPage() {
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-white pt-24 text-slate-900 selection:bg-purple-100 selection:text-purple-900">
       <InteractiveGrid />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-[520px] bg-[radial-gradient(circle_at_top_left,rgba(168,85,247,0.14),transparent_38%),radial-gradient(circle_at_top_right,rgba(99,102,241,0.12),transparent_24%)]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[400px] lg:h-[520px] bg-[radial-gradient(circle_at_top_left,rgba(168,85,247,0.14),transparent_38%),radial-gradient(circle_at_top_right,rgba(99,102,241,0.12),transparent_24%)]" />
 
-      <section className="relative py-20 lg:py-28">
+      <section className="relative py-12 md:py-20 4xl:py-28">
         <Container>
-          <div className="grid items-center gap-16 lg:grid-cols-[0.95fr_1.05fr]">
+          <div className="grid items-center gap-8 lg:gap-16 lg:grid-cols-[0.95fr_1.05fr]">
             <div>
               <motion.div {...fadeUp()} className="mb-6 inline-flex items-center gap-2 rounded-full border border-purple-200 bg-purple-50 px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-purple-700">
                 <Repeat size={14} /> Automation workflow builder UI
               </motion.div>
-              <motion.h1 {...fadeUp(0.08)} className="max-w-3xl text-5xl font-black tracking-[-0.06em] text-slate-950 lg:text-7xl">
+              <motion.h1 {...fadeUp(0.08)} className="max-w-3xl text-3xl sm:text-4xl md:text-5xl 4xl:text-7xl font-black tracking-[-0.06em] text-slate-950">
                 Set Campaigns Once. Let AI Run Them Forever.
               </motion.h1>
-              <motion.p {...fadeUp(0.16)} className="mt-6 max-w-2xl text-lg font-medium leading-8 text-slate-600 lg:text-xl">
+              <motion.p {...fadeUp(0.16)} className="mt-6 max-w-4xl text-base md:text-lg 4xl:text-xl font-medium leading-7 md:leading-8 text-slate-600">
                 Build always-on customer journeys that segment, trigger, message, and optimize themselves around live customer intent and revenue context.
               </motion.p>
               <motion.div {...fadeUp(0.24)} className="mt-10 flex flex-wrap items-center gap-4">
@@ -82,10 +82,10 @@ export default function CampaignAutomationPage() {
               </motion.div>
             </div>
 
-            <motion.div variants={revealVariant} initial="initial" whileInView="whileInView" viewport={{ once: true, amount: 0.3 }} className="rounded-[3rem] border border-slate-200 bg-slate-950 p-8 shadow-[0_50px_130px_-60px_rgba(15,23,42,0.9)] relative overflow-hidden">
+            <motion.div variants={revealVariant} initial="initial" whileInView="whileInView" viewport={{ once: true, amount: 0.3 }} className="rounded-[2.5rem] md:rounded-[3rem] border border-slate-200 bg-slate-950 p-6 md:p-8 shadow-[0_50px_130px_-60px_rgba(15,23,42,0.9)] relative overflow-hidden">
               <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500/10 blur-[80px] rounded-full -translate-y-1/2 translate-x-1/2" />
               
-              <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-5 py-4">
+              <div className="flex items-center justify-between rounded-4xl border border-white/10 bg-white/5 px-5 py-4">
                 <div>
                   <p className="text-xs font-black uppercase tracking-[0.22em] text-purple-300">Journey builder</p>
                   <p className="mt-1 text-sm font-bold text-white">Win-back flow active</p>
@@ -103,7 +103,7 @@ export default function CampaignAutomationPage() {
                   { icon: Send, title: "Execution", text: "Multi-Channel" },
                 ].map((item, index) => (
                   <motion.div key={item.title} variants={{ initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 } }} className="luminous-card-dark rounded-[1.75rem] border border-white/10 bg-white/5 p-5 group hover:bg-white/10 transition-colors">
-                    <motion.div whileHover={{ rotate: 15, scale: 1.1 }} className="flex h-12 w-12 items-center justify-center rounded-2xl bg-purple-500/20 text-purple-300 transition-colors group-hover:bg-purple-500 group-hover:text-white"><item.icon size={22} /></motion.div>
+                    <motion.div whileHover={{ rotate: 15, scale: 1.1 }} className="flex h-12 w-12 items-center justify-center rounded-4xl bg-purple-500/20 text-purple-300 transition-colors group-hover:bg-purple-500 group-hover:text-white"><item.icon size={22} /></motion.div>
                     <p className="mt-5 text-[10px] font-black uppercase tracking-[0.2em] text-white/40">{item.title}</p>
                     <p className="mt-2 text-sm font-black leading-6 text-white">{item.text}</p>
                   </motion.div>
@@ -118,7 +118,7 @@ export default function CampaignAutomationPage() {
                     <p className="mt-2 text-sm font-bold text-purple-100">Win-back conversion rate</p>
                   </div>
                   <div className="text-right">
-                    <p className="text-2xl font-black">Rs 2.4L recovered</p>
+                    <p className="text-4xl font-black">Rs 2.4L recovered</p>
                     <p className="mt-1 text-sm font-medium text-purple-100 italic">"from one automated intent flow"</p>
                   </div>
                 </div>
@@ -128,11 +128,11 @@ export default function CampaignAutomationPage() {
         </Container>
       </section>
 
-      <section className="border-y border-slate-200 bg-slate-50/80 py-24">
+      <section className="border-y border-slate-200 bg-slate-50/80 py-16 4xl:py-24">
         <Container>
           <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="grid gap-6 lg:grid-cols-3">
             {[["Business problem", "Growth teams burn time on repetitive campaign setup and still miss the right moment to engage.", "text-rose-500"], ["What Tapito detects", "Tapito detects buying behavior, inactivity, offer sensitivity, and stock-aware targeting windows automatically.", "text-purple-600"], ["What action it enables", "Retention, reactivation, and conversion flows launch without adding manual campaign workload.", "text-emerald-600"]].map(([title, text, tone], index) => (
-              <motion.div key={title} {...fadeUp(index * 0.12)} {...cardHover} className={`rounded-[2.5rem] border bg-white p-10 group transition-all ${index === 1 ? "border-purple-200 shadow-[0_40px_80px_-40px_rgba(124,58,237,0.5)]" : "border-slate-200 hover:border-purple-200"}`}>
+              <motion.div key={title} {...fadeUp(index * 0.12)} {...cardHover} className={`rounded-[1.5rem] md:rounded-[2.5rem] border bg-white p-10 group transition-all ${index === 1 ? "border-purple-200 shadow-[0_40px_80px_-40px_rgba(124,58,237,0.5)]" : "border-slate-200 hover:border-purple-200"}`}>
                 <p className={`text-[11px] font-black uppercase tracking-[0.22em] ${tone}`}>{title}</p>
                 <p className="mt-4 text-xl font-black leading-8 text-slate-950 group-hover:text-slate-900 transition-colors">{text}</p>
               </motion.div>
@@ -141,28 +141,28 @@ export default function CampaignAutomationPage() {
         </Container>
       </section>
 
-      <section className="py-24 relative overflow-hidden">
+      <section className="py-16 4xl:py-24 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-2/3 h-full bg-[radial-gradient(circle_at_top_right,rgba(168,85,247,0.03),transparent_70%)] pointer-events-none" />
         <Container>
           <div className="mb-14 max-w-3xl">
             <motion.p {...fadeUp()} className="text-xs font-black uppercase tracking-[0.22em] text-purple-600">How it works</motion.p>
-            <motion.h2 {...fadeUp(0.08)} className="mt-4 text-4xl font-black tracking-[-0.05em] text-slate-950 lg:text-5xl transition-all">An AI workflow builder that keeps campaigns moving without babysitting.</motion.h2>
+            <motion.h2 {...fadeUp(0.08)} className="mt-4 text-3xl md:text-4xl 4xl:text-5xl font-black tracking-[-0.05em] text-slate-950 transition-all">An AI workflow builder that keeps campaigns moving without babysitting.</motion.h2>
           </div>
           <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] items-center">
             <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="space-y-6">
               {[["01", "Segment continuously", "Customer groups update themselves as spend, recency, and loyalty behavior change."], ["02", "Trigger with timing", "Automation launches the right message when inactivity or intent signals show up."], ["03", "Optimize channel & offer", "Tapito keeps improving timing and incentive based on response data tokens."]].map(([step, title, text], index) => (
                 <motion.div key={step} {...fadeUp(index * 0.15)} {...cardHover} className="rounded-[2rem] border border-slate-200 bg-white p-8 group hover:bg-slate-50 transition-colors relative h-full">
                   <div className="flex items-start gap-6">
-                    <motion.div whileHover={{ scale: 1.1, rotate: 10 }} className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-slate-950 text-base font-black text-white group-hover:bg-purple-600 transition-colors shadow-lg">{step}</motion.div>
+                    <motion.div whileHover={{ scale: 1.1, rotate: 10 }} className="flex h-14 w-14 shrink-0 items-center justify-center rounded-4xl bg-slate-950 text-base font-black text-white group-hover:bg-purple-600 transition-colors shadow-lg">{step}</motion.div>
                     <div>
-                      <h3 className="text-2xl font-black text-slate-950 group-hover:text-purple-700 transition-colors">{title}</h3>
+                      <h3 className="text-4xl font-black text-slate-950 group-hover:text-purple-700 transition-colors">{title}</h3>
                       <p className="mt-3 text-base font-medium leading-8 text-slate-600">{text}</p>
                     </div>
                   </div>
                 </motion.div>
               ))}
             </motion.div>
-            <motion.div variants={revealVariant} initial="initial" whileInView="whileInView" viewport={{ once: true, amount: 0.14 }} className="rounded-[3.5rem] border border-purple-200 bg-gradient-to-br from-purple-50 via-white to-indigo-50 p-10 lg:p-14 relative backdrop-blur-sm shadow-inner group">
+            <motion.div variants={revealVariant} initial="initial" whileInView="whileInView" viewport={{ once: true, amount: 0.14 }} className="rounded-[2rem] md:rounded-[3.5rem] border border-purple-200 bg-gradient-to-br from-purple-50 via-white to-indigo-50 p-10 lg:p-14 relative backdrop-blur-sm shadow-inner group">
               <div className="absolute inset-0 bg-white/40 pointer-events-none rounded-[3.5rem]" />
               <div className="grid gap-6 md:grid-cols-2 relative z-10">
                 {[
@@ -172,7 +172,7 @@ export default function CampaignAutomationPage() {
                   { label: "Execution", value: "Send across channels", icon: Send },
                 ].map((item, index) => (
                   <motion.div key={item.label} variants={fadeUp(0.2 + index * 0.1)} {...cardHover} className="luminous-card luminous-surface-strong rounded-[2rem] border border-purple-100 bg-white p-8 shadow-sm group/card">
-                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-purple-50 text-purple-600 group-hover/card:bg-purple-600 group-hover/card:text-white transition-all shadow-sm"><item.icon size={26} /></div>
+                    <div className="flex h-14 w-14 items-center justify-center rounded-4xl bg-purple-50 text-purple-600 group-hover/card:bg-purple-600 group-hover/card:text-white transition-all shadow-sm"><item.icon size={26} /></div>
                     <p className="mt-6 text-[10px] font-black uppercase tracking-[0.25em] text-slate-400">{item.label}</p>
                     <p className="mt-3 text-xl font-black text-slate-950">{item.value}</p>
                   </motion.div>
@@ -183,18 +183,18 @@ export default function CampaignAutomationPage() {
         </Container>
       </section>
 
-      <section className="py-24 relative overflow-hidden">
+      <section className="py-16 4xl:py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(168,85,247,0.02),transparent_60%)] pointer-events-none" />
         <Container>
           <div className="mb-14 text-center">
             <motion.p {...fadeUp()} className="text-xs font-black uppercase tracking-[0.22em] text-purple-600">Business impact</motion.p>
-            <motion.h2 {...fadeUp(0.08)} className="mt-4 text-4xl font-black tracking-[-0.05em] text-slate-950 lg:text-5xl">Automation that lifts retention forever.</motion.h2>
+            <motion.h2 {...fadeUp(0.08)} className="mt-4 text-3xl md:text-4xl 4xl:text-5xl font-black tracking-[-0.05em] text-slate-950">Automation that lifts retention forever.</motion.h2>
           </div>
           <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="grid gap-8 md:grid-cols-3">
             {[["+40% sentiments", "Retention lift", "Measured across VIP customer segments"], ["-90% effort", "Manual workload", "Zero spreadsheets or manual CSV uploads"], ["2.5x ROI", "Conversion gain", "Attributed revenue from automated triggers"]].map(([value, label, note], index) => (
-              <motion.div key={label} {...fadeUp(index * 0.12)} {...cardHover} className="rounded-[2.5rem] border border-slate-200 bg-white p-12 text-center group shadow-sm hover:shadow-xl transition-all">
+              <motion.div key={label} {...fadeUp(index * 0.12)} {...cardHover} className="rounded-[2rem] md:rounded-[2.5rem] border border-slate-200 bg-white p-12 text-center group shadow-sm hover:shadow-xl transition-all">
                 <motion.p initial={{ scale: 0.8, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} transition={{ delay: 0.4 + index * 0.1 }} className="text-6xl font-black text-purple-700 transition-transform group-hover:scale-110">{value.split(' ')[0]}</motion.p>
-                <p className="mt-6 text-2xl font-black text-slate-950">{label}</p>
+                <p className="mt-6 text-4xl font-black text-slate-950">{label}</p>
                 <p className="mt-3 text-sm font-medium leading-7 text-slate-500 italic">"{note}"</p>
               </motion.div>
             ))}
@@ -204,14 +204,14 @@ export default function CampaignAutomationPage() {
 
 
 
-      <section className="py-24">
+      <section className="py-16 4xl:py-24">
         <Container>
-          <motion.div {...fadeUp()} className="mb-14 text-center"><h2 className="text-4xl font-black tracking-[-0.05em] text-slate-950 font-outfit uppercase">What Happens After You Enable This Feature?</h2></motion.div>
-          <div className="grid overflow-hidden rounded-[3.5rem] border border-slate-200 shadow-[0_50px_140px_-60px_rgba(15,23,42,0.4)] md:grid-cols-2 relative h-full">
+          <motion.div {...fadeUp()} className="mb-14 text-center"><h2 className="text-3xl md:text-4xl 4xl:text-5xl font-black tracking-[-0.05em] text-slate-950 font-outfit uppercase tracking-tight">What Happens After You Enable This Feature?</h2></motion.div>
+          <div className="grid overflow-hidden rounded-[2rem] md:rounded-[3.5rem] border border-slate-200 shadow-[0_50px_140px_-60px_rgba(15,23,42,0.4)] md:grid-cols-2 relative h-full">
             <motion.div initial={{ x: -100, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1 }} className="bg-white p-12 lg:p-20 relative overflow-hidden group">
               <div className="absolute top-0 left-0 w-full h-full bg-slate-50 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
               <p className="text-xs font-black uppercase tracking-[0.3em] text-slate-400 relative z-10">Before Tapito Automation</p>
-              <div className="mt-12 space-y-8 text-2xl font-bold text-slate-400 relative z-10">
+              <div className="mt-12 space-y-8 text-4xl font-bold text-slate-400 relative z-10">
                 <p className="flex items-center gap-4 opacity-60">Manual customer blasts</p>
                 <p className="flex items-center gap-4 opacity-60">Generic, thin offers</p>
                 <p className="flex items-center gap-4 opacity-60">Low engagement rates</p>
@@ -221,7 +221,7 @@ export default function CampaignAutomationPage() {
             <motion.div initial={{ x: 100, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1 }} className="bg-slate-950 p-12 lg:p-20 text-white relative h-full">
                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.15),transparent_70%)] pointer-events-none" />
               <p className="text-xs font-black uppercase tracking-[0.3em] text-purple-300 relative z-10">After Tapito Automation</p>
-              <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" className="mt-12 space-y-8 text-2xl font-black relative z-10">
+              <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" className="mt-12 space-y-8 text-4xl font-black relative z-10">
                 {["Automated intent flows", "Personalized value logic", "Maximized customer LTV", "Real-time behavior triggers"].map((item) => (
                   <motion.div key={item} variants={{ initial: { x: 40, opacity: 0 }, whileInView: { x: 0, opacity: 1 } }} transition={{ duration: 0.6 }} className="flex items-center gap-6"><CheckCircle2 size={32} className="text-emerald-400" />{item}</motion.div>
                 ))}
@@ -244,7 +244,7 @@ export default function CampaignAutomationPage() {
 
               <div className="relative z-10 max-w-3xl">
                 <Quote size={48} className="text-white/20 mb-6" />
-                <blockquote className="text-2xl md:text-3xl lg:text-4xl font-black text-white leading-tight mb-8">
+                <blockquote className="text-4xl md:text-3xl lg:text-4xl font-black text-white leading-tight mb-8">
                   {feature.quote.text}
                 </blockquote>
                 <p className="text-purple-200 font-bold text-base">

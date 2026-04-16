@@ -10,10 +10,45 @@ const Item = ({ icon: Icon, title, desc, delay }: { icon: any, title: string, de
     whileInView={{ opacity: 1, x: 0 }}
     transition={{ duration: 0.5, delay }}
     viewport={{ once: true }}
-    className="flex gap-6 p-8 rounded-[32px] hover:bg-white hover:shadow-2xl hover:shadow-blue-500/5 transition-all duration-500 group border border-transparent hover:border-blue-100"
+    className="flex gap-6 p-8 rounded-[32px] hover:bg-white hover:shadow-2xl hover:shadow-[#09358c]/5 transition-all duration-500 group border border-transparent hover:border-blue-100"
   >
-    <div className="w-16 h-16 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 shrink-0 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500">
-      <Icon size={32} />
+    <div className="shrink-0">
+      <motion.div 
+        initial={{ scale: 0, rotate: -30 }}
+        whileInView={{ scale: 1, rotate: 0 }}
+        transition={{ type: "spring", stiffness: 300, damping: 15, delay: delay + 0.3 }}
+        viewport={{ once: true }}
+        className="w-16 h-16 rounded-2xl bg-blue-50 flex items-center justify-center text-[#09358c] group-hover:bg-[#09358c] group-hover:text-white transition-all duration-500 shadow-sm relative overflow-hidden"
+      >
+        {/* Blinking effect container */}
+        <motion.div
+           animate={{ opacity: [1, 0.5, 1] }}
+           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+           className="relative w-full h-full flex items-center justify-center"
+        >
+          {/* First icon (Primary) */}
+          <motion.div
+            className="absolute flex items-center justify-center"
+            variants={{
+              initial: { y: 0 },
+              hover: { y: -40 }
+            }}
+            initial="initial"
+            whileHover="hover"
+            animate="initial"
+            transition={{ duration: 0.4, ease: "backOut" }}
+          >
+             <div className="group-hover:-translate-y-12 transition-transform duration-500 flex items-center justify-center">
+                <Icon size={32} />
+             </div>
+          </motion.div>
+
+          {/* Second icon (Slides from bottom) */}
+          <div className="absolute translate-y-12 group-hover:translate-y-0 transition-transform duration-500 flex items-center justify-center">
+             <Icon size={32} />
+          </div>
+        </motion.div>
+      </motion.div>
     </div>
     <div>
       <h4 className="text-2xl font-bold text-slate-900 mb-2">{title}</h4>
@@ -24,7 +59,7 @@ const Item = ({ icon: Icon, title, desc, delay }: { icon: any, title: string, de
 
 export default function Insights() {
   return (
-    <section className="bg-slate-50 pb-[60px] lg:pb-[80px] 2xl:pb-[100px] 4xl:pb-[120px] relative overflow-hidden">
+    <section className="bg-slate-50 pb-[60px] lg:pb-[80px] 2xl:pb-[100px] 4xl:pb-[120px] relative overflow-hidden pt-20">
       {/* Background patterns */}
       <div className="absolute inset-0 bg-grid opacity-[0.03]" />
       <div className="absolute top-0 right-0 w-96 h-96 bg-blue-400/5 blur-[100px] rounded-full" />
@@ -36,14 +71,14 @@ export default function Insights() {
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-600 text-xs font-bold mb-8"
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-[#09358c] text-xs font-bold mb-8"
             >
-              <ShieldCheck size={14} />
+              <ShieldCheck size={14} color="#09358c" />
               PRECISION ANALYTICS
             </motion.div>
 
             <h3 className="text-5xl md:text-7xl font-black text-slate-900 mb-8 leading-[1]">
-              Operational <br /> <span className="gradient-text">Excellence.</span>
+              Operational <br /> <span className="text-[#09358c]">Excellence.</span>
             </h3>
 
             <p className="text-xl text-slate-500 mb-12 leading-relaxed max-w-xl">
@@ -76,9 +111,9 @@ export default function Insights() {
 
               <div className="space-y-10">
                 {[
-                  { name: "Downtown Branch", val: 94, trend: "+5.2%", color: "bg-blue-600" },
-                  { name: "Westside Mall", val: 82, trend: "-1.4%", color: "bg-indigo-400" },
-                  { name: "Airport Retail", val: 98, trend: "+12.8%", color: "bg-purple-600" },
+                  { name: "Downtown Branch", val: 94, trend: "+5.2%", color: "#09358c" },
+                  { name: "Westside Mall", val: 82, trend: "-1.4%", color: "#05a0ec" },
+                  { name: "Airport Retail", val: 98, trend: "+12.8%", color: "#06dcc3" },
                 ].map((staff, i) => (
                   <div key={i}>
                     <div className="flex justify-between items-end mb-4">
@@ -92,20 +127,29 @@ export default function Insights() {
                     </div>
                     <div className="w-full h-3 bg-slate-50 rounded-full overflow-hidden">
                       <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${staff.val}%` }}
-                        transition={{ duration: 1.5, delay: i * 0.2, ease: "easeOut" }}
-                        className={`h-full ${staff.color} rounded-full`}
-                      />
+                        initial={{ width: 0, opacity: 0 }}
+                        whileInView={{ width: `${staff.val}%`, opacity: 1 }}
+                        transition={{ duration: 2, delay: i * 0.3 + 0.5, ease: [0.16, 1, 0.3, 1] }}
+                        viewport={{ once: true }}
+                        className="h-full rounded-full relative"
+                        style={{ backgroundColor: staff.color }}
+                      >
+                         <motion.div 
+                           initial={{ x: "-100%" }}
+                           animate={{ x: "100%" }}
+                           transition={{ duration: 1.2, delay: i * 0.3 + 1, repeat: Infinity, repeatDelay: 3 }}
+                           className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+                         />
+                      </motion.div>
                     </div>
                   </div>
                 ))}
               </div>
 
-              <div className="mt-16 p-6 rounded-3xl bg-slate-900 text-white flex items-center justify-between group cursor-pointer hover:bg-blue-600 transition-colors duration-500">
+              <div className="mt-16 p-6 rounded-3xl bg-slate-900 text-white flex items-center justify-between group cursor-pointer hover:bg-[#09358c] transition-colors duration-500">
                 <div className="flex items-center gap-4">
                   <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">
-                    <Lightbulb size={20} className="text-blue-400" />
+                    <Lightbulb size={20} className="text-[#05a0ec]" />
                   </div>
                   <span className="font-bold">Generate Insight Report</span>
                 </div>
@@ -117,7 +161,7 @@ export default function Insights() {
             <motion.div
               animate={{ y: [0, -20, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -top-10 -right-10 bg-gradient-to-br from-blue-600 to-indigo-600 text-white p-6 rounded-3xl shadow-2xl z-20"
+              className="absolute -top-10 -right-10 bg-gradient-to-br from-[#09358c] to-[#05a0ec] text-white p-6 rounded-3xl shadow-2xl z-20"
             >
               <span className="text-sm font-bold block mb-1">AI Recommendation</span>
               <span className="text-2xl font-black">Re-order Ready</span>
@@ -132,7 +176,7 @@ export default function Insights() {
             <div className="bg-slate-900 rounded-[48px] p-12 text-white relative overflow-hidden group">
               <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/20 blur-3xl rounded-full translate-x-1/2 -translate-y-1/2 group-hover:bg-blue-600/40 transition-colors duration-1000" />
 
-              <h5 className="text-blue-400 font-black uppercase text-xs tracking-widest mb-10 flex items-center gap-2">
+              <h5 className="text-[#05a0ec] font-black uppercase text-xs tracking-widest mb-10 flex items-center gap-2">
                 <Lightbulb size={18} />
                 AI-DRIVEN STRATEGY RECOMMENDATIONS
               </h5>
@@ -148,15 +192,15 @@ export default function Insights() {
                     initial={{ opacity: 0, x: -10 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.2 }}
-                    className="p-6 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-blue-500/50 transition-all duration-300 flex gap-4"
+                    className="p-6 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-[#05a0ec]/50 transition-all duration-300 flex gap-4"
                   >
-                    <div className="w-2 h-2 rounded-full bg-blue-500 mt-2 shrink-0 animate-pulse" />
+                    <div className="w-2 h-2 rounded-full bg-[#05a0ec] mt-2 shrink-0 animate-pulse" />
                     <p className="text-slate-300 leading-relaxed font-medium">{rec}</p>
                   </motion.div>
                 ))}
               </div>
 
-              <button className="mt-12 w-full py-5 bg-blue-600 text-white rounded-3xl font-black uppercase tracking-widest text-sm hover:bg-blue-500 transition-colors shadow-xl shadow-blue-600/20">
+              <button className="mt-12 w-full py-5 bg-[#09358c] text-white rounded-3xl font-black uppercase tracking-widest text-sm hover:bg-[#05a0ec] transition-colors shadow-xl shadow-[#09358c]/20">
                 Apply Automated Adjustments
               </button>
             </div>
@@ -167,14 +211,14 @@ export default function Insights() {
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-100 text-purple-600 text-xs font-bold mb-8"
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-100 text-[#09358c] text-xs font-bold mb-8"
             >
-              <Target size={14} />
+              <Target size={14} color="#09358c" />
               STRATEGIC GROWTH
             </motion.div>
 
             <h3 className="text-5xl md:text-7xl font-black text-slate-900 mb-8 leading-[1]">
-              Growth on <br /> <span className="gradient-text">Autopilot.</span>
+              Growth on <br /> <span className="text-[#09358c]">Autopilot.</span>
             </h3>
 
             <p className="text-xl text-slate-500 mb-12 leading-relaxed max-w-xl">

@@ -90,9 +90,47 @@ export default function ValueStrip() {
 
   return (
     <section className="bg-slate-950 py-[60px] lg:py-[80px] 2xl:py-[100px] 4xl:py-[120px] border-y border-white/5 overflow-hidden relative">
-      <Container>
-        <div className="flex flex-col items-center">
+      
+      {/* Dynamic Connector SVG Layer */}
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-20 hidden lg:block">
+        <svg className="w-full h-full" viewBox="0 0 1440 900" fill="none" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <mask id="orb-mask">
+              <rect width="100%" height="100%" fill="white" />
+              <circle cx="720" cy="450" r="220" fill="black" />
+            </mask>
+          </defs>
 
+          {/* Connector Paths - Desktop Layout */}
+          {/* <g strokeWidth="2" strokeDasharray="4 4" strokeLinecap="round" mask="url(#orb-mask)">
+            <motion.path d="M560 150 L780 450" stroke="#05a0ec" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ duration: 2 }} />
+            <motion.path d="M900 150 L680 450" stroke="#05a0ec" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ duration: 2, delay: 0.1 }} />
+            <motion.path d="M200 380 L800 380" stroke="#05a0ec" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ duration: 2, delay: 0.2 }} />
+            <motion.path d="M260 480 L1000 480" stroke="#05a0ec" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ duration: 2, delay: 0.3 }} />
+            <motion.path d="M1240 350 L780 450" stroke="#06dcc3" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ duration: 2, delay: 0.4 }} />
+            <motion.path d="M1240 450 L780 450" stroke="#06dcc3" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ duration: 2, delay: 0.5 }} />
+            <motion.path d="M1200 580 L600 400" stroke="#06dcc3" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ duration: 2, delay: 0.6 }} />
+            <motion.path d="M560 750 L720 500" stroke="#06dcc3" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ duration: 2, delay: 0.7 }} />
+            <motion.path d="M880 720 L700 510" stroke="#06dcc3" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ duration: 2, delay: 0.8 }} />
+          </g> */}
+
+          {/* Animating Particles */}
+          <g mask="url(#orb-mask)">
+            <motion.circle r="3" fill="#05a0ec">
+               <animateMotion dur="4s" repeatCount="indefinite" path="M400 150 L720 450" />
+            </motion.circle>
+            <motion.circle r="3" fill="#06dcc3">
+               <animateMotion dur="5s" repeatCount="indefinite" path="M1290 450 L720 450" />
+            </motion.circle>
+            <motion.circle r="3" fill="#05a0ec">
+               <animateMotion dur="6s" repeatCount="indefinite" path="M150 350 L720 450" />
+            </motion.circle>
+          </g>
+        </svg>
+      </div>
+
+      <Container className="relative z-10">
+        <div className="flex flex-col items-center">
           {/* Top Items */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 lg:mb-20 w-full max-w-4xl">
             {topItems.map((item, i) => (
@@ -101,33 +139,21 @@ export default function ValueStrip() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-12 lg:gap-8 w-full">
-
-            {/* Left Side Features */}
+            {/* Left Side */}
             <div className="lg:col-span-3 flex flex-col gap-6 order-2 lg:order-1">
               {leftItems.map((item, i) => (
                 <FeatureCard key={i} item={item} index={i + 2} />
               ))}
             </div>
 
-            {/* Center Orb Column */}
+            {/* Center Orb */}
             <div className="lg:col-span-6 flex justify-center items-center order-1 lg:order-2">
               <div className="relative w-[320px] h-[320px] md:w-[600px] md:h-[600px] flex items-center justify-center">
                 <div className="absolute inset-0 z-0 scale-110">
-                  <Orb
-                    hue={25} 
-                    hoverIntensity={0}
-                    backgroundColor="#020617"
-                    forceHoverState={true}
-                  />
+                  <Orb hue={33} hoverIntensity={0} backgroundColor="#020617" forceHoverState={true} />
                 </div>
                 <div className="relative z-10 text-center max-w-[200px] md:max-w-[400px] pointer-events-none">
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1, ease: "easeOut" }}
-                    // viewPort={{ once: true }}
-                    className="space-y-4"
-                  >
+                  <motion.div initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ duration: 1 }} className="space-y-4">
                     <span className="text-[14px] md:text-xs font-black text-slate-400 uppercase tracking-[0.4em] block mb-2">INSTANT VALUE STRIP</span>
                     <h2 className="text-[2xl] md:text-[40px] font-black text-white leading-tight">
                       Everything You Need to Grow <br />
@@ -139,13 +165,12 @@ export default function ValueStrip() {
               </div>
             </div>
 
-            {/* Right Side Features */}
+            {/* Right Side */}
             <div className="lg:col-span-3 flex flex-col gap-6 order-3">
               {rightItems.map((item, i) => (
                 <FeatureCard key={i} item={item} index={i + 4} />
               ))}
             </div>
-
           </div>
 
           {/* Bottom Items */}
@@ -154,11 +179,8 @@ export default function ValueStrip() {
               <FeatureCard key={i} item={item} index={i + 7} />
             ))}
           </div>
-
         </div>
       </Container>
-
-      {/* Small background accents */}
       <div className="absolute top-0 left-0 w-64 h-64 bg-[#05a0ec]/10 blur-[100px] -z-10" />
       <div className="absolute bottom-0 right-0 w-64 h-64 bg-[#06dcc3]/10 blur-[100px] -z-10" />
     </section>

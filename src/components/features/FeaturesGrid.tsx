@@ -264,14 +264,14 @@ export const featuresData = [
 
 export const FeaturesGrid = () => {
   return (
-    <section id="features-grid" className="py-20 md:py-24 relative z-10">
+    <section id="features-grid" className="py-16 md:py-20 2xl:py-28 relative z-10">
       <Container>
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 lg:mb-16 gap-8 lg:gap-10">
           <div className="max-w-2xl">
             <span className="inline-flex items-center rounded-full bg-slate-100 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-600 ring-1 ring-slate-200 mb-5">
               Built for Retail Teams
             </span>
-            <h2 className="text-3xl lg:text-5xl 4xl:text-6xl font-black text-slate-900 tracking-tight leading-tight mb-5">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl 4xl:text-6xl font-black text-slate-900 tracking-tight leading-tight mb-5">
               Features That Drive Better Decisions
             </h2>
             <p className="text-slate-600 text-base lg:text-lg font-medium leading-relaxed max-w-xl">
@@ -293,7 +293,7 @@ export const FeaturesGrid = () => {
               }
             }
           }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 4xl:gap-12"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 2xl:gap-8 4xl:gap-12"
         >
           {featuresData.map((feature, index) => (
             <FeatureCard

@@ -32,7 +32,7 @@ const FloatingBadge = ({ icon: Icon, text, delay, left }: any) => {
 
 export const FeaturesHero = () => {
   return (
-    <section className="relative lg:min-h-svh flex flex-col items-center justify-center pt-24 pb-12 overflow-hidden">
+    <section className="relative h-screen flex flex-col items-center justify-center pt-20 pb-12 overflow-hidden">
       <InteractiveGrid />
       
       {/* Floating Elements Rising from the Bottom */}
@@ -53,20 +53,20 @@ export const FeaturesHero = () => {
             initial={{ opacity: 0, scale: 0.9, y: 10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="luminous-card inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-purple-500/30 bg-white/80 backdrop-blur-md mb-10 shadow-xl"
+            className="luminous-card inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-purple-500/30 bg-white/80 backdrop-blur-md mb-8 lg:mb-10 shadow-xl"
           >
             <Sparkles size={16} className="text-purple-600 animate-pulse" />
             <span className="text-[10px] lg:text-xs font-black tracking-[0.3em] uppercase text-purple-700">
               Transform Your Capabilities
             </span>
           </motion.div>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl 4xl:text-8xl font-black text-slate-900 leading-none mb-10 tracking-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl 4xl:text-8xl font-black text-slate-900 leading-none mb-8 lg:mb-10 tracking-tight">
             All-in-One <br/>
-            <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-600 via-indigo-600 to-purple-800">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-indigo-600 to-purple-800">
               Growth Platform
             </span>
           </h1>
-          <p className="text-base md:text-lg lg:text-xl 4xl:text-2xl text-slate-500 max-w-3xl mx-auto leading-relaxed mb-12 font-medium">
+          <p className="text-sm md:text-base lg:text-lg 2xl:text-xl 4xl:text-2xl text-slate-500 max-w-3xl mx-auto leading-relaxed mb-10 lg:mb-12 font-medium">
             Tapito leverages advanced neural networks to transform fragmented retail data into a streamlined growth engine for your entire organization.
           </p>
           

@@ -26,7 +26,7 @@ export const FeatureCard = ({ title, description, benefits, icon: Icon, index, s
         whileHover={{ y: -8 }}
         className="relative h-full"
       >
-        <div className="relative h-full p-8 lg:p-10 rounded-[2.5rem] transition-all duration-700 flex flex-col justify-between min-h-[460px] overflow-hidden bg-white border border-slate-100 text-slate-900 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.03)] group-hover:shadow-[0_45px_90px_-20px_rgba(72,0,178,0.12)]">
+        <div className="relative h-full p-7 lg:p-10 rounded-[2rem] md:rounded-[2.5rem] transition-all duration-700 flex flex-col justify-between min-h-[400px] md:min-h-[460px] overflow-hidden bg-white border border-slate-100 text-slate-900 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.03)] group-hover:shadow-[0_45px_90px_-20px_rgba(72,0,178,0.12)]">
 
           {/* Subtle Hover Gradient */}
           <div className="absolute inset-0 bg-linear-to-br from-purple-600/[0.03] to-indigo-600/[0.03] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
@@ -59,11 +59,11 @@ export const FeatureCard = ({ title, description, benefits, icon: Icon, index, s
               </motion.div>
             </div>
 
-            <h3 className="text-2xl font-black mb-4 tracking-tight text-slate-900 group-hover:text-purple-600 transition-colors">
+            <h3 className="text-xl md:text-2xl font-black mb-4 tracking-tight text-slate-900 group-hover:text-purple-600 transition-colors">
               {title}
             </h3>
 
-            <p className="text-[15px] font-medium leading-relaxed mb-8 text-slate-500 line-clamp-2">
+            <p className="text-sm md:text-[15px] font-medium leading-relaxed mb-8 text-slate-500 line-clamp-2">
               {description}
             </p>
 

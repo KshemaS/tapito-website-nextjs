@@ -19,7 +19,7 @@ export default function Audience() {
       <Container>
         <div className="text-center max-w-3xl mx-auto mb-20">
           <h2 className="text-sm font-bold uppercase tracking-widest text-blue-600 mb-4">Target Audience</h2>
-          <h3 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Designed for Every <span className="gradient-text">Retail Model</span></h3>
+          <h3 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Designed for Every <span className="text-[#09358c]">Retail Model</span></h3>
           <p className="text-lg text-slate-600">
             Whether you run a single flagship store or a national retail chain, Tapito scales with your ambitions.
           </p>

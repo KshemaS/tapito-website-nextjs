@@ -51,19 +51,19 @@ export default function GrowthSimulatorPage() {
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-white pt-24 text-slate-900 selection:bg-purple-100 selection:text-purple-900 font-inter">
       <InteractiveGrid />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-[520px] bg-[radial-gradient(circle_at_top_right,rgba(168,85,247,0.14),transparent_36%),radial-gradient(circle_at_top_left,rgba(99,102,241,0.12),transparent_24%)]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[400px] lg:h-[520px] bg-[radial-gradient(circle_at_top_right,rgba(168,85,247,0.14),transparent_36%),radial-gradient(circle_at_top_left,rgba(99,102,241,0.12),transparent_24%)]" />
 
-      <section className="relative py-20 lg:py-28">
+      <section className="relative py-12 md:py-20 4xl:py-28">
         <Container>
-          <div className="grid items-center gap-16 lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="grid items-center gap-8 lg:gap-16 lg:grid-cols-[0.9fr_1.1fr]">
             <div className="text-reveal">
               <motion.div {...fadeUp()} className="mb-6 inline-flex items-center gap-2 rounded-full border border-purple-200 bg-purple-50 px-4 py-2 text-xs font-black uppercase tracking-[0.25em] text-purple-700 shadow-sm">
                 <PlayCircle size={14} className="animate-spin-slow" /> Interactive simulation workspace
               </motion.div>
-              <motion.h1 {...fadeUp(0.08)} className="max-w-3xl text-5xl font-black tracking-[-0.06em] text-slate-950 lg:text-7xl">
+              <motion.h1 {...fadeUp(0.08)} className="max-w-3xl text-3xl sm:text-4xl md:text-5xl 4xl:text-7xl font-black tracking-[-0.06em] text-slate-950">
                 Test Growth Before You Execute It.
               </motion.h1>
-              <motion.p {...fadeUp(0.16)} className="mt-8 max-w-2xl text-lg font-medium leading-9 text-slate-600 lg:text-xl font-inter">
+              <motion.p {...fadeUp(0.16)} className="mt-8 max-w-4xl text-base md:text-lg 4xl:text-xl font-medium leading-8 md:leading-9 text-slate-600 font-inter">
                 Explore what-if scenarios with a digital decision workspace that reveals how pricing, traffic, and category strategy could change future growth paths.
               </motion.p>
               <motion.div {...fadeUp(0.24)} className="mt-10 flex flex-wrap items-center gap-6">
@@ -78,10 +78,10 @@ export default function GrowthSimulatorPage() {
               </motion.div>
             </div>
 
-            <motion.div variants={revealVariant} initial="initial" whileInView="whileInView" viewport={{ once: true, amount: 0.3 }} className="rounded-[4rem] border border-slate-200 bg-white p-7 shadow-[0_60px_150px_-70px_rgba(124,58,237,0.55)] relative overflow-hidden backdrop-blur-md">
+            <motion.div variants={revealVariant} initial="initial" whileInView="whileInView" viewport={{ once: true, amount: 0.3 }} className="rounded-[2rem] md:rounded-[4rem] border border-slate-200 bg-white p-6 md:p-7 shadow-[0_60px_150px_-70px_rgba(124,58,237,0.55)] relative overflow-hidden backdrop-blur-md">
               <div className="absolute top-0 right-0 w-80 h-80 bg-purple-100/40 blur-[100px] rounded-full pointer-events-none -translate-y-1/2 translate-x-1/2" />
               
-              <div className="flex items-center justify-between rounded-2xl border border-purple-100 bg-purple-50 px-6 py-4 relative z-10 transition-colors hover:bg-purple-100/80">
+              <div className="flex items-center justify-between rounded-4xl border border-purple-100 bg-purple-50 px-6 py-4 relative z-10 transition-colors hover:bg-purple-100/80">
                 <div>
                   <p className="text-[10px] font-black uppercase tracking-[0.25em] text-purple-600">Growth scenario planner</p>
                   <p className="mt-1 text-sm font-black text-slate-950">Active Digital Twin Model</p>
@@ -124,7 +124,7 @@ export default function GrowthSimulatorPage() {
                         key={item.label} 
                         whileHover={{ y: -3 }}
                         whileTap={{ scale: 0.95 }}
-                        className={`rounded-2xl py-4 text-center text-[10px] font-black uppercase tracking-[0.2em] cursor-pointer transition-all shadow-sm ${item.active ? "bg-slate-950 text-white shadow-xl shadow-slate-950/20" : "bg-white text-slate-500 border border-slate-100 hover:bg-slate-50"}`}
+                        className={`rounded-4xl py-4 text-center text-[10px] font-black uppercase tracking-[0.2em] cursor-pointer transition-all shadow-sm ${item.active ? "bg-slate-950 text-white shadow-xl shadow-slate-950/20" : "bg-white text-slate-500 border border-slate-100 hover:bg-slate-50"}`}
                       >
                         {item.label}
                       </motion.div>
@@ -147,7 +147,7 @@ export default function GrowthSimulatorPage() {
                       { label: "Growth prob", value: "84%", icon: TrendingUp, tone: "text-emerald-400" },
                       { label: "Exec risk", value: "Low", icon: CheckCircle2, tone: "text-purple-400" }
                     ].map((item, index) => (
-                      <motion.div key={item.label} whileHover={{ y: -5 }} className="rounded-2xl border border-white/10 bg-white/5 p-4 hover:bg-white/10 transition-colors">
+                      <motion.div key={item.label} whileHover={{ y: -5 }} className="rounded-4xl border border-white/10 bg-white/5 p-4 hover:bg-white/10 transition-colors">
                         <p className="text-[9px] font-black uppercase tracking-widest text-slate-500">{item.label}</p>
                         <div className="mt-3 flex items-center justify-between">
                            <span className={`text-xl font-black ${item.tone}`}>{item.value}</span>
@@ -163,11 +163,11 @@ export default function GrowthSimulatorPage() {
         </Container>
       </section>
 
-      <section className="border-y border-slate-200 bg-slate-50/80 py-24">
+      <section className="border-y border-slate-200 bg-slate-50/80 py-16 4xl:py-24">
         <Container>
           <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="grid gap-6 lg:grid-cols-3">
             {[["Business problem", "Big growth bets are risky when teams cannot see likely tradeoffs before committing real budget and inventory.", "text-rose-500"], ["What Tapito detects", "Tapito detects the highest-impact growth levers by simulating pricing, traffic, category mix, and retention changes.", "text-purple-600"], ["What action it enables", "Teams can launch initiatives with evidence, not hope, and de-risk growth before rollout.", "text-emerald-600"]].map(([title, text, tone], index) => (
-              <motion.div key={title} {...fadeUp(index * 0.12)} {...cardHover} className={`rounded-[2.5rem] border bg-white p-10 group transition-all ${index === 1 ? "border-purple-200 shadow-[0_45px_100px_-50px_rgba(124,58,237,0.5)]" : "border-slate-200 hover:border-purple-200"}`}>
+              <motion.div key={title} {...fadeUp(index * 0.12)} {...cardHover} className={`rounded-[1.5rem] md:rounded-[2.5rem] border bg-white p-10 group transition-all ${index === 1 ? "border-purple-200 shadow-[0_45px_100px_-50px_rgba(124,58,237,0.5)]" : "border-slate-200 hover:border-purple-200"}`}>
                 <p className={`text-[11px] font-black uppercase tracking-[0.25em] ${tone}`}>{title}</p>
                 <p className="mt-5 text-xl font-black leading-9 text-slate-950 uppercase tracking-tight">{text}</p>
               </motion.div>
@@ -176,12 +176,12 @@ export default function GrowthSimulatorPage() {
         </Container>
       </section>
 
-      <section className="py-24 relative overflow-hidden font-inter">
+      <section className="py-16 4xl:py-24 relative overflow-hidden font-inter">
         <div className="absolute top-0 left-0 w-2/3 h-full bg-[radial-gradient(circle_at_top_left,rgba(168,85,247,0.03),transparent_70%)] pointer-events-none" />
         <Container>
           <div className="mb-14 max-w-3xl">
             <motion.p {...fadeUp()} className="text-xs font-black uppercase tracking-[0.22em] text-purple-600">How it works</motion.p>
-            <motion.h2 {...fadeUp(0.08)} className="mt-4 text-4xl font-black tracking-[-0.05em] text-slate-950 lg:text-5xl uppercase tracking-tighter">A what-if workspace for strategic scale.</motion.h2>
+            <motion.h2 {...fadeUp(0.08)} className="mt-4 text-3xl md:text-4xl 4xl:text-5xl font-black tracking-[-0.05em] text-slate-950 uppercase tracking-tighter">A what-if workspace for strategic scale.</motion.h2>
           </div>
           <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] items-center">
             <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="space-y-6">
@@ -189,13 +189,13 @@ export default function GrowthSimulatorPage() {
                 <motion.div key={step} {...fadeUp(index * 0.15)} {...cardHover} className="rounded-[2.2rem] border border-slate-200 bg-white p-8 group hover:bg-slate-50 transition-colors h-full flex items-start gap-7 shadow-sm">
                   <motion.div whileHover={{ scale: 1.1, rotate: 10 }} className="flex h-15 w-15 shrink-0 items-center justify-center rounded-[1.25rem] bg-slate-950 text-base font-black text-white group-hover:bg-purple-600 transition-colors shadow-lg">{step}</motion.div>
                   <div>
-                    <h3 className="text-2xl font-black text-slate-950 group-hover:text-purple-700 transition-colors uppercase tracking-tight">{title}</h3>
+                    <h3 className="text-4xl font-black text-slate-950 group-hover:text-purple-700 transition-colors uppercase tracking-tight">{title}</h3>
                     <p className="mt-3 text-base font-medium leading-8 text-slate-600">{text}</p>
                   </div>
                 </motion.div>
               ))}
             </motion.div>
-            <motion.div variants={revealVariant} initial="initial" whileInView="whileInView" viewport={{ once: true, amount: 0.14 }} className="rounded-[3.5rem] border border-purple-200 bg-gradient-to-br from-white via-purple-50/30 to-indigo-50/50 p-10 lg:p-14 relative backdrop-blur-sm shadow-inner group overflow-hidden">
+            <motion.div variants={revealVariant} initial="initial" whileInView="whileInView" viewport={{ once: true, amount: 0.14 }} className="rounded-[2rem] md:rounded-[3.5rem] border border-purple-200 bg-gradient-to-br from-white via-purple-50/30 to-indigo-50/50 p-10 lg:p-14 relative backdrop-blur-sm shadow-inner group overflow-hidden">
                <div className="grid gap-5 md:grid-cols-3 relative z-10">
                 {[
                   { label: "Growth ROI", value: "3.2x", icon: TrendingUp },
@@ -205,7 +205,7 @@ export default function GrowthSimulatorPage() {
                   <motion.div key={item.label} variants={fadeUp(0.2 + index * 0.1)} {...cardHover} className="luminous-card luminous-surface-strong rounded-[2.2rem] border border-purple-100 bg-white p-7 text-center group/card">
                     <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-[1.2rem] bg-purple-50 text-purple-600 group-hover/card:bg-purple-600 group-hover/card:text-white transition-all shadow-sm"><item.icon size={26} /></div>
                     <p className="mt-5 text-[10px] font-black uppercase tracking-[0.25em] text-slate-400">{item.label}</p>
-                    <p className="mt-2 text-2xl font-black text-slate-950 transition-transform group-hover/card:scale-110">{item.value}</p>
+                    <p className="mt-2 text-4xl font-black text-slate-950 transition-transform group-hover/card:scale-110">{item.value}</p>
                   </motion.div>
                 ))}
               </div>
@@ -217,7 +217,7 @@ export default function GrowthSimulatorPage() {
                      ["Aggressive markdown plan", "Clears stock but sacrifices 12% profit margin", "text-rose-600"],
                      ["Stability & Category push", "Predictable growth, low operating stress path", "text-indigo-600"]
                    ].map(([title, note, tone], idx) => (
-                     <motion.div key={title} whileHover={{ x: 8 }} transition={{ duration: 0.2 }} className="rounded-2xl bg-slate-50 px-6 py-5 border border-transparent hover:border-purple-200 hover:bg-white transition-all">
+                     <motion.div key={title} whileHover={{ x: 8 }} transition={{ duration: 0.2 }} className="rounded-4xl bg-slate-50 px-6 py-5 border border-transparent hover:border-purple-200 hover:bg-white transition-all">
                        <p className="text-base font-black text-slate-950 leading-tight uppercase tracking-tight">{title}</p>
                        <p className={`mt-2 text-[10px] font-black uppercase tracking-widest ${tone}`}>{note}</p>
                      </motion.div>
@@ -229,18 +229,18 @@ export default function GrowthSimulatorPage() {
         </Container>
       </section>
 
-      <section className="py-24 relative overflow-hidden font-inter">
+      <section className="py-16 4xl:py-24 relative overflow-hidden font-inter">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle,rgba(168,85,247,0.025),transparent_70%)] pointer-events-none" />
         <Container>
           <div className="mb-14 text-center">
             <motion.p {...fadeUp()} className="text-xs font-black uppercase tracking-[0.22em] text-purple-600">Business impact</motion.p>
-            <motion.h2 {...fadeUp(0.08)} className="mt-4 text-4xl font-black tracking-[-0.05em] text-slate-950 lg:text-5xl uppercase tracking-tight">Growth bets become testable beforehand.</motion.h2>
+            <motion.h2 {...fadeUp(0.08)} className="mt-4 text-3xl md:text-4xl 4xl:text-5xl font-black tracking-[-0.05em] text-slate-950 uppercase tracking-tight">Growth bets become testable beforehand.</motion.h2>
           </div>
           <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="grid gap-12 md:grid-cols-3">
             {[["3x confidence", "Launch precision", "Projected vs actual rollout accuracy"], ["+40% speed", "Execution velocity", "Time saved in scenario justification"], ["Risk-Zero", "Strategy de-risking", "Modeled tradeoffs before budget deployment"]].map(([value, label, note], index) => (
-              <motion.div key={label} {...fadeUp(index * 0.15)} {...cardHover} className="rounded-[3.5rem] border border-slate-200 bg-white p-14 text-center group hover:bg-purple-50/40 transition-all shadow-sm">
+              <motion.div key={label} {...fadeUp(index * 0.15)} {...cardHover} className="rounded-[2.5rem] md:rounded-[3.5rem] border border-slate-200 bg-white p-14 text-center group hover:bg-purple-50/40 transition-all shadow-sm">
                 <motion.p animate={{ y: [0, -8, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="text-6xl font-black tracking-tight text-purple-700 transition-transform group-hover:scale-110">{value.split(' ')[0]}</motion.p>
-                <p className="mt-8 text-2xl font-black text-slate-950 uppercase tracking-tighter">{label}</p>
+                <p className="mt-8 text-4xl font-black text-slate-950 uppercase tracking-tighter">{label}</p>
                 <p className="mt-4 text-sm font-medium leading-8 text-slate-500 max-w-[220px] mx-auto opacity-70 italic group-hover:opacity-100 transition-opacity">"{note}"</p>
               </motion.div>
             ))}
@@ -248,10 +248,10 @@ export default function GrowthSimulatorPage() {
         </Container>
       </section>
 
-      <section className="py-24">
+      <section className="py-16 4xl:py-24">
         <Container>
-          <motion.div {...fadeUp()} className="mb-14 text-center"><h2 className="text-4xl font-black tracking-[-0.05em] text-slate-950 font-outfit uppercase tracking-tight">What Happens After You Enable This Feature?</h2></motion.div>
-          <div className="grid overflow-hidden rounded-[4.5rem] border border-slate-200 shadow-[0_50px_150px_-70px_rgba(15,23,42,0.4)] md:grid-cols-2 relative h-full">
+          <motion.div {...fadeUp()} className="mb-14 text-center"><h2 className="text-3xl md:text-4xl 4xl:text-5xl font-black tracking-[-0.05em] text-slate-950 font-outfit uppercase tracking-tight">What Happens After You Enable This Feature?</h2></motion.div>
+          <div className="grid overflow-hidden rounded-[2.5rem] md:rounded-[4.5rem] border border-slate-200 shadow-[0_50px_150px_-70px_rgba(15,23,42,0.4)] md:grid-cols-2 relative h-full">
             <motion.div initial={{ x: -100, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1 }} className="bg-white p-14 lg:p-24 relative overflow-hidden group">
               <p className="text-xs font-black uppercase tracking-[0.45em] text-slate-400 relative z-10">Before Tapito Simulator</p>
               <div className="mt-14 space-y-10 text-3xl font-bold text-slate-400 relative z-10 opacity-60">
@@ -287,7 +287,7 @@ export default function GrowthSimulatorPage() {
 
               <div className="relative z-10 max-w-3xl">
                 <Quote size={48} className="text-white/20 mb-6" />
-                <blockquote className="text-2xl md:text-3xl lg:text-4xl font-black text-white leading-tight mb-8">
+                <blockquote className="text-4xl md:text-3xl lg:text-4xl font-black text-white leading-tight mb-8">
                   {feature.quote.text}
                 </blockquote>
                 <p className="text-purple-200 font-bold text-base">

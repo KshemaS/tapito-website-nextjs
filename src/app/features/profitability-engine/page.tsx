@@ -52,19 +52,19 @@ export default function ProfitabilityEnginePage() {
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-white pt-24 text-slate-900 selection:bg-purple-100 selection:text-purple-900 font-inter">
       <InteractiveGrid />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-[520px] bg-[radial-gradient(circle_at_top,rgba(168,85,247,0.16),transparent_38%),radial-gradient(circle_at_top_right,rgba(99,102,241,0.12),transparent_24%)]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[400px] lg:h-[520px] bg-[radial-gradient(circle_at_top,rgba(168,85,247,0.16),transparent_38%),radial-gradient(circle_at_top_right,rgba(99,102,241,0.12),transparent_24%)]" />
 
-      <section className="relative py-20 lg:py-28">
+      <section className="relative py-12 md:py-20 4xl:py-28">
         <Container>
-          <div className="grid items-center gap-16 lg:grid-cols-[0.92fr_1.08fr]">
+          <div className="grid items-center gap-8 lg:gap-16 lg:grid-cols-[0.92fr_1.08fr]">
             <div>
               <motion.div {...fadeUp()} className="mb-6 inline-flex items-center gap-2 rounded-full border border-purple-200 bg-purple-50 px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-purple-700">
                 <BarChart3 size={14} /> Forecast intelligence panel
               </motion.div>
-              <motion.h1 {...fadeUp(0.08)} className="max-w-3xl text-5xl font-black tracking-[-0.06em] text-slate-950 lg:text-7xl">
+              <motion.h1 {...fadeUp(0.08)} className="max-w-3xl text-3xl sm:text-4xl md:text-5xl 4xl:text-7xl font-black tracking-[-0.06em] text-slate-950">
                 Predict Profit Before You Invest.
               </motion.h1>
-              <motion.p {...fadeUp(0.16)} className="mt-6 max-w-2xl text-lg font-medium leading-8 text-slate-600 lg:text-xl">
+              <motion.p {...fadeUp(0.16)} className="mt-6 max-w-4xl text-base md:text-lg 4xl:text-xl font-medium leading-7 md:leading-8 text-slate-600 font-inter">
                 Use forward-looking margin forecasts and scenario comparisons to plan inventory, pricing, and spend before profit risk shows up in the books.
               </motion.p>
               <motion.div {...fadeUp(0.24)} className="mt-10 flex flex-wrap items-center gap-4">
@@ -79,10 +79,10 @@ export default function ProfitabilityEnginePage() {
               </motion.div>
             </div>
 
-            <motion.div variants={revealVariant} initial="initial" whileInView="whileInView" viewport={{ once: true, amount: 0.3 }} className="rounded-[3rem] border border-slate-800 bg-slate-950 p-6 shadow-[0_50px_130px_-60px_rgba(15,23,42,0.95)] relative overflow-hidden group">
+            <motion.div variants={revealVariant} initial="initial" whileInView="whileInView" viewport={{ once: true, amount: 0.3 }} className="rounded-[2.5rem] md:rounded-[3rem] border border-slate-800 bg-slate-950 p-6 shadow-[0_50px_130px_-60px_rgba(15,23,42,0.95)] relative overflow-hidden group">
               <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500/10 blur-[90px] rounded-full pointer-events-none -translate-y-1/2 translate-x-1/2" />
               
-              <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-white relative z-10">
+              <div className="flex items-center justify-between rounded-4xl border border-white/10 bg-white/5 px-5 py-4 text-white relative z-10">
                 <div>
                   <p className="text-[10px] font-black uppercase tracking-[0.25em] text-purple-300">Profitability forecast engine</p>
                   <p className="mt-1 text-sm font-bold">Q3 outlook finalized</p>
@@ -146,7 +146,7 @@ export default function ProfitabilityEnginePage() {
                 ].map((item, index) => (
                   <motion.div key={item.label} variants={{ initial: { opacity: 0, scale: 0.9 }, whileInView: { opacity: 1, scale: 1 } }} {...cardHover} className="luminous-card-dark rounded-[1.75rem] border border-white/10 bg-white/8 p-5 text-white group hover:bg-white/12 transition-colors">
                     <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40">{item.label}</p>
-                    <p className={`mt-3 text-2xl font-black ${item.tone} transition-transform group-hover:scale-105 origin-left`}>{item.value}</p>
+                    <p className={`mt-3 text-4xl font-black ${item.tone} transition-transform group-hover:scale-105 origin-left`}>{item.value}</p>
                   </motion.div>
                 ))}
               </motion.div>
@@ -155,11 +155,11 @@ export default function ProfitabilityEnginePage() {
         </Container>
       </section>
 
-      <section className="border-y border-slate-200 bg-slate-50/80 py-24">
+      <section className="border-y border-slate-200 bg-slate-50/80 py-16 4xl:py-24">
         <Container>
           <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="grid gap-6 lg:grid-cols-3">
             {[["Business problem", "Retail teams often discover profit pressure only after the month closes, when it is too late to change the outcome.", "text-rose-500"], ["What Tapito detects", "Tapito detects future margin risk by combining seasonality, cost movement, velocity, and modeling.", "text-purple-600"], ["What action it enables", "Leaders can protect profitability earlier and invest with far more confidence.", "text-emerald-600"]].map(([title, text, tone], index) => (
-              <motion.div key={title} {...fadeUp(index * 0.1)} {...cardHover} className={`rounded-[2.5rem] border bg-white p-10 group transition-all ${index === 1 ? "border-purple-200 shadow-[0_40px_90px_-50px_rgba(124,58,237,0.5)]" : "border-slate-200 hover:border-purple-200"}`}>
+              <motion.div key={title} {...fadeUp(index * 0.1)} {...cardHover} className={`rounded-[1.5rem] md:rounded-[2.5rem] border bg-white p-10 group transition-all ${index === 1 ? "border-purple-200 shadow-[0_40px_90px_-50px_rgba(124,58,237,0.5)]" : "border-slate-200 hover:border-purple-200"}`}>
                 <p className={`text-[11px] font-black uppercase tracking-[0.25em] ${tone}`}>{title}</p>
                 <p className="mt-5 text-xl font-black leading-9 text-slate-950 uppercase tracking-tight">{text}</p>
               </motion.div>
@@ -168,28 +168,28 @@ export default function ProfitabilityEnginePage() {
         </Container>
       </section>
 
-      <section className="py-24 relative overflow-hidden">
+      <section className="py-16 4xl:py-24 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-2/3 h-full bg-[radial-gradient(circle_at_top_right,rgba(168,85,247,0.03),transparent_70%)] pointer-events-none" />
         <Container>
           <div className="mb-14 max-w-3xl">
             <motion.p {...fadeUp()} className="text-xs font-black uppercase tracking-[0.22em] text-purple-600">How it works</motion.p>
-            <motion.h2 {...fadeUp(0.08)} className="mt-4 text-4xl font-black tracking-[-0.05em] text-slate-950 lg:text-5xl">Model futures before you commit budget.</motion.h2>
+            <motion.h2 {...fadeUp(0.08)} className="mt-4 text-3xl md:text-4xl 4xl:text-5xl font-black tracking-[-0.05em] text-slate-950">Model futures before you commit budget.</motion.h2>
           </div>
           <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] items-center">
             <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="space-y-6">
               {[["01", "Learn historical profile", "Studying sales patterns, promos, seasonality, and margin behavior tokens."], ["02", "Model future states", "Different pricing, buying, and cost paths are tested against your reality."], ["03", "Flag profit risk early", "Leaders see target impact before they commit spend or inventory decisions."]].map(([step, title, text], index) => (
                 <motion.div key={step} {...fadeUp(index * 0.15)} {...cardHover} className="rounded-[2rem] border border-slate-200 bg-white p-8 group hover:bg-slate-50 transition-colors h-full">
                   <div className="flex items-start gap-6">
-                    <motion.div whileHover={{ scale: 1.1, rotate: 10 }} className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-slate-950 text-base font-black text-white group-hover:bg-purple-600 transition-colors shadow-lg">{step}</motion.div>
+                    <motion.div whileHover={{ scale: 1.1, rotate: 10 }} className="flex h-14 w-14 shrink-0 items-center justify-center rounded-4xl bg-slate-950 text-base font-black text-white group-hover:bg-purple-600 transition-colors shadow-lg">{step}</motion.div>
                     <div>
-                      <h3 className="text-2xl font-black text-slate-950 group-hover:text-purple-700 transition-colors">{title}</h3>
+                      <h3 className="text-4xl font-black text-slate-950 group-hover:text-purple-700 transition-colors">{title}</h3>
                       <p className="mt-3 text-base font-medium leading-8 text-slate-600">{text}</p>
                     </div>
                   </div>
                 </motion.div>
               ))}
             </motion.div>
-            <motion.div variants={revealVariant} initial="initial" whileInView="whileInView" viewport={{ once: true, amount: 0.14 }} className="rounded-[3.5rem] border border-purple-200 bg-gradient-to-br from-white via-purple-50/30 to-indigo-50/50 p-10 lg:p-14 relative backdrop-blur-sm group shadow-inner">
+            <motion.div variants={revealVariant} initial="initial" whileInView="whileInView" viewport={{ once: true, amount: 0.14 }} className="rounded-[2.5rem] md:rounded-[3.5rem] border border-purple-200 bg-gradient-to-br from-white via-purple-50/30 to-indigo-50/50 p-10 lg:p-14 relative backdrop-blur-sm group shadow-inner">
                <div className="grid gap-5 md:grid-cols-3 relative z-10">
                 {[
                   { label: "Forecast trust", value: "96%", icon: CheckCircle2 },
@@ -197,9 +197,9 @@ export default function ProfitabilityEnginePage() {
                   { label: "Planning speed", value: "+50%", icon: TrendingUp },
                 ].map((item, index) => (
                   <motion.div key={item.label} variants={fadeUp(0.2 + index * 0.1)} {...cardHover} className="luminous-card luminous-surface-strong rounded-[2rem] border border-purple-100 bg-white p-6 text-center group/card">
-                    <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-purple-50 text-purple-600 group-hover/card:bg-purple-600 group-hover/card:text-white transition-all shadow-sm"><item.icon size={26} /></div>
+                    <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-4xl bg-purple-50 text-purple-600 group-hover/card:bg-purple-600 group-hover/card:text-white transition-all shadow-sm"><item.icon size={26} /></div>
                     <p className="mt-5 text-[10px] font-black uppercase tracking-[0.25em] text-slate-400">{item.label}</p>
-                    <p className="mt-2 text-2xl font-black text-slate-950">{item.value}</p>
+                    <p className="mt-2 text-4xl font-black text-slate-950">{item.value}</p>
                   </motion.div>
                 ))}
               </div>
@@ -211,7 +211,7 @@ export default function ProfitabilityEnginePage() {
                     ["Supplier cost +6%", "Pressure on Fresh category by Wk 5", "text-rose-600"],
                     ["Inventory cut -10%", "Safer cash position, 0.4x stock-out risk", "text-purple-600"],
                   ].map(([title, note, tone], idx) => (
-                    <motion.div key={title} initial={{ x: -20, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ delay: 0.8 + idx * 0.1 }} className="rounded-2xl bg-slate-50 px-6 py-5 border border-transparent hover:border-purple-200 hover:bg-white transition-all cursor-pointer">
+                    <motion.div key={title} initial={{ x: -20, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ delay: 0.8 + idx * 0.1 }} className="rounded-4xl bg-slate-50 px-6 py-5 border border-transparent hover:border-purple-200 hover:bg-white transition-all cursor-pointer">
                       <p className="text-base font-black text-slate-900 leading-tight">{title}</p>
                       <p className={`mt-2 text-[11px] font-black uppercase tracking-widest ${tone}`}>{note}</p>
                     </motion.div>
@@ -223,18 +223,18 @@ export default function ProfitabilityEnginePage() {
         </Container>
       </section>
       
-      <section className="py-24 relative overflow-hidden">
+      <section className="py-16 4xl:py-24 relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle,rgba(168,85,247,0.02),transparent_70%)] pointer-events-none" />
         <Container>
           <div className="mb-14 text-center">
             <motion.p {...fadeUp()} className="text-xs font-black uppercase tracking-[0.22em] text-purple-600">Business impact</motion.p>
-            <motion.h2 {...fadeUp(0.08)} className="mt-4 text-4xl font-black tracking-[-0.05em] text-slate-950 lg:text-5xl">Decisions get sharper before money is at risk.</motion.h2>
+            <motion.h2 {...fadeUp(0.08)} className="mt-4 text-3xl md:text-4xl 4xl:text-5xl font-black tracking-[-0.05em] text-slate-950">Decisions get sharper before money is at risk.</motion.h2>
           </div>
           <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="grid gap-8 md:grid-cols-3">
             {[["96%", "Forecast accuracy", "Measured across 12-week rolling profit corridors"], ["-20%", "Holding cost", "Optimization of capital before stock commitment"], ["+50%", "Planning quality", "Time saved in creating executive scenario models"]].map(([value, label, note], index) => (
-              <motion.div key={label} {...fadeUp(index * 0.15)} {...cardHover} className="rounded-[3rem] border border-slate-200 bg-white p-12 text-center group hover:bg-purple-50/30 transition-all shadow-sm">
+              <motion.div key={label} {...fadeUp(index * 0.15)} {...cardHover} className="rounded-[2.5rem] md:rounded-[3rem] border border-slate-200 bg-white p-12 text-center group hover:bg-purple-50/30 transition-all shadow-sm">
                 <motion.p animate={{ scale: [1, 1.05, 1] }} transition={{ duration: 3, repeat: Infinity }} className="text-6xl font-black tracking-tight text-purple-700 transition-transform group-hover:scale-110">{value}</motion.p>
-                <p className="mt-8 text-2xl font-black text-slate-950">{label}</p>
+                <p className="mt-8 text-4xl font-black text-slate-950">{label}</p>
                 <p className="mt-4 text-sm font-medium leading-8 text-slate-500 max-w-[200px] mx-auto opacity-70 italic group-hover:opacity-100 transition-opacity">"{note}"</p>
               </motion.div>
             ))}
@@ -244,13 +244,13 @@ export default function ProfitabilityEnginePage() {
 
 
 
-      <section className="py-24">
+      <section className="py-16 4xl:py-24">
         <Container>
-          <motion.div {...fadeUp()} className="mb-14 text-center"><h2 className="text-4xl font-black tracking-[-0.05em] text-slate-950 font-outfit">What Happens After You Enable This Feature?</h2></motion.div>
-          <div className="grid overflow-hidden rounded-[3.5rem] border border-slate-200 shadow-[0_50px_140px_-60px_rgba(15,23,42,0.4)] md:grid-cols-2 relative h-full">
+          <motion.div {...fadeUp()} className="mb-14 text-center"><h2 className="text-3xl md:text-4xl 4xl:text-5xl font-black tracking-[-0.05em] text-slate-950 font-outfit uppercase tracking-tight">What Happens After You Enable This Feature?</h2></motion.div>
+          <div className="grid overflow-hidden rounded-[2.5rem] md:rounded-[3.5rem] border border-slate-200 shadow-[0_50px_140px_-60px_rgba(15,23,42,0.4)] md:grid-cols-2 relative h-full">
             <motion.div initial={{ x: -100, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1 }} className="bg-white p-12 lg:p-20 relative overflow-hidden group">
               <p className="text-xs font-black uppercase tracking-[0.3em] text-slate-400 relative z-10 font-black">Before Tapito Profitability</p>
-              <div className="mt-12 space-y-8 text-2xl font-bold text-slate-400 relative z-10 opacity-60">
+              <div className="mt-12 space-y-8 text-4xl font-bold text-slate-400 relative z-10 opacity-60">
                 <p>Retroactive P and L cycles</p>
                 <p>Quarter-end budget surprises</p>
                 <p>Blind inventory investing</p>
@@ -260,7 +260,7 @@ export default function ProfitabilityEnginePage() {
             <motion.div initial={{ x: 100, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1 }} className="bg-slate-950 p-12 lg:p-20 text-white relative h-full group">
                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.15),transparent_70%)] pointer-events-none" />
               <p className="text-xs font-black uppercase tracking-[0.3em] text-purple-300 relative z-10 font-black">After Tapito Profitability</p>
-              <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" className="mt-12 space-y-8 text-2xl font-black relative z-10">
+              <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" className="mt-12 space-y-8 text-4xl font-black relative z-10">
                 {["12-week future visibility", "Margin predictability logic", "Planned success modeling", "Continuous risk-first alerts"].map((item) => (
                   <motion.div key={item} variants={{ initial: { x: 40, opacity: 0 }, whileInView: { x: 0, opacity: 1 } }} transition={{ duration: 0.6 }} className="flex items-center gap-6 group hover:translate-x-3 transition-transform cursor-default"><CheckCircle2 size={32} className="text-emerald-400 shrink-0" />{item}</motion.div>
                 ))}
@@ -283,7 +283,7 @@ export default function ProfitabilityEnginePage() {
 
               <div className="relative z-10 max-w-3xl">
                 <Quote size={48} className="text-white/20 mb-6" />
-                <blockquote className="text-2xl md:text-3xl lg:text-4xl font-black text-white leading-tight mb-8">
+                <blockquote className="text-4xl md:text-3xl lg:text-4xl font-black text-white leading-tight mb-8">
                   {feature.quote.text}
                 </blockquote>
                 <p className="text-purple-200 font-bold text-base">

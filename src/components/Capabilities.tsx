@@ -43,13 +43,13 @@ export default function Capabilities() {
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-[#05a0ec] text-xs font-bold mb-6"
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-[#09358c] text-xs font-bold mb-6"
              >
-               <Sparkles size={14} />
+                <Sparkles size={14} color="#09358c" />
                CORE CAPABILITIES
              </motion.div>
              <h2 className="text-4xl md:text-6xl font-black text-slate-900 leading-[1.1]">
-               Built for the <br /> <span className="gradient-text">Top 1% of Retail</span>
+               Built for the <br /> <span className="text-[#09358c]">Top 1% of Retail</span>
              </h2>
           </div>
           <div className="lg:w-1/3">

@@ -59,19 +59,19 @@ export default function BusinessIntelligencePage() {
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-white pt-24 text-slate-900 selection:bg-purple-100 selection:text-purple-900">
       <InteractiveGrid />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-[520px] bg-[radial-gradient(circle_at_top_right,rgba(168,85,247,0.16),transparent_42%),radial-gradient(circle_at_top_left,rgba(99,102,241,0.14),transparent_30%)]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[400px] lg:h-[520px] bg-[radial-gradient(circle_at_top_right,rgba(168,85,247,0.16),transparent_42%),radial-gradient(circle_at_top_left,rgba(99,102,241,0.14),transparent_30%)]" />
 
-      <section className="relative py-20 lg:py-28">
+      <section className="relative py-12 md:py-20 4xl:py-28">
         <Container>
-          <div className="grid items-center gap-16 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="grid items-center gap-8 lg:gap-16 lg:grid-cols-[1.05fr_0.95fr]">
             <div>
               <motion.div {...fadeUp()} className="mb-6 inline-flex items-center gap-2 rounded-full border border-purple-200 bg-purple-50 px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-purple-700">
                 <LayoutDashboard size={14} /> Executive analytics workspace
               </motion.div>
-              <motion.h1 {...fadeUp(0.08)} className="max-w-3xl text-5xl font-black tracking-[-0.06em] text-slate-950 lg:text-7xl">
+              <motion.h1 {...fadeUp(0.08)} className="max-w-3xl text-3xl sm:text-4xl md:text-5xl 4xl:text-7xl font-black tracking-[-0.06em] text-slate-950">
                 Your Entire Business. One Screen.
               </motion.h1>
-              <motion.p {...fadeUp(0.16)} className="mt-6 max-w-2xl text-lg font-medium leading-8 text-slate-600 lg:text-xl">
+              <motion.p {...fadeUp(0.16)} className="mt-6 max-w-4xl text-base md:text-lg 4xl:text-xl font-medium leading-7 md:leading-8 text-slate-600">
                 Give leadership one live command center for revenue, branch performance, and category momentum so decisions happen now, not after the month is gone.
               </motion.p>
               <motion.div {...fadeUp(0.24)} className="mt-10 flex flex-wrap items-center gap-4">
@@ -98,8 +98,8 @@ export default function BusinessIntelligencePage() {
               </motion.div>
             </div>
 
-            <motion.div variants={revealVariant} initial="initial" whileInView="whileInView" viewport={{ once: true, amount: 0.25 }} className="rounded-[2.5rem] border border-slate-200 bg-slate-950 p-6 shadow-[0_50px_120px_-40px_rgba(15,23,42,0.9)]">
-              <div className="mb-5 flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+            <motion.div variants={revealVariant} initial="initial" whileInView="whileInView" viewport={{ once: true, amount: 0.25 }} className="rounded-[2rem] lg:rounded-[2.5rem] border border-slate-200 bg-slate-950 p-6 shadow-[0_50px_120px_-40px_rgba(15,23,42,0.9)]">
+              <div className="mb-5 flex items-center justify-between rounded-4xl border border-white/10 bg-white/5 px-4 py-3">
                 <div>
                   <p className="text-xs font-black uppercase tracking-[0.22em] text-purple-300">Tapito Command Center</p>
                   <p className="mt-1 text-sm font-bold text-white">All Branches Overview</p>
@@ -117,7 +117,7 @@ export default function BusinessIntelligencePage() {
                   </div>
                   <div className="flex h-40 items-end gap-2">
                     {[32, 48, 42, 66, 54, 78, 64, 88, 72, 96, 80, 92].map((bar, index) => (
-                      <motion.div key={index} initial={{ height: 0, opacity: 0 }} whileInView={{ height: `${bar}%`, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1, delay: 0.5 + index * 0.05, ease: "easeOut" }} className="flex-1 rounded-t-2xl bg-gradient-to-t from-purple-500/25 via-purple-500/65 to-fuchsia-300/90" />
+                      <motion.div key={index} initial={{ height: 0, opacity: 0 }} whileInView={{ height: `${bar}%`, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1, delay: 0.5 + index * 0.05, ease: "easeOut" }} className="flex-1 rounded-t-4xl bg-gradient-to-t from-purple-500/25 via-purple-500/65 to-fuchsia-300/90" />
                     ))}
                   </div>
                 </div>
@@ -143,7 +143,7 @@ export default function BusinessIntelligencePage() {
                   <p className="text-sm font-black text-white">Category Performance</p>
                   <div className="mt-4 grid grid-cols-2 gap-3 text-sm font-bold text-white">
                     {[["Fashion", "+18%"], ["Essentials", "+11%"], ["Home", "+9%"], ["Beauty", "+14%"]].map(([name, value], index) => (
-                      <motion.div key={name} initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: 1.2 + index * 0.1 }} className="luminous-card-dark rounded-2xl border border-white/10 bg-slate-900/80 p-3 hover:bg-slate-800 transition-colors">
+                      <motion.div key={name} initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: 1.2 + index * 0.1 }} className="luminous-card-dark rounded-4xl border border-white/10 bg-slate-900/80 p-3 hover:bg-slate-800 transition-colors">
                         <p className="text-[11px] uppercase tracking-[0.16em] text-white/60">{name}</p>
                         <p className="mt-2 text-xl text-fuchsia-300">{value}</p>
                       </motion.div>
@@ -156,7 +156,7 @@ export default function BusinessIntelligencePage() {
         </Container>
       </section>
 
-      <section className="py-20 bg-slate-50/80 border-y border-slate-200/80">
+      <section className="py-16 4xl:py-20 bg-slate-50/80 border-y border-slate-200/80">
         <Container>
           <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="grid gap-6 lg:grid-cols-3">
             {[ ["Business problem", "Leaders lose speed when branch, category, and revenue signals live in disconnected reports.", "text-rose-500"], ["What Tapito detects", "Tapito spots KPI drift, branch gaps, and category momentum from one synchronized retail view.", "text-purple-600"], ["What action it enables", "Teams can escalate weak stores, rebalance focus, and move on opportunities before they become month-end misses.", "text-emerald-600"] ].map(([title, text, tone], index) => (
@@ -171,7 +171,7 @@ export default function BusinessIntelligencePage() {
 
       <BentoAnalyticsGrid />
 
-      <section className="py-24">
+      <section className="py-16 4xl:py-24">
         <Container>
           <div className="mb-14 max-w-3xl">
             <motion.p {...fadeUp()} className="text-xs font-black uppercase tracking-[0.22em] text-purple-600">How it works</motion.p>
@@ -182,7 +182,7 @@ export default function BusinessIntelligencePage() {
               {[ ["01", "Sync every outlet", "POS, billing, inventory, and customer movement land in one live operating layer."], ["02", "Surface what matters", "Tapito highlights branch anomalies, category momentum, and revenue shifts automatically."], ["03", "Drive leadership action", "Managers drill into the exact branch or category that needs intervention next."] ].map(([step, title, text], index) => (
                 <motion.div key={step} {...fadeUp(index * 0.1)} {...cardHover} className="rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-[0_20px_60px_-45px_rgba(15,23,42,0.35)] group">
                   <div className="flex items-start gap-4">
-                    <motion.div whileHover={{ scale: 1.1, rotate: 10 }} className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-slate-950 text-sm font-black text-white transition-colors group-hover:bg-purple-600">{step}</motion.div>
+                    <motion.div whileHover={{ scale: 1.1, rotate: 10 }} className="flex h-12 w-12 shrink-0 items-center justify-center rounded-4xl bg-slate-950 text-sm font-black text-white transition-colors group-hover:bg-purple-600">{step}</motion.div>
                     <div>
                       <h3 className="text-xl font-black text-slate-950 transition-colors group-hover:text-purple-700">{title}</h3>
                       <p className="mt-2 text-sm font-medium leading-7 text-slate-600">{text}</p>
@@ -197,7 +197,7 @@ export default function BusinessIntelligencePage() {
                   <p className="text-sm font-black text-slate-950">KPI grid</p>
                   <div className="mt-4 grid grid-cols-2 gap-3">
                     {[["Bills", "12.4k"], ["ABV", "Rs 3.4k"], ["GP", "22.1%"], ["Stock", "Healthy"]].map(([label, value]) => (
-                      <motion.div key={label} whileHover={{ y: -5 }} className="luminous-card luminous-surface-strong soft-shine rounded-2xl bg-purple-50 p-3">
+                      <motion.div key={label} whileHover={{ y: -5 }} className="luminous-card luminous-surface-strong soft-shine rounded-4xl bg-purple-50 p-3">
                         <p className="text-[10px] font-black uppercase tracking-[0.18em] text-purple-500">{label}</p>
                         <p className="mt-2 text-lg font-black text-slate-950">{value}</p>
                       </motion.div>
@@ -208,7 +208,7 @@ export default function BusinessIntelligencePage() {
                   <p className="text-sm font-black text-slate-950">Branch priority map</p>
                   <div className="mt-4 space-y-3">
                     {[["High attention", "3 stores", "bg-rose-500"], ["Stable growth", "12 stores", "bg-emerald-500"], ["Upside potential", "9 stores", "bg-purple-500"]].map(([label, value, tone]) => (
-                      <motion.div key={label} whileHover={{ x: 5 }} className="flex items-center justify-between rounded-2xl bg-slate-50 px-4 py-3 text-sm font-bold text-slate-700">
+                      <motion.div key={label} whileHover={{ x: 5 }} className="flex items-center justify-between rounded-4xl bg-slate-50 px-4 py-3 text-sm font-bold text-slate-700">
                         <span className="flex items-center gap-2"><span className={`h-2.5 w-2.5 rounded-full ${tone}`} />{label}</span>
                         <span>{value}</span>
                       </motion.div>
@@ -219,7 +219,7 @@ export default function BusinessIntelligencePage() {
                   <p className="text-sm font-black text-slate-950">Decision board</p>
                   <div className="mt-4 grid gap-3 md:grid-cols-3">
                     {[["Store focus", "Rework assortment in Downtown Hub"], ["Category action", "Push Fashion in Central Hub this weekend"], ["Leadership note", "Margin expansion holding above target"]].map(([label, text], index) => (
-                      <motion.div key={label} whileHover={{ scale: 1.05 }} className="luminous-card-dark rounded-2xl border border-slate-200 bg-slate-950 p-4 text-white">
+                      <motion.div key={label} whileHover={{ scale: 1.05 }} className="luminous-card-dark rounded-4xl border border-slate-200 bg-slate-950 p-4 text-white">
                         <p className="text-[10px] font-black uppercase tracking-[0.16em] text-purple-300">{label}</p>
                         <p className="mt-3 text-sm font-bold leading-6">{text}</p>
                       </motion.div>
@@ -233,7 +233,7 @@ export default function BusinessIntelligencePage() {
       </section>
 
 
-      <section className="py-24 relative overflow-hidden">
+      <section className="py-16 4xl:py-24 relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle,rgba(168,85,247,0.05),transparent_70%)] pointer-events-none" />
         <Container>
           <div className="mb-12 text-center">
@@ -254,9 +254,9 @@ export default function BusinessIntelligencePage() {
 
 
 
-      <section className="py-24">
+      <section className="py-16 4xl:py-24">
         <Container>
-          <motion.div {...fadeUp()} className="mb-12 text-center"><h2 className="text-4xl font-black tracking-[-0.05em] text-slate-950">What Happens After You Enable This Feature?</h2></motion.div>
+          <motion.div {...fadeUp()} className="mb-12 text-center"><h2 className="text-3xl md:text-4xl 4xl:text-5xl font-black tracking-[-0.05em] text-slate-950">What Happens After You Enable This Feature?</h2></motion.div>
           <div className="grid overflow-hidden rounded-[3rem] border border-slate-200 shadow-[0_45px_120px_-60px_rgba(15,23,42,0.4)] md:grid-cols-2">
             <motion.div initial={{ x: -50, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="bg-white p-12 lg:p-16">
               <p className="text-sm font-black uppercase tracking-[0.22em] text-slate-400">Before Tapito</p>
@@ -293,7 +293,7 @@ export default function BusinessIntelligencePage() {
 
               <div className="relative z-10 max-w-3xl">
                 <Quote size={48} className="text-white/20 mb-6" />
-                <blockquote className="text-2xl md:text-3xl lg:text-4xl font-black text-white leading-tight mb-8">
+                <blockquote className="text-4xl md:text-3xl lg:text-4xl font-black text-white leading-tight mb-8">
                   {feature.quote.text}
                 </blockquote>
                 <p className="text-purple-200 font-bold text-base">
