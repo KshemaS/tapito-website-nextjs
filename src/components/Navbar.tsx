@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X, ArrowRight, CheckCircle2, ChevronRight, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -60,17 +61,15 @@ export default function Navbar() {
         "max-w-7xl mx-auto rounded-[2.5rem] transition-all duration-500 px-8 py-5 flex items-center justify-between relative",
         isScrolled ? "bg-white/95 backdrop-blur-xl shadow-[0_25px_50px_-12px_rgba(0,0,0,0.1)] border border-white/50" : "bg-transparent py-7"
       )}>
-        <Link onClick={closeMenu} href="/" className="flex items-center gap-3 group">
-          <div className="relative w-10 h-10 flex items-center justify-center">
-            <div className="absolute inset-0 bg-purple-600 rotate-45 rounded-xl opacity-10 group-hover:rotate-90 transition-transform duration-500" />
-            <div className="relative w-7 h-7 flex items-center justify-center">
-              <svg width="24" height="24" viewBox="0 0 32 32" fill="none" className="rotate-[15deg] group-hover:rotate-0 transition-transform duration-500">
-                <path d="M16 4L26 22H6L16 4Z" fill="#9333ea" className="drop-shadow-[0_0_8px_rgba(147,51,234,0.4)]" />
-                <path d="M16 10L22 21H10L16 10Z" fill="white" />
-              </svg>
-            </div>
-          </div>
-          <span className="text-2xl font-black tracking-tighter text-slate-900 group-hover:text-purple-600 transition-colors">Tapito</span>
+        <Link onClick={closeMenu} href="/" className="flex items-center group">
+          <Image
+            src="/tapito-blue.svg"
+            alt="Tapito Logo"
+            width={130}
+            height={40}
+            priority
+            className="h-10 w-auto object-contain transition-opacity duration-300 group-hover:opacity-80"
+          />
         </Link>
 
         {/* Desktop Nav */}

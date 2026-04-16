@@ -6,7 +6,7 @@ import { Check, ArrowRight, Zap, Target, Rocket, Shield, Globe, ZapIcon, Layers3
 import Container from "./Container";
 import { cn } from "@/lib/utils";
 import Particles from "./Particles";
-import Orb from "./Orb";
+
 import BorderGlow from "./BorderGlow";
 
 const plans = [
@@ -108,14 +108,18 @@ const SpotlightCard = ({ children, className, popular, hue }: { children: React.
   return (
     <div className={cn("relative h-full", className)}>
       {popular && (
-        <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-40">
-          <div className="flex items-center gap-2 px-3 py-1 bg-indigo-600 rounded-full border border-indigo-400 shadow-[0_8px_16px_-4px_rgba(79,70,229,0.3)] whitespace-nowrap">
+        <motion.div 
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="absolute -top-3 left-1/2 -translate-x-1/2 z-40"
+        >
+          <div className="flex items-center gap-2 px-3 py-1 bg-indigo-600 rounded-full border border-indigo-400 shadow-[0_8px_20px_-4px_rgba(79,70,229,0.4)] whitespace-nowrap">
             <div className="w-1.5 h-1.5 bg-white rounded-full" />
-            <span className="text-[10px] font-bold uppercase tracking-[0.05em] text-white">
+            <span className="text-[10px] font-black uppercase tracking-[0.1em] text-white">
               Most Popular
             </span>
           </div>
-        </div>
+        </motion.div>
       )}
 
       <motion.div
@@ -124,36 +128,36 @@ const SpotlightCard = ({ children, className, popular, hue }: { children: React.
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        whileHover={{ y: -5, transition: { duration: 0.3 } }}
+        whileHover={{ 
+          y: -8, 
+          transition: { duration: 0.3 } 
+        }}
         className={cn(
-          "group relative flex flex-col h-full rounded-[1.25rem] border border-slate-200/60 bg-white/80 backdrop-blur-xl transition-all duration-500 hover:shadow-[0_24px_48px_-12px_rgba(99,102,241,0.12)]",
+          "group relative flex flex-col h-full rounded-[1.5rem] border border-slate-200/60 bg-white/70 backdrop-blur-2xl transition-all duration-500 hover:shadow-[0_32px_64px_-16px_rgba(99,102,241,0.12)]",
           popular 
-            ? "shadow-[0_40px_80px_-15px_rgba(79,70,229,0.2)] border-indigo-500 hover:border-indigo-500 ring-2 ring-indigo-500/10 bg-white/95" 
-            : "hover:border-indigo-200/50"
+            ? "shadow-[0_48px_96px_-24px_rgba(79,70,229,0.22)] border-indigo-500/50 ring-1 ring-indigo-500/20 bg-white/90" 
+            : "hover:border-indigo-300/50 hover:bg-white/90 shadow-sm"
         )}
       >
+        {/* Top reflection flare */}
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/50 to-transparent" />
+        
         {popular && (
-          <BorderGlow 
-            borderRadius="1.25rem" 
-            duration={8} 
-            size={120} 
-            colorFrom="#6366f1" 
-            colorTo="#a855f7" 
-          />
+          <div className="absolute inset-0 rounded-[1.5rem] border border-indigo-500/30 pointer-events-none shadow-[inset_0_1px_1px_rgba(255,255,255,0.7)]" />
         )}
         <motion.div
-          className="pointer-events-none absolute -inset-px rounded-[1.25rem] opacity-0 transition duration-500 group-hover:opacity-100"
+          className="pointer-events-none absolute -inset-px rounded-[1.5rem] opacity-0 transition duration-500 group-hover:opacity-100"
           style={{
             background: useTransform(
               [mouseX, mouseY],
-              ([x, y]) => `radial-gradient(600px circle at ${x}px ${y}px, rgba(99, 102, 241, 0.05), transparent 40%)`
+              ([x, y]) => `radial-gradient(600px circle at ${x}px ${y}px, rgba(99, 102, 241, 0.06), transparent 40%)`
             ),
           }}
         />
         
         <div className={cn(
           "relative z-10 flex flex-col h-full rounded-[1.1rem] transition-all duration-500",
-          popular ? "p-6 pt-10 pb-20" : "p-6 pt-10 pb-10"
+          "p-6 pt-10 pb-10"
         )}>
           {children}
         </div>
@@ -236,12 +240,31 @@ const Pricing = () => {
       
       {/* Dynamic Background */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
-        <div className="absolute top-[-10%] -left-[10%] w-[70%] h-[70%] opacity-20 transition-transform duration-1000">
-          <Orb hue={240} hoverIntensity={0.5} />
-        </div>
-        <div className="absolute -bottom-[10%] -right-[10%] w-[70%] h-[70%] opacity-20 transition-transform duration-1000">
-          <Orb hue={280} hoverIntensity={0.5} />
-        </div>
+        {/* Blob 1 — top left, indigo/violet */}
+        <motion.div
+          animate={{ x: [0, 50, -20, 0], y: [0, 40, -30, 0], scale: [1, 1.12, 0.95, 1] }}
+          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute -top-[25%] -left-[20%] w-[65%] h-[65%] rounded-full bg-gradient-to-br from-indigo-300/35 via-violet-300/25 to-transparent blur-[130px]"
+        />
+        {/* Blob 2 — bottom right, blue/cyan */}
+        <motion.div
+          animate={{ x: [0, -60, 30, 0], y: [0, -50, 20, 0], scale: [1, 1.18, 0.92, 1] }}
+          transition={{ duration: 25, repeat: Infinity, ease: "easeInOut", delay: 4 }}
+          className="absolute -bottom-[25%] -right-[20%] w-[65%] h-[65%] rounded-full bg-gradient-to-tl from-blue-300/35 via-cyan-200/20 to-transparent blur-[130px]"
+        />
+        {/* Blob 3 — center, purple accent */}
+        <motion.div
+          animate={{ scale: [1, 1.25, 0.88, 1], opacity: [0.12, 0.22, 0.10, 0.12] }}
+          transition={{ duration: 14, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[45%] h-[45%] rounded-full bg-gradient-to-br from-violet-400/20 via-indigo-400/15 to-transparent blur-[100px]"
+        />
+        {/* Sweeping light beam */}
+        <motion.div
+          animate={{ x: ["-120%", "220%"] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", repeatDelay: 5 }}
+          className="absolute top-0 left-0 w-[40%] h-full bg-gradient-to-r from-transparent via-indigo-100/20 to-transparent skew-x-[-20deg]"
+        />
+        {/* Particles layer */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-40">
           <Particles />
         </div>
@@ -282,7 +305,7 @@ const Pricing = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-5 relative z-10 lg:px-4">
           <PricingCard plan={plans[0]} />
           <PricingCard plan={plans[1]} />
-          <div className="relative lg:z-10 lg:-mt-10 lg:-mb-10">
+          <div className="relative lg:z-10">
             <PricingCard plan={plans[2]} />
           </div>
           <PricingCard plan={plans[3]} />
@@ -384,30 +407,35 @@ const PricingCard = ({ plan }: { plan: typeof plans[0] }) => {
       popular={plan.popular} 
       hue={plan.hue}
     >
-      <div className="mb-8">
+      <div className="mb-10">
         <div className={cn(
-          "w-14 h-14 rounded-2xl flex items-center justify-center mb-8 relative transition-all duration-300",
+          "w-16 h-16 rounded-[1.25rem] flex items-center justify-center mb-10 relative transition-all duration-500 group-hover:scale-110 group-hover:rotate-3",
           plan.popular 
-            ? "bg-gradient-to-br from-indigo-600 to-violet-600 text-white shadow-xl shadow-indigo-600/20" 
-            : "bg-slate-50 text-slate-900 border border-slate-200/50"
+            ? "bg-gradient-to-br from-indigo-600 to-violet-600 text-white shadow-2xl shadow-indigo-600/30" 
+            : "bg-gradient-to-br from-slate-50 to-indigo-50/30 text-slate-900 border border-slate-200/50 shadow-sm"
         )}>
-          <Icon size={28} strokeWidth={1.5} />
+          <Icon size={32} strokeWidth={1.5} />
+          {plan.popular && (
+            <div className="absolute inset-0 bg-white/20 blur-xl rounded-full opacity-50" />
+          )}
         </div>
         
-        <h3 className="text-4xl font-bold text-slate-900 mb-3 leading-none tracking-tight">{plan.name}</h3>
-        <div className="h-1.5 w-16 bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 rounded-full mb-8 shadow-sm shadow-indigo-500/20" />
+        <h3 className="text-4xl font-bold text-slate-900 mb-4 leading-none tracking-tight">{plan.name}</h3>
+        <div className="h-1.5 w-20 bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 rounded-full mb-8 shadow-md shadow-indigo-500/10" />
         
-        <p className="text-[11px] font-extrabold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-4 uppercase tracking-[0.15em]">{plan.description}</p>
-        <p className="text-[13px] font-medium text-slate-500 leading-relaxed pr-4">{plan.idealFor}</p>
+        <div className="space-y-2">
+          <p className="text-[11px] font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent uppercase tracking-[0.2em]">{plan.description}</p>
+          <p className="text-[14px] font-semibold text-slate-500 leading-relaxed pr-2">{plan.idealFor}</p>
+        </div>
       </div>
 
-      <div className="flex-grow">
-        <div className="flex items-center gap-4 mb-6">
-          <span className="text-[10px] font-bold text-slate-300 uppercase tracking-widest whitespace-nowrap">Plan Features</span>
-          <div className="h-px w-full bg-slate-100" />
+      <div className="flex-grow space-y-6">
+        <div className="flex items-center gap-4">
+          <span className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] whitespace-nowrap">Core Capabilities</span>
+          <div className="h-px w-full bg-gradient-to-r from-slate-100 to-transparent" />
         </div>
         
-        <ul className="space-y-3 mb-8">
+        <ul className="space-y-4 mb-10">
           {plan.features.map((feature, fIndex) => (
             <motion.li 
               key={fIndex} 
@@ -415,17 +443,17 @@ const PricingCard = ({ plan }: { plan: typeof plans[0] }) => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: fIndex * 0.05, duration: 0.3 }}
-              className="flex items-start gap-3.5 group/item"
+              className="flex items-start gap-4 group/item"
             >
               <div className={cn(
-                "mt-0.5 flex-shrink-0 w-5.5 h-5.5 rounded-lg flex items-center justify-center transition-all duration-300 group-hover/item:scale-110",
+                "mt-0.5 flex-shrink-0 w-6 h-6 rounded-lg flex items-center justify-center transition-all duration-500 group-hover/item:scale-125 group-hover/item:rotate-12",
                 plan.popular 
-                  ? "bg-gradient-to-br from-indigo-100 to-violet-100 text-indigo-600 group-hover/item:from-indigo-600 group-hover/item:to-violet-600 group-hover/item:text-white group-hover/item:shadow-md group-hover/item:shadow-indigo-500/25" 
-                  : "bg-blue-50 text-blue-600 group-hover/item:bg-blue-600 group-hover/item:text-white"
+                  ? "bg-indigo-50 text-indigo-600 group-hover/item:bg-indigo-600 group-hover/item:text-white group-hover/item:shadow-lg group-hover/item:shadow-indigo-500/20" 
+                  : "bg-slate-50 text-slate-400 group-hover/item:bg-slate-900 group-hover/item:text-white"
               )}>
-                <Check size={11} strokeWidth={3.5} />
+                <Check size={12} strokeWidth={3.5} />
               </div>
-              <span className="text-[13px] font-semibold text-slate-600 leading-snug group-hover/item:text-slate-800 transition-colors">
+              <span className="text-[14px] font-bold text-slate-600 leading-snug group-hover/item:text-slate-900 transition-colors">
                 {feature}
               </span>
             </motion.li>
@@ -433,30 +461,29 @@ const PricingCard = ({ plan }: { plan: typeof plans[0] }) => {
         </ul>
       </div>
 
-      <div className="mt-auto pt-4">
+      <div className="mt-auto pt-6">
         <motion.button
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           className={cn(
             "w-full py-6 rounded-2xl font-black transition-all duration-500 flex items-center justify-center gap-3 group relative overflow-hidden",
             plan.popular 
-              ? "btn-premium text-white shadow-[0_25px_50px_-12px_rgba(99,102,241,0.4)] border-none" 
+              ? "btn-premium text-white shadow-[0_20px_40px_-8px_rgba(99,102,241,0.5)] border-none" 
               : "bg-slate-900 text-white hover:bg-slate-800 shadow-xl shadow-slate-900/20 border border-slate-800 hover:shadow-2xl hover:shadow-slate-900/30"
           )}
         >
-          <span className="relative z-10 uppercase text-[11px] tracking-[0.2em]">{plan.cta}</span>
-          <ArrowRight size={18} className="relative z-10 transition-all duration-500 group-hover:translate-x-1.5 group-hover:scale-110" />
+          <span className="relative z-10 uppercase text-[12px] tracking-[0.25em]">{plan.cta}</span>
+          <ArrowRight size={20} className="relative z-10 transition-all duration-500 group-hover:translate-x-2 group-hover:scale-110" />
           
-          {/* Premium shine effect */}
           <motion.div 
-            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12"
-            initial={{ x: "-200%" }}
-            whileHover={{ x: "200%" }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
+            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-[45deg]"
+            initial={{ x: "-300%" }}
+            whileHover={{ x: "300%" }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
           />
           
           {plan.popular && (
-            <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/20" />
+            <div className="absolute inset-0 rounded-2xl ring-2 ring-white/20 opacity-0 group-hover:opacity-100 transition-opacity" />
           )}
         </motion.button>
       </div>
