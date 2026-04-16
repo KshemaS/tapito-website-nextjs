@@ -22,14 +22,14 @@ export const FeatureDetailHero = ({ feature, Icon }: { feature: any, Icon: any }
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-2 bg-purple-50 border border-purple-100 rounded-full px-4 py-1.5 mb-8">
-              <div className="w-1.5 h-1.5 rounded-full bg-purple-500 animate-pulse" />
-              <span className="text-xs font-bold text-purple-600 uppercase tracking-widest">
+            <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-100 rounded-full px-4 py-1.5 mb-8">
+              <div className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
+              <span className="text-xs font-bold text-blue-600 uppercase tracking-widest">
                 Core Capability
               </span>
             </div>
 
-            <div className="w-16 h-16 bg-gradient-to-br from-purple-600 to-indigo-700 rounded-2xl flex items-center justify-center text-white mb-6 shadow-lg shadow-purple-500/20">
+            <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-sky-700 rounded-2xl flex items-center justify-center text-white mb-6 shadow-lg shadow-blue-500/20">
               <Icon size={32} />
             </div>
 
@@ -43,14 +43,14 @@ export const FeatureDetailHero = ({ feature, Icon }: { feature: any, Icon: any }
             <div className="flex flex-wrap items-center gap-4">
               <Link
                 href="/enterprise"
-                className="inline-flex items-center gap-2 bg-[#4112e0] hover:bg-indigo-700 text-white px-7 py-4 rounded-2xl font-black text-base shadow-xl shadow-indigo-500/20 transition-all hover:scale-105 active:scale-95"
+                className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-7 py-4 rounded-2xl font-black text-base shadow-xl shadow-blue-500/20 transition-all hover:scale-105 active:scale-95"
               >
                 <Play size={16} />
                 Book a Demo
               </Link>
               <Link
                 href="/enterprise"
-                className="group inline-flex items-center gap-2 font-black text-slate-900 hover:text-purple-600 transition-colors text-base"
+                className="group inline-flex items-center gap-2 font-black text-slate-900 hover:text-blue-600 transition-colors text-base"
               >
                 Talk to Sales
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
@@ -71,9 +71,9 @@ export const FeatureDetailHero = ({ feature, Icon }: { feature: any, Icon: any }
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.2 + i * 0.08, duration: 0.5 }}
-                  className="bg-white border border-slate-100 rounded-3xl p-6 shadow-sm hover:shadow-md hover:border-purple-200 transition-all duration-300 group"
+                  className="bg-white border border-slate-100 rounded-3xl p-6 shadow-sm hover:shadow-md hover:border-blue-200 transition-all duration-300 group"
                 >
-                  <p className="text-3xl font-black text-slate-900 mb-1 group-hover:text-purple-600 transition-colors duration-300">
+                  <p className="text-3xl font-black text-slate-900 mb-1 group-hover:text-blue-600 transition-colors duration-300">
                     {stat.value}
                   </p>
                   <p className="text-sm font-bold text-slate-500">{stat.label}</p>
@@ -162,20 +162,20 @@ export const FeatureAnalyticsBento = () => {
             <div className="mt-auto flex flex-col lg:flex-row items-center justify-center pt-4 gap-2 lg:gap-0">
                 <div className="bg-slate-100 flex-1 h-8 lg:rounded-l-full rounded-full flex items-center justify-center px-4 text-[10px] font-bold text-slate-500 shadow-inner w-full">Searched Category</div>
                 <ArrowRight className="text-slate-300 mx-2 hidden lg:block" size={16} />
-                <div className="bg-purple-100 flex-1 h-8 lg:rounded-none rounded-full flex items-center justify-center px-4 text-[10px] font-bold text-purple-600 shadow-inner w-full">Added to Cart</div>
+                <div className="bg-blue-100 flex-1 h-8 lg:rounded-none rounded-full flex items-center justify-center px-4 text-[10px] font-bold text-blue-600 shadow-inner w-full">Added to Cart</div>
                 <ArrowRight className="text-slate-300 mx-2 hidden lg:block" size={16} />
                 <div className="bg-green-100 flex-1 h-8 lg:rounded-r-full rounded-full flex items-center justify-center px-4 text-[10px] font-bold text-green-700 shadow-inner w-full">Made Purchase</div>
             </div>
           </div>
 
           {/* Acquisition Analysis */}
-          <div className="md:col-span-3 lg:col-span-3 lg:row-span-1 bg-[#eee6f7] rounded-3xl p-6 relative overflow-hidden group border border-[#ddd0ef] flex flex-col shadow-sm">
-            <h3 className="text-lg lg:text-xl font-black text-[#56367c] mb-1">Acquisition Analysis</h3>
-            <p className="text-[#724a9e] font-medium text-[11px] lg:text-xs">Measure Effectiveness</p>
+          <div className="md:col-span-3 lg:col-span-3 lg:row-span-1 bg-[#eff6ff] rounded-3xl p-6 relative overflow-hidden group border border-[#dbeafe] flex flex-col shadow-sm">
+            <h3 className="text-lg lg:text-xl font-black text-[#1e3a8a] mb-1">Acquisition Analysis</h3>
+            <p className="text-[#1e40af] font-medium text-[11px] lg:text-xs">Measure Effectiveness</p>
             <div className="mt-auto flex flex-col gap-2">
-                <div className="bg-[#7c3aed] text-white text-[10px] font-bold py-1 px-3 rounded-full w-3/4">Campaign A</div>
-                <div className="bg-[#6d28d9] text-white text-[10px] font-bold py-1 px-3 rounded-full w-full">Campaign B</div>
-                <div className="bg-[#4c1d95] text-white text-[10px] font-bold py-1 px-3 rounded-full w-1/2">Campaign C</div>
+                <div className="bg-[#2563eb] text-white text-[10px] font-bold py-1 px-3 rounded-full w-3/4">Campaign A</div>
+                <div className="bg-[#3b82f6] text-white text-[10px] font-bold py-1 px-3 rounded-full w-full">Campaign B</div>
+                <div className="bg-[#1d4ed8] text-white text-[10px] font-bold py-1 px-3 rounded-full w-1/2">Campaign C</div>
             </div>
           </div>
 
@@ -201,7 +201,7 @@ export const FeatureHowItWorks = ({ feature }: { feature: any }) => {
       <Container>
         <motion.div {...fadeUp(0)} className="mb-14">
           <div className="inline-flex items-center gap-2 bg-white border border-slate-200 rounded-full px-4 py-1.5 mb-5">
-            <Zap size={13} className="text-purple-500" />
+            <Zap size={13} className="text-blue-500" />
             <span className="text-xs font-bold text-slate-600 uppercase tracking-widest">How It Works</span>
           </div>
           <h2 className="text-3xl lg:text-4xl font-black text-slate-900 leading-tight max-w-xl">
@@ -213,10 +213,10 @@ export const FeatureHowItWorks = ({ feature }: { feature: any }) => {
           {feature.howItWorks.map((step: any, i: number) => (
             <motion.div key={i} {...fadeUp(i * 0.1)} className="relative">
               {i < feature.howItWorks.length - 1 && (
-                <div className="hidden md:block absolute top-8 left-[calc(100%+1rem)] w-8 h-px bg-gradient-to-r from-purple-200 to-transparent" />
+                <div className="hidden md:block absolute top-8 left-[calc(100%+1rem)] w-8 h-px bg-gradient-to-r from-blue-200 to-transparent" />
               )}
-              <div className="bg-white rounded-3xl p-8 border border-slate-100 hover:border-purple-200 hover:shadow-lg transition-all duration-300 h-full">
-                <div className="w-12 h-12 bg-purple-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-purple-500/30">
+              <div className="bg-white rounded-3xl p-8 border border-slate-100 hover:border-blue-200 hover:shadow-lg transition-all duration-300 h-full">
+                <div className="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-blue-500/30">
                   <span className="text-white font-black text-sm">{step.step}</span>
                 </div>
                 <h3 className="text-xl font-black text-slate-900 mb-3">{step.title}</h3>
@@ -253,7 +253,7 @@ export const FeatureKeyBenefits = ({ feature }: { feature: any }) => {
               <motion.div
                 key={i}
                 {...fadeUp(i * 0.07)}
-                className="flex items-center gap-4 bg-white border border-slate-100 rounded-2xl px-6 py-4 hover:border-purple-200 hover:shadow-sm transition-all duration-200 group"
+                className="flex items-center gap-4 bg-white border border-slate-100 rounded-2xl px-6 py-4 hover:border-blue-200 hover:shadow-sm transition-all duration-200 group"
               >
                 <div className="w-7 h-7 bg-green-50 rounded-full flex items-center justify-center shrink-0 group-hover:bg-green-100 transition-colors">
                   <CheckCircle2 size={15} className="text-green-500" />
@@ -287,10 +287,10 @@ export const FeatureUseCases = ({ feature }: { feature: any }) => {
             <motion.div
               key={i}
               {...fadeUp(i * 0.1)}
-              className="bg-white rounded-3xl p-8 border border-slate-100 hover:border-purple-200 hover:shadow-xl hover:shadow-purple-500/5 transition-all duration-300 group"
+              className="bg-white rounded-3xl p-8 border border-slate-100 hover:border-blue-200 hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-300 group"
             >
-              <div className="w-10 h-10 bg-purple-50 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-purple-600 transition-colors duration-300">
-                <span className="text-xs font-black text-purple-600 group-hover:text-white transition-colors duration-300">
+              <div className="w-10 h-10 bg-blue-50 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-blue-600 transition-colors duration-300">
+                <span className="text-xs font-black text-blue-600 group-hover:text-white transition-colors duration-300">
                   {String(i + 1).padStart(2, "0")}
                 </span>
               </div>
@@ -309,9 +309,9 @@ export const FeatureExampleQueries = ({ feature }: { feature: any }) => {
     <section className="py-20">
       <Container>
         <motion.div {...fadeUp(0)} className="mb-10">
-          <div className="inline-flex items-center gap-2 bg-indigo-50 border border-indigo-100 rounded-full px-4 py-1.5 mb-5">
-            <MessageSquare size={13} className="text-indigo-500" />
-            <span className="text-xs font-bold text-indigo-600 uppercase tracking-widest">Example Queries</span>
+          <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-100 rounded-full px-4 py-1.5 mb-5">
+            <MessageSquare size={13} className="text-blue-500" />
+            <span className="text-xs font-bold text-blue-600 uppercase tracking-widest">Example Queries</span>
           </div>
           <h2 className="text-3xl lg:text-4xl font-black text-slate-900 leading-tight max-w-xl">
             Ask Your Business — In Plain Language
@@ -323,10 +323,10 @@ export const FeatureExampleQueries = ({ feature }: { feature: any }) => {
             <motion.div
               key={i}
               {...fadeUp(i * 0.08)}
-              className="flex items-start gap-4 bg-gradient-to-br from-slate-900 to-indigo-900 rounded-2xl p-6 text-white group hover:scale-[1.02] transition-transform duration-200"
+              className="flex items-start gap-4 bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl p-6 text-white group hover:scale-[1.02] transition-transform duration-200"
             >
               <div className="w-8 h-8 bg-white/10 rounded-xl flex items-center justify-center shrink-0 mt-0.5">
-                <MessageSquare size={14} className="text-indigo-300" />
+                <MessageSquare size={14} className="text-blue-300" />
               </div>
               <p className="text-sm font-bold leading-relaxed text-white/90">"{query}"</p>
             </motion.div>
@@ -343,7 +343,7 @@ export const FeatureQuote = ({ feature }: { feature: any }) => {
       <Container>
         <motion.div
           {...fadeUp(0)}
-          className="bg-gradient-to-br from-purple-600 to-indigo-700 rounded-[2.5rem] p-10 md:p-14 lg:p-20 relative overflow-hidden"
+          className="bg-gradient-to-br from-blue-600 to-sky-700 rounded-[2.5rem] p-10 md:p-14 lg:p-20 relative overflow-hidden"
         >
           <div className="absolute top-0 right-0 w-64 h-64 rounded-full bg-white/5 translate-x-1/3 -translate-y-1/3" />
           <div className="absolute bottom-0 left-0 w-48 h-48 rounded-full bg-white/5 -translate-x-1/3 translate-y-1/3" />
@@ -353,7 +353,7 @@ export const FeatureQuote = ({ feature }: { feature: any }) => {
             <blockquote className="text-2xl md:text-3xl lg:text-4xl font-black text-white leading-tight mb-8">
               {feature.quote.text}
             </blockquote>
-            <p className="text-purple-200 font-bold text-base">
+            <p className="text-blue-200 font-bold text-base">
               — {feature.quote.author}
             </p>
           </div>
@@ -376,15 +376,15 @@ export const FeatureRelatedItems = ({ relatedFeatures }: { relatedFeatures: any[
             <motion.div key={other.slug} {...fadeUp(i * 0.1)}>
               <Link
                 href={`/features/${other.slug}`}
-                className="group flex flex-col gap-5 p-8 bg-white border border-slate-100 rounded-3xl hover:border-purple-200 hover:shadow-2xl hover:shadow-purple-500/5 transition-all duration-500 h-full"
+                className="group flex flex-col gap-5 p-8 bg-white border border-slate-100 rounded-3xl hover:border-blue-200 hover:shadow-2xl hover:shadow-blue-500/5 transition-all duration-500 h-full"
               >
                 <div className="flex items-center justify-between">
-                  <div className="w-12 h-12 bg-purple-50 rounded-2xl flex items-center justify-center text-purple-600 group-hover:bg-purple-600 group-hover:text-white transition-colors duration-400">
+                  <div className="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-400">
                     <other.icon size={22} />
                   </div>
                   <ArrowRight
                     size={18}
-                    className="text-slate-300 group-hover:text-purple-600 group-hover:translate-x-1 transition-all"
+                    className="text-slate-300 group-hover:text-blue-600 group-hover:translate-x-1 transition-all"
                   />
                 </div>
                 <div>

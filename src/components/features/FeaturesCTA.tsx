@@ -14,7 +14,7 @@ export const FeaturesCTA = () => {
           className="relative px-8 py-14 md:px-12 md:py-20 lg:px-16 lg:py-24 rounded-[2.5rem] bg-[#0c0c1e] text-white overflow-hidden shadow-xl"
         >
           {/* Subtle Background Glow */}
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/4" />
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/4" />
           
           <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-16">
             <div className="max-w-2xl text-center lg:text-left">
@@ -28,9 +28,9 @@ export const FeaturesCTA = () => {
             
             <div className="flex flex-col sm:flex-row items-center gap-4 w-full lg:w-auto">
               <motion.button 
-                whileHover={{ scale: 1.05, backgroundColor: "#4f46e5" }}
+                whileHover={{ scale: 1.05, backgroundColor: "#2563eb" }}
                 whileTap={{ scale: 0.95 }}
-                className="w-full sm:w-auto min-w-[180px] bg-[#4112e0] text-white px-8 py-4 rounded-xl font-black text-base lg:text-lg transition-all"
+                className="w-full sm:w-auto min-w-[180px] bg-blue-600 text-white px-8 py-4 rounded-xl font-black text-base lg:text-lg transition-all"
               >
                 Start Free Trial
               </motion.button>

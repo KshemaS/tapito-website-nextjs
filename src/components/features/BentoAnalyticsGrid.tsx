@@ -128,10 +128,10 @@ const bentoItems: BentoItem[] = [
     visual: (
       <div className="mt-6 relative h-20 w-full overflow-hidden">
          <svg className="w-full h-full" viewBox="0 0 400 100">
-           <path d="M0,50 Q100,10 200,50 T400,50" fill="none" stroke="currentColor" strokeWidth="2" className="text-purple-400 opacity-40" />
-           <circle cx="50" cy="30" r="4" className="fill-purple-600" />
-           <circle cx="200" cy="50" r="4" className="fill-purple-600" />
-           <circle cx="350" cy="50" r="4" className="fill-purple-600" />
+           <path d="M0,50 Q100,10 200,50 T400,50" fill="none" stroke="currentColor" strokeWidth="2" className="text-blue-400 opacity-40" />
+           <circle cx="50" cy="30" r="4" className="fill-blue-600" />
+           <circle cx="200" cy="50" r="4" className="fill-blue-600" />
+           <circle cx="350" cy="50" r="4" className="fill-blue-600" />
          </svg>
       </div>
     )
@@ -254,7 +254,7 @@ export const BentoAnalyticsGrid = ({
           <motion.p 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="text-xs font-black uppercase tracking-[0.3em] text-purple-600 mb-4"
+            className="text-xs font-black uppercase tracking-[0.3em] text-blue-600 mb-4"
           >
             {subtitle}
           </motion.p>
@@ -281,7 +281,7 @@ export const BentoAnalyticsGrid = ({
               className={`
                 ${item.span} ${item.color} rounded-[2.5rem] p-8 md:p-10 border ${item.borderColor}
                 relative overflow-hidden cursor-pointer group transition-all duration-300
-                hover:shadow-[0_45px_110px_-40px_rgba(124,58,237,0.25)] flex flex-col
+                hover:shadow-[0_45px_110px_-40px_rgba(37,99,235,0.25)] flex flex-col
               `}
             >
               <div className="relative z-10 h-full flex flex-col">
@@ -332,7 +332,7 @@ export const BentoAnalyticsGrid = ({
               </button>
 
               <div className="p-12 md:p-16 overflow-y-auto custom-scrollbar flex-1 relative">
-                <div className="absolute top-0 right-0 w-64 h-64 bg-purple-50 blur-[100px] pointer-events-none rounded-full" />
+                <div className="absolute top-0 right-0 w-64 h-64 bg-blue-50 blur-[100px] pointer-events-none rounded-full" />
                 
                 <div className="relative z-10">
                   <div className={`w-20 h-20 rounded-3xl ${selectedItem.badgeColor} ${selectedItem.textColor} flex items-center justify-center mb-10`}>
@@ -342,7 +342,7 @@ export const BentoAnalyticsGrid = ({
                   <h3 className="text-4xl md:text-5xl font-black text-slate-950 mb-4 tracking-tighter uppercase">
                     {selectedItem.title}
                   </h3>
-                  <p className="text-xl font-bold text-purple-600 mb-10">
+                  <p className="text-xl font-bold text-blue-600 mb-10">
                     {selectedItem.subtitle}
                   </p>
                   
@@ -363,7 +363,7 @@ export const BentoAnalyticsGrid = ({
                             initial={{ x: -20, opacity: 0 }}
                             animate={{ x: 0, opacity: 1 }}
                             transition={{ delay: 0.1 * i }}
-                            className="flex gap-4 p-6 rounded-3xl bg-slate-50 border border-slate-100 items-start hover:bg-white hover:border-purple-200 transition-all group/benefit hover:shadow-lg"
+                            className="flex gap-4 p-6 rounded-3xl bg-slate-50 border border-slate-100 items-start hover:bg-white hover:border-blue-200 transition-all group/benefit hover:shadow-lg"
                           >
                              <div className="w-7 h-7 rounded-full bg-emerald-100 flex items-center justify-center shrink-0 mt-0.5 group-hover/benefit:bg-emerald-500 group-hover/benefit:text-white transition-colors"><CheckCircle2 size={16} /></div>
                              <p className="text-[15px] font-bold text-slate-700 leading-relaxed">{benefit}</p>
