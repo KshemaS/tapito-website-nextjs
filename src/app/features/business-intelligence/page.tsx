@@ -8,8 +8,10 @@ import {
   CheckCircle2,
   LayoutDashboard,
   Play,
+  Quote,
   Sparkles,
 } from "lucide-react";
+import { featuresData } from "@/components/features/FeaturesGrid";
 import Container from "@/components/Container";
 import { InteractiveGrid } from "@/components/InteractiveGrid";
 import { BentoAnalyticsGrid } from "@/components/features/BentoAnalyticsGrid";
@@ -51,6 +53,9 @@ const metrics = [
 ];
 
 export default function BusinessIntelligencePage() {
+  const feature = featuresData.find(f => f.slug === "business-intelligence");
+  if (!feature) return null;
+
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-white pt-24 text-slate-900 selection:bg-purple-100 selection:text-purple-900">
       <InteractiveGrid />
@@ -247,16 +252,7 @@ export default function BusinessIntelligencePage() {
         </Container>
       </section>
 
-      <section className="py-24 bg-gradient-to-br from-purple-50 via-white to-indigo-50">
-        <Container>
-          <motion.div variants={revealVariant} initial="initial" whileInView="whileInView" viewport={{ once: true, amount: 0.4 }} className="rounded-[3rem] border border-purple-200 bg-white p-10 text-center shadow-[0_50px_140px_-70px_rgba(124,58,237,0.5)] lg:p-20 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-purple-100/30 blur-3xl rounded-full -translate-y-1/2 translate-x-1/2" />
-            <motion.div whileHover={{ scale: 1.1, rotate: 180 }} transition={{ duration: 0.8 }} className="mx-auto relative z-10 flex h-20 w-20 items-center justify-center rounded-[2rem] bg-purple-600 text-white shadow-xl shadow-purple-500/30"><Sparkles size={32} /></motion.div>
-            <h2 className="mt-8 text-4xl font-black tracking-[-0.05em] text-slate-950 lg:text-5xl relative z-10">Tapito highlights what leadership should do next, not just what happened yesterday.</h2>
-            <p className="mx-auto mt-8 max-w-3xl text-xl font-medium leading-9 text-slate-600 relative z-10">Traditional dashboards stop at visibility. Tapito keeps pushing toward action by ranking branch gaps, surfacing category momentum, and framing the next move inside the same workspace.</p>
-          </motion.div>
-        </Container>
-      </section>
+
 
       <section className="py-24">
         <Container>
@@ -283,6 +279,31 @@ export default function BusinessIntelligencePage() {
           </div>
         </Container>
       </section>
+
+      {feature.quote && (
+        <section className="py-16">
+          <Container>
+            <motion.div
+              {...fadeUp(0)}
+              className="bg-gradient-to-br from-purple-600 to-indigo-700 rounded-[2.5rem] p-10 md:p-14 lg:p-20 relative overflow-hidden"
+            >
+              {/* Decorative blobs */}
+              <div className="absolute top-0 right-0 w-64 h-64 rounded-full bg-white/5 translate-x-1/3 -translate-y-1/3" />
+              <div className="absolute bottom-0 left-0 w-48 h-48 rounded-full bg-white/5 -translate-x-1/3 translate-y-1/3" />
+
+              <div className="relative z-10 max-w-3xl">
+                <Quote size={48} className="text-white/20 mb-6" />
+                <blockquote className="text-2xl md:text-3xl lg:text-4xl font-black text-white leading-tight mb-8">
+                  {feature.quote.text}
+                </blockquote>
+                <p className="text-purple-200 font-bold text-base">
+                  — {feature.quote.author}
+                </p>
+              </div>
+            </motion.div>
+          </Container>
+        </section>
+      )}
 
       <ExploreMoreFeatures currentSlug="business-intelligence" />
     </div>

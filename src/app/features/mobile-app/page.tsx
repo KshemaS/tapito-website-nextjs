@@ -9,7 +9,9 @@ import {
   Play,
   Smartphone,
   Sparkles,
+  Quote,
 } from "lucide-react";
+import { featuresData } from "@/components/features/FeaturesGrid";
 import Container from "@/components/Container";
 import { InteractiveGrid } from "@/components/InteractiveGrid";
 
@@ -43,6 +45,9 @@ const revealVariant = {
 } as any;
 
 export default function MobileAppPage() {
+  const feature = featuresData.find(f => f.slug === "mobile-app");
+  if (!feature) return null;
+
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-white pt-24 text-slate-900 selection:bg-purple-100 selection:text-purple-900 font-inter">
       <InteractiveGrid />
@@ -75,7 +80,7 @@ export default function MobileAppPage() {
 
             <motion.div variants={revealVariant} initial="initial" whileInView="whileInView" viewport={{ once: true, amount: 0.3 }} className="relative flex justify-center group">
               <div className="absolute h-[420px] w-[420px] rounded-full bg-purple-200/30 blur-[130px] -z-10 animate-pulse" />
-              <motion.div whileHover={{ rotateY: -10, rotateX: 5 }} transition={{ duration: 0.6 }} className="relative w-[340px] rounded-[3.5rem] border-[12px] border-slate-900 bg-slate-950 p-4 shadow-[0_60px_160px_-40px_rgba(15,23,42,0.9)] perspective-1000">
+              <motion.div whileHover={{ rotateY: -10, rotateX: 5 }} transition={{ duration: 0.6 }} className="relative max-w-[540px] rounded-[3.5rem] border-[12px] border-slate-900 bg-slate-950 p-4 shadow-[0_60px_160px_-40px_rgba(15,23,42,0.9)] perspective-1000">
                 <div className="overflow-hidden rounded-[2.5rem] bg-white h-full">
                   <div className="flex items-center justify-between border-b border-slate-100 bg-slate-50 px-6 py-6">
                     <p className="text-sm font-black text-slate-950 uppercase tracking-widest">Store Monitor</p>
@@ -219,16 +224,7 @@ export default function MobileAppPage() {
         </Container>
       </section>
 
-      <section className="bg-gradient-to-br from-purple-50 via-white to-indigo-50 py-32 overflow-hidden relative group font-inter px-4 font-outfit">
-        <Container>
-          <motion.div variants={revealVariant} initial="initial" whileInView="whileInView" viewport={{ once: true, amount: 0.4 }} className="rounded-[4rem] border border-purple-200 bg-white p-14 text-center shadow-[0_60px_180px_-90px_rgba(124,58,237,0.6)] lg:p-28 relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/5 via-transparent to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-            <motion.div whileHover={{ scale: 1.25, rotate: 180 }} transition={{ duration: 1 }} className="mx-auto flex h-28 w-28 items-center justify-center rounded-[3rem] bg-purple-600 text-white shadow-3xl shadow-purple-500/50 relative z-10"><Sparkles size={42} /></motion.div>
-            <h2 className="mt-12 text-5xl font-black tracking-[-0.05em] text-slate-950 lg:text-7xl relative z-10 uppercase tracking-tighter leading-tight">Decisive leadership, now mobile-native.</h2>
-            <p className="mx-auto mt-12 max-w-5xl text-2xl font-medium leading-relaxed text-slate-600 relative z-10 opacity-80 group-hover:opacity-100 italic font-inter">Passive mobile dashboards are a thing of the past. Tapito makes the phone an active operating tool for approvals, escalations, and fast performance calls — no matter where you are.</p>
-          </motion.div>
-        </Container>
-      </section>
+
 
       <section className="py-24">
         <Container>
@@ -255,6 +251,31 @@ export default function MobileAppPage() {
           </div>
         </Container>
       </section>
+
+      {feature.quote && (
+        <section className="py-16">
+          <Container>
+            <motion.div
+              {...fadeUp(0)}
+              className="bg-gradient-to-br from-purple-600 to-indigo-700 rounded-[2.5rem] p-10 md:p-14 lg:p-20 relative overflow-hidden"
+            >
+              {/* Decorative blobs */}
+              <div className="absolute top-0 right-0 w-64 h-64 rounded-full bg-white/5 translate-x-1/3 -translate-y-1/3" />
+              <div className="absolute bottom-0 left-0 w-48 h-48 rounded-full bg-white/5 -translate-x-1/3 translate-y-1/3" />
+
+              <div className="relative z-10 max-w-3xl">
+                <Quote size={48} className="text-white/20 mb-6" />
+                <blockquote className="text-2xl md:text-3xl lg:text-4xl font-black text-white leading-tight mb-8">
+                  {feature.quote.text}
+                </blockquote>
+                <p className="text-purple-200 font-bold text-base">
+                  — {feature.quote.author}
+                </p>
+              </div>
+            </motion.div>
+          </Container>
+        </section>
+      )}
 
       <ExploreMoreFeatures currentSlug="mobile-app" />
     </div>
