@@ -1,7 +1,5 @@
 "use client";
 
-import Orb from "@/components/Orb";
-import Particles from "@/components/Particles";
 import Container from "@/components/Container";
 import ContactHero from "@/components/contact/ContactHero";
 import ContactForm from "@/components/contact/ContactForm";
@@ -15,17 +13,7 @@ const ContactPage = () => {
       {/* ── Background patterns ──────────────────────────────── */}
       <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:32px_32px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-20 pointer-events-none" />
 
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
-        <div className="absolute top-[-10%] -left-[10%] w-[70%] h-[70%] opacity-20">
-          <Orb hue={220} hoverIntensity={0.5} />
-        </div>
-        <div className="absolute -bottom-[10%] -right-[10%] w-[70%] h-[70%] opacity-20">
-          <Orb hue={260} hoverIntensity={0.5} />
-        </div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-40">
-          <Particles />
-        </div>
-      </div>
+
 
       {/* ── Hero / Contact Grid ──────────────────────────────── */}
       <Container className="relative z-10 pt-32 pb-24 lg:pt-48">

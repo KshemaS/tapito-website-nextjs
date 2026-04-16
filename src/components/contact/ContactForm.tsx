@@ -5,15 +5,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Send, CheckCircle2, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-/* ─── Shared input class (light theme) ───────────────────── */
-const inputCls =
-  "w-full px-6 py-4 rounded-xl bg-slate-50 border border-slate-100 focus:bg-white focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all duration-300 font-semibold text-slate-900 placeholder:font-normal placeholder:text-slate-400";
-
 /* ─── Field wrapper ───────────────────────────────────────── */
-function Field({ label, children }: { label: string; children: React.ReactNode }) {
+function Field({ children }: { children: React.ReactNode }) {
   return (
     <div className="space-y-2">
-      <label className="text-xs font-black uppercase tracking-[0.1em] text-slate-400">{label}</label>
       {children}
     </div>
   );
@@ -21,6 +16,11 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
 
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [country, setCountry] = useState("");
+  const [reason, setReason] = useState("");
+
+  const inputCls =
+    "w-full px-6 py-4 rounded-xl bg-slate-50 border border-slate-100 focus:bg-white focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all duration-300 font-medium text-slate-900 placeholder:font-normal placeholder:text-slate-400";
 
   return (
     <motion.div
@@ -51,28 +51,33 @@ export default function ContactForm() {
                 onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}
               >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <Field label="First Name *">
-                    <input type="text" className={inputCls} placeholder="John" />
+                  <Field>
+                    <input type="text" className={inputCls} placeholder="First Name *" />
                   </Field>
-                  <Field label="Last Name *">
-                    <input type="text" className={inputCls} placeholder="Doe" />
-                  </Field>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <Field label="Work Email *">
-                    <input type="email" className={inputCls} placeholder="john@company.com" />
-                  </Field>
-                  <Field label="Company *">
-                    <input type="text" className={inputCls} placeholder="Acme Corp" />
+                  <Field>
+                    <input type="text" className={inputCls} placeholder="Last Name *" />
                   </Field>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <Field label="Country *">
+                  <Field>
+                    <input type="email" className={inputCls} placeholder="Work Email *" />
+                  </Field>
+                  <Field>
+                    <input type="text" className={inputCls} placeholder="Company *" />
+                  </Field>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <Field>
                     <div className="relative">
-                      <select className={cn(inputCls, "appearance-none cursor-pointer")}>
-                        <option value="">Please Select</option>
+                      <select
+                        className={cn(inputCls, "appearance-none cursor-pointer", !country && "text-slate-400 font-normal")}
+                        value={country}
+                        onChange={(e) => setCountry(e.target.value)}
+                        required
+                      >
+                        <option value="" disabled>Country *</option>
                         <option value="US">United States</option>
                         <option value="UK">United Kingdom</option>
                         <option value="IN">India</option>
@@ -84,10 +89,15 @@ export default function ContactForm() {
                       <ChevronDown size={16} className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400" />
                     </div>
                   </Field>
-                  <Field label="Contact Reason *">
+                  <Field>
                     <div className="relative">
-                      <select className={cn(inputCls, "appearance-none cursor-pointer")}>
-                        <option value="">Please Select</option>
+                      <select
+                        className={cn(inputCls, "appearance-none cursor-pointer", !reason && "text-slate-400 font-normal")}
+                        value={reason}
+                        onChange={(e) => setReason(e.target.value)}
+                        required
+                      >
+                        <option value="" disabled>Contact Reason *</option>
                         <option value="demo">Request a Demo</option>
                         <option value="partner">Partnership Inquiry</option>
                         <option value="support">Technical Support</option>
@@ -99,10 +109,10 @@ export default function ContactForm() {
                   </Field>
                 </div>
 
-                <Field label="How can we help you?">
+                <Field>
                   <textarea
                     className={cn(inputCls, "min-h-[150px] resize-none")}
-                    placeholder="Tell us about your requirements..."
+                    placeholder="How can we help you?"
                   />
                 </Field>
 
@@ -138,7 +148,7 @@ export default function ContactForm() {
                   Thanks for reaching out. Our team will get back to you within 2 business hours.
                 </p>
                 <button
-                  onClick={() => setSubmitted(false)}
+                  onClick={() => { setSubmitted(false); setCountry(""); setReason(""); }}
                   className="mt-2 text-sm text-indigo-600 hover:text-indigo-800 font-bold transition-colors"
                 >
                   ← Send another message
