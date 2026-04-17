@@ -1,6 +1,7 @@
 import Container from "@/components/Container";
 import { PageBackground } from "@/components/PageBackground";
 import AboutHero from "@/components/about/AboutHero";
+import AboutClients from "@/components/about/AboutClients";
 import AboutWhoWeAre from "@/components/about/AboutWhoWeAre";
 import AboutWhatWeDo from "@/components/about/AboutWhatWeDo";
 import AboutTeam from "@/components/about/AboutTeam";
@@ -24,6 +25,8 @@ export default function AboutPage() {
 
       <div className="relative z-10">
         <AboutHero />
+        
+        <AboutClients />
         
         <AboutWhoWeAre />
         
