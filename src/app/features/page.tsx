@@ -6,7 +6,7 @@ import { FeaturesCTA } from "@/components/features/FeaturesCTA";
 
 export default function FeaturesPage() {
   return (
-    <div className="relative min-h-screen bg-[#fcfcfd] overflow-hidden selection:bg-purple-100 selection:text-purple-900">
+    <div className="relative min-h-screen bg-[#fcfcfd] overflow-hidden selection:bg-blue-100 selection:text-blue-900">
       
       {/* Hero Section */}
       <FeaturesHero />

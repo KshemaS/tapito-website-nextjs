@@ -268,11 +268,11 @@ export const FeaturesGrid = () => {
       <Container>
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 lg:mb-16 gap-8 lg:gap-10">
           <div className="max-w-2xl">
-            <span className="inline-flex items-center rounded-full bg-slate-100 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-600 ring-1 ring-slate-200 mb-5">
+            <span className="inline-flex items-center rounded-full bg-blue-50 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-[#09358c] ring-1 ring-blue-200 mb-5">
               Built for Retail Teams
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl 4xl:text-6xl font-black text-slate-900 tracking-tight leading-tight mb-5">
-              Features That Drive Better Decisions
+              Features That Drive <br/> <span className="text-[#09358c]">Better Decisions</span>
             </h2>
             <p className="text-slate-600 text-base lg:text-lg font-medium leading-relaxed max-w-xl">
               From analytics to automation, each module is designed to help you act faster, improve margins, and scale your retail business with total confidence.

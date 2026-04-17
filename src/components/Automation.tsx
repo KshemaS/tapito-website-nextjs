@@ -15,7 +15,7 @@ export default function Automation() {
     <section className="bg-slate-50 section-padding">
       <Container>
         <div className="text-center max-w-3xl mx-auto mb-20">
-          <h2 className="text-sm font-bold uppercase tracking-widest text-blue-600 mb-4">Automation Engine</h2>
+          <h2 className="text-sm font-bold uppercase tracking-widest text-[#09358c] mb-4">Automation Engine</h2>
           <h3 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Zero Manual Effort. <span className="text-[#09358c]">Maximum Impact.</span></h3>
           <p className="text-lg text-slate-600">
             Set it and forget it. Tapito's automation engine works 24/7 to engage customers, recover carts, and drive repeat sales.

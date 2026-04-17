@@ -24,7 +24,7 @@ const FloatingBadge = ({ icon: Icon, text, delay, left }: any) => {
       className="absolute bottom-0 z-0 pointer-events-none hidden lg:flex items-center gap-2 px-4 py-2 bg-white/40 backdrop-blur-md rounded-full border border-white/40 shadow-sm"
       style={{ left: `${left}%` }}
     >
-      <Icon size={14} className="text-violet-600" />
+      <Icon size={14} className="text-[#05a0ec]" />
       <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 whitespace-nowrap">{text}</span>
     </motion.div>
   );
@@ -71,12 +71,12 @@ export const SolutionsHero = ({
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <span className="inline-block mb-8 text-[10px] lg:text-sm font-black tracking-[0.4em] uppercase text-violet-600/80">
+          <span className="inline-block mb-8 text-[10px] lg:text-sm font-black tracking-[0.4em] uppercase text-[#09358c]">
             {badge}
           </span>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl 4xl:text-8xl font-black text-slate-900 leading-none mb-10 tracking-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl 4xl:text-8xl font-black text-slate-900 leading-none mb-10 tracking-tight font-medium">
             {titlePrimary} <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 via-indigo-600 to-purple-800">
+            <span className="text-[#09358c]">
               {titleSecondary}
             </span>
           </h1>
@@ -85,10 +85,10 @@ export const SolutionsHero = ({
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
-            <button className="bg-violet-600 hover:bg-violet-700 text-white px-10 py-5 rounded-2xl font-black text-base lg:text-lg shadow-[0_20px_40px_-10px_rgba(124,58,237,0.3)] transition-all hover:scale-105 active:scale-95 text-center">
+            <button className="bg-[#09358c] hover:bg-[#05a0ec] text-white px-10 py-5 rounded-2xl font-black text-base lg:text-lg transition-all hover:scale-105 active:scale-95 text-center font-normal">
               Request a Demo
             </button>
-            <button className="bg-slate-100 hover:bg-slate-200 text-slate-900 px-10 py-5 rounded-2xl font-black text-base lg:text-lg transition-all hover:scale-105 active:scale-95">
+            <button className="bg-slate-100 hover:bg-slate-200 px-10 py-5 rounded-2xl font-black text-base lg:text-lg transition-all hover:scale-105 active:scale-95 font-normal text-[#09358c]">
               Watch Product Tour
             </button>
           </div>
@@ -105,7 +105,7 @@ export const SolutionsHero = ({
         <Link
           href="#features-grid"
           aria-label="Scroll down to feature list"
-          className="group flex flex-col items-center text-slate-500 hover:text-purple-600 transition-colors"
+          className="group flex flex-col items-center text-slate-500 hover:text-[#05a0ec] transition-colors"
         >
           <div className="flex flex-col items-center leading-none">
             {[0, 1, 2].map((index) => (

@@ -24,7 +24,7 @@ const FloatingBadge = ({ icon: Icon, text, delay, left }: any) => {
             className="absolute bottom-0 z-0 pointer-events-none hidden lg:flex items-center gap-2 px-4 py-2 bg-white/40 backdrop-blur-md rounded-full border border-white/40 shadow-sm"
             style={{ left: `${left}%` }}
         >
-            <Icon size={14} className="text-purple-600" />
+            <Icon size={14} className="text-blue-600" />
             <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 whitespace-nowrap">{text}</span>
         </motion.div>
     );
@@ -53,16 +53,16 @@ export const FeaturesHero = () => {
             initial={{ opacity: 0, scale: 0.9, y: 10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="luminous-card inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-purple-500/30 bg-white/80 backdrop-blur-md mb-8 lg:mb-10 shadow-xl"
+            className="luminous-card inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-blue-500/30 bg-white/80 backdrop-blur-md mb-8 lg:mb-10 shadow-xl"
           >
-            <Sparkles size={16} className="text-purple-600 animate-pulse" />
-            <span className="text-[10px] lg:text-xs font-black tracking-[0.3em] uppercase text-purple-700">
+            <Sparkles size={16} className="text-blue-600 animate-pulse" />
+            <span className="text-[10px] lg:text-xs font-black tracking-[0.3em] uppercase text-blue-700">
               Transform Your Capabilities
             </span>
           </motion.div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl 4xl:text-8xl font-black text-slate-900 leading-none mb-8 lg:mb-10 tracking-tight">
             All-in-One <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-indigo-600 to-purple-800">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-blue-600 to-blue-800">
               Growth Platform
             </span>
           </h1>
@@ -71,7 +71,7 @@ export const FeaturesHero = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
-            <button className="bg-[#4112e0] hover:bg-indigo-700 text-white px-8 py-4 rounded-xl font-black text-base lg:text-lg shadow-xl shadow-indigo-500/10 transition-all hover:scale-105 active:scale-95 text-center">
+            <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-black text-base lg:text-lg shadow-xl shadow-blue-500/10 transition-all hover:scale-105 active:scale-95 text-center">
               Get Started Now
             </button>
             <button className="bg-[#e9e9e9] hover:bg-slate-200 text-slate-900 px-8 py-4 rounded-xl font-black text-base lg:text-lg transition-all hover:scale-105 active:scale-95">
@@ -90,7 +90,7 @@ export const FeaturesHero = () => {
         <Link
           href="#features-grid"
           aria-label="Scroll down to feature list"
-          className="group flex flex-col items-center text-slate-500 hover:text-purple-600 transition-colors"
+          className="group flex flex-col items-center text-slate-500 hover:text-blue-600 transition-colors"
         >
           <div className="flex flex-col items-center leading-none">
             {[0, 1, 2].map((index) => (

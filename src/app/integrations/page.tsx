@@ -52,7 +52,7 @@ const INTEGRATIONS = [
   { icon: Mail, label: "Email", color: "#f97316" },
   { icon: Database, label: "SAP", color: "#6366f1" },
   { icon: Cpu, label: "ERP", color: "#8b5cf6" },
-  { icon: PhoneCall, label: "Call", color: "#ec4899" },
+  { icon: PhoneCall, label: "Phone", color: "#ec4899" },
   { icon: FileSpreadsheet, label: "Excel", color: "#10b981" },
   { icon: BarChart3, label: "BI", color: "#f59e0b" },
 ];
@@ -106,7 +106,6 @@ const BENEFITS = [
   { icon: Zap, label: "Real-time sync" },
   { icon: Bot, label: "Zero-touch automation" },
   { icon: BarChart3, label: "Centralised analytics" },
-  { icon: Radio, label: "Omni-channel comms" },
   { icon: Lock, label: "Enterprise-grade APIs" },
   { icon: Globe, label: "Global infrastructure" },
 ];
@@ -152,7 +151,7 @@ function OrbitalHero() {
   });
 
   return (
-    <div className="relative w-full aspect-square max-w-[600px] mx-auto flex items-center justify-center">
+    <div className="relative w-full aspect-square max-w-[500px] 2xl:max-w-[600px] mx-auto flex items-center justify-center">
       {/* SVG layer */}
       <svg
         viewBox="0 0 600 600"
@@ -183,8 +182,8 @@ function OrbitalHero() {
               x2={n.nx}
               y2={n.ny}
             >
-              <stop offset="0%" stopColor="#9333ea" stopOpacity="0.1" />
-              <stop offset="60%" stopColor="#9333ea" stopOpacity="0.6" />
+              <stop offset="0%" stopColor="#2563eb" stopOpacity="0.1" />
+              <stop offset="60%" stopColor="#2563eb" stopOpacity="0.6" />
               <stop offset="100%" stopColor={n.color} stopOpacity="0.4" />
             </linearGradient>
           ))}
@@ -195,7 +194,7 @@ function OrbitalHero() {
           cx={cx}
           cy={cy}
           r="60"
-          fill="rgba(124,58,237,0.15)"
+          fill="rgba(37,99,235,0.15)"
           filter="url(#coreGlow)"
         />
 
@@ -205,7 +204,7 @@ function OrbitalHero() {
           cy={cy}
           r={R}
           fill="none"
-          stroke="rgba(148,97,237,0.08)"
+          stroke="rgba(0, 0, 0, 0.2)"
           strokeWidth="1"
           strokeDasharray="4 6"
           animate={prefersReduced ? {} : { rotate: 360 }}
@@ -272,9 +271,15 @@ function OrbitalHero() {
                 />
               ))}
               
-              <div className="w-full h-full rounded-[2.2rem] md:rounded-[2.8rem] bg-slate-950 border border-white/10 flex items-center justify-center relative z-10">
-                <LayoutDashboard size={40} className="text-white relative z-10 md:hidden" />
-                <LayoutDashboard size={52} className="text-white relative z-10 hidden md:block" />
+             <div className="w-full h-full rounded-[2.2rem] md:rounded-[2.8rem] 
+bg-gradient-to-br from-blue-50 via-blue-50 to-cyan-50 
+border border-blue-100
+flex items-center justify-center relative z-10 p-4">
+               <img 
+                        src="/logo.svg" 
+                        alt="Tapito Logo" 
+                        className="w-full h-full object-contain"
+                     />
               </div>
             </motion.div>
           </div>
@@ -295,9 +300,9 @@ function OrbitalHero() {
                   transition={{ duration: 4 + (i % 2), repeat: Infinity, ease: "easeInOut", delay: i * 0.2 }}
                 >
                   <div
-                    className="w-12 h-12 md:w-16 md:h-16 rounded-[1.2rem] md:rounded-[1.6rem] bg-white border border-slate-100 shadow-[0_10px_25px_-8px_rgba(0,0,0,0.06)] flex flex-col items-center justify-center gap-1 transition-all duration-500 group-hover:border-purple-200 group-hover:shadow-[0_12px_35px_-10px_rgba(124,58,237,0.2)] group-hover:scale-110 overflow-hidden relative"
+                    className="w-12 h-12 md:w-16 md:h-16 rounded-[1.2rem] md:rounded-[1.6rem] bg-white border border-slate-100 shadow-[0_10px_25px_-8px_rgba(0,0,0,0.06)] flex flex-col items-center justify-center gap-1 transition-all duration-500 group-hover:border-blue-200 group-hover:shadow-[0_12px_35px_-10px_rgba(37,99,235,0.2)] group-hover:scale-110 overflow-hidden relative"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-br from-purple-600 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     <n.icon
                       size={18}
                       className="relative z-10 transition-colors duration-500 group-hover:text-white md:hidden"
@@ -335,18 +340,18 @@ function IntegrationCard({ icon: Icon, name, desc, bullets, badge, index }: any)
       className="group relative flex flex-col h-full rounded-[2rem] border border-slate-100 bg-white p-7 lg:p-9 shadow-sm hover:shadow-xl transition-shadow duration-300 will-change-transform"
     >
       {/* Decorative background accent */}
-      <div className="absolute right-0 top-0 w-32 h-32 bg-slate-50/50 rounded-bl-[4rem] -z-0 transition-colors group-hover:bg-purple-50/50" />
+      <div className="absolute right-0 top-0 w-32 h-32 bg-slate-50/50 rounded-bl-[4rem] -z-0 transition-colors group-hover:bg-blue-50/50" />
 
       <div className="relative z-10 flex items-start justify-between mb-6">
         <div 
-          className="w-14 h-14 flex items-center justify-center rounded-2xl bg-slate-50 text-slate-600 border border-slate-100 group-hover:bg-purple-600 group-hover:text-white group-hover:scale-110 transition-all duration-300"
+          className="w-14 h-14 flex items-center justify-center rounded-2xl bg-slate-50 text-slate-600 border border-slate-100 group-hover:bg-blue-600 group-hover:text-white group-hover:scale-110 transition-all duration-300"
         >
           <Icon size={28} />
         </div>
       </div>
 
       <div className="relative z-10 flex-1">
-        <h3 className="text-xl font-black mb-3 tracking-tight text-slate-900 group-hover:text-purple-600 transition-colors">
+        <h3 className="text-xl font-black mb-3 tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors">
           {name}
         </h3>
         <p className="text-sm font-medium leading-relaxed mb-6 text-slate-500">
@@ -358,25 +363,13 @@ function IntegrationCard({ icon: Icon, name, desc, bullets, badge, index }: any)
             <div key={i} className="flex items-center gap-3">
               <CheckCircle2
                 size={14}
-                className="text-slate-200 group-hover:text-purple-500 shrink-0 transition-colors duration-300"
+                className="text-slate-200 group-hover:text-blue-500 shrink-0 transition-colors duration-300"
               />
               <span className="text-[12px] font-bold text-slate-400 group-hover:text-slate-600 transition-colors">
                 {b}
               </span>
             </div>
           ))}
-        </div>
-      </div>
-
-      <div className="relative z-10 mt-auto pt-6 border-t border-slate-50 flex items-center justify-between">
-        <span className="flex items-center gap-2">
-          <div className="w-1.5 h-1.5 rounded-full bg-slate-200 group-hover:bg-purple-600 transition-colors" />
-          <span className="font-black text-[10px] uppercase tracking-widest text-slate-400 group-hover:text-slate-600">
-            Native connector
-          </span>
-        </span>
-        <div className="w-8 h-8 rounded-full border border-slate-100 flex items-center justify-center text-slate-400 group-hover:bg-purple-600 group-hover:text-white group-hover:border-purple-600 transition-all duration-300">
-          <ArrowRight size={14} />
         </div>
       </div>
     </motion.div>
@@ -387,12 +380,15 @@ function IntegrationCard({ icon: Icon, name, desc, bullets, badge, index }: any)
 
 export default function IntegrationsPage() {
   const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    const t = setTimeout(() => setMounted(true), 0);
+    return () => clearTimeout(t);
+  }, []);
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-white text-slate-900 selection:bg-purple-100 selection:text-purple-900 font-inter">
+    <div className="relative min-h-screen overflow-x-hidden bg-white text-slate-900 selection:bg-blue-100 selection:text-blue-900 font-inter">
       <InteractiveGrid />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-[500px] bg-[radial-gradient(circle_at_top,rgba(168,85,247,0.13),transparent_40%),radial-gradient(circle_at_top_right,rgba(99,102,241,0.10),transparent_28%)]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[500px] bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.13),transparent_40%),radial-gradient(circle_at_top_right,rgba(9,53,140,0.10),transparent_28%)]" />
 
       {/* ── 1. Hero ─────────────────────────────────────────────────────── */}
       <section className="relative h-svh max-h-screen overflow-hidden flex items-center">
@@ -401,26 +397,26 @@ export default function IntegrationsPage() {
 
             {/* Left */}
             <div className="flex flex-col justify-center">
-              <motion.div {...fadeUp()} className="mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-purple-200 bg-purple-50 px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.2em] text-purple-700 shadow-sm">
-                <span className="h-1.5 w-1.5 rounded-full bg-purple-500" />
-                Connectivity
+              <motion.div {...fadeUp()} className="mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.2em] text-blue-700 shadow-sm">
+                <span className="h-1.5 w-1.5 rounded-full bg-blue-500" />
+                Integrations
               </motion.div>
 
-              <motion.h1 {...fadeUp(0.08)} className="text-4xl sm:text-6xl lg:text-[5.2rem] font-black tracking-[-0.07em] text-slate-950 leading-[0.95] mb-8">
-                Master Your <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-indigo-600 to-fuchsia-600">
-                  Retail Stack.
+              <motion.h1 {...fadeUp(0.08)} className="text-4xl sm:text-6xl lg:text-60px 4xl:text-[5.2rem] font-black  text-slate-950 mb-8 leading-[110%] 4xl:leading-[120%]">
+                Bring Every System <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-blue-600 to-cyan-600">
+                  Into One Flow
                 </span>
               </motion.h1>
 
               <motion.p {...fadeUp(0.16)} className="max-w-xl text-lg font-medium leading-relaxed text-slate-500 mb-10">
-                The intelligent hub for global commerce. Unify WhatsApp, SAP, ERP, Calls, and Excel into one high-performance ecosystem.
+                The intelligent hub for global commerce. Unify WhatsApp, SAP, ERP, Email, and Excel into one high-performance ecosystem.
               </motion.p>
 
               <motion.div {...fadeUp(0.24)} className="flex items-center gap-4">
                 <Link
                   href="/enterprise"
-                  className="group inline-flex items-center gap-3 rounded-full bg-slate-950 px-8 py-4 text-sm font-black text-white shadow-xl transition-all hover:bg-purple-600 hover:scale-[1.05]"
+                  className="group inline-flex items-center gap-3 rounded-full bg-slate-950 px-8 py-4 text-sm font-black text-white shadow-xl transition-all hover:bg-blue-600 hover:scale-[1.05]"
                 >
                   Book a Demo
                   <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
@@ -434,7 +430,7 @@ export default function IntegrationsPage() {
               initial="initial"
               whileInView="whileInView"
               viewport={{ once: true }}
-              className="relative py-12 lg:py-0"
+              className="hidden lg:block relative py-12 lg:py-0"
             >
               {mounted && <OrbitalHero />}
             </motion.div>
@@ -445,14 +441,14 @@ export default function IntegrationsPage() {
       {/* ── 2. Benefits ticker ──────────────────────────────────────────── */}
       <section className="border-y border-slate-100 bg-slate-50/50 py-6">
         <Container>
-          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 md:gap-x-16">
+          <div className="flex flex-wrap items-center lg:justify-center gap-x-10 gap-y-4 md:gap-x-16">
             {BENEFITS.map((b, i) => (
               <motion.div
                 key={i}
                 {...fadeUp(i * 0.06)}
                 className="flex items-center gap-3 group"
               >
-                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-white border border-slate-100 shadow-sm text-purple-600 group-hover:bg-purple-600 group-hover:text-white transition-all duration-300">
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-white border border-slate-100 shadow-sm text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
                   <b.icon size={16} strokeWidth={2.5} />
                 </div>
                 <span className="text-[11px] font-black uppercase tracking-widest text-slate-500 group-hover:text-slate-900 transition-colors">
@@ -473,7 +469,7 @@ export default function IntegrationsPage() {
             </motion.div>
             <motion.h2 {...fadeUp(0.08)} className="text-3xl sm:text-4xl md:text-5xl font-black tracking-[-0.05em] text-slate-950 mb-5">
               Connect in clicks,{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-600">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-600">
                 not months.
               </span>
             </motion.h2>
@@ -502,23 +498,23 @@ export default function IntegrationsPage() {
               </motion.div>
               <motion.h2 {...fadeUp(0.08)} className="text-3xl sm:text-4xl md:text-5xl font-black tracking-[-0.05em] text-slate-950 mb-14 leading-[1.1]">
                 Live in minutes,<br />
-                <span className="text-purple-600">not sprints.</span>
+                <span className="text-blue-600">not sprints.</span>
               </motion.h2>
 
               <div className="space-y-10">
                 {STEPS.map((s, i) => (
                   <motion.div key={i} {...fadeUp(0.1 + i * 0.12)} className="flex items-start gap-7 group">
                     <div className="flex-shrink-0 relative">
-                      <div className="w-14 h-14 flex items-center justify-center rounded-2xl bg-white border border-slate-100 shadow-sm text-purple-600 group-hover:bg-purple-600 group-hover:text-white transition-all duration-500">
+                      <div className="w-14 h-14 flex items-center justify-center rounded-2xl bg-white border border-slate-100 shadow-sm text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500">
                         <s.icon size={24} />
                       </div>
                       {i < STEPS.length - 1 && (
-                        <div className="absolute left-1/2 top-full mt-4 w-px h-6 bg-gradient-to-b from-purple-200 to-transparent" />
+                        <div className="absolute left-1/2 top-full mt-4 w-px h-6 bg-gradient-to-b from-blue-200 to-transparent" />
                       )}
                     </div>
                     <div className="pt-1">
-                      <p className="text-[10px] font-black uppercase tracking-[0.3em] text-purple-500 mb-2">{s.step}</p>
-                      <h4 className="text-xl font-black tracking-tight text-slate-900 mb-2 group-hover:text-purple-700 transition-colors">{s.title}</h4>
+                      <p className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-500 mb-2">{s.step}</p>
+                      <h4 className="text-xl font-black tracking-tight text-slate-900 mb-2 group-hover:text-blue-700 transition-colors">{s.title}</h4>
                       <p className="text-sm font-medium leading-relaxed text-slate-500">{s.text}</p>
                     </div>
                   </motion.div>
@@ -534,12 +530,12 @@ export default function IntegrationsPage() {
               viewport={{ once: true }}
               className="rounded-[2rem] lg:rounded-[3rem] border border-slate-800 bg-slate-950 p-8 lg:p-12 shadow-[0_50px_130px_-60px_rgba(15,23,42,0.95)] relative overflow-hidden"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 via-transparent to-indigo-600/10 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-transparent to-blue-600/10 pointer-events-none" />
 
               {/* Status bar */}
               <div className="flex items-center justify-between mb-8 rounded-2xl border border-white/10 bg-white/5 px-5 py-4">
                 <div className="flex items-center gap-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-600 text-white shadow-lg shadow-purple-500/30">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-600 text-white shadow-lg shadow-blue-500/30">
                     <LayoutDashboard size={20} />
                   </div>
                   <div>
@@ -557,9 +553,9 @@ export default function IntegrationsPage() {
               {/* Connection items */}
               <div className="space-y-4">
                 {[
-                  { icon: Database, name: "SAP ", status: "Syncing", color: "text-indigo-400", ms: "12ms" },
+                  { icon: Database, name: "SAP ", status: "Syncing", color: "text-blue-400", ms: "12ms" },
                   { icon: MessageCircle, name: "WhatsApp API", status: "Active", color: "text-emerald-400", ms: "8ms" },
-                  { icon: Cpu, name: "ERP Core", status: "Active", color: "text-emerald-400", ms: "22ms" },
+                  { icon: Cpu, name: "ERP", status: "Active", color: "text-emerald-400", ms: "22ms" },
                   { icon: Mail, name: "Email Gateway", status: "Active", color: "text-emerald-400", ms: "5ms" },
                 ].map((conn, i) => (
                   <motion.div
@@ -616,17 +612,17 @@ export default function IntegrationsPage() {
             viewport={{ once: true }}
             className="relative rounded-[2.5rem] md:rounded-[4rem] overflow-hidden bg-slate-950 px-8 py-16 md:px-20 md:py-16 text-center shadow-[0_60px_130px_-50px_rgba(15,23,42,0.9)]"
           >
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(124,58,237,0.18),transparent_60%),radial-gradient(circle_at_70%_50%,rgba(99,102,241,0.14),transparent_60%)] pointer-events-none" />
-            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-500/30 to-transparent" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(59,130,246,0.18),transparent_60%),radial-gradient(circle_at_70%_50%,rgba(9,53,140,0.14),transparent_60%)] pointer-events-none" />
+            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500/30 to-transparent" />
 
             <div className="relative z-10 max-w-3xl mx-auto">
-              <motion.div {...fadeUp()} className="mb-8 inline-flex items-center gap-2 rounded-full border border-purple-500/30 bg-purple-500/10 px-4 py-2 text-xs font-black uppercase tracking-[0.25em] text-purple-300">
+              <motion.div {...fadeUp()} className="mb-8 inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-2 text-xs font-black uppercase tracking-[0.25em] text-blue-300">
                 Built for enterprise retail
               </motion.div>
               <motion.h2 {...fadeUp(0.08)} className="text-3xl sm:text-4xl md:text-6xl font-black tracking-[-0.06em] text-white mb-7 leading-[1.05]">
                 Your business tools<br />
                 work better{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-fuchsia-400 to-indigo-400">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400">
                   together.
                 </span>
               </motion.h2>
@@ -636,7 +632,7 @@ export default function IntegrationsPage() {
               <motion.div {...fadeUp(0.22)} className="flex flex-col sm:flex-row items-center justify-center gap-5">
                 <Link
                   href="/enterprise"
-                  className="group inline-flex items-center gap-3 rounded-full bg-white px-9 py-4 text-sm font-black text-slate-950 shadow-[0_20px_50px_-15px_rgba(255,255,255,0.2)] transition-all hover:bg-purple-600 hover:text-white hover:scale-[1.04] hover:shadow-[0_20px_50px_-15px_rgba(124,58,237,0.5)]"
+                  className="group inline-flex items-center gap-3 rounded-full bg-white px-9 py-4 text-sm font-black text-slate-950 shadow-[0_20px_50px_-15px_rgba(255,255,255,0.2)] transition-all hover:bg-blue-600 hover:text-white hover:scale-[1.04] hover:shadow-[0_20px_50px_-15px_rgba(59,130,246,0.5)]"
                 >
                   Book a Demo
                   <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />

@@ -25,7 +25,7 @@ export const ExploreMoreFeatures = ({ currentSlug }: ExploreMoreFeaturesProps) =
     <section className="py-16 md:py-20 2xl:py-28 relative overflow-hidden bg-slate-50/50">
       <Container>
         <div className="mb-16 text-center">
-          <motion.p {...fadeUp()} className="text-xs font-black uppercase tracking-[0.3em] text-purple-600 mb-4">
+          <motion.p {...fadeUp()} className="text-xs font-black uppercase tracking-[0.3em] text-blue-600 mb-4">
             Next Generation Retail
           </motion.p>
           <motion.h2 {...fadeUp(0.1)} className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-950 tracking-tight mb-6">
@@ -42,12 +42,12 @@ export const ExploreMoreFeatures = ({ currentSlug }: ExploreMoreFeaturesProps) =
               key={feature.slug}
               {...fadeUp(0.1 + idx * 0.1)}
               whileHover={{ y: -10, transition: { duration: 0.3 } }}
-              className="group relative bg-white rounded-[2rem] md:rounded-[2.5rem] border border-slate-200 p-8 hover:border-purple-300 hover:shadow-[0_30px_70px_-20px_rgba(124,58,237,0.15)] transition-all flex flex-col h-full"
+              className="group relative bg-white rounded-[2rem] md:rounded-[2.5rem] border border-slate-200 p-8 hover:border-blue-300 hover:shadow-[0_30px_70px_-20px_rgba(37,99,235,0.15)] transition-all flex flex-col h-full"
             >
-              <div className="mb-6 w-14 h-14 rounded-2xl bg-purple-50 flex items-center justify-center text-purple-600 group-hover:bg-purple-600 group-hover:text-white transition-all duration-500">
+              <div className="mb-6 w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500">
                 <feature.icon size={28} />
               </div>
-              <h3 className="text-xl font-black text-slate-950 mb-3 group-hover:text-purple-700 transition-colors uppercase tracking-tight">
+              <h3 className="text-xl font-black text-slate-950 mb-3 group-hover:text-blue-700 transition-colors uppercase tracking-tight">
                 {feature.title}
               </h3>
               <p className="text-slate-600 text-sm font-medium leading-relaxed mb-8 flex-1">
@@ -55,7 +55,7 @@ export const ExploreMoreFeatures = ({ currentSlug }: ExploreMoreFeaturesProps) =
               </p>
               <Link 
                 href={`/features/${feature.slug}`}
-                className="inline-flex items-center gap-2 text-sm font-black uppercase tracking-widest text-slate-950 hover:text-purple-600 transition-colors"
+                className="inline-flex items-center gap-2 text-sm font-black uppercase tracking-widest text-slate-950 hover:text-blue-600 transition-colors"
               >
                 View Details <ArrowRight size={16} />
               </Link>
@@ -67,10 +67,10 @@ export const ExploreMoreFeatures = ({ currentSlug }: ExploreMoreFeaturesProps) =
           {...fadeUp(0.5)}
           className="mt-20 rounded-[3.5rem] bg-slate-950 p-12 lg:p-16 text-center relative overflow-hidden group"
         >
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.15),transparent_70%)] pointer-events-none" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(37,99,235,0.15),transparent_70%)] pointer-events-none" />
           <motion.div 
             whileHover={{ scale: 1.1, rotate: 180 }}
-            className="mx-auto w-20 h-20 rounded-3xl bg-purple-600 text-white flex items-center justify-center mb-10 shadow-2xl shadow-purple-500/40 relative z-10"
+            className="mx-auto w-20 h-20 rounded-3xl bg-blue-600 text-white flex items-center justify-center mb-10 shadow-2xl shadow-blue-500/40 relative z-10"
           >
             <Sparkles size={32} />
           </motion.div>
@@ -79,7 +79,7 @@ export const ExploreMoreFeatures = ({ currentSlug }: ExploreMoreFeaturesProps) =
           </h3>
           <Link 
             href="/enterprise" 
-            className="inline-flex items-center gap-4 bg-white text-slate-950 px-12 py-6 rounded-full font-black text-sm uppercase tracking-[0.2em] hover:bg-purple-600 hover:text-white transition-all hover:scale-[1.05] shadow-xl relative z-10"
+            className="inline-flex items-center gap-4 bg-white text-slate-950 px-12 py-6 rounded-full font-black text-sm uppercase tracking-[0.2em] hover:bg-blue-600 hover:text-white transition-all hover:scale-[1.05] shadow-xl relative z-10"
           >
             Book a Full Platform Demo <ArrowRight size={20} />
           </Link>
