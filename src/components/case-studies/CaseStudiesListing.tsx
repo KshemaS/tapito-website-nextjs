@@ -91,7 +91,7 @@ export const CaseStudiesListing = () => {
             </p>
           </motion.div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-20">
             {filtered.map((cs, idx) => (
               <motion.a
                 key={cs.id}
@@ -107,7 +107,7 @@ export const CaseStudiesListing = () => {
                 className="group flex flex-col"
               >
                 {/* ── Image block ───────────────────────── */}
-                <div className="relative w-full aspect-[16/10] rounded-[1.25rem] overflow-hidden mb-5">
+                <div className="relative w-full aspect-[16/10] rounded-[1.25rem] overflow-hidden mb-8">
                   <Image
                     src={cs.image}
                     alt={cs.headline}
@@ -131,12 +131,12 @@ export const CaseStudiesListing = () => {
                 </div>
 
                 {/* ── Headline ──────────────────────────── */}
-                <h2 className="text-[18px] font-bold text-slate-900 mb-3 leading-snug tracking-tight group-hover:text-[#05a0ec] transition-colors duration-300">
+                <h2 className="text-[18px] font-bold text-slate-900 mb-3 leading-snug tracking-tight">
                   {cs.headline}
                 </h2>
 
                 {/* ── Summary ───────────────────────────── */}
-                <p className="text-[14px] font-medium text-slate-500 leading-relaxed mb-4 flex-1">
+                <p className="text-[14px] font-medium text-slate-500 leading-relaxed mb-8 flex-1">
                   {cs.summary}
                 </p>
 
@@ -159,7 +159,7 @@ export const CaseStudiesListing = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="mt-24 relative overflow-hidden rounded-[1.25rem] bg-slate-900 p-12 text-center"
+          className="mt-48 relative overflow-hidden rounded-[1.25rem] bg-slate-900 p-12 text-center"
         >
           <div className="absolute -top-16 -left-16 w-64 h-64 bg-[#09358c]/30 blur-[80px] rounded-full pointer-events-none" />
           <div className="absolute -bottom-16 -right-16 w-64 h-64 bg-[#05a0ec]/20 blur-[80px] rounded-full pointer-events-none" />

@@ -30,16 +30,7 @@ export default function ContactHero() {
       {/* Headline with animated underline */}
       <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-8 tracking-tight leading-[1.1]">
         Get in touch with <br />
-        <span className="relative inline-block">
-          <span className="text-[#09358c]">our team</span>
-          <motion.span
-            className="absolute -bottom-1 left-0 h-[3px] w-full rounded-full bg-gradient-to-r from-[#09358c] to-[#05a0ec]"
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{ delay: 0.9, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            style={{ transformOrigin: "left" }}
-          />
-        </span>
+        <span className="text-[#09358c]">our team</span>
       </h1>
 
       <p className="text-lg text-slate-500 font-medium mb-10 leading-relaxed max-w-2xl">

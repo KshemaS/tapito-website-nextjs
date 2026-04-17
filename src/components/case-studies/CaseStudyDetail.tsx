@@ -280,12 +280,9 @@ export default function CaseStudyDetail({ cs }: { cs: CaseStudy }) {
       </Container>
 
       {/* ── More Case Studies ────────────────────────────────── */}
-      <section className="bg-white border-t border-slate-200 py-16">
+      <section className="relative z-20 bg-white border-t border-slate-200 py-16">
         <Container>
-          <div className="flex items-center justify-between mb-10">
-            <h2 className="text-[22px] font-bold text-slate-900">
-              More Blogs
-            </h2>
+          <div className="flex items-center justify-end mb-10">
             <Link
               href="/case-studies"
               className="inline-flex items-center gap-1.5 text-[12px] font-bold text-slate-400 hover:text-[#05a0ec] transition-colors border border-slate-200 rounded-full px-3 py-1 hover:border-blue-200"
@@ -327,7 +324,7 @@ export default function CaseStudyDetail({ cs }: { cs: CaseStudy }) {
                   <span>{rel.readTime}</span>
                 </div>
 
-                <h3 className="text-[15px] font-bold text-slate-800 leading-snug mb-2 group-hover:text-[#05a0ec] transition-colors">
+                <h3 className="text-[15px] font-bold text-slate-800 leading-snug mb-2">
                   {rel.headline}
                 </h3>
 
