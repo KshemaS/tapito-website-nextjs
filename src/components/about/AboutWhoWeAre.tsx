@@ -40,7 +40,7 @@ export default function AboutWhoWeAre() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight"
+            className="text-4xl md:text-6xl font-bold text-slate-900 mb-6 tracking-tight"
           >
             Empowering the Next <br />
             Generation of Retail
@@ -50,7 +50,7 @@ export default function AboutWhoWeAre() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-lg text-slate-500 font-medium leading-relaxed"
+            className="text-xl text-slate-500 font-medium leading-relaxed"
           >
             Fegno Technologies is the driving force behind Tapito. Our team of experts is dedicated to pushing the boundaries of what's possible in customer engagement.
           </motion.p>
@@ -69,7 +69,7 @@ export default function AboutWhoWeAre() {
               <div className={`w-16 h-16 rounded-2xl ${point.bg} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500`}>
                 <point.icon className="text-[#09358c]" size={28} />
               </div>
-              <h3 className="text-2xl font-black text-slate-900 mb-4 tracking-tight">{point.title}</h3>
+              <h3 className="text-2xl font-bold text-slate-900 mb-4 tracking-tight">{point.title}</h3>
               <p className="text-slate-500 font-medium leading-relaxed">
                 {point.description}
               </p>

@@ -6,14 +6,14 @@ import { Mic, TrendingDown, TrendingUp, ShieldCheck, PieChart, PlayCircle } from
 
 export default function AboutDifferentiators() {
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
+    <section className="pt-24 pb-12 bg-white relative overflow-hidden">
       <Container>
-        <div className="flex flex-col lg:flex-row gap-16 items-start mb-32">
+        <div className="flex flex-col lg:flex-row gap-16 items-start mb-12">
             <div className="lg:w-1/2">
                 <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 text-[#09358c] text-[11px] font-bold uppercase tracking-widest mb-6">
                     Our Edge
                 </div>
-                <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-8 tracking-tighter leading-[1.1]">
+                <h2 className="text-4xl md:text-6xl font-bold text-slate-900 mb-8 tracking-tighter leading-[1.1]">
                     Outperforming the <br /> Competition with AI
                 </h2>
                 <div className="space-y-6">
@@ -34,7 +34,7 @@ export default function AboutDifferentiators() {
                                 <item.icon className="text-[#05a0ec]" size={20} />
                             </div>
                             <div>
-                                <h4 className="text-lg font-black text-slate-900 mb-1">{item.title}</h4>
+                                <h4 className="text-lg font-bold text-slate-900 mb-1">{item.title}</h4>
                                 <p className="text-sm text-slate-500 font-medium leading-relaxed">{item.desc}</p>
                             </div>
                         </motion.div>

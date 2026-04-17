@@ -3,6 +3,7 @@ import { PageBackground } from "@/components/PageBackground";
 import AboutHero from "@/components/about/AboutHero";
 import AboutWhoWeAre from "@/components/about/AboutWhoWeAre";
 import AboutWhatWeDo from "@/components/about/AboutWhatWeDo";
+import AboutTeam from "@/components/about/AboutTeam";
 import AboutPresence from "@/components/about/AboutPresence";
 import AboutDifferentiators from "@/components/about/AboutDifferentiators";
 import AboutCTA from "@/components/about/AboutCTA";
@@ -29,6 +30,8 @@ export default function AboutPage() {
         <AboutWhatWeDo />
         
         <AboutDifferentiators />
+
+        <AboutTeam />
         
         <AboutPresence />
         

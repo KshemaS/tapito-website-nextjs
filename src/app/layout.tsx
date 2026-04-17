@@ -3,6 +3,7 @@ import { Noto_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import FloatingCTA from "@/components/about/FloatingCTA";
 
 const notoSans = Noto_Sans({ 
   subsets: ["latin"], 
@@ -26,6 +27,7 @@ export default function RootLayout({
       <body className={`${notoSans.variable} font-sans antialiased text-slate-900`}>
         <Navbar />
         {children}
+        <FloatingCTA />
         <Footer />
       </body>
     </html>

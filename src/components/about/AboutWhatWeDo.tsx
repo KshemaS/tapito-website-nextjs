@@ -41,6 +41,17 @@ const SECTIONS = [
     ],
     color: "#09358c",
     iconColor: "#05a0ec"
+  },
+  {
+    title: "Orchestrate Superior Experiences",
+    desc: "Deliver hyper-personalized moments that matter. We help you build trust and loyalty through intelligent, real-time AI orchestration.",
+    steps: [
+      { title: "Experience Analytics", icon: Target },
+      { title: "Loyalty Automation", icon: Sparkles },
+      { title: "Hyper-Personalization", icon: Cpu },
+    ],
+    color: "#7c3aed",
+    iconColor: "#7c3aed"
   }
 ];
 
@@ -49,10 +60,10 @@ export default function AboutWhatWeDo() {
     <section className="py-24 bg-[#fafbfc] relative min-h-screen">
       <Container>
         <div className="mb-20 text-center lg:text-left">
-           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-[1.1] mb-6">
+           <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-slate-900 tracking-tight leading-[1.1] mb-6">
               What We Do
           </h2>
-          <p className="text-slate-500 font-medium text-lg md:text-xl max-w-2xl mx-auto lg:mx-0">
+          <p className="text-slate-500 font-medium text-xl max-w-2xl mx-auto lg:mx-0">
             We empower retail businesses to:
           </p>
         </div>
@@ -73,7 +84,7 @@ export default function AboutWhatWeDo() {
                 {/* Left Content */}
                 <div className="flex-1 space-y-10 relative z-10">
                   <div className="space-y-6">
-                    <h3 className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-none">
+                    <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 tracking-tight leading-none">
                       {section.title}
                     </h3>
                     <p className="text-slate-500 font-medium text-sm md:text-base max-w-sm leading-relaxed">

@@ -37,7 +37,7 @@ export default function AboutHero() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="space-y-4"
             >
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-slate-900 leading-[0.95] tracking-tighter">
+              <h1 className="text-[40px] lg:text-[48px] xl:text-[60px] 2xl:text-[72px] 4xl:text-8xl font-bold text-slate-900 leading-[0.95] tracking-tighter">
                 Grow your data, <br />
                 <span className="text-slate-800">harvest the</span> <br />
                 <span className="text-[#09358c]">results.</span>
@@ -51,7 +51,7 @@ export default function AboutHero() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="space-y-8"
             >
-              <p className="text-xl md:text-2xl text-slate-500 font-medium leading-[1.6] max-w-3xl">
+              <p className="text-xl lg:text-[18px] xl:text-[20px] 4xl:text-2xl text-slate-500 font-medium leading-[1.6] max-w-3xl">
                 A data-centric technology company built to accelerate your analytical growth 
                 and anchor a true intelligence culture at the heart of your strategy.
               </p>
