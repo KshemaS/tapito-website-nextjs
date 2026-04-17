@@ -16,7 +16,7 @@ export default function AboutPresence() {
                 <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#05a0ec]/20 text-[#05a0ec] text-[11px] font-bold uppercase tracking-widest mb-6 border border-[#05a0ec]/30">
                     Global Network
                 </div>
-                <h2 className="text-4xl md:text-6xl font-bold text-white mb-8 tracking-tighter leading-[1.1]">
+                <h2 className="text-4xl md:text-6xl font-semibold text-white mb-8 tracking-tighter leading-[1.1]">
                     Rooted in Kochi, <br /> 
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#05a0ec] to-sky-300">Scaling Globally.</span>
                 </h2>
