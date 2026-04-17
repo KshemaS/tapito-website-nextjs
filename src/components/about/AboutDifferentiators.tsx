@@ -42,27 +42,22 @@ export default function AboutDifferentiators() {
                 </div>
             </div>
 
-            <div className="lg:w-1/2 relative bg-slate-50 rounded-[3.5rem] overflow-hidden shadow-2xl group">
+            <div className="lg:w-1/2 relative h-full min-h-[400px] lg:min-h-[500px] rounded-[3.5rem] overflow-hidden shadow-[0_32px_84px_-12px_rgba(0,0,0,0.3)] group bg-slate-950">
                 <motion.div 
                     initial={{ scale: 1.1, opacity: 0 }}
                     whileInView={{ scale: 1, opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 1.2 }}
-                    className="w-full h-full min-h-[400px] lg:min-h-[500px]"
+                    className="absolute inset-0 w-full h-full"
                 >
                     <img 
-                        src="/assets/images/about/IMG_20260417_143058.png" 
+                        src="/assets/images/about/embracing-artificial-intelligence-business-innovation.jpg" 
                         alt="Our Edge - AI Performance" 
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
-                    
-                    {/* Premium Overlays */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent pointer-events-none" />
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-transparent pointer-events-none" />
                 </motion.div>
             </div>
         </div>
-
       </Container>
     </section>
   );
