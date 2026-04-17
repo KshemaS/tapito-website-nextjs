@@ -230,6 +230,43 @@
   }
 }
 
+@keyframes dashTravel {
+  from {
+    stroke-dashoffset: 40;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.conn-path {
+  stroke-dasharray: 10 5;
+  animation: dashTravel 1.8s linear infinite;
+}
+
+.conn-dot {
+  animation: connDotPulse 2s ease-in-out infinite;
+}
+
+@keyframes connDotPulse {
+
+  0%,
+  100% {
+    opacity: 0.8;
+    r: 3;
+  }
+
+  50% {
+    opacity: 1;
+    r: 4;
+  }
+}
+
+.conn-dot-orb {
+  animation: connDotPulse 2s ease-in-out infinite 0.9s;
+}
+
 
 @keyframes border-dash-flow {
   from {
@@ -289,6 +326,7 @@
 }
 
 @keyframes cardLumaPulse {
+
   0%,
   100% {
     opacity: 0.5;
