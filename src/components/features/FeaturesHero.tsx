@@ -62,7 +62,7 @@ export const FeaturesHero = () => {
           </motion.div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl 4xl:text-8xl font-black text-slate-900 leading-none mb-8 lg:mb-10 tracking-tight">
             All-in-One <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-800">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-blue-600 to-blue-800">
               Growth Platform
             </span>
           </h1>
