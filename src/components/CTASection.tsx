@@ -23,9 +23,9 @@ export default function CTASection({
       <Container>
         <div className="bg-slate-900 rounded-[3rem] p-12 lg:p-20 relative overflow-hidden">
           {/* Background effects */}
-          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_0%_0%,_rgba(124,58,237,0.15),transparent)] pointer-events-none" />
-          <div className="absolute -top-24 -left-24 w-96 h-96 bg-violet-600/10 blur-[100px] rounded-full" />
-          <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-fuchsia-600/10 blur-[100px] rounded-full" />
+          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_0%_0%,_rgba(5,160,236,0.15),transparent)] pointer-events-none" />
+          <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#09358c]/20 blur-[100px] rounded-full" />
+          <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-[#05a0ec]/10 blur-[100px] rounded-full" />
 
           <div className={cn(
             "relative z-10 grid gap-12 items-center",

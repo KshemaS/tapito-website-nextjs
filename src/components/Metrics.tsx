@@ -6,9 +6,9 @@ import Container from "./Container";
 import Image from "next/image";
 
 const stats = [
-  { label: "Average Revenue Increase", value: "+24%", icon: TrendingUp, color: "text-blue-600", bg: "bg-blue-50" },
-  { label: "Customer Retention", value: "+40%", icon: Users, color: "text-purple-600", bg: "bg-purple-50" },
-  { label: "Avg Ticket Size (AOV)", value: "+18%", icon: ShoppingCart, color: "text-emerald-600", bg: "bg-emerald-50" },
+  { label: "Average Revenue Increase", value: "+24%", icon: TrendingUp, color: "text-[#05a0ec]", bg: "bg-blue-50" },
+  { label: "Customer Retention", value: "+40%", icon: Users, color: "text-[#09358c]", bg: "bg-indigo-50" },
+  { label: "Avg Ticket Size (AOV)", value: "+18%", icon: ShoppingCart, color: "text-[#06dcc3]", bg: "bg-teal-50" },
 ];
 
 export default function Metrics() {
@@ -17,7 +17,7 @@ export default function Metrics() {
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
            <div>
-              <h2 className="text-sm font-bold uppercase tracking-widest text-blue-600 mb-4">Business Impact</h2>
+              <h2 className="text-sm font-bold uppercase tracking-widest text-[#09358c] mb-4">Business Impact</h2>
               <h3 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Real Results. <span className="text-[#09358c]">Proven Scale.</span></h3>
               <p className="text-lg text-slate-600 mb-10">
                 Companies using Tapito see an immediate impact on their bottom line through automated intelligence and better decision making.
@@ -46,7 +46,7 @@ export default function Metrics() {
            </div>
 
            <div className="relative">
-              <div className="absolute -inset-4 bg-blue-100 rounded-[3.5rem] -z-10 rotate-2" />
+              <div className="absolute -inset-4 bg-blue-50 rounded-[3.5rem] -z-10 rotate-2" />
               <div className="relative h-[500px] w-full rounded-[3rem] overflow-hidden shadow-2xl border border-slate-100 mb-12">
                  <Image 
                   src="/retail_customer_analytics_digital_overlay_1775651982487.png"
@@ -54,10 +54,10 @@ export default function Metrics() {
                   fill
                   className="object-cover"
                  />
-                 <div className="absolute inset-0 bg-blue-600/10" />
+                 <div className="absolute inset-0 bg-[#09358c]/10" />
               </div>
 
-              <div className="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-[3rem] p-12 text-white shadow-2xl overflow-hidden relative">
+              <div className="bg-gradient-to-br from-[#09358c] to-[#05a0ec] rounded-[3rem] p-12 text-white shadow-2xl overflow-hidden relative">
                  <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 blur-3xl rounded-full translate-x-1/2 -translate-y-1/2" />
                  <h4 className="text-3xl font-bold mb-6">Future Ready Analytics</h4>
                  <p className="text-blue-100 mb-8 leading-relaxed">
@@ -78,7 +78,7 @@ export default function Metrics() {
                  <div className="mt-12 pt-8 border-t border-white/10 flex items-center gap-4">
                     <div className="flex -space-x-3">
                        {[1,2,3,4].map(i => (
-                          <div key={i} className="w-10 h-10 rounded-full border-2 border-blue-600 bg-slate-200" />
+                          <div key={i} className="w-10 h-10 rounded-full border-2 border-[#09358c] bg-slate-200" />
                        ))}
                     </div>
                     <span className="text-sm font-medium text-blue-100">Joined by 500+ global brands</span>

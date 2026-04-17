@@ -45,7 +45,7 @@ export default function DashboardPreview({ keyHighlights }: DashboardPreviewProp
          </div>
 
          <div className="relative bg-[#f0f4f9] rounded-[1.5rem] border border-slate-200 flex overflow-hidden h-[600px] max-w-[736px] w-full ">
-            <div className="w-[180px] bg-[#1e293b] flex flex-col shrink-0 rounded-l-[12px]">
+            <div className="w-[180px] bg-[#09358c] flex flex-col shrink-0 rounded-l-[12px]">
                 <div className="p-5 flex items-center gap-3">
                   <div className="w-7 h-7 flex items-center justify-center">
                      <img 

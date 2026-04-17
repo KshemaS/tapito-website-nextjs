@@ -69,7 +69,7 @@ export default function AIAssistantPage() {
                 <Mic size={14} className="animate-pulse" /> Conversational interface preview
               </motion.div>
               <motion.h1 {...fadeUp(0.08)} className="max-w-3xl text-3xl sm:text-4xl md:text-5xl 4xl:text-7xl font-black tracking-[-0.06em] text-slate-950">
-                Ask Your Business Anything.
+                Ask Your Business <br /> <span className="text-[#09358c]">Anything.</span>
               </motion.h1>
               <motion.p {...fadeUp(0.16)} className="mt-6 max-w-2xl text-base md:text-lg 4xl:text-xl font-medium leading-7 md:leading-8 text-slate-600">
                 Turn everyday business questions into instant answers through voice and chat so insight reaches every manager, not just the analytics team.
@@ -163,7 +163,7 @@ export default function AIAssistantPage() {
             <motion.div variants={revealVariant} initial="initial" whileInView="whileInView" viewport={{ once: true, amount: 0.16 }} className="rounded-[3.5rem] border border-blue-200 bg-gradient-to-br from-white via-blue-50/30 to-indigo-50/50 p-10 lg:p-14 relative group">
               <div className="absolute inset-0 bg-white/40 pointer-events-none rounded-[3.5rem]" />
               <div className="grid gap-6 md:grid-cols-2 relative z-10">
-                <motion.div {...fadeUp(0.6)} {...cardHover} className="luminous-card-dark rounded-[2rem] border border-slate-800 bg-slate-950 p-8 shadow-xl group/card">
+                <motion.div {...fadeUp(0.6)} {...cardHover} className="rounded-[2rem] border border-slate-800 bg-slate-950 p-8 shadow-xl group/card">
                    <div className="flex items-center justify-between">
                      <p className="text-xs font-black uppercase tracking-[0.2em] text-blue-400">Voice layer</p>
                      <Waves size={22} className="text-blue-400 group-hover/card:scale-110 transition-transform" />
