@@ -32,9 +32,7 @@ export default function AboutWhoWeAre() {
   return (
     <section className="py-24 bg-white relative overflow-hidden">
       {/* Subtle background text */}
-      <div className="absolute top-0 right-0 text-[18vw] font-black text-slate-50 leading-none select-none -z-0">
-        FEGNO
-      </div>
+     
 
       <Container className="relative z-10">
         <div className="max-w-4xl mb-20">

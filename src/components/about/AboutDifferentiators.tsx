@@ -42,71 +42,27 @@ export default function AboutDifferentiators() {
                 </div>
             </div>
 
-            <div className="lg:w-1/2 relative bg-slate-900 rounded-[3.5rem] p-10 overflow-hidden shadow-2xl">
-                {/* Simulated Growth UI */}
-                <div className="relative z-10">
-                    <div className="flex justify-between items-center mb-8 border-b border-slate-800 pb-6">
-                        <div className="text-white">
-                            <div className="text-[10px] font-bold text-slate-500 uppercase tracking-[0.2em] mb-1">Status</div>
-                            <div className="text-lg font-black flex items-center gap-2">
-                                <span className="w-2 h-2 rounded-full bg-emerald-400" />
-                                Growth Simulator Active
-                            </div>
-                        </div>
-                        <div className="px-4 py-1.5 rounded-lg bg-white/10 text-white text-[12px] font-black tracking-tight">
-                            Live Forecast
-                        </div>
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-6 mb-10">
-                        <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
-                            <div className="text-slate-400 text-xs font-bold uppercase mb-2">Revenue ROI</div>
-                            <div className="text-3xl font-black text-white">+142%</div>
-                            <div className="text-[10px] text-emerald-400 font-bold mt-1 flex items-center gap-1">
-                                <TrendingUp size={10} /> Prediction
-                            </div>
-                        </div>
-                        <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
-                            <div className="text-slate-400 text-xs font-bold uppercase mb-2">Health Score</div>
-                            <div className="text-3xl font-black text-white">94/100</div>
-                            <div className="text-[10px] text-sky-400 font-bold mt-1 flex items-center gap-1">
-                                <ShieldCheck size={10} /> Optimized
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Simple chart visualization with motion */}
-                    <div className="h-48 w-full flex items-end gap-3 px-4">
-                        {[40, 60, 45, 80, 55, 95, 75, 100].map((h, i) => (
-                            <motion.div 
-                                key={i}
-                                initial={{ height: 0 }}
-                                whileInView={{ height: `${h}%` }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 1, delay: i * 0.1 }}
-                                className={`flex-1 rounded-t-lg bg-gradient-to-t ${i === 7 ? 'from-[#06dcc3] to-white' : 'from-blue-600/50 to-blue-400/20'}`}
-                            />
-                        ))}
-                    </div>
-                </div>
-
-                {/* Glassy overlay for "Premium" feel */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[#09358c]/20 to-transparent pointer-events-none" />
+            <div className="lg:w-1/2 relative bg-slate-50 rounded-[3.5rem] overflow-hidden shadow-2xl group">
+                <motion.div 
+                    initial={{ scale: 1.1, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1.2 }}
+                    className="w-full h-full min-h-[400px] lg:min-h-[500px]"
+                >
+                    <img 
+                        src="/assets/images/about/IMG_20260417_143058.png" 
+                        alt="Our Edge - AI Performance" 
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    
+                    {/* Premium Overlays */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-transparent pointer-events-none" />
+                </motion.div>
             </div>
         </div>
 
-        {/* Client Logos / Proof Section */}
-        <div className="pt-20 border-t border-slate-100">
-            <div className="text-center mb-12">
-                <p className="text-sm font-black text-slate-400 uppercase tracking-[0.3em]">Trusted by Global Retailers</p>
-            </div>
-            <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-40 grayscale hover:grayscale-0 transition-all duration-700">
-                {/* Placeholder logos - text based for simplicity but looking professional */}
-                {['LUXE', 'ZEPHYR', 'APEX', 'NOVA', 'ELEVATE'].map((logo, i) => (
-                    <div key={i} className="text-2xl font-black tracking-tighter text-slate-900">{logo}</div>
-                ))}
-            </div>
-        </div>
       </Container>
     </section>
   );

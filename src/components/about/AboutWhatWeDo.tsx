@@ -80,12 +80,9 @@ export default function AboutWhatWeDo() {
                       {section.desc}
                     </p>
                     
-                    <button 
-                      className="flex items-center gap-2 px-6 py-2.5 text-slate-900 text-sm font-bold rounded-full hover:scale-105 transition-transform shadow-lg"
-                      style={{ backgroundColor: section.color }}
-                    >
+                    <button className="btn-premium !text-sm !py-3 !px-8 flex items-center gap-2 group shadow-xl">
                       Know more
-                      <ArrowRight size={16} />
+                      <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                     </button>
                   </div>
 
