@@ -532,7 +532,15 @@ export default function PartnersPage() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-x-20 gap-y-24 max-w-[1400px] mx-auto relative text-left">
-            {BENEFITS.map((b, i) => (
+            {BENEFITS.map((b, i) => {
+              // Line under icon (i-2) reaches this icon at: (100+100)/(300+100)*4 = 2.0s
+              // Pulse fires at that moment, then repeats every 4s (= line cycle)
+              const PULSE_DURATION = 0.65;
+              const LINE_CYCLE     = 4;
+              const hasPulse       = i >= 2;
+              const pulseDelay     = (i - 2) * 0.7 + 2.0;   // only used when hasPulse
+              const repeatDelay    = LINE_CYCLE - PULSE_DURATION;
+              return (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }}
@@ -542,34 +550,55 @@ export default function PartnersPage() {
                 transition={{ duration: 0.6 }}
                 className="group relative flex items-start gap-10"
               >
-                {/* Vertical Timeline Line */}
-                <div className="absolute left-[27px] top-14 bottom-[-6rem] w-[2px] bg-slate-50 group-last:bg-transparent pointer-events-none hidden md:block overflow-hidden" aria-hidden="true">
-                  {/* Traveling Data Pulse */}
-                  <motion.div
-                    className="absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-transparent via-[#09358c]/40 to-transparent"
-                    animate={{ top: ['-100%', '300%'] }}
-                    transition={{ duration: 4, repeat: Infinity, ease: "linear", delay: i * 0.7 }}
-                  />
-                </div>
-
-                {/* Circular Icon Node (Magnetic Node) */}
-                <div className="relative z-10 shrink-0">
-                  {/* Heartbeat Pulse */}
-                  <motion.div
-                    className="absolute inset-0 bg-[#09358c]/10 rounded-full"
-                    animate={{ scale: [1, 1.8], opacity: [0.6, 0] }}
-                    transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-                  />
-                  <motion.div
-                    className="relative w-14 h-14 rounded-full bg-[#09358c]/5 text-[#09358c] flex items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-white"
+                {/* Vertical Timeline Line — hidden for last-row items to avoid dangling line */}
+                {i < BENEFITS.length - 2 && (
+                  <div
+                    className="absolute left-[27px] top-14 bottom-[-6rem] w-[2px] bg-slate-50 pointer-events-none hidden md:block overflow-hidden"
+                    aria-hidden="true"
                   >
+                    {/* Traveling Data Pulse */}
                     <motion.div
-                      animate={{ opacity: [0.6, 1, 0.6] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    >
-                      <b.icon size={22} strokeWidth={2} />
-                    </motion.div>
-                  </motion.div>
+                      className="absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-transparent via-[#09358c]/40 to-transparent"
+                      animate={{ top: ["-100%", "300%"] }}
+                      transition={{ duration: 4, repeat: Infinity, ease: "linear", delay: i * 0.7 }}
+                    />
+                  </div>
+                )}
+
+                {/* Circular Icon Node */}
+                <div className="relative z-10 shrink-0">
+                  {/* Pulse rings — only fire when the line from the row above arrives */}
+                  {hasPulse && (
+                    <>
+                      <motion.div
+                        className="absolute inset-0 bg-[#09358c]/25 rounded-full"
+                        initial={{ scale: 1, opacity: 0 }}
+                        animate={{ scale: [1, 2.3], opacity: [0.5, 0] }}
+                        transition={{
+                          duration: PULSE_DURATION,
+                          repeat: Infinity,
+                          ease: "easeOut",
+                          delay: pulseDelay,
+                          repeatDelay,
+                        }}
+                      />
+                      <motion.div
+                        className="absolute inset-0 bg-[#09358c]/15 rounded-full"
+                        initial={{ scale: 1, opacity: 0 }}
+                        animate={{ scale: [1, 1.7], opacity: [0.35, 0] }}
+                        transition={{
+                          duration: PULSE_DURATION,
+                          repeat: Infinity,
+                          ease: "easeOut",
+                          delay: pulseDelay + 0.12,
+                          repeatDelay,
+                        }}
+                      />
+                    </>
+                  )}
+                  <div className="relative w-14 h-14 rounded-full bg-[#09358c]/5 text-[#09358c] flex items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-white">
+                    <b.icon size={22} strokeWidth={2} />
+                  </div>
                 </div>
 
                 {/* Content Block */}
@@ -584,7 +613,8 @@ export default function PartnersPage() {
                   </p>
                 </div>
               </motion.div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
