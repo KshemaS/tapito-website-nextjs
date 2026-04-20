@@ -16,14 +16,14 @@ const LOCATIONS = [
     x: 720, 
     y: 294 
   },
-  // { 
-  //   city: "Kannur", 
-  //   country: "India", 
-  //   flag: "🇮🇳", 
-  //   address: "STC Tower, Thana, Kannur, Kerala 670002, India",
-  //   x: 746, 
-  //   y: 308 
-  // },
+  { 
+    city: "Kannur", 
+    country: "India", 
+    flag: "🇮🇳", 
+    address: "STC Tower, Thana, Kannur, Kerala 670002, India",
+    x: 712, 
+    y: 288 
+  },
   { 
     city: "Hyderabad", 
     country: "India", 
@@ -46,7 +46,7 @@ const LOCATIONS = [
     flag: "🇶🇦", 
     address: "Building No: 371, Zone 56, Street 340, Salwa Road, Doha, Qatar",
     x: 645, 
-    y: 265
+    y: 248 
   },
   { 
     city: "Dar es Salaam", 
@@ -67,7 +67,8 @@ const LOCATIONS = [
 ];
 
 const OFFICES = LOCATIONS;
-const MAP_DOTS = LOCATIONS;
+// Combine Kochi and Kannur into one pin for the map
+const MAP_DOTS = LOCATIONS.filter(loc => loc.city !== "Kannur");
 
 export default function WorldPresence() {
   const [hoveredCity, setHoveredCity] = useState<string | null>(null);
@@ -169,23 +170,55 @@ export default function WorldPresence() {
                   transition={{ type: "spring", stiffness: 400 }}
                 />
 
-                {/* Tooltip */}
                 <AnimatePresence>
                   {hoveredCity === loc.city && (
                     <foreignObject
-                      x={loc.x - 60} y={loc.y - 46}
-                      width="120" height="40"
+                      x={loc.city === "Kochi" ? loc.x - 220 : loc.x - 110} 
+                      y={loc.y - 120}
+                      width={loc.city === "Kochi" ? "440" : "220"} 
+                      height="150"
                       className="pointer-events-none overflow-visible"
                     >
                       <motion.div
-                        initial={{ opacity: 0, y: 6, scale: 0.85 }}
+                        initial={{ opacity: 0, y: 10, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.85 }}
-                        transition={{ duration: 0.18 }}
-                        className="bg-slate-900 text-white text-[10px] font-black uppercase tracking-widest py-1.5 px-3 rounded-lg text-center shadow-xl border border-slate-700 whitespace-nowrap"
+                        exit={{ opacity: 0, scale: 0.95 }}
+                        transition={{ duration: 0.2, ease: "easeOut" }}
+                        className="bg-white p-4 rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.12)] border border-slate-100 flex relative"
                       >
-                        {loc.city} &ndash; {loc.country}
-                        <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-[4px] border-l-transparent border-r-[4px] border-r-transparent border-t-[4px] border-t-slate-900" />
+                        <div className={`flex ${loc.city === "Kochi" ? "flex-row gap-6" : "flex-col gap-2"}`}>
+                          {/* Render Main City Info */}
+                          <div className="flex flex-col gap-1.5 min-w-[180px] max-w-[200px]">
+                            <div className="flex items-center gap-2.5">
+                              <span className="text-xl leading-none">{loc.flag}</span>
+                              <span className="text-[14px] font-bold text-slate-900 tracking-tight">
+                                {loc.city}
+                              </span>
+                            </div>
+                            <p className="text-[11px] text-slate-500 leading-[1.4] font-medium">
+                              {loc.address}
+                            </p>
+                          </div>
+
+                          {/* Side-by-side extra card for Kochi */}
+                          {loc.city === "Kochi" && (
+                            <>
+                              <div className="w-px bg-slate-100 self-stretch" />
+                              <div className="flex flex-col gap-1.5 min-w-[180px] max-w-[200px]">
+                                <div className="flex items-center gap-2.5">
+                                  <span className="text-xl leading-none">{LOCATIONS.find(l => l.city === "Kannur")?.flag}</span>
+                                  <span className="text-[14px] font-bold text-slate-900 tracking-tight">
+                                    Kannur
+                                  </span>
+                                </div>
+                                <p className="text-[11px] text-slate-500 leading-[1.4] font-medium">
+                                  {LOCATIONS.find(l => l.city === "Kannur")?.address}
+                                </p>
+                              </div>
+                            </>
+                          )}
+                        </div>
+                        
                       </motion.div>
                     </foreignObject>
                   )}
