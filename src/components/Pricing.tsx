@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from "framer-motion";
 import { Check, ArrowRight, Zap, Target, Rocket, Shield, Globe, ZapIcon, Layers3, TrendingUp, Sparkles, Building2, ChevronDown, Mail } from "lucide-react";
 import Container from "./Container";
 import { cn } from "@/lib/utils";
@@ -233,6 +233,8 @@ const FAQItem = ({ question, answer, index }: { question: string; answer: string
 };
 
 const Pricing = () => {
+  const [activePlan, setActivePlan] = useState(plans[2]);
+
   return (
     <section className="pt-32 pb-32 lg:pt-48 relative overflow-hidden bg-[#fafbfc]">
       {/* Background patterns */}
@@ -302,13 +304,180 @@ const Pricing = () => {
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-5 relative z-10 lg:px-4">
-          <PricingCard plan={plans[0]} />
-          <PricingCard plan={plans[1]} />
-          <div className="relative lg:z-10">
-            <PricingCard plan={plans[2]} />
+        <div className="relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            {/* Left Sidebar Plan Selector */}
+            <div className="lg:col-span-4 flex flex-col gap-4">
+              {plans.map((plan, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setActivePlan(plan)}
+                  className={cn(
+                    "group relative w-full text-left p-6 rounded-2xl transition-all duration-500 border",
+                    activePlan.name === plan.name 
+                      ? "bg-white border-[#05a0ec]/30 shadow-[0_20px_40px_-8px_rgba(9,53,140,0.12)]" 
+                      : "bg-white/40 border-transparent hover:bg-white/80 hover:border-blue-100"
+                  )}
+                >
+                  <div className="flex items-center justify-between gap-4">
+                    <div className="flex items-center gap-4">
+                      <div className={cn(
+                        "w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-500",
+                        activePlan.name === plan.name 
+                          ? "bg-[#09358c] text-white" 
+                          : "bg-slate-50 text-slate-400 group-hover:bg-blue-50 group-hover:text-[#05a0ec]"
+                      )}>
+                        <plan.icon size={20} strokeWidth={2} />
+                      </div>
+                      <div>
+                        <h4 className={cn(
+                          "text-lg font-black tracking-tight transition-colors",
+                          activePlan.name === plan.name ? "text-[#09358c]" : "text-slate-500 group-hover:text-slate-900"
+                        )}>
+                          {plan.name}
+                        </h4>
+                        <p className="text-[11px] font-bold text-slate-400 uppercase tracking-widest">{plan.description}</p>
+                      </div>
+                    </div>
+                    {plan.popular && (
+                      <span className="px-2.5 py-0.5 rounded-full bg-blue-100/50 text-[8px] font-black text-[#09358c] uppercase tracking-widest border border-blue-200/50">
+                        Popular
+                      </span>
+                    )}
+                  </div>
+                  {activePlan.name === plan.name && (
+                    <motion.div 
+                      layoutId="activeTab"
+                      className="absolute inset-0 rounded-2xl border-2 border-[#05a0ec] pointer-events-none"
+                    />
+                  )}
+                </button>
+              ))}
+            </div>
+
+            {/* Right Side Detail Stage */}
+            <div className="lg:col-span-8 min-h-[650px]">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activePlan.name}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.4, ease: "easeOut" }}
+                  className="h-full"
+                >
+                  <PricingCard plan={activePlan} />
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </div>
-          <PricingCard plan={plans[3]} />
+        </div>
+
+        {/* Feature Hub — Unique Comparison */}
+        <div className="mt-40 relative z-10 w-full" id="comparison">
+          <div className="text-center mb-24">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-[10px] font-black uppercase tracking-widest text-[#05a0ec] mb-6"
+            >
+              <Zap size={10} className="fill-current" />
+              Full Feature Hub
+            </motion.div>
+            <h3 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tight mb-6">
+              The technical <span className="text-[#09358c]">breakdown.</span>
+            </h3>
+            <p className="text-slate-500 font-medium max-w-xl mx-auto text-lg">
+              Everything you need to know, mapped precisely across every plan tier.
+            </p>
+          </div>
+
+          <div className="w-full">
+            {/* Unique Floating Header */}
+            <div className="grid grid-cols-12 gap-4 mb-4 px-10 py-6 sticky top-24 z-50 bg-white/60 backdrop-blur-3xl rounded-[2rem] border border-white/40 shadow-[0_12px_40px_-12px_rgba(0,0,0,0.05)]">
+              <div className="col-span-4 flex items-center">
+                <span className="text-[11px] font-black uppercase tracking-[0.2em] text-slate-400">Capabilities</span>
+              </div>
+              {plans.map((p, i) => (
+                <div key={i} className="col-span-2 text-center group/p">
+                  <div className="flex flex-col gap-1">
+                    <span className={cn(
+                      "text-[14px] font-black transition-all",
+                      p.popular ? "text-[#05a0ec]" : "text-slate-500 group-hover/p:text-slate-900"
+                    )}>
+                      {p.name}
+                    </span>
+                    {p.popular && (
+                      <div className="mx-auto w-1 h-1 bg-[#05a0ec] rounded-full animate-pulse" />
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Feature Islands */}
+            {[
+              {
+                title: "Data & Intelligence",
+                icon: Target,
+                rows: [
+                  { name: "Customer Records", starter: "10K", growth: "50K", elite: "Unlimited", enterprise: "Unlimited" },
+                  { name: "BI Visualizer", starter: true, growth: true, elite: true, enterprise: true },
+                  { name: "RFM Logic", starter: false, growth: true, elite: true, enterprise: true },
+                  { name: "Predictive Models", starter: false, growth: false, elite: true, enterprise: true },
+                  { name: "AI Insight Tokens", starter: "Basic", growth: "10K Credits", elite: "Unlimited", enterprise: "Universal" },
+                ]
+              },
+              {
+                title: "Engagement Tools",
+                icon: Rocket,
+                rows: [
+                  { name: "Marketing Hub", starter: "Manual", growth: "Smart-Assist", elite: "Full-Auto", enterprise: "Custom flows" },
+                  { name: "Geo-Targeting", starter: false, growth: true, elite: true, enterprise: true },
+                  { name: "Channel Mix", starter: "Single", growth: "Multi", elite: "Omni", enterprise: "Global" },
+                  { name: "White Labeling", starter: false, growth: false, elite: false, enterprise: true },
+                ]
+              },
+              {
+                title: "Scale & Reliability",
+                icon: Shield,
+                rows: [
+                  { name: "Service Level", starter: "Email", growth: "12h Chat", elite: "2h Manager", enterprise: "Instant Support" },
+                  { name: "Onboarding", starter: "Docs", growth: "Workshop", elite: "Strategic", enterprise: "VIP White-Glove" },
+                  { name: "Uptime SLA", starter: "Standard", growth: "99.9%", elite: "99.99%", enterprise: "99.999%" },
+                ]
+              }
+            ].map((section, sIdx) => (
+              <div key={sIdx} className="mb-12 relative px-2">
+                <div className="flex items-center gap-4 mb-8 pl-4">
+                   <div className="w-11 h-11 rounded-2xl flex items-center justify-center bg-white text-slate-900 shadow-[0_8px_20px_rgba(0,0,0,0.06)] border border-slate-100">
+                     <section.icon size={22} strokeWidth={2} />
+                   </div>
+                   <h4 className="text-xl font-black text-slate-900 tracking-tight uppercase tracking-[0.1em]">{section.title}</h4>
+                   <div className="h-px flex-grow bg-gradient-to-r from-slate-200 to-transparent" />
+                </div>
+
+                <div className="space-y-3">
+                  {section.rows.map((row, rIdx) => (
+                    <motion.div
+                      key={rIdx}
+                      whileHover={{ x: 10 }}
+                      className="group grid grid-cols-12 gap-4 items-center bg-white/40 hover:bg-white/90 border border-white/40 hover:border-blue-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] px-10 py-5 rounded-[1.5rem] transition-all duration-300"
+                    >
+                      <div className="col-span-4">
+                        <span className="text-[15px] font-bold text-slate-500 group-hover:text-[#09358c] transition-colors">{row.name}</span>
+                      </div>
+                      <div className="col-span-2 flex justify-center">{ValueBadge(row.starter)}</div>
+                      <div className="col-span-2 flex justify-center">{ValueBadge(row.growth)}</div>
+                      <div className="col-span-2 flex justify-center">{ValueBadge(row.elite)}</div>
+                      <div className="col-span-2 flex justify-center">{ValueBadge(row.enterprise)}</div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
         </div>
 
         <div className="mt-40 relative z-10 lg:px-4">
@@ -400,6 +569,29 @@ const Pricing = () => {
   );
 };
 
+const ValueBadge = (value: string | boolean) => {
+  if (typeof value === "boolean") {
+    return value ? (
+      <div className="group/badge relative flex items-center justify-center">
+        {/* Premium Checkmark */}
+        <div className="w-8 h-8 rounded-xl bg-blue-50 text-[#05a0ec] flex items-center justify-center border border-blue-100/50 shadow-[0_4px_12px_rgba(5,160,236,0.12)] relative z-10 transition-transform group-hover:scale-110">
+          <Check size={16} strokeWidth={3.5} />
+        </div>
+        <div className="absolute inset-0 w-8 h-8 bg-[#05a0ec]/20 blur-xl rounded-full scale-0 group-hover/badge:scale-110 transition-transform duration-500" />
+      </div>
+    ) : (
+      <div className="flex items-center justify-center opacity-20">
+        <div className="w-4 h-[2px] bg-slate-300 rounded-full" />
+      </div>
+    );
+  }
+  return (
+    <div className="inline-flex items-center px-4 py-2 rounded-xl bg-[#09358c]/[0.03] border border-[#09358c]/[0.06] group-hover:bg-[#05a0ec]/10 group-hover:border-[#05a0ec]/20 transition-all duration-300">
+      <span className="text-[12px] font-extrabold text-slate-700 group-hover:text-[#05a0ec] tracking-tighter whitespace-nowrap uppercase">{value}</span>
+    </div>
+  );
+};
+
 const PricingCard = ({ plan }: { plan: typeof plans[0] }) => {
   const Icon = plan.icon;
   return (
@@ -435,7 +627,7 @@ const PricingCard = ({ plan }: { plan: typeof plans[0] }) => {
           <div className="h-px w-full bg-gradient-to-r from-slate-100 to-transparent" />
         </div>
         
-        <ul className="space-y-4 mb-10">
+        <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-5 mb-10">
           {plan.features.map((feature, fIndex) => (
             <motion.li 
               key={fIndex} 
