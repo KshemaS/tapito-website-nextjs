@@ -632,7 +632,7 @@ const PricingCard = ({ plan }: { plan: typeof plans[0] }) => {
         <div className="lg:w-[60%] flex flex-col">
           <div className="h-full bg-slate-50/50 rounded-[2rem] p-8 lg:p-12 border border-slate-200/40 relative overflow-hidden flex flex-col justify-center">
             {/* Subtle background decoration */}
-            <div className="absolute -top-10 -right-10 opacity-[0.03] pointer-events-none">
+            <div className="absolute top-4 right-4 opacity-[0.03] pointer-events-none">
               <Icon size={160} />
             </div>
 
