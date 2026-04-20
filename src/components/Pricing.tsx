@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from "framer-motion";
-import { Check, ArrowRight, Zap, Target, Rocket, Shield, Globe, ZapIcon, Layers3, TrendingUp, Sparkles, Building2, ChevronDown, Mail } from "lucide-react";
+import { Check, X, ArrowRight, Zap, Target, Rocket, Shield, Globe, ZapIcon, Layers3, TrendingUp, Sparkles, Building2, ChevronDown, Mail } from "lucide-react";
 import Container from "./Container";
 import { cn } from "@/lib/utils";
 import Particles from "./Particles";
@@ -178,9 +178,9 @@ const FAQItem = ({ question, answer, index }: { question: string; answer: string
     >
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full px-8 py-7 flex items-center justify-between text-left group/btn"
+        className="w-full px-6 sm:px-8 py-6 sm:py-7 flex items-center justify-between text-left group/btn"
       >
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-4 sm:gap-6">
           <div
             className={cn(
               "w-11 h-11 rounded-2xl flex items-center justify-center text-[11px] font-black transition-all duration-500",
@@ -220,7 +220,7 @@ const FAQItem = ({ question, answer, index }: { question: string; answer: string
         transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
         className="overflow-hidden"
       >
-        <div className="px-8 pb-8 ml-17 text-slate-500 text-[15px] font-medium leading-relaxed max-w-2xl">
+        <div className="px-6 sm:px-8 pb-8 ml-0 sm:ml-17 text-slate-500 text-[14px] sm:text-[15px] font-medium leading-relaxed max-w-2xl">
           {answer}
         </div>
       </motion.div>
@@ -269,7 +269,7 @@ const Pricing = () => {
       </div>
 
       <Container>
-        <div className="text-center mb-16 relative z-10">
+        <div className="text-center mb-16 relative z-10 px-4">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -281,7 +281,7 @@ const Pricing = () => {
               whileInView={{ opacity: 1, scale: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="inline-flex items-center gap-2.5 px-5 py-2 mb-10 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#09358c] bg-blue-50/80 backdrop-blur-xl rounded-full border border-blue-200/50 shadow-sm shadow-blue-100/50"
+              className="inline-flex items-center gap-2.5 px-5 py-2 mb-10 text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.2em] text-[#09358c] bg-blue-50/80 backdrop-blur-xl rounded-full border border-blue-200/50 shadow-sm shadow-blue-100/50"
             >
               <motion.div
                 animate={{ scale: [1, 1.2, 1] }}
@@ -291,10 +291,10 @@ const Pricing = () => {
               </motion.div>
               Pricing Plans
             </motion.div>
-            <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold text-slate-900 mb-10 tracking-tighter leading-[0.95]">
-              Ready to revolutionize <br /> <span className="text-[#09358c]">your retail analytics?</span>
+            <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-slate-900 mb-8 sm:mb-10 tracking-tighter leading-[1] md:leading-[0.95]">
+              Ready to revolutionize <br className="hidden sm:block" /> <span className="text-[#09358c]">your retail analytics?</span>
             </h2>
-            <p className="text-xl md:text-2xl text-slate-500 max-w-2xl mx-auto leading-relaxed font-medium">
+            <p className="text-lg md:text-2xl text-slate-500 max-w-2xl mx-auto leading-relaxed font-medium px-4">
               Join 500+ leading retailers who use Tapito to make smarter, faster, more profitable decisions every day.
             </p>
           </motion.div>
@@ -302,14 +302,14 @@ const Pricing = () => {
 
         <div className="relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-            {/* Left Sidebar Plan Selector */}
-            <div className="lg:col-span-4 flex flex-col gap-4">
+            {/* Plan Selector */}
+            <div className="lg:col-span-4 flex flex-row lg:flex-col gap-4 overflow-x-auto lg:overflow-visible pb-6 lg:pb-0 scrollbar-hide -mx-4 px-4 lg:mx-0 lg:px-0">
               {plans.map((plan, idx) => (
                 <button
                   key={idx}
                   onClick={() => setActivePlan(plan)}
                   className={cn(
-                    "group relative w-full text-left p-6 rounded-2xl transition-all duration-500 border",
+                    "group relative min-w-[200px] sm:min-w-[240px] lg:min-w-0 w-full text-left p-5 sm:p-6 rounded-2xl transition-all duration-500 border shrink-0",
                     activePlan.name === plan.name 
                       ? "bg-white border-[#05a0ec]/30 shadow-[0_20px_40px_-8px_rgba(9,53,140,0.12)]" 
                       : "bg-white/40 border-transparent hover:bg-white/80 hover:border-blue-100"
@@ -318,25 +318,25 @@ const Pricing = () => {
                   <div className="flex items-center justify-between gap-4">
                     <div className="flex items-center gap-4">
                       <div className={cn(
-                        "w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-500",
+                        "w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center transition-all duration-500",
                         activePlan.name === plan.name 
                           ? "bg-[#09358c] text-white" 
                           : "bg-slate-50 text-slate-400 group-hover:bg-blue-50 group-hover:text-[#05a0ec]"
                       )}>
-                        <plan.icon size={20} strokeWidth={2} />
+                        <plan.icon size={18} strokeWidth={2} />
                       </div>
                       <div>
                         <h4 className={cn(
-                          "text-lg font-black tracking-tight transition-colors",
+                          "text-base sm:text-lg font-black tracking-tight transition-colors",
                           activePlan.name === plan.name ? "text-[#09358c]" : "text-slate-500 group-hover:text-slate-900"
                         )}>
                           {plan.name}
                         </h4>
-                        <p className="text-[11px] font-bold text-slate-400 uppercase tracking-widest">{plan.description}</p>
+                        <p className="text-[10px] sm:text-[11px] font-bold text-slate-400 uppercase tracking-widest leading-none mt-1">{plan.description}</p>
                       </div>
                     </div>
                     {plan.popular && (
-                      <span className="px-2.5 py-0.5 rounded-full bg-blue-100/50 text-[8px] font-black text-[#09358c] uppercase tracking-widest border border-blue-200/50">
+                      <span className="hidden sm:inline-block px-2.5 py-0.5 rounded-full bg-blue-100/50 text-[8px] font-black text-[#09358c] uppercase tracking-widest border border-blue-200/50">
                         Popular
                       </span>
                     )}
@@ -362,7 +362,7 @@ const Pricing = () => {
 
         {/* Feature Hub — Unique Comparison */}
         <div className="mt-10 relative z-10 w-full" id="comparison">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 px-4">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -371,98 +371,99 @@ const Pricing = () => {
               <Zap size={10} className="fill-current" />
               Full Feature Hub
             </motion.div>
-            <h3 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tight mb-6">
+            <h3 className="text-3xl md:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight mb-6 leading-tight">
               The technical <span className="text-[#09358c]">breakdown.</span>
             </h3>
-            <p className="text-slate-500 font-medium max-w-xl mx-auto text-lg">
+            <p className="text-slate-500 font-medium max-w-xl mx-auto text-base sm:text-lg">
               Everything you need to know, mapped precisely across every plan tier.
             </p>
           </div>
 
-          <div className="w-full">
-            {/* Unique Floating Header */}
-            <div className="grid grid-cols-12 gap-4 mb-4 px-10 py-6 sticky top-24 z-50 bg-white/60 backdrop-blur-3xl rounded-[2rem] border border-white/40 shadow-[0_12px_40px_-12px_rgba(0,0,0,0.05)]">
-              <div className="col-span-4 flex items-center">
-                <span className="text-[11px] font-black uppercase tracking-[0.2em] text-slate-400">Capabilities</span>
+          <div className="w-full overflow-x-auto pb-8 scrollbar-hide">
+            <div className="min-w-[800px]">
+              {/* Unique Floating Header */}
+              <div className="grid grid-cols-12 gap-4 mb-10 px-10 py-6 sticky top-24 z-50 bg-white/60 backdrop-blur-3xl rounded-[2rem] border border-white/40 shadow-[0_12px_40px_-12px_rgba(0,0,0,0.05)]">
+                <div className="col-span-4 flex items-center">
+                  <span className="text-[11px] font-black uppercase tracking-[0.2em] text-slate-400">Capabilities</span>
+                </div>
+                {plans.map((p, i) => (
+                  <div key={i} className="col-span-2 text-center group/p">
+                    <div className="flex flex-col gap-1">
+                      <span className={cn(
+                        "text-[14px] font-black transition-all",
+                        p.popular ? "text-[#05a0ec]" : "text-slate-500 group-hover/p:text-slate-900"
+                      )}>
+                        {p.name}
+                      </span>
+                      {p.popular && (
+                        <div className="mx-auto w-1 h-1 bg-[#05a0ec] rounded-full animate-pulse" />
+                      )}
+                    </div>
+                  </div>
+                ))}
               </div>
-              {plans.map((p, i) => (
-                <div key={i} className="col-span-2 text-center group/p">
-                  <div className="flex flex-col gap-1">
-                    <span className={cn(
-                      "text-[14px] font-black transition-all",
-                      p.popular ? "text-[#05a0ec]" : "text-slate-500 group-hover/p:text-slate-900"
-                    )}>
-                      {p.name}
-                    </span>
-                    {p.popular && (
-                      <div className="mx-auto w-1 h-1 bg-[#05a0ec] rounded-full animate-pulse" />
-                    )}
+
+              {/* Feature Islands */}
+              {[
+                {
+                  title: "Data & Intelligence",
+                  icon: Target,
+                  rows: [
+                    { name: "Customer Records", starter: "10K", growth: "50K", elite: "Unlimited", enterprise: "Unlimited" },
+                    { name: "BI Visualizer", starter: true, growth: true, elite: true, enterprise: true },
+                    { name: "RFM Logic", starter: false, growth: true, elite: true, enterprise: true },
+                    { name: "Predictive Models", starter: false, growth: false, elite: true, enterprise: true },
+                    { name: "AI Insight Tokens", starter: "Basic", growth: "10K Credits", elite: "Unlimited", enterprise: "Universal" },
+                  ]
+                },
+                {
+                  title: "Engagement Tools",
+                  icon: Rocket,
+                  rows: [
+                    { name: "Marketing Hub", starter: "Manual", growth: "Smart-Assist", elite: "Full-Auto", enterprise: "Custom flows" },
+                    { name: "Geo-Targeting", starter: false, growth: true, elite: true, enterprise: true },
+                    { name: "Channel Mix", starter: "Single", growth: "Multi", elite: "Omni", enterprise: "Global" },
+                    { name: "White Labeling", starter: false, growth: false, elite: false, enterprise: true },
+                  ]
+                },
+                {
+                  title: "Scale & Reliability",
+                  icon: Shield,
+                  rows: [
+                    { name: "Service Level", starter: "Email", growth: "12h Chat", elite: "2h Manager", enterprise: "Instant Support" },
+                    { name: "Onboarding", starter: "Docs", growth: "Workshop", elite: "Strategic", enterprise: "VIP White-Glove" },
+                    { name: "Uptime SLA", starter: "Standard", growth: "99.9%", elite: "99.99%", enterprise: "99.999%" },
+                  ]
+                }
+              ].map((section, sIdx) => (
+                <div key={sIdx} className="mb-12 relative px-2">
+                  <div className="flex items-center gap-4 mb-10 pl-4">
+                    <div className="w-11 h-11 rounded-2xl flex items-center justify-center bg-white text-slate-900 shadow-[0_8px_20px_rgba(0,0,0,0.06)] border border-slate-100">
+                      <section.icon size={22} strokeWidth={2} />
+                    </div>
+                    <h4 className="text-xl font-black text-slate-900 tracking-tight uppercase tracking-[0.1em]">{section.title}</h4>
+                    <div className="h-px flex-grow bg-gradient-to-r from-slate-200 to-transparent" />
+                  </div>
+
+                  <div className="space-y-4">
+                    {section.rows.map((row, rIdx) => (
+                      <motion.div
+                        key={rIdx}
+                        className="group grid grid-cols-12 gap-4 items-center bg-white/40 hover:bg-white/90 border border-white/40 hover:border-blue-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] px-10 py-5 rounded-[1.5rem] transition-all duration-300"
+                      >
+                        <div className="col-span-4">
+                          <span className="text-[15px] font-bold text-slate-500 group-hover:text-[#09358c] transition-colors">{row.name}</span>
+                        </div>
+                        <div className="col-span-2 flex justify-center">{ValueBadge(row.starter)}</div>
+                        <div className="col-span-2 flex justify-center">{ValueBadge(row.growth)}</div>
+                        <div className="col-span-2 flex justify-center">{ValueBadge(row.elite)}</div>
+                        <div className="col-span-2 flex justify-center">{ValueBadge(row.enterprise)}</div>
+                      </motion.div>
+                    ))}
                   </div>
                 </div>
               ))}
             </div>
-
-            {/* Feature Islands */}
-            {[
-              {
-                title: "Data & Intelligence",
-                icon: Target,
-                rows: [
-                  { name: "Customer Records", starter: "10K", growth: "50K", elite: "Unlimited", enterprise: "Unlimited" },
-                  { name: "BI Visualizer", starter: true, growth: true, elite: true, enterprise: true },
-                  { name: "RFM Logic", starter: false, growth: true, elite: true, enterprise: true },
-                  { name: "Predictive Models", starter: false, growth: false, elite: true, enterprise: true },
-                  { name: "AI Insight Tokens", starter: "Basic", growth: "10K Credits", elite: "Unlimited", enterprise: "Universal" },
-                ]
-              },
-              {
-                title: "Engagement Tools",
-                icon: Rocket,
-                rows: [
-                  { name: "Marketing Hub", starter: "Manual", growth: "Smart-Assist", elite: "Full-Auto", enterprise: "Custom flows" },
-                  { name: "Geo-Targeting", starter: false, growth: true, elite: true, enterprise: true },
-                  { name: "Channel Mix", starter: "Single", growth: "Multi", elite: "Omni", enterprise: "Global" },
-                  { name: "White Labeling", starter: false, growth: false, elite: false, enterprise: true },
-                ]
-              },
-              {
-                title: "Scale & Reliability",
-                icon: Shield,
-                rows: [
-                  { name: "Service Level", starter: "Email", growth: "12h Chat", elite: "2h Manager", enterprise: "Instant Support" },
-                  { name: "Onboarding", starter: "Docs", growth: "Workshop", elite: "Strategic", enterprise: "VIP White-Glove" },
-                  { name: "Uptime SLA", starter: "Standard", growth: "99.9%", elite: "99.99%", enterprise: "99.999%" },
-                ]
-              }
-            ].map((section, sIdx) => (
-              <div key={sIdx} className="mb-12 relative px-2">
-                <div className="flex items-center gap-4 mb-8 pl-4">
-                   <div className="w-11 h-11 rounded-2xl flex items-center justify-center bg-white text-slate-900 shadow-[0_8px_20px_rgba(0,0,0,0.06)] border border-slate-100">
-                     <section.icon size={22} strokeWidth={2} />
-                   </div>
-                   <h4 className="text-xl font-black text-slate-900 tracking-tight uppercase tracking-[0.1em]">{section.title}</h4>
-                   <div className="h-px flex-grow bg-gradient-to-r from-slate-200 to-transparent" />
-                </div>
-
-                <div className="space-y-3">
-                  {section.rows.map((row, rIdx) => (
-                    <motion.div
-                      key={rIdx}
-                      whileHover={{ x: 10 }}
-                      className="group grid grid-cols-12 gap-4 items-center bg-white/40 hover:bg-white/90 border border-white/40 hover:border-blue-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] px-10 py-5 rounded-[1.5rem] transition-all duration-300"
-                    >
-                      <div className="col-span-4">
-                        <span className="text-[15px] font-bold text-slate-500 group-hover:text-[#09358c] transition-colors">{row.name}</span>
-                      </div>
-                      <div className="col-span-2 flex justify-center">{ValueBadge(row.starter)}</div>
-                      <div className="col-span-2 flex justify-center">{ValueBadge(row.growth)}</div>
-                      <div className="col-span-2 flex justify-center">{ValueBadge(row.elite)}</div>
-                      <div className="col-span-2 flex justify-center">{ValueBadge(row.enterprise)}</div>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            ))}
           </div>
 
         </div>
@@ -567,8 +568,11 @@ const ValueBadge = (value: string | boolean) => {
         <div className="absolute inset-0 w-8 h-8 bg-[#05a0ec]/20 blur-xl rounded-full scale-0 group-hover/badge:scale-110 transition-transform duration-500" />
       </div>
     ) : (
-      <div className="flex items-center justify-center opacity-20">
-        <div className="w-4 h-[2px] bg-slate-300 rounded-full" />
+      <div className="group/badge relative flex items-center justify-center">
+        {/* Negative Mark */}
+        <div className="w-8 h-8 rounded-xl bg-slate-50 text-slate-400 flex items-center justify-center border border-slate-200/60 transition-transform group-hover:scale-110 shadow-sm">
+          <X size={16} strokeWidth={3} />
+        </div>
       </div>
     );
   }
@@ -584,10 +588,10 @@ const PricingCard = ({ plan }: { plan: typeof plans[0] }) => {
 
   return (
     <SpotlightCard popular={plan.popular} hue={plan.hue}>
-      <div className="flex flex-col lg:flex-row h-full gap-6 lg:gap-10 items-center lg:items-stretch">
+      <div className="flex flex-col lg:flex-row h-full gap-8 lg:gap-10 items-center lg:items-stretch">
         {/* Left Side: Logo & Description */}
-        <div className="lg:w-[40%] flex flex-col h-full pb-6 pt-10">
-          <div className="mb-8">
+        <div className="w-full lg:w-[40%] flex flex-col h-full pb-6 pt-4 lg:pt-10 text-center lg:text-left items-center lg:items-start">
+          <div className="mb-8 w-full">
             <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-3 leading-none tracking-tighter">
               {plan.name}
             </h3>
@@ -600,7 +604,7 @@ const PricingCard = ({ plan }: { plan: typeof plans[0] }) => {
               )}>
                 {plan.description}
               </p>
-              <p className="text-[16px] font-medium text-slate-600 leading-snug max-w-sm">
+              <p className="text-[14px] sm:text-[16px] font-medium text-slate-600 leading-snug max-w-sm mx-auto lg:mx-0">
                 {plan.idealFor}
               </p>
             </div>
@@ -619,17 +623,15 @@ const PricingCard = ({ plan }: { plan: typeof plans[0] }) => {
         </div>
 
         {/* Right Side: Core Capabilities */}
-        <div className="lg:w-[60%] flex flex-col">
-          <div className="h-full bg-slate-50/50 rounded-[2rem] p-8 lg:p-12 border border-slate-200/40 relative overflow-hidden flex flex-col justify-center">
-
-
+        <div className="w-full lg:w-[60%] flex flex-col">
+          <div className="h-full bg-slate-50/50 rounded-[2rem] p-6 sm:p-8 lg:p-12 border border-slate-200/40 relative overflow-hidden flex flex-col justify-center">
             {/* Subtle background decoration */}
-            <div className="absolute top-4 right-4 opacity-[0.03] pointer-events-none">
+            <div className="absolute top-4 right-4 opacity-[0.03] pointer-events-none hidden sm:block">
               <Icon size={160} />
             </div>
 
             <div className="flex items-center gap-4 mb-6">
-              <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.25em] whitespace-nowrap">Core Capabilities</span>
+              <span className="text-[9px] sm:text-[10px] font-black text-slate-400 uppercase tracking-[0.25em] whitespace-nowrap">Core Capabilities</span>
               <div className="h-px flex-grow bg-slate-200" />
             </div>
 
