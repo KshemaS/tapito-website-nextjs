@@ -59,15 +59,15 @@ const bentoItems: BentoItem[] = [
     subtitle: "Insights",
     description: "Segment users by behavior, demographics, and value. Create high-fidelity personas that drive personalized marketing strategies.",
     icon: Users,
-    color: "bg-[#f0f9ff]",
-    textColor: "text-[#075985]",
-    borderColor: "border-[#bae6fd]",
-    badgeColor: "bg-[#e0f2fe]",
+    color: "bg-[#f0f7ff]",
+    textColor: "text-[#09358c]",
+    borderColor: "border-[#09358c]/10",
+    badgeColor: "bg-[#09358c]/10",
     span: "col-span-1",
     visual: (
       <div className="mt-6 flex -space-x-3">
         {[1, 2, 3].map(i => (
-          <div key={i} className="w-9 h-9 rounded-full border-2 border-white bg-sky-200" />
+          <div key={i} className="w-9 h-9 rounded-full border-2 border-white bg-[#05a0ec]/30" />
         ))}
       </div>
     )
@@ -120,18 +120,18 @@ const bentoItems: BentoItem[] = [
     subtitle: "Non-Linear Journey Mapping",
     description: "Users don't always follow the straight line. Map the complex, multi-touch relationships between discovery, research, and purchase.",
     icon: Search,
-    color: "bg-[#f5f3ff]",
-    textColor: "text-[#5b21b6]",
-    borderColor: "border-[#ddd6fe]",
-    badgeColor: "bg-[#ede9fe]",
+    color: "bg-[#f2f8ff]",
+    textColor: "text-[#09358c]",
+    borderColor: "border-[#05a0ec]/20",
+    badgeColor: "bg-[#05a0ec]/10",
     span: "col-span-2",
     visual: (
       <div className="mt-6 relative h-20 w-full overflow-hidden">
         <svg className="w-full h-full" viewBox="0 0 400 100">
-          <path d="M0,50 Q100,10 200,50 T400,50" fill="none" stroke="currentColor" strokeWidth="2" className="text-blue-400 opacity-40" />
-          <circle cx="50" cy="30" r="4" className="fill-blue-600" />
-          <circle cx="200" cy="50" r="4" className="fill-blue-600" />
-          <circle cx="350" cy="50" r="4" className="fill-blue-600" />
+          <path d="M0,50 Q100,10 200,50 T400,50" fill="none" stroke="currentColor" strokeWidth="2" className="text-[#05a0ec] opacity-40" />
+          <circle cx="50" cy="30" r="4" className="fill-[#09358c]" />
+          <circle cx="200" cy="50" r="4" className="fill-[#09358c]" />
+          <circle cx="350" cy="50" r="4" className="fill-[#09358c]" />
         </svg>
       </div>
     )
@@ -205,16 +205,16 @@ const bentoItems: BentoItem[] = [
     subtitle: "Map Relationships Between Categories",
     description: "Discover which products are frequently bought together. Use association rules to power cross-sell engines and physical store layouts.",
     icon: ShoppingBag,
-    color: "bg-[#f1f7fe]",
-    textColor: "text-[#2e5d8a]",
-    borderColor: "border-[#d8eafb]",
-    badgeColor: "bg-[#e1f1ff]",
+    color: "bg-[#f0f9ff]",
+    textColor: "text-[#09358c]",
+    borderColor: "border-[#05a0ec]/20",
+    badgeColor: "bg-[#05a0ec]/10",
     span: "col-span-1",
     visual: (
       <div className="mt-6 flex gap-2 overflow-hidden">
         {[1, 2, 3].map(i => (
           <div key={i} className="w-10 h-10 rounded-lg bg-white shadow-sm border border-slate-100 flex items-center justify-center shrink-0">
-            <ShoppingBag size={16} className="text-blue-500/40" />
+            <ShoppingBag size={16} className="text-[#05a0ec]/40" />
           </div>
         ))}
       </div>
@@ -254,7 +254,7 @@ export const BentoAnalyticsGrid = ({
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="text-xs font-black uppercase tracking-[0.3em] text-blue-600 mb-4"
+            className="text-xs font-black uppercase tracking-[0.3em] text-[#09358c] mb-4"
           >
             {subtitle}
           </motion.p>
@@ -281,7 +281,7 @@ export const BentoAnalyticsGrid = ({
               className={`
                 ${item.span} ${item.color} rounded-[2.5rem] p-8 md:p-10 border ${item.borderColor}
                 relative overflow-hidden cursor-pointer group transition-all duration-300
-                hover:shadow-[0_45px_110px_-40px_rgba(37,99,235,0.25)] flex flex-col
+                hover:shadow-[0_45px_110px_-40px_rgba(9,53,140,0.25)] flex flex-col
               `}
             >
               <div className="relative z-10 h-full flex flex-col">
@@ -342,7 +342,7 @@ export const BentoAnalyticsGrid = ({
                   <h3 className="text-4xl md:text-5xl font-black text-slate-950 mb-4 tracking-tighter uppercase">
                     {selectedItem.title}
                   </h3>
-                  <p className="text-xl font-bold text-blue-600 mb-10">
+                  <p className="text-xl font-bold text-[#05a0ec] mb-10">
                     {selectedItem.subtitle}
                   </p>
 
@@ -363,7 +363,7 @@ export const BentoAnalyticsGrid = ({
                           initial={{ x: -20, opacity: 0 }}
                           animate={{ x: 0, opacity: 1 }}
                           transition={{ delay: 0.1 * i }}
-                          className="flex gap-4 p-6 rounded-3xl bg-slate-50 border border-slate-100 items-start hover:bg-white hover:border-blue-200 transition-all group/benefit hover:shadow-lg"
+                          className="flex gap-4 p-6 rounded-3xl bg-slate-50 border border-slate-100 items-start hover:bg-white hover:border-[#05a0ec]/30 transition-all group/benefit hover:shadow-lg"
                         >
                           <div className="w-7 h-7 rounded-full bg-emerald-100 flex items-center justify-center shrink-0 mt-0.5 group-hover/benefit:bg-emerald-500 group-hover/benefit:text-white transition-colors"><CheckCircle2 size={16} /></div>
                           <p className="text-[15px] font-bold text-slate-700 leading-relaxed">{benefit}</p>

@@ -25,7 +25,7 @@ export const ExploreMoreFeatures = ({ currentSlug }: ExploreMoreFeaturesProps) =
     <section className="py-16 md:py-20 2xl:py-28 relative overflow-hidden bg-slate-50/50">
       <Container>
         <div className="mb-16 text-center">
-          <motion.p {...fadeUp()} className="text-xs font-black uppercase tracking-[0.3em] text-blue-600 mb-4">
+          <motion.p {...fadeUp()} className="text-xs font-black uppercase tracking-[0.3em] text-[#09358c] mb-4">
             Next Generation Retail
           </motion.p>
           <motion.h2 {...fadeUp(0.1)} className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-950 tracking-tight mb-6">
@@ -38,16 +38,16 @@ export const ExploreMoreFeatures = ({ currentSlug }: ExploreMoreFeaturesProps) =
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {otherFeatures.map((feature, idx) => (
-            <motion.div
+              <motion.div
               key={feature.slug}
               {...fadeUp(0.1 + idx * 0.1)}
               whileHover={{ y: -10, transition: { duration: 0.3 } }}
-              className="group relative bg-white rounded-[2rem] md:rounded-[2.5rem] border border-slate-200 p-8 hover:border-blue-300 hover:shadow-[0_30px_70px_-20px_rgba(37,99,235,0.15)] transition-all flex flex-col h-full"
+              className="group relative bg-white rounded-[2rem] md:rounded-[2.5rem] border border-slate-200 p-8 hover:border-[#09358c]/20 hover:shadow-[0_30px_70px_-20px_rgba(9,53,140,0.15)] transition-all flex flex-col h-full"
             >
-              <div className="mb-6 w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500">
+              <div className="mb-6 w-14 h-14 rounded-2xl bg-[#09358c]/5 flex items-center justify-center text-[#09358c] group-hover:bg-[#09358c] group-hover:text-white transition-all duration-500">
                 <feature.icon size={28} />
               </div>
-              <h3 className="text-xl font-black text-slate-950 mb-3 group-hover:text-blue-700 transition-colors uppercase tracking-tight">
+              <h3 className="text-xl font-black text-slate-950 mb-3 group-hover:text-[#09358c] transition-colors uppercase tracking-tight">
                 {feature.title}
               </h3>
               <p className="text-slate-600 text-sm font-medium leading-relaxed mb-8 flex-1">
@@ -55,7 +55,7 @@ export const ExploreMoreFeatures = ({ currentSlug }: ExploreMoreFeaturesProps) =
               </p>
               <Link 
                 href={`/features/${feature.slug}`}
-                className="inline-flex items-center gap-2 text-sm font-black uppercase tracking-widest text-slate-950 hover:text-blue-600 transition-colors"
+                className="inline-flex items-center gap-2 text-sm font-black uppercase tracking-widest text-slate-950 hover:text-[#09358c] transition-colors"
               >
                 View Details <ArrowRight size={16} />
               </Link>
