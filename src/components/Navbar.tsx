@@ -290,7 +290,6 @@ export default function Navbar() {
               className="absolute left-0 right-0 top-full bg-white border-b border-slate-100 shadow-2xl pointer-events-auto"
             >
               <div className="max-w-7xl mx-auto px-10 py-8">
-                <p className="text-[11px] font-black uppercase tracking-[0.25em] text-slate-400 mb-6">Company</p>
                 <div className="grid grid-cols-3 gap-6">
                   {companyLinks.map((link) => (
                     <Link
