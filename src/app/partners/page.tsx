@@ -100,19 +100,19 @@ const BENEFITS = [
     title: "Recurring Revenue Infrastructure",
     desc: "Earn high-margin subscription commissions that scale as your retail client portfolio grows over time.",
     icon: DollarSign,
-    glowColor: "rgba(37, 99, 235, 0.15)"
+    glowColor: "rgba(9, 53, 140, 0.15)"
   },
   {
     title: "Value-Added Service Streams",
     desc: "Deliver premium onboarding and custom AI deployments to retail giants through our standardized framework.",
     icon: Settings,
-    glowColor: "rgba(14, 165, 233, 0.15)"
+    glowColor: "rgba(5, 160, 236, 0.15)"
   },
   {
     title: "Emerging AI Retail Advantage",
     desc: "Secure high-value contracts in the booming AI-driven retail automation market before your peers.",
     icon: TrendingUp,
-    glowColor: "rgba(99, 102, 241, 0.15)"
+    glowColor: "rgba(9, 53, 140, 0.15)"
   },
   {
     title: "Zero-Touch Analytics Delivery",
@@ -130,7 +130,7 @@ const BENEFITS = [
     title: "Agile Regional Expansion",
     desc: "Leverage Tapito's global cloud infrastructure to scale your partnership across multiple emerging territories.",
     icon: Globe,
-    glowColor: "rgba(251, 191, 36, 0.15)"
+    glowColor: "rgba(5, 160, 236, 0.15)"
   }
 ];
 
@@ -189,7 +189,7 @@ function OrbitalPartnersHero() {
           <motion.circle
             key={`p-${i}`}
             cx={p.x} cy={p.y} r={p.size}
-            fill="rgba(37, 99, 235, 0.15)"
+            fill="rgba(9, 53, 140, 0.15)"
             initial={{ opacity: 0 }}
             animate={{
               opacity: [0.1, 0.4, 0.1],
@@ -215,10 +215,10 @@ function OrbitalPartnersHero() {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: [1, 1.03, 1], opacity: 1 }}
               transition={{ scale: { duration: 6, repeat: Infinity, ease: "easeInOut" }, opacity: { duration: 0.8, ease: "easeOut" } }}
-              className="w-full h-full rounded-[2.8rem] bg-white/50 backdrop-blur-xl border border-white/60 shadow-[0_30px_60px_-15px_rgba(37,99,235,0.18)] flex items-center justify-center p-6 relative z-10 group"
+              className="w-full h-full rounded-[2.8rem] bg-white/50 backdrop-blur-xl border border-white/60 shadow-[0_30px_60px_-15px_rgba(9,53,140,0.18)] flex items-center justify-center p-6 relative z-10 group"
             >
               {/* Static Dotted Border - No Rotation */}
-              <div className="absolute inset-1 rounded-[2.8rem] border-2 border-dashed border-blue-400/10 pointer-events-none" />
+              <div className="absolute inset-1 rounded-[2.8rem] border-2 border-dashed border-[#09358c]/10 pointer-events-none" />
 
               <motion.div
                 animate={{ y: [0, -4, 0] }}
@@ -264,7 +264,7 @@ function OrbitalPartnersHero() {
                   >
                     {/* Atmospheric Glow */}
                     <motion.div
-                      className="absolute inset-0 bg-blue-400/5 rounded-2xl blur-xl"
+                      className="absolute inset-0 bg-[#05a0ec]/5 rounded-2xl blur-xl"
                       animate={{ scale: [1, 1.15, 1], opacity: [0, 0.15, 0] }}
                       transition={{ duration: 5 + i, repeat: Infinity, delay: i * 0.5 }}
                     />
@@ -285,9 +285,9 @@ function OrbitalPartnersHero() {
                       <motion.div
                         animate={prefersReduced ? {} : { x: floatX, y: floatY }}
                         transition={{ duration: 12 + i, repeat: Infinity, ease: "easeInOut" }}
-                        className="w-[4.8rem] h-[4.8rem] sm:w-[5.8rem] sm:h-[5.8rem] rounded-2xl bg-white/95 backdrop-blur-md border border-white shadow-[0_12px_25px_-5px_rgba(0,0,0,0.05)] flex flex-col items-center justify-center gap-1.5 transition-all duration-500 hover:scale-110 hover:shadow-2xl hover:border-blue-200"
+                        className="w-[4.8rem] h-[4.8rem] sm:w-[5.8rem] sm:h-[5.8rem] rounded-2xl bg-white/95 backdrop-blur-md border border-white shadow-[0_12px_25px_-5px_rgba(0,0,0,0.05)] flex flex-col items-center justify-center gap-1.5 transition-all duration-500 hover:scale-110 hover:shadow-2xl hover:border-[#05a0ec]/30"
                       >
-                        <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-slate-50 flex items-center justify-center mb-0.5 transition-colors group-hover:bg-blue-50">
+                        <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-slate-50 flex items-center justify-center mb-0.5 transition-colors group-hover:bg-[#09358c]/5">
                           <n.icon size={26} style={{ color: n.color }} className="relative z-10 transition-transform duration-500 group-hover:scale-110 opacity-90" />
                         </div>
                       </motion.div>
@@ -342,9 +342,9 @@ export default function PartnersPage() {
   }, []);
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-white text-slate-900 selection:bg-blue-100 selection:text-blue-900 font-inter">
+    <div className="relative min-h-screen overflow-x-hidden bg-white text-slate-900 selection:bg-[#09358c]/10 selection:text-[#09358c] font-inter">
       <InteractiveGrid />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-[600px] bg-[radial-gradient(circle_at_top_right,rgba(37,99,235,0.08),transparent_50%),radial-gradient(circle_at_top_left,rgba(9,53,140,0.05),transparent_40%)]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[600px] bg-[radial-gradient(circle_at_top_right,rgba(9,53,140,0.08),transparent_50%),radial-gradient(circle_at_top_left,rgba(5,160,236,0.05),transparent_40%)]" />
 
       {/* ── 1. Hero ─────────────────────────────────────────────────────── */}
       <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden flex items-center min-h-[90vh]">
@@ -352,14 +352,14 @@ export default function PartnersPage() {
           <div className="grid lg:grid-cols-2 items-center gap-12 lg:gap-20">
             {/* Left */}
             <div className="flex flex-col justify-center">
-              <motion.div {...fadeUp()} className="mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.2em] text-blue-700 shadow-sm">
-                <span className="h-1.5 w-1.5 rounded-full bg-blue-500" />
+              <motion.div {...fadeUp()} className="mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-[#09358c]/10 bg-[#09358c]/5 px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.2em] text-[#09358c] shadow-sm">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#05a0ec]" />
                 Partner Ecosystem
               </motion.div>
 
               <motion.h1 {...fadeUp(0.1)} className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-950 mb-7 tracking-tight leading-[1.1]">
                 Grow Faster With the <br className="hidden lg:block" />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-600">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#09358c] via-[#09358c] to-[#05a0ec]">
                   Tapito Partner Ecosystem
                 </span>
               </motion.h1>
@@ -371,7 +371,7 @@ export default function PartnersPage() {
               <motion.div {...fadeUp(0.3)} className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
                 <Link
                   href="#partner-form"
-                  className="group relative inline-flex items-center gap-3 rounded-full bg-blue-600 px-8 py-4 text-sm font-bold text-white shadow-lg shadow-blue-600/30 transition-all hover:bg-blue-700 hover:scale-[1.02] overflow-hidden"
+                  className="group relative inline-flex items-center gap-3 rounded-full bg-[#09358c] px-8 py-4 text-sm font-bold text-white shadow-lg shadow-[#09358c]/30 transition-all hover:bg-[#05a0ec] hover:scale-[1.02] overflow-hidden"
                 >
                   <span className="relative z-10">Become a Partner</span>
                   <ArrowRight size={16} className="relative z-10 transition-transform group-hover:translate-x-1" />
@@ -379,7 +379,7 @@ export default function PartnersPage() {
                 </Link>
                 <Link
                   href="#"
-                  className="inline-flex items-center gap-2 rounded-full px-8 py-4 text-sm font-bold text-slate-600 transition-colors hover:text-blue-600"
+                  className="inline-flex items-center gap-2 rounded-full px-8 py-4 text-sm font-bold text-slate-600 transition-colors hover:text-[#09358c]"
                 >
                   Talk to Partnership Team
                 </Link>
@@ -395,7 +395,7 @@ export default function PartnersPage() {
       </section>
 
       {/* ── 2. Trusted Partners Logo Marquee ───────────────────────────────────────── */}
-      <section className="py-12 bg-blue-50/50 border-y border-blue-100/50 relative overflow-hidden">
+      <section className="py-12 bg-[#09358c]/5 border-y border-[#09358c]/10 relative overflow-hidden">
         <Container>
           <p className="text-center text-xs font-black uppercase tracking-widest text-slate-400 mb-8">
             Trusted by Technology and Retail Ecosystem Partners
@@ -403,8 +403,8 @@ export default function PartnersPage() {
         </Container>
         <div className="relative flex w-full overflow-hidden">
           {/* Fade Masks */}
-          <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#f8fafc] to-transparent z-10 pointer-events-none hidden md:block" />
-          <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#f8fafc] to-transparent z-10 pointer-events-none hidden md:block" />
+          <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none hidden md:block" />
+          <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none hidden md:block" />
 
           <motion.div
             className="flex gap-16 md:gap-24 items-center whitespace-nowrap pl-16 md:pl-24"
@@ -414,7 +414,7 @@ export default function PartnersPage() {
             {[...LOGOS, ...LOGOS, ...LOGOS].map((logo, i) => (
               <div
                 key={i}
-                className="text-2xl font-black tracking-tighter text-blue-600 transition-colors duration-600 hover:text-blue-600 grayscale hover:grayscale-0 cursor-default opacity-60 hover:opacity-100"
+                className="text-2xl font-black tracking-tighter text-[#09358c] transition-colors duration-600 hover:text-[#05a0ec] grayscale hover:grayscale-0 cursor-default opacity-60 hover:opacity-100"
               >
                 {logo}
               </div>
@@ -429,12 +429,12 @@ export default function PartnersPage() {
         <motion.div
           animate={{ x: [0, 40, 0], y: [0, -30, 0] }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute -top-[10%] -left-[10%] w-[50%] h-[60%] bg-blue-400/5 blur-[120px] rounded-full pointer-events-none"
+          className="absolute -top-[10%] -left-[10%] w-[50%] h-[60%] bg-[#05a0ec]/5 blur-[120px] rounded-full pointer-events-none"
         />
         <motion.div
           animate={{ x: [0, -30, 0], y: [0, 40, 0] }}
           transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          className="absolute -bottom-[20%] -right-[10%] w-[45%] h-[55%] bg-blue-600/5 blur-[100px] rounded-full pointer-events-none"
+          className="absolute -bottom-[20%] -right-[10%] w-[45%] h-[55%] bg-[#09358c]/5 blur-[100px] rounded-full pointer-events-none"
         />
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
 
@@ -444,32 +444,27 @@ export default function PartnersPage() {
             <div className="max-w-2xl">
               <motion.h2 {...fadeUp(0.1)} className="text-5xl sm:text-6xl lg:text-7xl font-black text-slate-950 tracking-tight ">
                 What Our <br className="hidden lg:block" />
-                <span className="text-blue-600">Partners Say</span>
+                <span className="text-[#09358c]">Partners Say</span>
               </motion.h2>
-              {/* <motion.p {...fadeUp(0.2)} className="text-lg text-slate-500 font-medium mt-6">
-                Hear directly from the technology and implementation leaders who are building the future of retail alongside our sovereign AI infrastructure.
-              </motion.p> */}
             </div>
             {/* Navigation Tier (Right Aligned Below Title) */}
             <div className="flex items-center gap-3">
               <button
                 onClick={handlePrev}
-                className="w-14 h-14 rounded-full flex items-center justify-center border transition-all duration-300 border-slate-200 bg-white text-slate-900 shadow-sm hover:shadow-md hover:border-blue-400 hover:text-blue-600"
+                className="w-14 h-14 rounded-full flex items-center justify-center border transition-all duration-300 border-slate-200 bg-white text-slate-900 shadow-sm hover:shadow-md hover:border-[#05a0ec] hover:text-[#09358c]"
                 aria-label="Previous Testimonial"
               >
                 <ChevronLeft size={24} />
               </button>
               <button
                 onClick={handleNext}
-                className="w-14 h-14 rounded-full flex items-center justify-center border transition-all duration-300 border-slate-200 bg-white text-slate-900 shadow-sm hover:shadow-md hover:border-blue-400 hover:text-blue-600"
+                className="w-14 h-14 rounded-full flex items-center justify-center border transition-all duration-300 border-slate-200 bg-white text-slate-900 shadow-sm hover:shadow-md hover:border-[#05a0ec] hover:text-[#09358c]"
                 aria-label="Next Testimonial"
               >
                 <ChevronRight size={24} />
               </button>
             </div>
           </div>
-
-
 
           <div className="relative max-w-7xl mx-auto">
             <div className="flex justify-center items-center relative py-10 px-4">
@@ -486,7 +481,7 @@ export default function PartnersPage() {
                       key={i}
                       className="w-full shrink-0 flex justify-center px-4 md:px-12"
                     >
-                      <div className={`w-full max-w-6xl bg-white p-10 lg:p-14 rounded-[2.5rem] shadow-[0_50px_120px_-30px_rgba(37,99,235,0.12)] border border-slate-200/40 relative transition-all duration-1000 ${i % TESTIMONIALS.length === activeIndex % TESTIMONIALS.length ? "scale-100 opacity-100" : "scale-[0.92] opacity-50 blur-[6px]"}`}>
+                      <div className={`w-full max-w-6xl bg-white p-10 lg:p-14 rounded-[2.5rem] shadow-[0_50px_120px_-30px_rgba(9,53,140,0.12)] border border-slate-200/40 relative transition-all duration-1000 ${i % TESTIMONIALS.length === activeIndex % TESTIMONIALS.length ? "scale-100 opacity-100" : "scale-[0.92] opacity-50 blur-[6px]"}`}>
                         {/* Company Logo/Name (Modern Style) */}
                         <div className="flex items-center gap-2 mb-8 text-xl font-black text-slate-900 tracking-tighter opacity-15 uppercase">
                           {t.company}
@@ -505,7 +500,7 @@ export default function PartnersPage() {
                             className="w-14 h-14 rounded-xl object-cover shadow-sm bg-slate-100"
                           />
                           <div className="flex flex-col">
-                            <h4 className="text-lg font-black text-blue-600 leading-none mb-2">{t.name}</h4>
+                            <h4 className="text-lg font-black text-[#05a0ec] leading-none mb-2">{t.name}</h4>
                             <p className="text-sm font-bold text-slate-800 ">{t.role}</p>
                           </div>
                         </div>
@@ -529,7 +524,7 @@ export default function PartnersPage() {
           {/* Section Header */}
           <div className="max-w-4xl mx-auto text-center mb-24 lg:mb-32">
             <motion.h2 {...fadeUp(0.1)} className="text-4xl sm:text-5xl lg:text-7xl font-black text-slate-900 tracking-tight leading-[1.1] mb-8">
-              Benefits of Choosing a <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-blue-600 to-blue-800">Tapito Partnership</span>
+              Benefits of Choosing a <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#09358c] via-[#09358c] to-[#05a0ec]">Tapito Partnership</span>
             </motion.h2>
             <motion.p {...fadeUp(0.2)} className="text-base lg:text-xl text-slate-500 font-medium max-w-2xl mx-auto leading-relaxed">
               Experience the power of a sovereign, live-synced infrastructure. Our platform provides a reactive architectural foundation that evolves with your business.
@@ -548,10 +543,10 @@ export default function PartnersPage() {
                 className="group relative flex items-start gap-10"
               >
                 {/* Vertical Timeline Line */}
-                <div className="absolute left-[27px] top-14 bottom-[-6rem] w-[2px] bg-slate-50 group-last:bg-transparent pointer-events-none hidden md:block overflow-hidden">
+                <div className="absolute left-[27px] top-14 bottom-[-6rem] w-[2px] bg-slate-50 group-last:bg-transparent pointer-events-none hidden md:block overflow-hidden" aria-hidden="true">
                   {/* Traveling Data Pulse */}
                   <motion.div
-                    className="absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-transparent via-blue-500/40 to-transparent"
+                    className="absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-transparent via-[#09358c]/40 to-transparent"
                     animate={{ top: ['-100%', '300%'] }}
                     transition={{ duration: 4, repeat: Infinity, ease: "linear", delay: i * 0.7 }}
                   />
@@ -561,12 +556,12 @@ export default function PartnersPage() {
                 <div className="relative z-10 shrink-0">
                   {/* Heartbeat Pulse */}
                   <motion.div
-                    className="absolute inset-0 bg-blue-500/10 rounded-full"
+                    className="absolute inset-0 bg-[#09358c]/10 rounded-full"
                     animate={{ scale: [1, 1.8], opacity: [0.6, 0] }}
                     transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
                   />
                   <motion.div
-                    className="relative w-14 h-14 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-white"
+                    className="relative w-14 h-14 rounded-full bg-[#09358c]/5 text-[#09358c] flex items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-white"
                   >
                     <motion.div
                       animate={{ opacity: [0.6, 1, 0.6] }}
@@ -601,8 +596,8 @@ export default function PartnersPage() {
 
             {/* Left Box */}
             <div className="lg:sticky lg:top-32 z-10">
-              <motion.div {...fadeLeft()} className="mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-blue-200 bg-white px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.2em] text-blue-700 shadow-sm">
-                <span className="h-1.5 w-1.5 rounded-full bg-blue-500" />
+              <motion.div {...fadeLeft()} className="mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-[#09358c]/10 bg-white px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.2em] text-[#09358c] shadow-sm">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#05a0ec]" />
                 Join The Network
               </motion.div>
 
@@ -620,8 +615,8 @@ export default function PartnersPage() {
                   "Global expansion opportunities"
                 ].map((item, i) => (
                   <div key={i} className="flex gap-4">
-                    <div className="mt-1 w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center shrink-0">
-                      <CheckCircle2 size={14} className="text-blue-600" />
+                    <div className="mt-1 w-6 h-6 rounded-full bg-[#09358c]/10 flex items-center justify-center shrink-0">
+                      <CheckCircle2 size={14} className="text-[#09358c]" />
                     </div>
                     <p className="text-base sm:text-lg font-bold text-slate-700">{item}</p>
                   </div>
@@ -632,9 +627,9 @@ export default function PartnersPage() {
             {/* Form Card */}
             <motion.div
               {...fadeRight(0.2)}
-              className="bg-white rounded-[2rem] lg:rounded-[3rem] p-8 sm:p-12 border border-slate-100 shadow-[0_45px_100px_-20px_rgba(15,23,42,0.08)] relative z-20"
+              className="bg-white rounded-[2rem] lg:rounded-[3rem] p-8 sm:p-12 border border-slate-100 shadow-[0_45px_100px_-20px_rgba(9,53,140,0.08)] relative z-20"
             >
-              <div className="absolute top-0 right-0 w-64 h-64 bg-blue-50 blur-[100px] pointer-events-none rounded-full shrink-0" />
+              <div className="absolute top-0 right-0 w-64 h-64 bg-[#09358c]/5 blur-[100px] pointer-events-none rounded-full shrink-0" />
 
               <div className="relative z-10">
                 <h3 className="text-2xl font-black text-slate-950 mb-8 tracking-tight">Apply for Partnership</h3>
@@ -643,29 +638,29 @@ export default function PartnersPage() {
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label className="text-xs font-black text-slate-400 uppercase tracking-widest pl-1">Full Name</label>
-                      <input type="text" placeholder="John Doe" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" />
+                      <input type="text" placeholder="John Doe" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#09358c] focus:border-transparent transition-all" />
                     </div>
                     <div className="space-y-2">
                       <label className="text-xs font-black text-slate-400 uppercase tracking-widest pl-1">Company Name</label>
-                      <input type="text" placeholder="Acme Inc" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" />
+                      <input type="text" placeholder="Acme Inc" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#09358c] focus:border-transparent transition-all" />
                     </div>
                   </div>
 
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label className="text-xs font-black text-slate-400 uppercase tracking-widest pl-1">Email</label>
-                      <input type="email" placeholder="john@example.com" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" />
+                      <input type="email" placeholder="john@example.com" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#09358c] focus:border-transparent transition-all" />
                     </div>
                     <div className="space-y-2">
                       <label className="text-xs font-black text-slate-400 uppercase tracking-widest pl-1">Phone Number</label>
-                      <input type="tel" placeholder="+1 (555) 000-0000" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" />
+                      <input type="tel" placeholder="+1 (555) 000-0000" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#09358c] focus:border-transparent transition-all" />
                     </div>
                   </div>
 
                   <div className="space-y-2">
                     <label className="text-xs font-black text-slate-400 uppercase tracking-widest pl-1">Country / Region</label>
                     <div className="relative">
-                      <select className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all appearance-none cursor-pointer">
+                      <select className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#09358c] focus:border-transparent transition-all appearance-none cursor-pointer">
                         <option value="">Select your country...</option>
                         <option value="AF">Afghanistan</option>
                         <option value="AX">Aland Islands</option>
@@ -825,7 +820,6 @@ export default function PartnersPage() {
                         <option value="NR">Nauru</option>
                         <option value="NP">Nepal</option>
                         <option value="NL">Netherlands</option>
-                        <option value="AN">Netherlands Antilles</option>
                         <option value="NC">New Caledonia</option>
                         <option value="NZ">New Zealand</option>
                         <option value="NI">Nicaragua</option>
@@ -866,7 +860,6 @@ export default function PartnersPage() {
                         <option value="SA">Saudi Arabia</option>
                         <option value="SN">Senegal</option>
                         <option value="RS">Serbia</option>
-                        <option value="CS">Serbia and Montenegro</option>
                         <option value="SC">Seychelles</option>
                         <option value="SL">Sierra Leone</option>
                         <option value="SG">Singapore</option>
@@ -920,30 +913,49 @@ export default function PartnersPage() {
                         <option value="ZM">Zambia</option>
                         <option value="ZW">Zimbabwe</option>
                       </select>
-                      <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none">
-                        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M1 1L5 5L9 1" stroke="#94A3B8" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
+                      <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
+                        <ChevronRight size={14} className="rotate-90" />
                       </div>
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-xs font-black text-slate-400 uppercase tracking-widest pl-1">Message</label>
-                    <textarea rows={4} placeholder="Tell us a bit about your company and why you want to partner with Tapito..." className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none"></textarea>
+                    <label className="text-xs font-black text-slate-400 uppercase tracking-widest pl-1">Message (Optional)</label>
+                    <textarea rows={4} placeholder="Tell us more about your partnership goals..." className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#09358c] focus:border-transparent transition-all resize-none" />
                   </div>
 
-                  <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl px-6 py-4 transition-colors shadow-lg shadow-blue-600/30">
-                    Apply for Partnership
+                  <button className="w-full relative group bg-[#09358c] text-white rounded-xl py-4 text-sm font-bold shadow-xl shadow-[#09358c]/20 hover:bg-[#05a0ec] transition-all duration-300 overflow-hidden">
+                    <span className="relative z-10">Submit Application</span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
                   </button>
-
-                  <p className="text-[11px] font-bold text-slate-400 text-center uppercase tracking-widest mt-6">
-                    Our partnership team will contact you within 24 hours.
-                  </p>
                 </form>
               </div>
             </motion.div>
+          </div>
+        </Container>
+      </section>
 
+      {/* ── 6. Final CTA ────────────────────────────────────────────────────────── */}
+      <section className="py-24 bg-white relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#05a0ec]/5 rounded-full blur-[120px] pointer-events-none" />
+        <Container>
+          <div className="max-w-4xl mx-auto text-center relative z-10">
+            <motion.h2 {...fadeUp()} className="text-4xl sm:text-6xl font-black text-slate-950 mb-8 tracking-tight leading-tight">
+              Ready to redefine <br />
+              <span className="text-[#09358c]">Retail Intelligence?</span>
+            </motion.h2>
+            <motion.p {...fadeUp(0.1)} className="text-xl text-slate-500 font-medium mb-12 max-w-2xl mx-auto">
+              Join the ecosystem that's powering the next generation of retail automation. Let's build something exceptional together.
+            </motion.p>
+            <motion.div {...fadeUp(0.2)}>
+              <Link
+                href="#partner-form"
+                className="inline-flex items-center gap-3 rounded-full bg-[#09358c] px-10 py-5 text-base font-black text-white shadow-2xl shadow-[#09358c]/40 transition-all hover:bg-[#05a0ec] hover:scale-[1.05]"
+              >
+                Get Started Now
+                <ArrowRight size={20} />
+              </Link>
+            </motion.div>
           </div>
         </Container>
       </section>

@@ -2,36 +2,92 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, X, ArrowRight, CheckCircle2, ChevronRight, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, Users, BookOpen, Mail } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 import { features } from "@/components/features/FeaturesGrid";
 import { solutionsData } from "@/components/solutions/SolutionsGrid";
+
+const companyLinks = [
+  {
+    label: "About Us",
+    href: "/about",
+    icon: Users,
+    description: "Our story, mission, and the team behind Tapito's retail intelligence platform.",
+  },
+  {
+    label: "Case Studies",
+    href: "/case-studies",
+    icon: BookOpen,
+    description: "Real-world results from retailers who transformed their operations with Tapito.",
+  },
+  {
+    label: "Contact",
+    href: "/contact",
+    icon: Mail,
+    description: "Get in touch with our sales and support team for tailored solutions.",
+  },
+];
 
 const navLinks = [
   { label: "Features", href: "/features" },
   { label: "Solutions", href: "/solutions" },
   { label: "Pricing", href: "/pricing" },
   { label: "Partners", href: "/partners" },
-  { label: "Contact", href: "/contact" },
+  { label: "Company", href: "#" },
 ];
 
 export default function Navbar() {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileFeaturesOpen, setMobileFeaturesOpen] = useState(false);
   const [mobileSolutionsOpen, setMobileSolutionsOpen] = useState(false);
+  const [mobileCompanyOpen, setMobileCompanyOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const [isHeaderHovered, setIsHeaderHovered] = useState(false);
+
+  // Clean Idle Hide Logic
+  useEffect(() => {
+    if (!isVisible || window.scrollY <= 150 || activeMenu || isHeaderHovered) {
+      return;
+    }
+    const timer = setTimeout(() => {
+      setIsVisible(false);
+      setActiveMenu(null);
+    }, 2500);
+    return () => clearTimeout(timer);
+  }, [isVisible, lastScrollY, activeMenu, isHeaderHovered]);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      setIsScrolled(currentScrollY > 50);
+      if (currentScrollY <= 50) {
+        setIsVisible(true);
+      } else {
+        if (currentScrollY < lastScrollY) {
+          setIsVisible(true);
+        } else if (currentScrollY > lastScrollY) {
+          if (!isHeaderHovered) {
+            setIsVisible(false);
+            setActiveMenu(null);
+          }
+        }
+      }
+      setLastScrollY(currentScrollY);
+    };
+    const frameId = requestAnimationFrame(handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      cancelAnimationFrame(frameId);
+    };
+  }, [lastScrollY, isHeaderHovered]);
 
   const handleMouseEnter = (label: string) => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -49,340 +105,359 @@ export default function Navbar() {
     setMobileMenuOpen(false);
     setMobileFeaturesOpen(false);
     setMobileSolutionsOpen(false);
+    setMobileCompanyOpen(false);
+    document.body.style.overflow = "";
   };
 
+  const toggleMobileMenu = () => {
+    const nextState = !mobileMenuOpen;
+    setMobileMenuOpen(nextState);
+    document.body.style.overflow = nextState ? "hidden" : "";
+  };
+
+  // Check if any company sub-link is active
+  const isCompanyActive = companyLinks.some((l) => pathname.startsWith(l.href));
+
   return (
-    <nav className={cn(
-      "fixed top-0 left-0 right-0 z-[100] transition-all duration-300 px-6",
-      isScrolled ? "mt-4" : "mt-0"
-    )}>
-      <div className={cn(
-        "max-w-7xl mx-auto rounded-[2.5rem] transition-all duration-500 px-8 py-5 flex items-center justify-between relative",
-        isScrolled ? "bg-white/95 backdrop-blur-xl shadow-[0_25px_50px_-12px_rgba(0,0,0,0.1)] border border-white/50" : "bg-transparent py-7"
-      )}>
-        <Link onClick={closeMenu} href="/" className="flex items-center gap-3 group">
-          <div>
-            <div className="relative w-28 h-10 flex items-center justify-center">
-              <img 
-                src="/logo.svg" 
-                alt="Tapito Logo" 
-                className="w-full h-full object-contain"
-              />
-            </div>
-          </div>
-        </Link>
-
-        {/* Desktop Nav */}
-        <div className="hidden lg:flex items-center gap-10">
-          {navLinks.map((item) => {
-            const isActive = pathname.startsWith(item.href);
-            return (
-              <div
-                key={item.label}
-                onMouseEnter={() => handleMouseEnter(item.label)}
-                onMouseLeave={handleMouseLeave}
-                className="py-1"
-              >
-                <Link
-                  href={item.href}
-                  onClick={closeMenu}
-                  className={cn(
-                    "text-sm font-bold transition-colors uppercase tracking-widest",
-                    isActive || activeMenu === item.label ? "text-[#05a0ec]" : "text-slate-600 hover:text-[#05a0ec]"
-                  )}
-                >
-                  {item.label}
-                </Link>
-              </div>
-            );
-          })}
-        </div>
-
-        <div className="hidden lg:flex items-center gap-6">
-          <button className="py-3 px-8 text-sm uppercase tracking-widest font-black border-2 border-[#09358c] rounded-full text-[#09358c] font-bold">Log in</button>
-          <button className="bg-[#09358c] text-white py-3 px-8 text-sm uppercase tracking-widest font-black rounded-full font-bold">
-            Access Portal
-          </button>
-        </div>
-
-        {/* Mobile Toggle */}
-        <button
-          className="lg:hidden w-11 h-11 rounded-2xl bg-slate-900 text-white flex items-center justify-center shadow-lg"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+    <>
+      <header
+        onMouseEnter={() => setIsHeaderHovered(true)}
+        onMouseLeave={() => setIsHeaderHovered(false)}
+        className={cn(
+          "fixed top-0 left-0 right-0 z-100 transition-all duration-500 ease-in-out w-full",
+          isVisible ? "translate-y-0" : "-translate-y-full"
+        )}
+      >
+        <div
+          className={cn(
+            "w-full transition-all duration-500 ease-in-out py-3 lg:py-4 2xl:py-6",
+            isScrolled
+              ? "bg-white/80 backdrop-blur-xl shadow-md"
+              : "bg-transparent"
+          )}
         >
-          {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-        </button>
+          <div className="max-w-360 mx-auto px-6 md:px-10 flex items-center justify-between">
+            {/* Logo */}
+            <Link onClick={closeMenu} href="/" className="flex items-center gap-3 group shrink-0">
+              <div className="relative w-28 h-10 lg:w-36 lg:h-12 flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
+                <img
+                  src="/logo.svg"
+                  alt="Tapito Logo"
+                  className="w-full h-full object-contain"
+                />
+              </div>
+            </Link>
+
+            {/* Desktop Nav */}
+            <nav className="hidden lg:flex items-center gap-10">
+              <ul className="flex items-center gap-8 xl:gap-12">
+                {navLinks.map((item) => {
+                  const isActive =
+                    item.label === "Company"
+                      ? isCompanyActive
+                      : pathname.startsWith(item.href);
+                  const hasDropdown =
+                    item.label === "Features" ||
+                    item.label === "Solutions" ||
+                    item.label === "Company";
+
+                  return (
+                    <li
+                      key={item.label}
+                      onMouseEnter={() => hasDropdown && handleMouseEnter(item.label)}
+                      onMouseLeave={handleMouseLeave}
+                      className="relative py-2"
+                    >
+                      <Link
+                        href={item.href}
+                        onClick={item.label === "Company" ? (e) => e.preventDefault() : closeMenu}
+                        className={cn(
+                          "text-[14px] lg:text-[18px] font-semibold transition-colors flex items-center gap-1.5",
+                          isActive || activeMenu === item.label
+                            ? "text-[#09358c]"
+                            : "text-slate-600 hover:text-[#09358c]"
+                        )}
+                      >
+                        {item.label}
+                        {hasDropdown && (
+                          <motion.span
+                            animate={{ rotate: activeMenu === item.label ? 180 : 0 }}
+                            transition={{ duration: 0.2 }}
+                          >
+                            <ChevronDown size={14} />
+                          </motion.span>
+                        )}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </nav>
+
+            {/* CTA's */}
+            <div className="hidden lg:flex items-center gap-4">
+              <button className="py-2.5 px-7 text-[12px] uppercase tracking-widest font-black border-2 border-[#09358c] rounded-full text-[#09358c] hover:bg-[#09358c] hover:text-white transition-all duration-300">
+                Log in
+              </button>
+              <button className="bg-[#09358c] text-white py-2.5 px-7 text-[12px] uppercase tracking-widest font-black rounded-full hover:shadow-lg hover:bg-[#09358c] transition-all duration-300">
+                Access Portal
+              </button>
+            </div>
+
+            {/* Mobile Toggle */}
+            <button
+              className="lg:hidden w-11 h-11 rounded-full bg-slate-900 text-white flex items-center justify-center shadow-lg transition-transform active:scale-95"
+              onClick={toggleMobileMenu}
+            >
+              <Menu size={20} />
+            </button>
+          </div>
+        </div>
 
         {/* Desktop Mega Menus */}
         <AnimatePresence>
           {activeMenu === "Features" && (
             <motion.div
-              initial={{ opacity: 0, y: 10, scale: 0.98 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 10, scale: 0.98 }}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 10 }}
               onMouseEnter={() => handleMouseEnter("Features")}
               onMouseLeave={handleMouseLeave}
-              className="absolute top-[calc(100%+0.75rem)] left-0 w-full pointer-events-auto"
+              className="absolute left-0 right-0 top-full bg-white border-b border-slate-100 shadow-2xl pointer-events-auto"
             >
-              <div className="bg-white rounded-[1rem] p-5 2xl:p-6 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.15)] border border-slate-100 overflow-visible">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-2 2xl:gap-y-3 4xl:gap-x-12 4xl:gap-y-8">
+              <div className="max-w-7xl mx-auto p-10">
+                <div className="grid grid-cols-3 gap-8">
                   {features.map((feature) => (
                     <Link
                       key={feature.slug}
                       href={`/features/${feature.slug}`}
                       onClick={closeMenu}
-                      className="group flex gap-4 p-3 rounded-2xl border border-transparent hover:border-blue-100 hover:bg-slate-50/50 transition-all"
+                      className="group flex gap-5 p-5 rounded-3xl hover:bg-slate-50 transition-all border border-transparent hover:border-slate-100"
                     >
-                      <div className="shrink-0 w-14 h-14 bg-slate-50 rounded-2xl flex items-center justify-center text-slate-900 border border-slate-50 group-hover:bg-[#05a0ec] group-hover:text-white group-hover:border-[#05a0ec] transition-all duration-500 shadow-sm">
+                      <div className="shrink-0 w-14 h-14 bg-slate-50 rounded-2xl flex items-center justify-center text-slate-900 group-hover:bg-[#09358c] group-hover:text-white transition-colors shadow-sm">
                         <feature.icon size={26} />
                       </div>
-
-                      <div className="flex-1 min-w-0">
-                        <h4 className="text-[17px] font-black text-slate-900 group-hover:text-[#05a0ec] transition-colors mb-2.5">
-                          {feature.title}
-                        </h4>
-
-                        <div className="relative min-h-[50px]">
-                          <p className="text-[13px] text-slate-500 font-medium leading-relaxed group-hover:opacity-0 group-hover:-translate-y-2 transition-all duration-500 absolute inset-0">
-                            {feature.description}
-                          </p>
-
-                          <div className="opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500 flex flex-col gap-2">
-                            {feature.benefits.slice(0, 2).map((point) => (
-                              <div key={point} className="flex items-center gap-2.5">
-                                <div className="w-1.5 h-1.5 rounded-full bg-[#05a0ec] shrink-0 shadow-[0_0_8px_rgba(5,160,236,0.5)]" />
-                                <span className="text-[14px] text-slate-800 tracking-tight capitalize font-medium">
-                                  {point}
-                                </span>
-                              </div>
-                            ))}
-                            <div className="flex items-center gap-2 text-[11px] font-black text-[#05a0ec] uppercase tracking-widest mt-1">
-                              View More <ArrowRight size={14} className="ml-1" />
-                            </div>
-                          </div>
-                        </div>
+                      <div>
+                        <h4 className="text-lg font-black text-slate-900 group-hover:text-[#09358c] transition-colors mb-2">{feature.title}</h4>
+                        <p className="text-sm text-slate-500 font-medium leading-relaxed line-clamp-2">{feature.description}</p>
                       </div>
                     </Link>
                   ))}
-                </div>
-
-                <div className="flex items-center justify-end pt-2 2xl:pt-8 border-t border-slate-50">
-                  <Link
-                    href="/features"
-                    onClick={closeMenu}
-                    className="text-slate-900 font-black text-sm hover:text-[#05a0ec] transition-colors flex items-center gap-2 group/all"
-                  >
-                    View All Features <ChevronRight size={18} className="group-hover/all:translate-x-1 transition-transform" />
-                  </Link>
                 </div>
               </div>
             </motion.div>
           )}
 
-          {/* Solutions Mega Menu */}
           {activeMenu === "Solutions" && (
             <motion.div
-              initial={{ opacity: 0, y: 10, scale: 0.98 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 10, scale: 0.98 }}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 10 }}
               onMouseEnter={() => handleMouseEnter("Solutions")}
               onMouseLeave={handleMouseLeave}
-              className="absolute top-[calc(100%+0.75rem)] left-0 w-full pointer-events-auto"
+              className="absolute left-0 right-0 top-full bg-white border-b border-slate-100 shadow-2xl pointer-events-auto"
             >
-              <div className="bg-white rounded-[1rem] p-5 2xl:p-6 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.15)] border border-slate-100 overflow-visible">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-2 2xl:gap-y-3 4xl:gap-x-12 4xl:gap-y-8">
+              <div className="max-w-7xl mx-auto p-10">
+                <div className="grid grid-cols-3 gap-8">
                   {solutionsData.map((solution) => (
                     <Link
                       key={solution.slug}
                       href={`/solutions/${solution.slug}`}
                       onClick={closeMenu}
-                      className="group flex gap-4 p-3 rounded-2xl border border-transparent hover:border-blue-100 hover:bg-slate-50/50 transition-all"
+                      className="group flex gap-5 p-5 rounded-3xl hover:bg-slate-50 transition-all border border-transparent hover:border-slate-100"
                     >
-                      <div className="shrink-0 w-14 h-14 bg-slate-50 rounded-2xl flex items-center justify-center text-slate-900 border border-slate-50 group-hover:bg-[#05a0ec] group-hover:text-white group-hover:border-[#05a0ec] transition-all duration-500 shadow-sm">
+                      <div className="shrink-0 w-14 h-14 bg-slate-50 rounded-2xl flex items-center justify-center text-slate-900 group-hover:bg-[#09358c] group-hover:text-white transition-colors shadow-sm">
                         <solution.icon size={26} />
                       </div>
-
-                      <div className="flex-1 min-w-0">
-                        <h4 className="text-[17px] font-black text-slate-900 group-hover:text-[#05a0ec] transition-colors mb-2.5">
-                          {solution.title}
-                        </h4>
-
-                        <div className="relative min-h-[50px]">
-                          <p className="text-[13px] text-slate-500 font-medium leading-relaxed group-hover:opacity-0 group-hover:-translate-y-2 transition-all duration-500 absolute inset-0">
-                            {solution.desc}
-                          </p>
-
-                          <div className="opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500 flex flex-col gap-2">
-                            {solution.benefits.slice(0, 2).map((point) => (
-                              <div key={point} className="flex items-center gap-2.5">
-                                <div className="w-1.5 h-1.5 rounded-full bg-[#05a0ec] shrink-0 shadow-[0_0_8px_rgba(5,160,236,0.5)]" />
-                                <span className="text-[14px] text-slate-800 tracking-tight capitalize font-medium">
-                                  {point}
-                                </span>
-                              </div>
-                            ))}
-                            <div className="flex items-center gap-2 text-[11px] font-black text-[#05a0ec] uppercase tracking-widest mt-1">
-                              View Solution <ArrowRight size={14} className="ml-1" />
-                            </div>
-                          </div>
-                        </div>
+                      <div>
+                        <h4 className="text-lg font-black text-slate-900 group-hover:text-[#09358c] transition-colors mb-2">{solution.title}</h4>
+                        <p className="text-sm text-slate-500 font-medium leading-relaxed line-clamp-2">{solution.desc}</p>
                       </div>
                     </Link>
                   ))}
                 </div>
+              </div>
+            </motion.div>
+          )}
 
-                <div className="flex items-center justify-end pt-2 2xl:pt-8 border-t border-slate-50">
-                  <Link
-                    href="/solutions"
-                    onClick={closeMenu}
-                    className="text-slate-900 font-black text-sm hover:text-[#05a0ec] transition-colors flex items-center gap-2 group/all"
-                  >
-                    View All Solutions <ChevronRight size={18} className="group-hover/all:translate-x-1 transition-transform" />
-                  </Link>
+          {activeMenu === "Company" && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 10 }}
+              onMouseEnter={() => handleMouseEnter("Company")}
+              onMouseLeave={handleMouseLeave}
+              className="absolute left-0 right-0 top-full bg-white border-b border-slate-100 shadow-2xl pointer-events-auto"
+            >
+              <div className="max-w-7xl mx-auto px-10 py-8">
+                <p className="text-[11px] font-black uppercase tracking-[0.25em] text-slate-400 mb-6">Company</p>
+                <div className="grid grid-cols-3 gap-6">
+                  {companyLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={closeMenu}
+                      className="group flex gap-5 p-5 rounded-3xl hover:bg-slate-50 transition-all border border-transparent hover:border-slate-100"
+                    >
+                      <div className="shrink-0 w-14 h-14 bg-slate-50 rounded-2xl flex items-center justify-center text-slate-900 group-hover:bg-[#09358c] group-hover:text-white transition-colors shadow-sm">
+                        <link.icon size={24} />
+                      </div>
+                      <div>
+                        <h4 className="text-lg font-black text-slate-900 group-hover:text-[#09358c] transition-colors mb-2">{link.label}</h4>
+                        <p className="text-sm text-slate-500 font-medium leading-relaxed">{link.description}</p>
+                      </div>
+                    </Link>
+                  ))}
                 </div>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
-      </div>
+      </header>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.98, y: -20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.98, y: -20 }}
-            className="lg:hidden absolute top-[calc(100%+1rem)] left-6 right-6 bg-white rounded-[2.5rem] p-8 shadow-2xl border border-slate-100 overflow-y-auto max-h-[85vh] z-[100]"
-          >
-            <div className="flex flex-col gap-4">
-              {navLinks.map((item) => (
-                <div key={item.label} className="border-b border-slate-50 last:border-0 pb-2">
-                  {item.label === "Features" ? (
-                    <>
-                      <button
-                        onClick={() => setMobileFeaturesOpen(!mobileFeaturesOpen)}
-                        className={cn(
-                          "w-full flex items-center justify-between py-4 text-2xl font-black transition-colors",
-                          pathname.startsWith(item.href) || mobileFeaturesOpen ? "text-[#05a0ec]" : "text-slate-900"
-                        )}
-                      >
-                        {item.label}
-                        <motion.div animate={{ rotate: mobileFeaturesOpen ? 180 : 0 }}>
-                          <ChevronDown size={24} />
-                        </motion.div>
-                      </button>
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={closeMenu}
+              className="fixed inset-0 z-200 bg-black/60 backdrop-blur-sm lg:hidden"
+            />
 
-                      <AnimatePresence>
-                        {mobileFeaturesOpen && (
-                          <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            className="overflow-hidden bg-slate-50/50 rounded-3xl mx-[-1rem] px-4"
-                          >
-                            <div className="py-4 grid grid-cols-1 gap-3">
-                              {features.map((feature) => (
-                                <Link
-                                  key={feature.slug}
-                                  href={`/features/${feature.slug}`}
-                                  onClick={closeMenu}
-                                  className="flex items-center gap-4 p-4 rounded-2xl bg-white border border-slate-100 active:scale-95 transition-all"
-                                >
-                                  <div className="w-10 h-10 bg-slate-50 rounded-xl flex items-center justify-center text-slate-900">
-                                    <feature.icon size={20} />
-                                  </div>
-                                  <span className="text-sm font-black text-slate-900">{feature.title}</span>
-                                </Link>
-                              ))}
-                              <Link
-                                href="/features"
-                                onClick={closeMenu}
-                                className="flex items-center justify-center gap-2 p-4 text-[#05a0ec] font-black text-sm uppercase tracking-widest"
-                              >
-                                View All Features <ArrowRight size={16} />
-                              </Link>
-                            </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </>
-                  ) : item.label === "Solutions" ? (
-                    <>
-                      <button 
-                        onClick={() => setMobileSolutionsOpen(!mobileSolutionsOpen)}
-                        className={cn(
-                            "w-full flex items-center justify-between py-4 text-2xl font-black transition-colors",
-                            pathname.startsWith(item.href) || mobileSolutionsOpen ? "text-[#05a0ec]" : "text-slate-900"
-                        )}
-                      >
-                        {item.label}
-                        <motion.div animate={{ rotate: mobileSolutionsOpen ? 180 : 0 }}>
-                            <ChevronDown size={24} />
-                        </motion.div>
-                      </button>
-                      
-                      <AnimatePresence>
-                        {mobileSolutionsOpen && (
-                          <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            className="overflow-hidden bg-slate-50/50 rounded-3xl mx-[-1rem] px-4"
-                          >
-                            <div className="py-4 grid grid-cols-1 gap-3">
-                              {solutionsData.map((solution) => (
-                                <Link
-                                  key={solution.slug}
-                                  href={`/solutions/${solution.slug}`}
-                                  onClick={closeMenu}
-                                  className="flex items-center gap-4 p-4 rounded-2xl bg-white border border-slate-100 active:scale-95 transition-all"
-                                >
-                                  <div className={cn(
-                                    "w-10 h-10 rounded-xl flex items-center justify-center text-white",
-                                    solution.color
-                                  )}>
-                                    <solution.icon size={18} />
-                                  </div>
-                                  <span className="text-sm font-black text-slate-900">{solution.title}</span>
-                                </Link>
-                              ))}
-                              <Link 
-                                href="/solutions"
-                                onClick={closeMenu}
-                                className="flex items-center justify-center gap-2 p-4 text-[#05a0ec] font-black text-sm uppercase tracking-widest"
-                              >
-                                View All Solutions <ArrowRight size={16} />
-                              </Link>
-                            </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </>
-                  ) : (
-                    <Link
-                      href={item.href}
-                      onClick={closeMenu}
-                      className={cn(
-                        "block py-4 text-2xl font-black transition-colors",
-                        pathname.startsWith(item.href) ? "text-[#05a0ec]" : "text-slate-900"
-                      )}
-                    >
-                      {item.label}
-                    </Link>
-                  )}
-                </div>
-              ))}
-
-              <div className="mt-6 flex flex-col gap-4">
-                <button className="btn-premium py-5 rounded-2xl font-black uppercase tracking-widest text-[13px]">
-                  Access Portal
+            {/* Menu Panel */}
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="fixed inset-y-0 right-0 z-201 w-full max-w-100 bg-white lg:hidden shadow-2xl flex flex-col"
+            >
+              <div className="flex items-center justify-between p-8 border-b border-slate-50">
+                <img src="/logo.svg" alt="Logo" className="h-8" />
+                <button
+                  onClick={closeMenu}
+                  className="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center text-slate-900 active:scale-90 transition-transform"
+                >
+                  <X size={24} />
                 </button>
               </div>
-            </div>
-          </motion.div>
+
+              <div className="flex-1 overflow-y-auto p-8">
+                <nav className="flex flex-col gap-6">
+                  {navLinks.map((item, idx) => {
+                    const hasDropdown =
+                      item.label === "Features" ||
+                      item.label === "Solutions" ||
+                      item.label === "Company";
+                    const isExpanded =
+                      item.label === "Features"
+                        ? mobileFeaturesOpen
+                        : item.label === "Solutions"
+                        ? mobileSolutionsOpen
+                        : item.label === "Company"
+                        ? mobileCompanyOpen
+                        : false;
+
+                    return (
+                      <div key={item.label} className="flex flex-col">
+                        <div className="flex items-center justify-between">
+                          <Link
+                            href={item.label === "Company" ? "#" : item.href}
+                            onClick={
+                              item.label === "Company"
+                                ? (e) => { e.preventDefault(); setMobileCompanyOpen(!mobileCompanyOpen); }
+                                : closeMenu
+                            }
+                            className="text-3xl font-black text-slate-900 hover:text-[#09358c] transition-colors flex items-center gap-4"
+                          >
+                            <span className="text-xs font-bold text-slate-400 tabular-nums">0{idx + 1}</span>
+                            {item.label}
+                          </Link>
+                          {hasDropdown && (
+                            <button
+                              onClick={() => {
+                                if (item.label === "Features") setMobileFeaturesOpen(!mobileFeaturesOpen);
+                                if (item.label === "Solutions") setMobileSolutionsOpen(!mobileSolutionsOpen);
+                                if (item.label === "Company") setMobileCompanyOpen(!mobileCompanyOpen);
+                              }}
+                              className="p-2"
+                            >
+                              <ChevronDown
+                                size={28}
+                                className={cn("transition-transform", isExpanded && "rotate-180")}
+                              />
+                            </button>
+                          )}
+                        </div>
+
+                        {/* Nested items for mobile */}
+                        <AnimatePresence>
+                          {item.label === "Features" && mobileFeaturesOpen && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: "auto", opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              className="mt-6 pl-8 flex flex-col gap-4 overflow-hidden"
+                            >
+                              {features.map((f) => (
+                                <Link key={f.slug} href={`/features/${f.slug}`} onClick={closeMenu} className="text-lg font-bold text-slate-600 hover:text-[#09358c]">
+                                  {f.title}
+                                </Link>
+                              ))}
+                            </motion.div>
+                          )}
+                          {item.label === "Solutions" && mobileSolutionsOpen && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: "auto", opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              className="mt-6 pl-8 flex flex-col gap-4 overflow-hidden"
+                            >
+                              {solutionsData.map((s) => (
+                                <Link key={s.slug} href={`/solutions/${s.slug}`} onClick={closeMenu} className="text-lg font-bold text-slate-600 hover:text-[#09358c]">
+                                  {s.title}
+                                </Link>
+                              ))}
+                            </motion.div>
+                          )}
+                          {item.label === "Company" && mobileCompanyOpen && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: "auto", opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              className="mt-6 pl-8 flex flex-col gap-4 overflow-hidden"
+                            >
+                              {companyLinks.map((l) => (
+                                <Link key={l.href} href={l.href} onClick={closeMenu} className="text-lg font-bold text-slate-600 hover:text-[#09358c]">
+                                  {l.label}
+                                </Link>
+                              ))}
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    );
+                  })}
+                </nav>
+              </div>
+
+              <div className="p-8 border-t border-slate-50 bg-slate-50/50">
+                <button className="w-full bg-[#09358c] text-white py-5 rounded-2xl font-black uppercase tracking-widest text-[13px] shadow-lg active:scale-95 transition-transform">
+                  Access Portal
+                </button>
+                <div className="mt-8 flex gap-6 grayscale opacity-50">
+                  <span className="text-xs font-black uppercase tracking-widest text-slate-400">Follow us</span>
+                  <div className="h-px flex-1 bg-slate-200 self-center" />
+                </div>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
-    </nav>
+    </>
   );
 }

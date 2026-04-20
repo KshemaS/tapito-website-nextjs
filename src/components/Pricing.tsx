@@ -108,7 +108,7 @@ const SpotlightCard = ({ children, className, popular, hue }: { children: React.
   return (
     <div className={cn("relative h-full", className)}>
       {popular && (
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           className="absolute -top-3 left-1/2 -translate-x-1/2 z-40"
@@ -128,20 +128,20 @@ const SpotlightCard = ({ children, className, popular, hue }: { children: React.
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        whileHover={{ 
-          y: -8, 
-          transition: { duration: 0.3 } 
+        whileHover={{
+          y: -8,
+          transition: { duration: 0.3 }
         }}
         className={cn(
           "group relative flex flex-col h-full rounded-[1.5rem] border border-slate-200/60 bg-white/70 backdrop-blur-2xl transition-all duration-500 hover:shadow-[0_32px_64px_-16px_rgba(5,160,236,0.12)]",
-          popular 
-            ? "shadow-[0_48px_96px_-24px_rgba(9,53,140,0.22)] border-[#05a0ec]/50 ring-1 ring-[#05a0ec]/20 bg-white/90" 
+          popular
+            ? "shadow-[0_48px_96px_-24px_rgba(9,53,140,0.22)] border-[#05a0ec]/50 ring-1 ring-[#05a0ec]/20 bg-white/90"
             : "hover:border-blue-300/50 hover:bg-white/90 shadow-sm"
         )}
       >
         {/* Top reflection flare */}
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/50 to-transparent" />
-        
+
         {popular && (
           <div className="absolute inset-0 rounded-[1.5rem] border border-[#05a0ec]/30 pointer-events-none shadow-[inset_0_1px_1px_rgba(255,255,255,0.7)]" />
         )}
@@ -154,7 +154,7 @@ const SpotlightCard = ({ children, className, popular, hue }: { children: React.
             ),
           }}
         />
-        
+
         <div className={cn(
           "relative z-10 flex flex-col h-full rounded-[1.1rem] transition-all duration-500",
           "p-6 pt-10 pb-10"
@@ -175,8 +175,8 @@ const FAQItem = ({ question, answer, index }: { question: string; answer: string
       initial={false}
       className={cn(
         "group overflow-hidden transition-all duration-500 rounded-[1rem] border backdrop-blur-xl",
-        isOpen 
-          ? "bg-white/80 border-[#05a0ec]/60 shadow-[0_32px_64px_-16px_rgba(9,53,140,0.08)]" 
+        isOpen
+          ? "bg-white/80 border-[#05a0ec]/60 shadow-[0_32px_64px_-16px_rgba(9,53,140,0.08)]"
           : "bg-white/40 border-white/40 hover:border-blue-100 hover:bg-white/60 shadow-sm"
       )}
     >
@@ -188,8 +188,8 @@ const FAQItem = ({ question, answer, index }: { question: string; answer: string
           <div
             className={cn(
               "w-11 h-11 rounded-2xl flex items-center justify-center text-[11px] font-black transition-all duration-500",
-              isOpen 
-                ? "bg-gradient-to-br from-[#09358c] to-[#05a0ec] text-white shadow-lg shadow-blue-200" 
+              isOpen
+                ? "bg-gradient-to-br from-[#09358c] to-[#05a0ec] text-white shadow-lg shadow-blue-200"
                 : "bg-white/80 text-slate-400 group-hover/btn:text-[#05a0ec] border border-slate-100 group-hover/btn:border-blue-100 group-hover/btn:shadow-md group-hover/btn:shadow-blue-50/50"
             )}
           >
@@ -217,7 +217,7 @@ const FAQItem = ({ question, answer, index }: { question: string; answer: string
       </button>
       <motion.div
         initial={false}
-        animate={{ 
+        animate={{
           height: isOpen ? "auto" : 0,
           opacity: isOpen ? 1 : 0
         }}
@@ -237,7 +237,7 @@ const Pricing = () => {
     <section className="pt-32 pb-32 lg:pt-48 relative overflow-hidden bg-[#fafbfc]">
       {/* Background patterns */}
       <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:32px_32px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-20 pointer-events-none" />
-      
+
       {/* Dynamic Background */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
         {/* Blob 1 — top left, blue */}
@@ -335,11 +335,11 @@ const Pricing = () => {
                     <Sparkles size={140} className="text-[#05a0ec]" />
                   </div>
                   <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-[#05a0ec]/20 blur-[100px] rounded-full" />
-                  
+
                   <div className="relative z-10 flex flex-col items-start gap-8">
                     <div className="w-16 h-16 rounded-[1.5rem] bg-[#05a0ec] flex items-center justify-center text-white shadow-xl shadow-blue-600/40 relative">
-                       <Mail size={30} strokeWidth={1.5} />
-                       <div className="absolute inset-0 bg-white/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <Mail size={30} strokeWidth={1.5} />
+                      <div className="absolute inset-0 bg-white/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
                     </div>
                     <div>
                       <h5 className="font-black text-white text-2xl tracking-tight mb-3">Still have questions?</h5>
@@ -403,15 +403,15 @@ const Pricing = () => {
 const PricingCard = ({ plan }: { plan: typeof plans[0] }) => {
   const Icon = plan.icon;
   return (
-    <SpotlightCard 
-      popular={plan.popular} 
+    <SpotlightCard
+      popular={plan.popular}
       hue={plan.hue}
     >
       <div className="mb-10">
         <div className={cn(
           "w-16 h-16 rounded-[1.25rem] flex items-center justify-center mb-10 relative transition-all duration-500 group-hover:scale-110 group-hover:rotate-3",
-          plan.popular 
-            ? "bg-gradient-to-br from-[#09358c] to-[#05a0ec] text-white shadow-2xl shadow-blue-600/30" 
+          plan.popular
+            ? "bg-gradient-to-br from-[#09358c] to-[#05a0ec] text-white shadow-2xl shadow-blue-600/30"
             : "bg-gradient-to-br from-slate-50 to-blue-50/30 text-slate-900 border border-slate-200/50 shadow-sm"
         )}>
           <Icon size={32} strokeWidth={1.5} />
@@ -419,10 +419,10 @@ const PricingCard = ({ plan }: { plan: typeof plans[0] }) => {
             <div className="absolute inset-0 bg-white/20 blur-xl rounded-full opacity-50" />
           )}
         </div>
-        
+
         <h3 className="text-4xl font-bold text-slate-900 mb-4 leading-none tracking-tight">{plan.name}</h3>
         <div className="h-1.5 w-20 bg-gradient-to-r from-[#09358c] via-[#05a0ec] to-[#06dcc3] rounded-full mb-8 shadow-md shadow-blue-500/10" />
-        
+
         <div className="space-y-2">
           <p className="text-[11px] font-bold bg-gradient-to-r from-[#09358c] to-[#05a0ec] bg-clip-text text-transparent uppercase tracking-[0.2em]">{plan.description}</p>
           <p className="text-[14px] font-semibold text-slate-500 leading-relaxed pr-2">{plan.idealFor}</p>
@@ -434,11 +434,11 @@ const PricingCard = ({ plan }: { plan: typeof plans[0] }) => {
           <span className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] whitespace-nowrap">Core Capabilities</span>
           <div className="h-px w-full bg-gradient-to-r from-slate-100 to-transparent" />
         </div>
-        
+
         <ul className="space-y-4 mb-10">
           {plan.features.map((feature, fIndex) => (
-            <motion.li 
-              key={fIndex} 
+            <motion.li
+              key={fIndex}
               initial={{ opacity: 0, x: -10 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -447,8 +447,8 @@ const PricingCard = ({ plan }: { plan: typeof plans[0] }) => {
             >
               <div className={cn(
                 "mt-0.5 flex-shrink-0 w-6 h-6 rounded-lg flex items-center justify-center transition-all duration-500 group-hover/item:scale-125 group-hover/item:rotate-12",
-                plan.popular 
-                  ? "bg-blue-50 text-[#05a0ec] group-hover/item:bg-[#05a0ec] group-hover/item:text-white group-hover/item:shadow-lg group-hover/item:shadow-blue-500/20" 
+                plan.popular
+                  ? "bg-blue-50 text-[#05a0ec] group-hover/item:bg-[#05a0ec] group-hover/item:text-white group-hover/item:shadow-lg group-hover/item:shadow-blue-500/20"
                   : "bg-slate-50 text-slate-400 group-hover/item:bg-slate-900 group-hover/item:text-white"
               )}>
                 <Check size={12} strokeWidth={3.5} />
@@ -467,21 +467,21 @@ const PricingCard = ({ plan }: { plan: typeof plans[0] }) => {
           whileTap={{ scale: 0.98 }}
           className={cn(
             "w-full py-6 rounded-2xl font-black transition-all duration-500 flex items-center justify-center gap-3 group relative overflow-hidden",
-            plan.popular 
-              ? "btn-premium text-white shadow-[0_20px_40px_-8px_rgba(99,102,241,0.5)] border-none" 
+            plan.popular
+              ? "btn-premium text-white shadow-[0_20px_40px_-8px_rgba(99,102,241,0.5)] border-none"
               : "bg-slate-900 text-white hover:bg-slate-800 shadow-xl shadow-slate-900/20 border border-slate-800 hover:shadow-2xl hover:shadow-slate-900/30"
           )}
         >
           <span className="relative z-10 uppercase text-[12px] tracking-[0.25em]">{plan.cta}</span>
           <ArrowRight size={20} className="relative z-10 transition-all duration-500 group-hover:translate-x-2 group-hover:scale-110" />
-          
-          <motion.div 
+
+          <motion.div
             className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-[45deg]"
             initial={{ x: "-300%" }}
             whileHover={{ x: "300%" }}
             transition={{ duration: 1.2, ease: "easeInOut" }}
           />
-          
+
           {plan.popular && (
             <div className="absolute inset-0 rounded-2xl ring-2 ring-white/20 opacity-0 group-hover:opacity-100 transition-opacity" />
           )}
