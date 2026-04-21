@@ -39,7 +39,7 @@ export const CaseStudiesListing = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.6 }}
-          className="flex flex-col sm:flex-row items-center justify-between gap-5 mb-12"
+          className="flex flex-col md:flex-row items-center justify-between gap-6 mb-12 sm:mb-20"
         >
           {/* Industry tabs */}
           <div className="flex flex-wrap items-center gap-2">
@@ -60,7 +60,7 @@ export const CaseStudiesListing = () => {
           </div>
 
           {/* Search */}
-          <div className="relative w-full sm:w-64">
+          <div className="relative w-full md:w-72">
             <Search
               size={15}
               className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"
@@ -159,7 +159,7 @@ export const CaseStudiesListing = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="mt-48 relative overflow-hidden rounded-[1.25rem] bg-slate-900 p-12 text-center"
+          className="mt-24 sm:mt-32 md:mt-48 relative overflow-hidden rounded-[1.5rem] bg-slate-900 px-6 py-16 sm:p-20 text-center"
         >
           <div className="absolute -top-16 -left-16 w-64 h-64 bg-[#09358c]/30 blur-[80px] rounded-full pointer-events-none" />
           <div className="absolute -bottom-16 -right-16 w-64 h-64 bg-[#05a0ec]/20 blur-[80px] rounded-full pointer-events-none" />
@@ -174,8 +174,8 @@ export const CaseStudiesListing = () => {
                 Your Brand, Next
               </span>
             </div>
-            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-tight">
-              Ready to write your own <br />
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6 tracking-tight leading-tight px-4 text-balance">
+              Ready to write your own <br className="hidden sm:block" />
               <span className="gradient-text">success story?</span>
             </h3>
             <p className="text-[15px] text-slate-400 font-medium max-w-xl mx-auto mb-8 leading-relaxed">

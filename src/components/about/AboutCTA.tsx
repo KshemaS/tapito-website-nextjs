@@ -9,7 +9,7 @@ export default function AboutCTA() {
   return (
     <section className="py-24 bg-white relative overflow-hidden">
       <Container>
-        <div className="relative rounded-[1.5rem] bg-black p-12 md:p-20 overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,0.4)]">
+        <div className="relative rounded-[1.5rem] bg-black p-8 sm:p-12 md:p-20 overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,0.4)]">
             {/* High-tech mesh background visual - constrained to card */}
             <div className="absolute top-0 right-0 w-full h-full lg:w-2/5 opacity-50 pointer-events-none select-none z-0">
                 <img 
@@ -40,9 +40,9 @@ export default function AboutCTA() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
-                    className="text-4xl md:text-6xl lg:text-7xl font-semibold text-white mb-8 tracking-tight leading-[1.05]"
+                    className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-semibold text-white mb-8 tracking-tight leading-[1.1] sm:leading-[1.05] text-balance"
                 >
-                    Unlock Your <br />
+                    Unlock Your <br className="hidden sm:block" />
                     <span className="text-white">Growth Potential</span>
                 </motion.h2>
 

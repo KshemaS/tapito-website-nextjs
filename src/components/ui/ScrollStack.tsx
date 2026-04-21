@@ -35,37 +35,51 @@ const ScrollStack = ({
   useLayoutEffect(() => {
     const context = gsap.context(() => {
       const cards = gsap.utils.toArray<HTMLElement>('.scroll-stack-card');
-      
-      cards.forEach((card, index) => {
-        // Only trigger for cards after the first one
-        if (index > 0) {
-          gsap.to(cards.slice(0, index), {
-            scale: (i) => 1 - (index - i) * itemScale,
-            y: (i) => -(index - i) * itemStackDistance,
-            opacity: (i) => 1 - (index - i) * 0.1,
-            scrollTrigger: {
-              trigger: card,
-              start: "top 80%",
-              end: "top 20%",
-              scrub: true,
-            }
-          });
-        }
+      if (cards.length === 0) return;
 
-        // Make each card sticky as it hits the stack position
+      cards.forEach((card, index) => {
+        // 1. PINNING: Make each card sticky when it hits the top area
         ScrollTrigger.create({
           trigger: card,
-          start: `top 15%`,
+          start: "top 10%", 
           endTrigger: containerRef.current,
           end: "bottom bottom",
           pin: true,
           pinSpacing: false,
-          scrub: true,
+          anticipatePin: 1,
         });
+
+        // 2. STACK EFFECTS: Animate the CURRENT card proportionately when the NEXT card enters
+        if (index < cards.length - 1) {
+          const nextCard = cards[index + 1];
+          
+          gsap.to(card, {
+            scale: 0.95,
+            yPercent: -2,
+            opacity: 0.8,
+            filter: "blur(0.5px)",
+            force3D: true,
+            scrollTrigger: {
+              trigger: nextCard,
+              start: "top 95%",
+              end: "top 15%",
+              scrub: true,
+              immediateRender: false,
+            }
+          });
+        }
       });
     }, containerRef);
 
-    return () => context.revert();
+    // Refresh ScrollTrigger after a short delay to account for dynamic content height
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 100);
+
+    return () => {
+      clearTimeout(timer);
+      context.revert();
+    };
   }, [itemScale, itemStackDistance]);
 
   return (

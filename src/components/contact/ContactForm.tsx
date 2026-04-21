@@ -50,7 +50,7 @@ export default function ContactForm() {
         {/* Gradient top accent */}
         <div className="h-[2px] w-full bg-gradient-to-r from-[#09358c]/40 via-[#05a0ec]/40 to-transparent" />
 
-        <div className="p-8 md:p-12">
+        <div className="p-6 sm:p-8 md:p-12">
           {/* Corner decoration */}
           <div className="absolute top-0 right-0 w-32 h-32 bg-[#05a0ec]/5 blur-3xl rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
@@ -61,10 +61,10 @@ export default function ContactForm() {
                 initial={{ opacity: 1 }}
                 exit={{ opacity: 0, scale: 0.97 }}
                 transition={{ duration: 0.25 }}
-                className="space-y-7 relative z-10"
+                className="space-y-6 sm:space-y-7 relative z-10"
                 onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}
               >
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
                   <Field>
                     <input type="text" className={inputCls} placeholder="First Name *" />
                   </Field>
@@ -73,7 +73,7 @@ export default function ContactForm() {
                   </Field>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
                   <Field>
                     <input type="email" className={inputCls} placeholder="Work Email *" />
                   </Field>
@@ -82,7 +82,7 @@ export default function ContactForm() {
                   </Field>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
                   <Field>
                     <div className="relative">
                       <select
