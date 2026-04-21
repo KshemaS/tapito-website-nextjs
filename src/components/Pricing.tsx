@@ -108,7 +108,7 @@ const SpotlightCard = ({ children, className, popular, hue }: { children: React.
   return (
     <div className={cn("relative h-full", className)}>
       {popular && (
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           className="absolute -top-3 left-1/2 -translate-x-1/2 z-40"
@@ -130,14 +130,14 @@ const SpotlightCard = ({ children, className, popular, hue }: { children: React.
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         className={cn(
           "group relative flex flex-col h-full rounded-[1.5rem] border border-slate-200/60 bg-white/70 backdrop-blur-2xl transition-all duration-500 hover:shadow-[0_32px_64px_-16px_rgba(5,160,236,0.12)]",
-          popular 
-            ? "shadow-[0_48px_96px_-24px_rgba(9,53,140,0.22)] border-[#05a0ec]/50 ring-1 ring-[#05a0ec]/20 bg-white/90" 
+          popular
+            ? "shadow-[0_48px_96px_-24px_rgba(9,53,140,0.22)] border-[#05a0ec]/50 ring-1 ring-[#05a0ec]/20 bg-white/90"
             : "hover:border-blue-300/50 hover:bg-white/90 shadow-sm"
         )}
       >
         {/* Top reflection flare */}
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/50 to-transparent" />
-        
+
         {popular && (
           <div className="absolute inset-0 rounded-[1.5rem] border border-[#05a0ec]/30 pointer-events-none shadow-[inset_0_1px_1px_rgba(255,255,255,0.7)]" />
         )}
@@ -150,7 +150,7 @@ const SpotlightCard = ({ children, className, popular, hue }: { children: React.
             ),
           }}
         />
-        
+
         <div className={cn(
           "relative z-10 flex flex-col h-full rounded-[1.1rem] transition-all duration-500",
           "p-6 pt-10 pb-10"
@@ -171,8 +171,8 @@ const FAQItem = ({ question, answer, index }: { question: string; answer: string
       initial={false}
       className={cn(
         "group overflow-hidden transition-all duration-500 rounded-[1rem] border backdrop-blur-xl",
-        isOpen 
-          ? "bg-white/80 border-[#05a0ec]/60 shadow-[0_32px_64px_-16px_rgba(9,53,140,0.08)]" 
+        isOpen
+          ? "bg-white/80 border-[#05a0ec]/60 shadow-[0_32px_64px_-16px_rgba(9,53,140,0.08)]"
           : "bg-white/40 border-white/40 hover:border-blue-100 hover:bg-white/60 shadow-sm"
       )}
     >
@@ -184,8 +184,8 @@ const FAQItem = ({ question, answer, index }: { question: string; answer: string
           <div
             className={cn(
               "w-11 h-11 rounded-2xl flex items-center justify-center text-[11px] font-black transition-all duration-500",
-              isOpen 
-                ? "bg-gradient-to-br from-[#09358c] to-[#05a0ec] text-white shadow-lg shadow-blue-200" 
+              isOpen
+                ? "bg-gradient-to-br from-[#09358c] to-[#05a0ec] text-white shadow-lg shadow-blue-200"
                 : "bg-white/80 text-slate-400 group-hover/btn:text-[#05a0ec] border border-slate-100 group-hover/btn:border-blue-100 group-hover/btn:shadow-md group-hover/btn:shadow-blue-50/50"
             )}
           >
@@ -213,7 +213,7 @@ const FAQItem = ({ question, answer, index }: { question: string; answer: string
       </button>
       <motion.div
         initial={false}
-        animate={{ 
+        animate={{
           height: isOpen ? "auto" : 0,
           opacity: isOpen ? 1 : 0
         }}
@@ -235,7 +235,7 @@ const Pricing = () => {
     <section className="pt-32 pb-32 lg:pt-48 relative overflow-hidden bg-[#fafbfc]">
       {/* Background patterns */}
       <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:32px_32px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-20 pointer-events-none" />
-      
+
       {/* Dynamic Background */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
         {/* Blob 1 — top left, blue */}
@@ -492,11 +492,11 @@ const Pricing = () => {
                     <Sparkles size={140} className="text-[#05a0ec]" />
                   </div>
                   <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-[#05a0ec]/20 blur-[100px] rounded-full" />
-                  
+
                   <div className="relative z-10 flex flex-col items-start gap-8">
                     <div className="w-16 h-16 rounded-[1.5rem] bg-[#05a0ec] flex items-center justify-center text-white shadow-xl shadow-blue-600/40 relative">
-                       <Mail size={30} strokeWidth={1.5} />
-                       <div className="absolute inset-0 bg-white/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <Mail size={30} strokeWidth={1.5} />
+                      <div className="absolute inset-0 bg-white/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
                     </div>
                     <div>
                       <h5 className="font-black text-white text-2xl tracking-tight mb-3">Still have questions?</h5>
