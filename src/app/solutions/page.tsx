@@ -38,7 +38,7 @@ const SOLUTION_SEGMENTS = [
 
 const SolutionCard = ({ solution, index }: { solution: typeof SOLUTION_SEGMENTS[0], index: number }) => {
   const isEven = index % 2 === 0;
-  
+
   return (
     <section className="py-24 md:py-32 overflow-hidden border-b border-slate-50 last:border-0">
       <Container>
@@ -57,7 +57,7 @@ const SolutionCard = ({ solution, index }: { solution: typeof SOLUTION_SEGMENTS[
               <div className={cn(
                 "w-14 h-14 rounded-2xl flex items-center justify-center mb-8",
                 solution.color === "blue" ? "bg-blue-50 text-blue-600" :
-                solution.color === "indigo" ? "bg-indigo-50 text-indigo-600" : "bg-violet-50 text-violet-600"
+                  solution.color === "indigo" ? "bg-indigo-50 text-indigo-600" : "bg-violet-50 text-violet-600"
               )}>
                 <solution.icon size={28} />
               </div>
@@ -70,7 +70,7 @@ const SolutionCard = ({ solution, index }: { solution: typeof SOLUTION_SEGMENTS[
               <p className="text-slate-600 text-lg leading-relaxed mb-10">
                 {solution.description}
               </p>
-              
+
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
                 {solution.features.map((feature, fIndex) => (
                   <li key={fIndex} className="flex items-center gap-3">
@@ -81,36 +81,36 @@ const SolutionCard = ({ solution, index }: { solution: typeof SOLUTION_SEGMENTS[
                   </li>
                 ))}
               </ul>
-              
+
               <button className="inline-flex items-center gap-2 text-sm font-black uppercase tracking-widest text-slate-900 group">
-                 Explore this solution <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+                Explore this solution <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
               </button>
             </motion.div>
           </div>
-          
+
           {/* Visual Placeholder */}
           <div className="flex-1 w-full max-w-3xl">
-             <motion.div
-               initial={{ opacity: 0, scale: 0.95 }}
-               whileInView={{ opacity: 1, scale: 1 }}
-               viewport={{ once: true }}
-               transition={{ duration: 0.8 }}
-               className="relative aspect-[4/3] rounded-[3rem] bg-gradient-to-br from-white to-slate-50 border border-slate-100 shadow-2xl overflow-hidden group"
-             >
-                {/* Abstract pattern mock */}
-                <div className="absolute inset-0 bg-[#f8fafc]">
-                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-white rounded-3xl shadow-2xl p-8 transition-transform duration-700 group-hover:scale-105 group-hover:-rotate-1">
-                      <div className="w-full h-full bg-slate-50 rounded-xl overflow-hidden relative">
-                         <div className="absolute top-4 left-4 right-4 flex gap-4">
-                            <div className="w-1/3 h-2 bg-slate-100 rounded-full" />
-                            <div className="w-1/4 h-2 bg-slate-100 rounded-full" />
-                         </div>
-                         <div className="absolute bottom-4 left-4 right-4 h-1/2 bg-white rounded-lg shadow-sm" />
-                      </div>
-                   </div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="relative aspect-[4/3] rounded-[3rem] bg-gradient-to-br from-white to-slate-50 border border-slate-100 shadow-2xl overflow-hidden group"
+            >
+              {/* Abstract pattern mock */}
+              <div className="absolute inset-0 bg-[#f8fafc]">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-white rounded-3xl shadow-2xl p-8 transition-transform duration-700 group-hover:scale-105 group-hover:-rotate-1">
+                  <div className="w-full h-full bg-slate-50 rounded-xl overflow-hidden relative">
+                    <div className="absolute top-4 left-4 right-4 flex gap-4">
+                      <div className="w-1/3 h-2 bg-slate-100 rounded-full" />
+                      <div className="w-1/4 h-2 bg-slate-100 rounded-full" />
+                    </div>
+                    <div className="absolute bottom-4 left-4 right-4 h-1/2 bg-white rounded-lg shadow-sm" />
+                  </div>
                 </div>
-                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-white via-white/50 to-transparent pointer-events-none" />
-             </motion.div>
+              </div>
+              <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-white via-white/50 to-transparent pointer-events-none" />
+            </motion.div>
           </div>
         </div>
       </Container>

@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useMotionValue, useTransform } from "framer-motion";
+import { useEffect, useState, useRef } from "react";
+import { motion, AnimatePresence, useMotionValue, useTransform } from "framer-motion";
 import {
   HelpCircle,
   Monitor,
@@ -16,19 +17,204 @@ import { cn } from "@/lib/utils";
 import Container from "@/components/Container";
 import Particles from "@/components/Particles";
 
-export default function ContactResources() {
-  // Spotlight effect for featured card
-  const fX = useMotionValue(0);
-  const fY = useMotionValue(0);
-  function handleFMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
+const CARDS = [
+  {
+    title: "Help Center",
+    desc: "Get detailed documentation, guides, and real-time support for every Tapito feature.",
+    icon: HelpCircle,
+    num: "01",
+    href: "#",
+  },
+  {
+    title: "Interactive Demo",
+    desc: "Experience the full power of Tapito AI with our hands-on product walkthrough.",
+    icon: Monitor,
+    num: "02",
+    href: "#",
+  },
+  {
+    title: "Careers",
+    desc: "Join our mission to revolutionize retail with artificial intelligence.",
+    icon: Briefcase,
+    num: "03",
+    href: "#",
+  },
+  {
+    title: "Growth Community",
+    desc: "Connect with 5,000+ retail leaders and share proven growth strategies.",
+    icon: Users,
+    num: "04",
+    href: "#",
+  },
+];
+
+function ResourceCard({ 
+  card, 
+  index, 
+  isActive, 
+  onHover 
+}: { 
+  card: typeof CARDS[0], 
+  index: number, 
+  isActive: boolean,
+  onHover: (index: number | null) => void
+}) {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  function handleMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
     const { left, top } = currentTarget.getBoundingClientRect();
-    fX.set(clientX - left);
-    fY.set(clientY - top);
+    x.set(clientX - left);
+    y.set(clientY - top);
   }
-  const fSpotlight = useTransform(
-    [fX, fY],
-    ([x, y]) => `radial-gradient(400px circle at ${x}px ${y}px, rgba(255, 255, 255, 0.15), transparent 80%)`
+
+  const spotlight = useTransform(
+    [x, y],
+    ([xVal, yVal]) => `radial-gradient(400px circle at ${xVal}px ${yVal}px, rgba(255, 255, 255, 0.2), transparent 80%)`
   );
+
+  return (
+    <motion.a
+      href={card.href}
+      layout
+      animate={{
+        flex: isActive ? 2.5 : 1,
+      }}
+      transition={{ 
+        duration: 0.9, 
+        ease: [0.23, 1, 0.32, 1],
+      }}
+      onMouseEnter={() => onHover(index)}
+      onMouseLeave={() => onHover(null)}
+      onMouseMove={handleMouseMove}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className={cn(
+        "group relative flex flex-col justify-between p-7 sm:p-9 rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden min-h-[320px] sm:min-h-[440px] cursor-pointer transition-colors duration-500",
+        isActive ? "bg-[#09358c] shadow-2xl shadow-blue-900/20" : "bg-white border border-slate-100 shadow-lg shadow-slate-200/40"
+      )}
+    >
+      {/* Background Gradient Layer (Fades in over the base color) */}
+      <motion.div 
+        animate={{ opacity: isActive ? 1 : 0 }}
+        transition={{ duration: 0.6 }}
+        className="absolute inset-0 bg-gradient-to-br from-[#09358c] to-[#05a0ec] z-0 pointer-events-none"
+      />
+
+      {/* Spotlight Glow */}
+      <motion.div 
+        className={cn(
+          "absolute inset-0 pointer-events-none transition-opacity duration-500 z-10",
+          isActive ? "opacity-100" : "opacity-0 group-hover:opacity-20"
+        )}
+        style={{ background: spotlight }}
+      />
+      
+      {/* Border glow */}
+      <BorderGlow 
+        colorFrom="rgba(255,255,255,0.5)" 
+        colorTo="rgba(255,255,255,0.1)" 
+        borderRadius="2.5rem" 
+        size={isActive ? 300 : 200} 
+        duration={5} 
+        className={cn("transition-opacity duration-700 z-10", isActive ? "opacity-100" : "opacity-0")}
+      />
+
+      {/* Grid texture */}
+      <div className={cn(
+        "absolute inset-0 pointer-events-none transition-opacity duration-700 z-10",
+        "bg-[size:32px_32px]",
+        isActive 
+          ? "bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] opacity-100" 
+          : "bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] opacity-50"
+      )} />
+
+      {/* Content wrapper with higher Z-index */}
+      <div className="relative z-30 w-full flex flex-col justify-between h-full">
+        <div>
+          <div className="flex items-start justify-between mb-10">
+            <div className={cn(
+              "w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-700",
+              isActive 
+                ? "bg-white/10 border border-white/20 backdrop-blur-md text-white" 
+                : "bg-slate-50 border border-slate-100 text-slate-400 group-hover:text-[#09358c] group-hover:bg-slate-100/50"
+            )}>
+              <card.icon size={26} strokeWidth={1.5} />
+            </div>
+            <div className={cn(
+              "text-[10px] font-extrabold uppercase tracking-[0.25em] px-3 py-1 rounded-full border transition-all duration-700",
+              isActive 
+                ? "text-white/50 bg-white/5 border-white/10" 
+                : "text-slate-400 bg-slate-50 border-slate-100 group-hover:border-slate-200"
+            )}>
+              {card.num}
+            </div>
+          </div>
+
+          <motion.h3 
+            layout="position"
+            className={cn(
+              "font-black tracking-tight transition-all duration-700 leading-tight",
+              isActive ? "text-white text-3xl mb-0" : "text-slate-800 text-xl mb-0 group-hover:text-[#09358c]"
+            )}
+          >
+            {card.title}
+          </motion.h3>
+
+          <p className={cn(
+            "text-[14px] leading-relaxed transition-all duration-700",
+            isActive 
+              ? "text-white/70 mt-4 max-w-sm opacity-100" 
+              : "text-slate-500 mt-3 line-clamp-2 opacity-80 group-hover:opacity-100"
+          )}>
+            {card.desc}
+          </p>
+        </div>
+
+        <div className="flex items-center justify-between mt-auto">
+          <motion.span 
+            layout="position"
+            className={cn(
+              "text-[11px] font-extrabold uppercase tracking-[0.2em] transition-all duration-700",
+              isActive ? "text-white/60 opacity-100" : "text-slate-400 opacity-0 group-hover:opacity-100"
+            )}
+          >
+            Explore Now
+          </motion.span>
+          <div className={cn(
+            "w-11 h-11 rounded-full border flex items-center justify-center transition-all duration-700",
+            isActive 
+              ? "bg-white text-[#09358c] border-white scale-110 shadow-lg" 
+              : "bg-slate-50 text-slate-400 border-slate-100 group-hover:bg-slate-100 group-hover:text-[#09358c]"
+          )}>
+            <ArrowRight size={18} />
+          </div>
+        </div>
+      </div>
+    </motion.a>
+  );
+}
+
+export default function ContactResources() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    if (isPaused) {
+      if (timerRef.current) clearInterval(timerRef.current);
+      return;
+    }
+
+    timerRef.current = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % CARDS.length);
+    }, 5000);
+
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [isPaused]);
 
   return (
     <section className="py-32 bg-[#fafbfc] overflow-hidden relative">
@@ -44,16 +230,16 @@ export default function ContactResources() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16"
+          className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-20"
         >
           <div>
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#09358c]/15 bg-[#09358c]/5 mb-5">
               <Sparkles size={12} className="text-[#09358c]" />
               <span className="text-[10px] font-extrabold uppercase tracking-[0.25em] text-[#09358c]/80">Resources</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-800 tracking-tight leading-[1.05]">
-              Everything you need<br />
-              <span className="text-[#09358c]">to grow with Tapito</span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-800 tracking-tight leading-[1.05]">
+              Growing with Tapito<br />
+              <span className="text-[#09358c]">is now effortless</span>
             </h2>
           </div>
           <p className="text-[15px] text-slate-500 font-medium max-w-xs leading-relaxed md:text-right">
@@ -61,140 +247,24 @@ export default function ContactResources() {
           </p>
         </motion.div>
 
-        {/* Asymmetric card grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
-          {/* Featured card — Help Center */}
-          <motion.a
-            href="#"
-            initial={{ opacity: 0, x: -24 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            whileHover={{ scale: 1.015 }}
-            onMouseMove={handleFMove}
-            className="group lg:col-span-5 relative flex flex-col justify-between p-10 rounded-[2rem] bg-gradient-to-br from-[#09358c] to-[#05a0ec] overflow-hidden min-h-[340px] shadow-[0_32px_64px_-16px_rgba(9,53,140,0.25)]"
-          >
-            {/* Spotlight Glow */}
-            <motion.div 
-              className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              style={{ background: fSpotlight }}
+        {/* Looping Accordion Grid */}
+        <div className="flex flex-col lg:flex-row gap-5">
+          {CARDS.map((card, index) => (
+            <ResourceCard 
+              key={index}
+              card={card}
+              index={index}
+              isActive={activeIndex === index}
+              onHover={(idx) => {
+                if (idx !== null) {
+                  setActiveIndex(idx);
+                  setIsPaused(true);
+                } else {
+                  setIsPaused(false);
+                }
+              }}
             />
-            
-            {/* Border glow */}
-            <BorderGlow 
-              colorFrom="rgba(255,255,255,0.4)" 
-              colorTo="rgba(255,255,255,0.1)" 
-              borderRadius="2rem" 
-              size={250} 
-              duration={6} 
-              className="opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-            />
-            {/* Decorative blobs */}
-            <div className="absolute -top-10 -right-10 w-52 h-52 bg-white/10 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute -bottom-16 -left-10 w-64 h-64 bg-black/20 rounded-full blur-3xl pointer-events-none" />
-            {/* Grid texture */}
-            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
-
-            <div className="relative z-10">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 border border-white/20 mb-8">
-                <span className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-white/80">01 — Featured</span>
-              </div>
-              <div className="w-14 h-14 rounded-[1rem] bg-white/15 border border-white/20 flex items-center justify-center mb-6 group-hover:bg-white/25 transition-colors duration-300">
-                <HelpCircle size={26} className="text-white" strokeWidth={1.5} />
-              </div>
-              <h3 className="text-2xl font-black text-white mb-3 tracking-tight">Help Center</h3>
-              <p className="text-sm text-white/70 font-medium leading-relaxed max-w-xs">
-                Get detailed documentation, guides, and real-time support for every Tapito feature.
-              </p>
-            </div>
-
-            <div className="relative z-10 flex items-center justify-between mt-10">
-              <span className="text-[11px] font-extrabold text-white/60 uppercase tracking-[0.2em]">Explore Now</span>
-              <div className="w-10 h-10 rounded-full bg-white/15 border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-[#05a0ec] transition-all duration-300">
-                <ArrowRight size={16} className="text-white group-hover:text-[#05a0ec] group-hover:translate-x-0.5 transition-all duration-300" />
-              </div>
-            </div>
-          </motion.a>
-
-          {/* Right 3 cards */}
-          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {[
-              {
-                num: "02",
-                title: "Interactive Demo",
-                desc: "Experience the full power of Tapito AI with our hands-on product walkthrough.",
-                icon: Monitor,
-                accent: "group-hover:bg-[#05a0ec]",
-                glow: "group-hover:bg-[#05a0ec]/10",
-                tag: "group-hover:border-[#05a0ec]/40 group-hover:text-[#05a0ec]",
-              },
-              {
-                num: "03",
-                title: "Careers",
-                desc: "Join our mission to revolutionize retail with artificial intelligence.",
-                icon: Briefcase,
-                accent: "group-hover:bg-[#05a0ec]",
-                glow: "group-hover:bg-[#05a0ec]/10",
-                tag: "group-hover:border-[#05a0ec]/40 group-hover:text-[#05a0ec]",
-              },
-              {
-                num: "04",
-                title: "Growth Community",
-                desc: "Connect with 5,000+ retail leaders and share proven growth strategies.",
-                icon: Users,
-                accent: "group-hover:bg-[#05a0ec]",
-                glow: "group-hover:bg-[#05a0ec]/10",
-                tag: "group-hover:border-[#05a0ec]/40 group-hover:text-[#05a0ec]",
-              },
-            ].map((r, i) => (
-              <motion.a
-                key={i}
-                href="#"
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 + i * 0.1, duration: 0.55 }}
-                whileHover={{ y: -5 }}
-                className={cn(
-                  "group relative flex flex-col justify-between p-7 rounded-[1.5rem] border border-slate-200 bg-white overflow-hidden transition-all duration-400 shadow-sm hover:shadow-md",
-                  "hover:border-blue-100 hover:bg-slate-50/50"
-                )}
-              >
-                {/* Corner ambient glow */}
-                <div className={cn("absolute top-0 right-0 w-28 h-28 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-500", r.glow)} />
-
-                <div className="relative z-10">
-                  {/* Number badge */}
-                  <span className={cn(
-                    "inline-block text-[10px] font-extrabold uppercase tracking-[0.2em] text-slate-500 border border-slate-700 px-2.5 py-1 rounded-full mb-6 transition-all duration-300",
-                    r.tag
-                  )}>
-                    {r.num}
-                  </span>
-
-                  <div className={cn(
-                    "w-12 h-12 rounded-xl bg-slate-900 border border-slate-700 flex items-center justify-center text-slate-400",
-                    "group-hover:text-white group-hover:border-transparent transition-all duration-400 mb-5",
-                    r.accent
-                  )}>
-                    <r.icon size={22} strokeWidth={1.5} />
-                  </div>
-
-                  <h3 className="text-[17px] font-black text-slate-900 mb-2.5 tracking-tight leading-snug">
-                    {r.title}
-                  </h3>
-                  <p className="text-[14px] text-slate-500 font-medium leading-relaxed">
-                    {r.desc}
-                  </p>
-                </div>
-
-                <div className="relative z-10 mt-8 flex items-center gap-2 text-[11px] font-extrabold text-[#05a0ec] uppercase tracking-[0.18em] group-hover:text-[#09358c] transition-colors duration-300">
-                  Explore
-                  <ArrowRight size={13} className="transition-transform group-hover:translate-x-1 duration-300" />
-                </div>
-              </motion.a>
-            ))}
-          </div>
+          ))}
         </div>
 
         {/* Bottom CTA strip */}
@@ -203,20 +273,20 @@ export default function ContactResources() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          className="mt-10 flex flex-col sm:flex-row items-center justify-between gap-6 px-8 py-6 rounded-[1.25rem] border border-slate-100 bg-white shadow-sm"
+          className="mt-12 sm:mt-20 flex flex-col sm:flex-row items-center justify-between gap-8 sm:gap-6 px-6 sm:px-10 py-8 rounded-[2rem] sm:rounded-[2.5rem] border border-slate-100 bg-white shadow-xl shadow-slate-200/20"
         >
-          <div className="flex items-center gap-4">
-            <div className="w-10 h-10 rounded-xl bg-[#09358c]/5 flex items-center justify-center flex-shrink-0">
-              <Zap size={18} className="text-[#09358c]" />
+          <div className="flex items-center gap-5">
+            <div className="w-12 h-12 rounded-2xl bg-[#09358c]/5 flex items-center justify-center flex-shrink-0">
+              <Zap size={20} className="text-[#09358c]" />
             </div>
-            <p className="text-[15px] font-semibold text-slate-600">
-              Not sure where to start?{" "}
-              <span className="text-[#09358c] font-bold">Our team is happy to guide you.</span>
-            </p>
+            <div>
+              <p className="text-[16px] font-bold text-slate-800">Not sure where to start?</p>
+              <p className="text-[14px] text-slate-500 font-medium mt-1">Our team is happy to guide you through our growing ecosystem.</p>
+            </div>
           </div>
           <a
             href="#"
-            className="btn-premium inline-flex items-center gap-2 whitespace-nowrap px-7 py-3 text-[14px]"
+            className="btn-premium inline-flex items-center gap-2 whitespace-nowrap px-8 py-4 text-[14px] rounded-xl"
           >
             <Send size={15} />
             Talk to an Expert

@@ -7,11 +7,11 @@ import CardSwap, { Card } from "@/components/ui/CardSwap";
 
 export default function AboutHero() {
   return (
-    <section className="relative h-screen min-h-[850px] flex items-center bg-transparent overflow-hidden">
+    <section className="relative h-auto min-h-screen flex items-center bg-transparent overflow-hidden py-24 sm:py-0">
       {/* Background Patterns */}
       <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:32px_32px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-20 pointer-events-none" />
       
-      <Container className="relative z-10 w-full h-full flex flex-col justify-center gap-12 lg:gap-16 py-12 lg:py-0">
+      <Container className="relative z-10 w-full h-full flex flex-col justify-center gap-10 lg:gap-16">
         
         {/* Main Hero Content */}
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-0 mt-8">
@@ -37,9 +37,9 @@ export default function AboutHero() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="space-y-4"
             >
-              <h1 className="text-[40px] lg:text-[48px] xl:text-[60px] 2xl:text-[72px] 4xl:text-8xl font-bold text-slate-900 leading-[0.95] tracking-tighter">
-                Grow your data, <br />
-                <span className="text-slate-800">harvest the</span> <br />
+              <h1 className="text-4xl sm:text-5xl lg:text-[48px] xl:text-[60px] 2xl:text-[72px] 4xl:text-8xl font-bold text-slate-900 leading-[1.05] sm:leading-[0.95] tracking-tighter text-balance">
+                Grow your data, <br className="hidden sm:block" />
+                <span className="text-slate-800">harvest the</span> <br className="hidden sm:block" />
                 <span className="text-[#09358c]">results.</span>
               </h1>
             </motion.div>
@@ -51,13 +51,13 @@ export default function AboutHero() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="space-y-8"
             >
-              <p className="text-xl lg:text-[18px] xl:text-[20px] 4xl:text-2xl text-slate-500 font-medium leading-[1.6] max-w-3xl">
+              <p className="text-base sm:text-xl lg:text-[18px] xl:text-[20px] 4xl:text-2xl text-slate-500 font-medium leading-[1.6] max-w-3xl">
                 A data-centric technology company built to accelerate your analytical growth 
                 and anchor a true intelligence culture at the heart of your strategy.
               </p>
 
-              <div className="flex lg:justify-start mt-8">
-                <button className="btn-premium flex items-center gap-2 text-lg px-10 py-5 w-full sm:w-auto justify-center font-normal">
+              <div className="flex lg:justify-start mt-6 sm:mt-8 px-4 sm:px-0">
+                <button className="btn-premium flex items-center gap-2 text-base sm:text-lg px-10 py-5 w-full sm:w-auto justify-center font-normal shadow-xl shadow-blue-900/10">
                   Know more
                   <ArrowRight size={20} />
                 </button>
@@ -66,7 +66,7 @@ export default function AboutHero() {
           </div>
 
           {/* Right Side: CardSwap */}
-          <div className="relative w-full lg:w-[500px] h-[400px] flex justify-end lg:block lg:translate-y-20">
+          <div className="relative w-full lg:w-[500px] h-[300px] sm:h-[400px] flex justify-center lg:block lg:translate-y-20 scale-75 sm:scale-90 lg:scale-100">
             <CardSwap
               width={500}
               height={400}

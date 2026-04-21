@@ -28,8 +28,8 @@ export default function ContactHero() {
       </div>
 
       {/* Headline with animated underline */}
-      <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-8 tracking-tight leading-[1.1]">
-        Get in touch with <br />
+      <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-slate-900 mb-6 sm:mb-8 tracking-tight leading-[1.1] text-balance">
+        Get in touch with <br className="hidden sm:block" />
         <span className="text-[#09358c]">our team</span>
       </h1>
 
@@ -39,7 +39,7 @@ export default function ContactHero() {
       </p>
 
       {/* Stat pills */}
-      <div className="grid grid-cols-2 gap-3 mb-16 max-w-md">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-12 sm:mb-16 xl:max-w-md">
         {[
           { icon: Clock,  label: "Response in < 2 hrs",  color: "text-blue-500" },
           { icon: Globe,  label: "16 cities worldwide",   color: "text-sky-500" },
@@ -69,17 +69,17 @@ export default function ContactHero() {
 
 
       {/* Email contacts */}
-      <div className="pt-12 border-t border-slate-200">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+      <div className="pt-10 sm:pt-12 border-t border-slate-200">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-10">
           {[
             { title: "Media & Press",  email: "press@tapito.ai",  icon: Mail },
             { title: "Other Queries",  email: "hello@tapito.ai",  icon: MessageSquare },
           ].map((c, i) => (
             <div key={i}>
-              <h4 className="text-xl font-black text-slate-900 mb-4">{c.title}</h4>
-              <p className="text-slate-500 font-medium leading-relaxed text-[15px]">
+              <h4 className="text-lg sm:text-xl font-black text-slate-900 mb-3 sm:mb-4">{c.title}</h4>
+              <p className="text-slate-500 font-medium leading-relaxed text-[14px] sm:text-[15px]">
                 Write to us at{" "}
-                <a href={`mailto:${c.email}`} className="text-[#05a0ec] font-bold hover:underline">
+                <a href={`mailto:${c.email}`} className="text-[#05a0ec] font-bold hover:underline break-all sm:break-normal">
                   {c.email}
                 </a>
               </p>

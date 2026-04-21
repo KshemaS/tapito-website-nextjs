@@ -22,8 +22,8 @@ const ContactPage = () => {
       <PageBackground />
 
       {/* ── Hero / Contact Grid ──────────────────────────────── */}
-      <Container className="relative z-10 pt-32 pb-24 lg:pt-48">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+      <Container className="relative z-10 pt-20 sm:pt-28 pb-12 sm:pb-20 lg:pt-40">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           <div className="lg:col-span-12 xl:col-span-5">
             <ContactHero />
           </div>
@@ -37,7 +37,7 @@ const ContactPage = () => {
       <ContactReasons />
 
       {/* ── World Presence ───────────────────────────────────── */}
-      <Container className="pt-24 pb-32 relative z-10">
+      <Container className="pt-16 sm:pt-24 pb-24 sm:pb-32 relative z-10">
         <WorldPresence />
       </Container>
 

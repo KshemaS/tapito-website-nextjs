@@ -54,10 +54,10 @@ export default function ContactReasons() {
             <Plus size={14} className="text-[#09358c]" />
             <span className="text-[10px] font-extrabold uppercase tracking-[0.25em] text-[#09358c]">Why Connect</span>
           </motion.div>
-          <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight mb-6">
             Reach out to us for:
           </h2>
-          <p className="text-lg text-slate-500 font-medium max-w-2xl">
+          <p className="text-base sm:text-lg text-slate-500 font-medium max-w-2xl px-4">
             Our specialized teams are ready to support your specific needs. <br className="hidden md:block"/> Select an area below to connect with the right experts.
           </p>
         </div>
