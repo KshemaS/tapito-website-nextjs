@@ -59,11 +59,11 @@ export default function AboutWhatWeDo() {
   return (
     <section className="py-24 bg-[#fafbfc] relative min-h-screen">
       <Container>
-        <div className="mb-20 text-center lg:text-left">
-           <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-slate-900 tracking-tight leading-[1.1] mb-6">
+        <div className="mb-12 sm:mb-20 text-center lg:text-left">
+           <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-slate-900 tracking-tight leading-[1.1] mb-6">
               What We Do
           </h2>
-          <p className="text-slate-500 font-medium text-xl max-w-2xl mx-auto lg:mx-0">
+          <p className="text-slate-500 font-medium text-lg sm:text-xl max-w-2xl mx-auto lg:mx-0 px-4 sm:px-0">
             We empower retail businesses to:
           </p>
         </div>
@@ -74,7 +74,7 @@ export default function AboutWhatWeDo() {
         >
           {SECTIONS.map((section, sIdx) => (
             <ScrollStackItem key={sIdx}>
-              <div className="relative w-full h-full p-8 lg:p-16 flex flex-col lg:flex-row items-center justify-between gap-12 overflow-hidden">
+              <div className="relative w-full h-full p-6 sm:p-10 lg:p-16 flex flex-col lg:flex-row items-center justify-between gap-12 overflow-hidden">
                 {/* Visual Accent */}
                 <div 
                   className="absolute top-0 right-0 w-32 h-32 blur-[80px] opacity-20 pointer-events-none"

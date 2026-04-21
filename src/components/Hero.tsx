@@ -26,7 +26,7 @@ export default function Hero({ keyHighlights }: HeroProps) {
               animate={{ opacity: 1, y: 0 }}
               className="mb-8 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100/50 flex items-center gap-2"
             >
-                <Sparkles size={14} color="#09358c" />
+              <Sparkles size={14} color="#09358c" />
               <span className="text-xs font-bold text-[#09358c] uppercase tracking-[0.2em]">
                 The Future of Retail AI
               </span>

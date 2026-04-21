@@ -38,13 +38,13 @@ export const CaseStudiesHero = () => {
             </motion.div>
 
             {/* Headline */}
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-slate-900 mb-10 tracking-tighter leading-[0.95]">
-              Real results from <br />
+            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-slate-900 mb-6 sm:mb-10 tracking-tighter leading-[1] sm:leading-[0.95] text-balance">
+              Real results from <br className="hidden sm:block" />
               <span className="text-[#09358c]">real retailers</span>
             </h1>
 
             {/* Subtext */}
-            <p className="text-xl md:text-2xl text-slate-500 max-w-2xl mx-auto leading-relaxed font-medium mb-12">
+            <p className="text-base sm:text-xl md:text-2xl text-slate-500 max-w-2xl mx-auto leading-relaxed font-medium mb-10 sm:mb-12 px-4 sm:px-0">
               Discover how 500+ leading retail brands use Tapito to grow faster,
               retain more customers, and make smarter decisions every day.
             </p>

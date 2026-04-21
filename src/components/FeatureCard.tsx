@@ -26,10 +26,10 @@ export const FeatureCard = ({ title, description, benefits, icon: Icon, index, s
         whileHover={{ y: -8 }}
         className="relative h-full"
       >
-        <div className="relative h-full p-7 lg:p-10 rounded-[2rem] md:rounded-[2.5rem] transition-all duration-700 flex flex-col justify-between min-h-[400px] md:min-h-[460px] overflow-hidden bg-white border border-slate-100 text-slate-900 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.03)] group-hover:shadow-[0_45px_90px_-20px_rgba(37,99,235,0.12)]">
+        <div className="relative h-full p-7 lg:p-10 rounded-[2rem] md:rounded-[2.5rem] transition-all duration-700 flex flex-col justify-between min-h-[400px] md:min-h-[460px] overflow-hidden bg-white border border-slate-100 text-slate-900 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.03)] group-hover:shadow-[0_45px_90px_-20px_rgba(9,53,140,0.12)]">
 
           {/* Subtle Hover Gradient */}
-          <div className="absolute inset-0 bg-linear-to-br from-blue-600/[0.03] to-indigo-600/[0.03] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+          <div className="absolute inset-0 bg-linear-to-br from-[#09358c]/[0.03] to-[#05a0ec]/[0.03] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
           {/* Decorative Background Element */}
           <div className="absolute -right-16 -top-16 w-64 h-64 bg-slate-50 rounded-full transition-all duration-700 group-hover:bg-blue-600/5 group-hover:scale-150" />
@@ -42,9 +42,9 @@ export const FeatureCard = ({ title, description, benefits, icon: Icon, index, s
                   y: [0, -6, 0],
                   rotate: [0, 5, -5, 0],
                   boxShadow: [
-                    "0px 0px 0px 0px rgba(37, 99, 235, 0)",
-                    "0px 10px 20px -5px rgba(37, 99, 235, 0.2)",
-                    "0px 0px 0px 0px rgba(37, 99, 235, 0)"
+                    "0px 0px 0px 0px rgba(9, 53, 140, 0)",
+                    "0px 10px 20px -5px rgba(9, 53, 140, 0.2)",
+                    "0px 0px 0px 0px rgba(9, 53, 140, 0)"
                   ]
                 }}
                 transition={{
@@ -53,7 +53,7 @@ export const FeatureCard = ({ title, description, benefits, icon: Icon, index, s
                   ease: "easeInOut",
                   delay: index * 0.15
                 }}
-                className="w-16 h-16 flex items-center justify-center rounded-2xl transition-all duration-500 bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white group-hover:scale-110 shadow-sm border border-slate-100 origin-center"
+                className="w-16 h-16 flex items-center justify-center rounded-2xl transition-all duration-500 bg-[#09358c]/5 text-[#09358c] group-hover:bg-[#09358c] group-hover:text-white group-hover:scale-110 shadow-sm border border-slate-100 origin-center"
               >
                 <Icon size={32} className="transition-transform duration-500 group-hover:scale-110" />
               </motion.div>
@@ -76,7 +76,7 @@ export const FeatureCard = ({ title, description, benefits, icon: Icon, index, s
                       animate={{ scale: [1, 1.15, 1] }}
                       transition={{ duration: 2, repeat: Infinity, delay: (index * 0.1) + (i * 0.3) }}
                     >
-                      <CheckCircle2 size={18} className="text-blue-200 group-hover:text-blue-600 shrink-0 transition-colors duration-500" />
+                      <CheckCircle2 size={18} className="text-[#09358c]/20 group-hover:text-[#09358c] shrink-0 transition-colors duration-500" />
                     </motion.div>
                     <span className="text-[13px] font-extrabold text-slate-400 group-hover:text-slate-600 transition-colors duration-500">{benefit}</span>
                   </div>
@@ -91,16 +91,16 @@ export const FeatureCard = ({ title, description, benefits, icon: Icon, index, s
               <motion.div
                 animate={{ opacity: [0.3, 1, 0.3] }}
                 transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                className="w-1.5 h-1.5 rounded-full bg-slate-200 group-hover:bg-blue-600 transition-colors duration-500"
+                className="w-1.5 h-1.5 rounded-full bg-slate-200 group-hover:bg-[#09358c] transition-colors duration-500"
               />
-              <span className="font-black text-[11px] uppercase tracking-widest text-slate-400 group-hover:text-blue-600 transition-colors">
+              <span className="font-black text-[11px] uppercase tracking-widest text-slate-400 group-hover:text-[#09358c] transition-colors">
                 explore more
               </span>
             </div>
             <motion.div
               animate={{ x: [0, 4, 0] }}
               transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-              className="w-10 h-10 rounded-full border border-slate-100 bg-white flex items-center justify-center text-slate-400 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-all duration-300 shadow-sm"
+              className="w-10 h-10 rounded-full border border-slate-100 bg-white flex items-center justify-center text-slate-400 group-hover:bg-[#09358c] group-hover:text-white group-hover:border-[#09358c] transition-all duration-300 shadow-sm"
             >
               <ArrowRight size={18} className="transition-transform" />
             </motion.div>
