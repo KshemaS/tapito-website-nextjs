@@ -117,9 +117,9 @@ const SolutionCard = ({ solution, index }: { solution: typeof SOLUTION_SEGMENTS[
     </section>
   );
 };
-import CTASection from "@/components/CTASection";
 import { SolutionsHero } from "@/components/solutions/SolutionsHero";
 import { SolutionsGrid } from "@/components/solutions/SolutionsGrid";
+import CTASection from "@/components/CTA-card";
 
 export default function SolutionsPage() {
   return (
@@ -131,10 +131,12 @@ export default function SolutionsPage() {
       <SolutionsGrid />
 
       {/* Call to Action Section */}
-      <CTASection 
-        title={<> Ready to transform <br /> your retail empire?</>}
-        description="Join the new generation of retail leaders using Tapito to automate growth and reclaim their time."
-        className="bg-white"
+      <CTASection
+        title="Transform Your Retail Empire"
+        description="Join hundreds of retail giants who have transformed their data into a revenue engine with Tapito."
+        badge="READY TO TRANSFORM?"
+        image="/assets/images/about/ready-to-tranform.png"
+        isAbout={false}
       />
     </main>
   );

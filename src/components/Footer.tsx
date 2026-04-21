@@ -57,10 +57,10 @@ export function Footer() {
                      <input type="email" placeholder="Your email" className="bg-white border border-slate-200 rounded-lg px-4 py-2 text-sm flex-1 focus:outline-none focus:border-[#05a0ec]" />
                      <button className="bg-[#09358c] text-white rounded-lg px-4 py-2 text-sm font-bold hover:bg-[#05a0ec] transition-colors"><ArrowRight size={16} /></button>
                   </div>
-                  <div className="mt-8 flex items-center gap-2 text-slate-400">
+                  {/* <div className="mt-8 flex items-center gap-2 text-slate-400">
                      <Globe size={14} />
                      <span className="text-xs">Available in 40+ countries</span>
-                  </div>
+                  </div> */}
                </div>
             </div>
 

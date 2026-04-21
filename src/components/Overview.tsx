@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { BarChart3, TrendingUp, Zap } from "lucide-react";
+import { BarChart3, TrendingUp, Zap, ArrowRight } from "lucide-react";
+import Link from "next/link";
 import Container from "./Container";
 import OverViewCard from "./overview-card";
 
@@ -29,6 +30,17 @@ export default function Overview() {
               Tapito isn't just a dashboard. It's a comprehensive AI layer that sits on top of your existing retail stack,
               synthesizing every transaction into a strategic advantage.
             </p>
+            <div className="pt-4">
+              <Link 
+                href="/features" 
+                className="inline-flex items-center gap-3 text-[#09358c] font-black text-sm uppercase tracking-[0.2em] hover:gap-5 transition-all group"
+              >
+                <span>Explore More</span>
+                <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center group-hover:bg-[#09358c] group-hover:text-white transition-all">
+                  <ArrowRight size={16} />
+                </div>
+              </Link>
+            </div>
             <div className="grid grid-cols-2 gap-6 pt-8">
               <div className="p-6 bg-white rounded-3xl shadow-sm border border-slate-100">
                 <TrendingUp className="text-blue-600 mb-4" />

@@ -1,7 +1,6 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import { useState } from "react";
 import { 
   TrendingUp,
   Search,
@@ -13,18 +12,13 @@ import {
   PieChart,
   Users,
   Target,
-  Lightbulb,
   Rocket,
   ArrowRight,
-  Sparkles,
-  MapPin,
   Image as ImageIcon,
-  Layers
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Container from "@/components/Container";
 import { SolutionsHero } from "@/components/solutions/SolutionsHero";
-import CTASection from "@/components/CTASection";
 import ClientStrip from "@/components/ClientStrip";
 import { FeatureShowcase } from "@/components/solutions/FeatureShowcase";
 import { IntegrationSection } from "@/components/solutions/IntegrationSection";
@@ -32,6 +26,8 @@ import { SolutionTestimonials } from "@/components/solutions/SolutionTestimonial
 import { cn } from "@/lib/utils";
 import Capabilities from "@/components/solution-detail/core-capabilities";
 import Impacts from "@/components/solution-detail/impacts";
+import CTASection from "@/components/CTA-card";
+import { FAQ } from "@/components/solutions/FAQ";
 
 const solutionDetails: Record<string, any> = {
   "building-materials": {
@@ -66,6 +62,13 @@ const solutionDetails: Record<string, any> = {
       { title: "Contractor Portal", desc: "A high-end mobile interface for contractors to track accounts, orders, and rewards.", icon: Smartphone },
       { title: "Dealer Loyalty AI", desc: "Automated logic that predicts dealer churn and suggests inventory top-ups.", icon: Zap },
       { title: "Real-time Order Sync", desc: "Unify every material order across your entire regional network instantly.", icon: PieChart }
+    ],
+    faqs: [
+      { question: "How does Tapito improve contractor loyalty?", answer: "Tapito uses AI to track contractor purchase cycles and volume. It automatically triggers personalized tier-based rewards and bulk-order incentives precisely when they are most likely to re-order, ensuring high engagement levels." },
+      { question: "Can it integrate with our existing ERP?", answer: "Yes, Tapito is built for seamless integration with major building material ERP systems. Our real-time sync ensures that material availability is consistently updated across all dealer dashboards." },
+      { question: "How long does the setup take?", answer: "Most building material providers are fully operational within 4-6 weeks, including data mapping and contractor portal deployment." },
+      { question: "Can it handle bulk pricing and specialized discounting?", answer: "Yes, Tapito’s engine supports complex pricing structures, allowing for automated, dynamic discounting based on dealer volume and loyalty tiers." },
+      { question: "Is there support for offline orders?", answer: "Tapito integrates with field sales tools to ensure that even offline orders taken at job sites are synced and attributed to the correct loyalty accounts once back online." }
     ],
     impacts: [
       { value: "42%", label: "Increase in Contractor Repeat Rates" },
@@ -106,6 +109,13 @@ const solutionDetails: Record<string, any> = {
       { title: "Localized Drops", desc: "Dynamic logistics logic that suggests stock movements based on viral geo-zones.", icon: LayoutDashboard },
       { title: "Virtual Stylist", desc: "Web-based AI that pair products based on visual trend data for high-conversion upsells.", icon: Users }
     ],
+    faqs: [
+      { question: "How does the trend-sync engine work?", answer: "Our AI monitors social media engagement and search volume for specific styles. When a trend is detected, it cross-references your inventory and suggests priority restocks or promotions for matching items." },
+      { question: "Can we automate stock transfers between stores?", answer: "Absolutely. Tapito's localized drops logic identifies stores with high demand for specific categories and automates transfer requests from lower-velocity locations." },
+      { question: "Does it help with seasonal clearance?", answer: "Yes, by identifying slow-moving items early, Tapito suggests localized flash sales and visual styling pairings to clear seasonal stock before markdowns become necessary." },
+      { question: "Does it support international inventory management?", answer: "Yes, Tapito handles multi-currency and multi-regional stock logic, helping you balance inventory across international borders based on regional style velocity." },
+      { question: "How does it handle size and color variations?", answer: "Our AI analyzes trend data at the SKU level, so you know exactly which sizes and colors are trending in specific locations, preventing local stockouts." }
+    ],
     impacts: [
       { value: "3.5x", label: "Faster Inventory Turnover" },
       { value: "22%", label: "Average Order Value Increase" },
@@ -145,6 +155,13 @@ const solutionDetails: Record<string, any> = {
       { title: "Tech-Upgrade Triggers", desc: "Automatically notify customers when they are eligible for trade-ins or upgrades.", icon: Smartphone },
       { title: "Smart Accessory Bot", desc: "Real-time upsell logic that pairs tech products with the highest-converting accessories.", icon: LayoutDashboard }
     ],
+    faqs: [
+      { question: "How do you calculate upgrade triggers?", answer: "We analyze a product's release cycle alongside the customer's purchase date and usage patterns. We then trigger trade-in offers just as their device enters the 'secondary value' sweet spot." },
+      { question: "Is the warranty pricing dynamic?", answer: "Yes, our engine can adjust warranty pricing in real-time based on the item type, purchase location, and customer loyalty history to maximize conversion." },
+      { question: "Can it handle complex technical support?", answer: "Tapito's service AI uses trained technical documentation to guide users through troubleshooting, reducing support costs by up to 30%." },
+      { question: "Can we use it for post-purchase technical support?", answer: "Absolutely. Tapito can automate technical guide delivery and troubleshooting steps via WhatsApp or Email based on the specific SKU purchased." },
+      { question: "Does it help with trade-in programs?", answer: "Yes, it calculates fair market value for used devices in real-time and automates the trade-in credit process to encourage immediate upgrades." }
+    ],
     impacts: [
       { value: "40%", label: "Uplift in Warranty Attachment" },
       { value: "18%", label: "Increase in Tech Upgrade Frequency" },
@@ -170,6 +187,13 @@ const defaultData = {
     { title: "AI-Powered Insights", desc: "Our engine discovers hidden patterns in your data automatically.", icon: Zap },
     { title: "Automated Workflows", desc: "Let AI handle the repetitive tasks so your team can focus on strategy.", icon: Smartphone },
     { title: "Predictive Forecasting", desc: "See the future of your sales and inventory with high-precision models.", icon: LayoutDashboard }
+  ],
+  faqs: [
+    { question: "How secure is my business data?", answer: "Data security is our top priority. Tapito uses enterprise-grade encryption and complies with international data protection standards (GDPR, SOC2) to ensure your competitive intelligence remains private." },
+    { question: "How difficult is the onboarding process?", answer: "We provide a dedicated solutions architect to manage your onboarding. Our 'low-code' approach allows you to connect your data streams and see insights within 30 days." },
+    { question: "Is Tapito scalable for small businesses?", answer: "Tapito's engine is designed to scale with your volume. Whether you have 5 stores or 5,000, our pricing and processing capacity adapt to your needs." },
+    { question: "Is custom development required for integration?", answer: "Tapito is designed as a modular platform. While we offer deep custom integrations, our standard connectors allow most businesses to start seeing data insights with minimal dev effort." },
+    { question: "What kind of support is included?", answer: "All partners receive a dedicated success manager and 24/7 technical support to ensure your AI engine is always performing at its peak." }
   ],
   impacts: [
     { value: "25%", label: "Average Revenue Increase" },
@@ -287,11 +311,13 @@ export default function SolutionDetailPage() {
       <FeatureShowcase />
       <IntegrationSection />
       <SolutionTestimonials />
+      <FAQ items={data.faqs} />
       <CTASection
-        title={<> Ready to solve your <br /> {data.title} challenges?</>}
-        description="Speak with our solutions architects today and see how Tapito can transform your operations."
-        isCentered={false}
-        className="bg-white"
+        title="Ready to solve your challenges?"
+        description="Join hundreds of retail giants who have transformed their data into a revenue engine with Tapito."
+        badge="READY TO TRANSFORM?"
+        image="/assets/images/about/ready-to-tranform.png"
+        isAbout={false}
       />
     </main>
   );

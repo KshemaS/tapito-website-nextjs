@@ -8,6 +8,7 @@ import AboutTeam from "@/components/about/AboutTeam";
 import AboutPresence from "@/components/about/AboutPresence";
 import AboutDifferentiators from "@/components/about/AboutDifferentiators";
 import AboutCTA from "@/components/about/AboutCTA";
+import CTASection from "@/components/CTA-card";
 
 export const metadata = {
   title: "About Us | Tapito - Next-Gen AI Engagement Platform",
@@ -37,8 +38,14 @@ export default function AboutPage() {
         <AboutTeam />
         
         <AboutPresence />
-        
-        <AboutCTA />
+        <CTASection
+          title="Unlock Your Growth Potential"
+          description="Join hundreds of retail brands that are scaling with zero manual effort. See the difference AI can make in your revenue growth."
+          badge="READY TO TRANSFORM?"
+          image="/assets/images/about/ready-to-tranform.png"
+          isAbout={true}
+          // onClick={() => {""}}
+        />
       </div>
     </main>
   );

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Zap, Mail, MessageSquare, Phone, Repeat, Clock } from "lucide-react";
+import { Zap, Mail, MessageSquare, Phone, Repeat, Clock, Bell, Gift, MessageCircle, Database, CreditCard } from "lucide-react";
 import Container from "./Container";
 
 const workflows = [
@@ -58,18 +58,36 @@ export default function Automation() {
           <div className="relative">
             <div className="aspect-square bg-white rounded-[3rem] shadow-2xl overflow-hidden border border-slate-100 flex items-center justify-center p-12">
                <div className="w-full h-full relative">
-                  {/* Visual representation of a flow builder */}
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-16 rounded-full bg-blue-600 shadow-lg flex items-center justify-center text-white z-10">
                      <Zap size={32} />
                   </div>
                   <div className="absolute top-16 left-1/2 -translate-x-1/2 w-0.5 h-full bg-slate-100" />
                   
-                  <div className="absolute top-1/2 left-0 w-full flex justify-between px-4">
+                  <div className="absolute top-1/4 left-0 w-full flex justify-between px-12">
                      <div className="w-12 h-12 rounded-xl bg-white shadow-lg border border-slate-100 flex items-center justify-center animate-bounce" style={{ animationDuration: "3s" }}>
                         <Mail className="text-blue-500" />
                      </div>
                      <div className="w-12 h-12 rounded-xl bg-white shadow-lg border border-slate-100 flex items-center justify-center animate-bounce" style={{ animationDuration: "2.5s", animationDelay: "0.5s" }}>
-                        <MessageSquare className="text-green-500" />
+                        <Bell className="text-amber-500" />
+                     </div>
+                  </div>
+
+                  <div className="absolute top-1/2 left-0 w-full flex justify-around px-8">
+                     <div className="w-10 h-10 rounded-xl bg-white shadow-md border border-slate-100 flex items-center justify-center animate-pulse" style={{ animationDuration: "2s" }}>
+                        <Database className="text-slate-800" size={18} />
+                     </div>
+                     <div className="w-12 h-12 rounded-xl bg-white shadow-lg border border-slate-100 flex items-center justify-center animate-bounce" style={{ animationDuration: "2.8s", animationDelay: "0.7s" }}>
+                        <MessageSquare className="text-blue-500" />
+                     </div>
+                     <div className="w-10 h-10 rounded-xl bg-white shadow-md border border-slate-100 flex items-center justify-center animate-pulse" style={{ animationDuration: "2.2s", animationDelay: "0.3s" }}>
+                        <CreditCard className="text-emerald-500" size={18} />
+                     </div>
+                  </div>
+
+                  <div className="absolute top-[70%] left-0 w-full flex justify-center px-4">
+                     <div className="w-14 h-14 rounded-2xl bg-white shadow-xl border-2 border-emerald-50 flex items-center justify-center animate-bounce" style={{ animationDuration: "2.4s", animationDelay: "0.4s" }}>
+                        <MessageCircle className="text-emerald-600" size={28} />
+                        <div className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-500 rounded-full border-2 border-white" />
                      </div>
                   </div>
                   

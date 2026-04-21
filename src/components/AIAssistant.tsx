@@ -16,7 +16,7 @@ const queries = [
       trend: "+12.4%",
       isPositive: true,
       chartType: 'line',
-      chartData: [30, 50, 40, 70, 45, 60, 90, 55, 80]
+      chartData: [25, 45, 35, 70, 55, 85, 65, 95, 80]
     }
   },
   { 
@@ -51,8 +51,8 @@ const queries = [
       value: "+15% Needed",
       trend: "+25.0%",
       isPositive: true,
-      chartType: 'line',
-      chartData: [40, 45, 50, 60, 75, 80, 85, 95, 100]
+      chartType: 'pie',
+      chartData: [40, 30, 20, 10]
     }
   },
 ];
@@ -247,6 +247,59 @@ export default function AIAssistant() {
                                                    <motion.div initial={{ width: 0 }} animate={{ width: "65%" }} className="h-full bg-[#05a0ec]" transition={{ delay: 1.0 }} />
                                                 </div>
                                              </div>
+                                          </div>
+                                        ) : activeResult.chartType === 'pie' ? (
+                                          <div className="flex items-center gap-6 h-full">
+                                            <div className="relative w-16 h-16">
+                                               <svg className="w-full h-full" viewBox="0 0 100 100">
+                                                  {/* Categorical Pie Chart */}
+                                                  <motion.circle 
+                                                     cx="50" cy="50" r="25" 
+                                                     fill="none" stroke="#05a0ec" strokeWidth="50"
+                                                     strokeDasharray="157 157"
+                                                     initial={{ strokeDashoffset: 157 }}
+                                                     animate={{ strokeDashoffset: 0 }}
+                                                     transition={{ duration: 1, delay: 0.5 }}
+                                                  />
+                                                  <motion.circle 
+                                                     cx="50" cy="50" r="25" 
+                                                     fill="none" stroke="#06dcc3" strokeWidth="50"
+                                                     strokeDasharray="157 157"
+                                                     initial={{ strokeDashoffset: 157 }}
+                                                     animate={{ strokeDashoffset: 157 - (157 * 0.7) }}
+                                                     transition={{ duration: 1, delay: 0.6 }}
+                                                  />
+                                                  <motion.circle 
+                                                     cx="50" cy="50" r="25" 
+                                                     fill="none" stroke="#4f46e5" strokeWidth="50"
+                                                     strokeDasharray="157 157"
+                                                     initial={{ strokeDashoffset: 157 }}
+                                                     animate={{ strokeDashoffset: 157 - (157 * 0.4) }}
+                                                     transition={{ duration: 1, delay: 0.7 }}
+                                                  />
+                                                  <motion.circle 
+                                                     cx="50" cy="50" r="25" 
+                                                     fill="none" stroke="#475569" strokeWidth="50"
+                                                     strokeDasharray="157 157"
+                                                     initial={{ strokeDashoffset: 157 }}
+                                                     animate={{ strokeDashoffset: 157 - (157 * 0.15) }}
+                                                     transition={{ duration: 1, delay: 0.8 }}
+                                                  />
+                                               </svg>
+                                            </div>
+                                            <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1">
+                                               {[
+                                                  { name: 'Apparel', color: 'bg-[#05a0ec]' },
+                                                  { name: 'Grocery', color: 'bg-[#06dcc3]' },
+                                                  { name: 'Beauty', color: 'bg-[#4f46e5]' },
+                                                  { name: 'Home', color: 'bg-slate-500' }
+                                               ].map((cat, i) => (
+                                                  <div key={i} className="flex items-center gap-2">
+                                                     <div className={cn("w-2 h-2 rounded-full", cat.color)} />
+                                                     <span className="text-[10px] text-slate-400 font-bold whitespace-nowrap">{cat.name}</span>
+                                                  </div>
+                                               ))}
+                                            </div>
                                           </div>
                                         ) : (
                                           <div className="h-16 flex items-end gap-1.5">
