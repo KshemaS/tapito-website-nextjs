@@ -1,8 +1,7 @@
 "use client";
 
-import React from "react";
 import { motion } from "framer-motion";
-import { Check, ArrowRight, Layers, Target, TrendingUp, Sparkles, Building2, Globe, Shield, Zap } from "lucide-react";
+import { Check, ArrowRight, Layers, Sparkles, Zap } from "lucide-react";
 import Container from "@/components/Container";
 import { cn } from "@/lib/utils";
 
@@ -70,7 +69,6 @@ const SolutionCard = ({ solution, index }: { solution: typeof SOLUTION_SEGMENTS[
               <p className="text-slate-600 text-lg leading-relaxed mb-10">
                 {solution.description}
               </p>
-
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
                 {solution.features.map((feature, fIndex) => (
                   <li key={fIndex} className="flex items-center gap-3">
@@ -81,7 +79,6 @@ const SolutionCard = ({ solution, index }: { solution: typeof SOLUTION_SEGMENTS[
                   </li>
                 ))}
               </ul>
-
               <button className="inline-flex items-center gap-2 text-sm font-black uppercase tracking-widest text-slate-900 group">
                 Explore this solution <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
               </button>

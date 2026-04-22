@@ -56,7 +56,7 @@ export default function Automation() {
           </div>
 
           <div className="relative">
-            <div className="aspect-square bg-white rounded-[3rem] shadow-2xl overflow-hidden border border-slate-100 flex items-center justify-center p-12">
+            <div className="aspect-square bg-white rounded-[30px] shadow-2xl overflow-hidden border border-slate-100 flex items-center justify-center p-[10px]">
                <div className="w-full h-full relative">
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-16 rounded-full bg-blue-600 shadow-lg flex items-center justify-center text-white z-10">
                      <Zap size={32} />

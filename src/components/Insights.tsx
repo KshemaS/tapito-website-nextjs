@@ -10,15 +10,15 @@ const Item = ({ icon: Icon, title, desc, delay }: { icon: any, title: string, de
     whileInView={{ opacity: 1, x: 0 }}
     transition={{ duration: 0.5, delay }}
     viewport={{ once: true }}
-    className="flex gap-6 p-8 rounded-[32px] hover:bg-white hover:shadow-2xl hover:shadow-[#09358c]/5 transition-all duration-500 group border border-transparent hover:border-blue-100"
+    className="sm:flex gap-6 p-5 lg:p-6 xl:p-8 rounded-[20px] xl:rounded-[32px] hover:bg-white hover:shadow-2xl hover:shadow-[#09358c]/5 transition-all duration-500 group border border-transparent hover:border-blue-100 bg-white"
   >
     <div className="shrink-0">
-      <motion.div 
+      <motion.div
         initial={{ scale: 0, rotate: -30 }}
         whileInView={{ scale: 1, rotate: 0 }}
         transition={{ type: "spring", stiffness: 300, damping: 15, delay: delay + 0.3 }}
         viewport={{ once: true }}
-        className="w-16 h-16 rounded-2xl bg-blue-50 flex items-center justify-center text-[#09358c] group-hover:bg-[#09358c] group-hover:text-white transition-all duration-500 shadow-sm relative overflow-hidden"
+        className="w-16 h-16 rounded-2xl bg-blue-50 flex items-center justify-center text-[#09358c] group-hover:bg-[#09358c] group-hover:text-white transition-all duration-500 shadow-sm relative overflow-hidden mb-4 sm:mb-0"
       >
         {/* Blinking effect container */}
         <motion.div
@@ -51,8 +51,8 @@ const Item = ({ icon: Icon, title, desc, delay }: { icon: any, title: string, de
       </motion.div>
     </div>
     <div>
-      <h4 className="text-2xl font-bold text-slate-900 mb-2">{title}</h4>
-      <p className="text-slate-500 leading-relaxed text-lg">{desc}</p>
+      <h4 className="text-[22px] lg:text-[24px] 2xl:text-2xl font-bold text-slate-900 mb-2">{title}</h4>
+      <p className="text-[16px] lg:text-[18px] 2xl:text-slate-500 leading-relaxed text-lg">{desc}</p>
     </div>
   </motion.div>
 );
@@ -65,7 +65,7 @@ export default function Insights() {
       <div className="absolute top-0 right-0 w-96 h-96 bg-blue-400/5 blur-[100px] rounded-full" />
 
       <Container className="relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start mb-48">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start mb-20 lg:mb-26 xl:mb-30 2xl:mb-36 4xl:mb-48">
           <div>
             <motion.div
               initial={{ opacity: 0, y: 10 }}
@@ -77,18 +77,33 @@ export default function Insights() {
               PRECISION ANALYTICS
             </motion.div>
 
-            <h3 className="text-5xl md:text-7xl font-black text-slate-900 mb-8 leading-[1]">
+            <h3 className="text-4xl md:text-7xl font-black text-slate-900 mb-6 lg:mb-8 leading-[1]">
               Operational <br /> <span className="text-[#09358c]">Excellence.</span>
             </h3>
 
-            <p className="text-xl text-slate-500 mb-12 leading-relaxed max-w-xl">
+            <p className="text-[16px] lg:text-[18px] 2xl:text-xl text-slate-500 mb-12 leading-relaxed max-w-xl">
               Understand the DNA of your business. We provide the granular insights needed to optimize every shift, every product, and every dollar.
             </p>
 
             <div className="grid grid-cols-1 gap-4">
-              <Item icon={Activity} title="Health Score" desc="A composite index monitoring the operational vitality of your stores, from inventory flow to personnel efficiency." delay={0} />
-              <Item icon={TrendingUp} title="Growth Simulation" desc="Predictive forecasting that models expansion scenarios, allowing you to visualize ROI before a single dollar is spent." delay={0.1} />
-              <Item icon={Sparkles} title="Incentive Stimulation" desc="Neural-network driven rewards that automatically identify and motivate high-impact behaviors across your network." delay={0.2} />
+              <Item
+                icon={Activity}
+                title="Health Score"
+                desc="A composite index monitoring the operational vitality of your stores, from inventory flow to personnel efficiency."
+                delay={0}
+              />
+              <Item
+                icon={TrendingUp}
+                title="Growth Simulation"
+                desc="Predictive forecasting that models expansion scenarios, allowing you to visualize ROI before a single dollar is spent."
+                delay={0.1}
+              />
+              <Item
+                icon={Sparkles}
+                title="Incentive Stimulation"
+                desc="Neural-network driven rewards that automatically identify and motivate high-impact behaviors across your network."
+                delay={0.2}
+              />
             </div>
           </div>
 
@@ -97,7 +112,7 @@ export default function Insights() {
               initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
               whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
               viewport={{ once: true }}
-              className="bg-white rounded-[40px] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.08)] border border-slate-100 p-12"
+              className="bg-white rounded-[26px] 2xl:rounded-[40px] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.08)] border border-slate-100 p-8 2xl:p-12"
             >
               <div className="flex justify-between items-center mb-12">
                 <div>
@@ -161,19 +176,19 @@ export default function Insights() {
             <motion.div
               animate={{ y: [0, -20, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -top-10 -right-10 bg-gradient-to-br from-[#09358c] to-[#05a0ec] text-white p-6 rounded-3xl shadow-2xl z-20"
+              className="absolute -top-10 right-0 2xl:-right-10 bg-gradient-to-br from-[#09358c] to-[#05a0ec] text-white p-6 rounded-2xl shadow-2xl z-20"
             >
-              <span className="text-sm font-bold block mb-1">AI Recommendation</span>
-              <span className="text-2xl font-black">Re-order Ready</span>
+              <span className="text-[12px] lg:text-sm font-bold block mb-1">AI Recommendation</span>
+              <span className="text-[20px] md:text-[18px] xl:text-[22px] xl:text-2xl font-black">Re-order Ready</span>
             </motion.div>
           </div>
         </div>
 
         {/* Strategy Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
           <div className="order-2 lg:order-1 relative">
             <div className="absolute -inset-4 bg-gradient-to-br from-blue-500 to-purple-600 rounded-[48px] opacity-20 blur-2xl -z-10" />
-            <div className="bg-slate-900 rounded-[48px] p-12 text-white relative overflow-hidden group">
+            <div className="bg-slate-900 rounded-[26px] lg:rounded-[30px] 2xl:rounded-[48px] p-8 lg:p-12 text-white relative overflow-hidden group">
               <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/20 blur-3xl rounded-full translate-x-1/2 -translate-y-1/2 group-hover:bg-blue-600/40 transition-colors duration-1000" />
 
               <h5 className="text-[#05a0ec] font-black uppercase text-xs tracking-widest mb-10 flex items-center gap-2">
@@ -221,7 +236,7 @@ export default function Insights() {
               Growth on <br /> <span className="text-[#09358c]">Autopilot.</span>
             </h3>
 
-            <p className="text-xl text-slate-500 mb-12 leading-relaxed max-w-xl">
+            <p className="text-[16px] lg:text-[18px] 2xl:text-xl text-slate-500 mb-12 leading-relaxed max-w-xl">
               Don't manually search for growth. Our engine proactively identifies opportunities and presents them with a one-click apply logic.
             </p>
 

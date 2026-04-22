@@ -29,14 +29,16 @@ const steps = [
 export default function Process() {
   return (
     <section className="section-padding relative">
-         <InteractiveGrid />
+      <div className="md:block hidden">
+        <InteractiveGrid />
+      </div>
       <Container>
         <div className="text-center max-w-3xl mx-auto mb-20">
           <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="uppercase inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-[#09358c] text-xs font-bold mb-6 text-[14px]"
+              className="uppercase inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-[#09358c] text-xs font-bold mb-6 text-[12px] 2xl:text-[14px]"
              >
                <Sparkles size={14} color="#09358c" />
                So you stop guessing and start scaling
@@ -63,7 +65,7 @@ export default function Process() {
                 <div className={`w-20 h-20 rounded-3xl ${step.color} flex items-center justify-center mb-8 shadow-xl shadow-slate-200/50 group-hover:scale-110 transition-transform duration-500`}>
                   <step.icon size={32} />
                 </div>
-              <h4 className="text-2xl font-bold text-slate-900 mb-4">{step.title}</h4>
+              <h4 className="text-[22px] sm:text-[20px] xl:text-2xl font-bold text-slate-900 mb-4">{step.title}</h4>
               <p className="text-slate-600 leading-relaxed">
                   {step.desc}
                 </p>

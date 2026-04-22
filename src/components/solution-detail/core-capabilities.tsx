@@ -19,12 +19,11 @@ const Capabilities = ({ data }: Props) => {
         <div className="flex flex-col lg:flex-row gap-20 items-center">
           <div className="lg:w-1/2">
             <span className="text-xs font-black tracking-[0.3em] uppercase text-[#09358c] mb-6 block">CORE CAPABILITIES</span>
-            <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-8 leading-tight">Advanced Logic for <br /> <span className="text-[#09358c]">Absolute Growth</span></h2>
+            <h2 className="text-3xl md:text-6xl font-black text-slate-900 mb-8 leading-tight">Advanced Logic for <br /> <span className="text-[#09358c]">Absolute Growth</span></h2>
 
             <div className="space-y-16 mt-16 relative">
-              {data.features.map((feature: any, i: number) => (
-                <div key={i} className="flex gap-8 group relative z-10">
-
+              {data?.features.map((feature: any, i: number) => (
+                <div key={i} className="flex gap-4 lg:gap-8 group relative z-10">
                   <div className="relative">
                     <div className="w-14 h-14 shrink-0 rounded-2xl bg-[#09358c] text-white flex items-center justify-center shadow-lg shadow-blue-500/20 group-hover:rotate-6 transition-transform relative z-10">
                       <feature.icon size={26} />
@@ -36,8 +35,8 @@ const Capabilities = ({ data }: Props) => {
                   </div>
 
                   <div>
-                    <h4 className="text-2xl font-black text-slate-900 mb-2 group-hover:text-[#09358c] transition-colors">{feature.title}</h4>
-                    <p className="text-lg text-slate-500 leading-relaxed max-w-md">{feature.desc}</p>
+                    <h4 className="text-[20px] lg:text-xl 2xl:text-2xl font-black text-slate-900 mb-2 group-hover:text-[#09358c] transition-colors">{feature.title}</h4>
+                    <p className="text-sm lg:text-lg text-slate-500 leading-relaxed max-w-md">{feature.desc}</p>
                   </div>
                 </div>
               ))}
@@ -46,7 +45,7 @@ const Capabilities = ({ data }: Props) => {
 
           <div className="lg:w-1/2 relative min-h-[600px] flex items-center justify-center">
             {/* Flowchart Container */}
-            <div className="grid grid-cols-1 gap-12 w-full max-w-sm relative py-12">
+            <div className="grid grid-cols-1 gap-12 w-full max-w-sm relative">
 
               {/* Connector Lines */}
               <div className="absolute left-1/2 top-0 bottom-0 w-px bg-slate-100 -translate-x-1/2 z-0 hidden md:block" />
@@ -56,7 +55,7 @@ const Capabilities = ({ data }: Props) => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="relative bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-xl shadow-slate-200/50 z-10 group"
+                className="relative bg-white p-4 lg:p-6 2xl:p-8 rounded-[26px] border border-slate-100 shadow-xl shadow-slate-200/50 z-10 group"
               >
                 <div className="flex items-center gap-6">
                   <div className="w-14 h-14 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">

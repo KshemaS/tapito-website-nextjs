@@ -109,11 +109,10 @@ function SolutionCard({ solution, index }: { solution: any, index: number }) {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: index * 0.1 }}
         viewport={{ once: true }}
-        className="group relative bg-white rounded-[2.5rem] p-10 border-2 border-slate-100 transition-all duration-500 flex flex-col h-full overflow-hidden lg:hover:border-transparent max-lg:shadow-[0_40px_80px_-15px_rgba(5,160,236,0.12)] lg:hover:shadow-[0_40px_80px_-15px_rgba(5,160,236,0.12)] shadow-sm"
+        className="group relative bg-white rounded-[2.5rem] p-8 lg:p-10 border-2 border-slate-100 transition-all duration-500 flex flex-col h-full overflow-hidden lg:hover:border-transparent max-lg:shadow-[0_40px_80px_-15px_rgba(5,160,236,0.12)] lg:hover:shadow-[0_40px_80px_-15px_rgba(5,160,236,0.12)] shadow-sm"
       >
         {/* Internal Grid Pattern */}
         <div className="absolute inset-0 bg-grid opacity-[0.02] pointer-events-none" />
-        
         {/* Dashed Border - Active on Mobile, Hover on Desktop */}
         <svg
           className="absolute inset-0 w-full h-full pointer-events-none transition-opacity duration-300 max-lg:opacity-100 lg:opacity-0 lg:group-hover:opacity-100"
@@ -145,11 +144,11 @@ function SolutionCard({ solution, index }: { solution: any, index: number }) {
           {solution.title}
         </h3>
         
-        <p className="relative z-10 text-slate-500 text-lg leading-relaxed mb-10 flex-1 font-medium">
+        <p className="relative z-10 text-slate-500 text-[16px] lg:text-lg leading-relaxed mb-10 flex-1 font-medium">
           {solution.desc}
         </p>
 
-        <div className="relative z-10 flex items-center justify-between pt-8 border-t border-slate-100 transition-colors max-lg:border-blue-100 lg:group-hover:border-blue-100">
+        <div className="relative z-10 flex items-center justify-between pt-4 lg:pt-8 border-t border-slate-100 transition-colors max-lg:border-blue-100 lg:group-hover:border-blue-100">
           <span className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 transition-colors max-lg:text-[#09358c] lg:group-hover:text-[#09358c]">
             Explore Solution
           </span>

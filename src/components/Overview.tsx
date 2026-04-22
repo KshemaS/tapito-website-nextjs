@@ -10,7 +10,7 @@ export default function Overview() {
   return (
     <section className="relative section-padding bg-slate-50 overflow-hidden">
       <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-[20px] 2xl:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -26,11 +26,11 @@ export default function Overview() {
               One Unified Engine. <br />
               <span className="text-[#09358c]">Infinite Integrations.</span>
             </h2>
-            <p className="text-xl text-slate-500 leading-relaxed max-w-xl">
+            <p className="text-[16px] xl:text-xl text-slate-500 leading-relaxed max-w-xl">
               Tapito isn't just a dashboard. It's a comprehensive AI layer that sits on top of your existing retail stack,
               synthesizing every transaction into a strategic advantage.
             </p>
-            <div className="pt-4">
+            <div>
               <Link 
                 href="/features" 
                 className="inline-flex items-center gap-3 text-[#09358c] font-black text-sm uppercase tracking-[0.2em] hover:gap-5 transition-all group"
@@ -41,7 +41,7 @@ export default function Overview() {
                 </div>
               </Link>
             </div>
-            <div className="grid grid-cols-2 gap-6 pt-8">
+            <div className="grid grid-cols-2 gap-6 pb-10">
               <div className="p-6 bg-white rounded-3xl shadow-sm border border-slate-100">
                 <TrendingUp className="text-blue-600 mb-4" />
                 <h4 className="font-bold text-lg mb-1">24.2%</h4>

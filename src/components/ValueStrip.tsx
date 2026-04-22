@@ -68,7 +68,7 @@ const FeatureCard = forwardRef<HTMLDivElement, { item: typeof items[0]; index: n
         "group relative p-6 rounded-lg border border-white/10 bg-white/5 backdrop-blur-sm",
         "transition-all duration-500 shadow-sm hover:shadow-2xl hover:shadow-blue-500/10",
         "cursor-pointer overflow-hidden flex items-center gap-5 w-full min-h-[100px]",
-        (isLeft || isRight) && "lg:w-[400px]",
+        (isLeft || isRight) && "xl:w-[300px] 2xl:w-[400px]",
         "flex-row text-left hover:bg-white/10"
       )}
     >
@@ -96,7 +96,7 @@ const FeatureCard = forwardRef<HTMLDivElement, { item: typeof items[0]; index: n
       </div>
 
       <div className="relative z-10 flex-1">
-        <span className="text-[22px] font-bold text-slate-300 group-hover:text-white transition-colors">
+        <span className="text-[16px] xl:text-[18px] 2xl:text-[20px] 3xl:text-[22px] font-bold text-slate-300 group-hover:text-white transition-colors">
           {item.text}
         </span>
       </div>
@@ -105,6 +105,8 @@ const FeatureCard = forwardRef<HTMLDivElement, { item: typeof items[0]; index: n
 });
 
 FeatureCard.displayName = "FeatureCard";
+
+import ValueStripMobile from "./ValueStripMobile";
 
 export default function ValueStrip() {
   const sectionRef  = useRef<HTMLDivElement>(null);
@@ -122,6 +124,8 @@ export default function ValueStrip() {
 
     const secRect = sectionRef.current.getBoundingClientRect();
     const orbRect = orbRef.current.getBoundingClientRect();
+
+    if (secRect.width < 1280) return; // Don't draw on mobile/tablet (using xl as breakpoint)
 
     const cx   = orbRect.left - secRect.left + orbRect.width  / 2;
     const cy   = orbRect.top  - secRect.top  + orbRect.height / 2;
@@ -196,7 +200,7 @@ export default function ValueStrip() {
     });
 
     setLines(newLines);
-  }, [topItems, leftItems, rightItems, bottomItems, items]);
+  }, [topItems, leftItems, rightItems, bottomItems]);
 
   useEffect(() => {
     const t = setTimeout(drawLines, 300);
@@ -215,185 +219,173 @@ export default function ValueStrip() {
   let orderedIdx = 0;
 
   return (
-    <section
-      ref={sectionRef}
-      className="bg-slate-950 py-[60px] lg:py-[80px] 2xl:py-[100px] 4xl:py-[120px] border-y border-white/5 overflow-hidden relative"
-    >
-      <svg
-        className="absolute inset-0 w-full h-full pointer-events-none"
-        style={{ zIndex: 3 }}
-        aria-hidden="true"
+    <>
+      <ValueStripMobile />
+      <section
+        ref={sectionRef}
+        className="hidden xl:block bg-slate-950 py-[60px] lg:py-[80px] 2xl:py-[100px] 4xl:py-[120px] border-y border-white/5 overflow-hidden relative"
       >
-        <defs>
-          <linearGradient id="connGrad1" gradientUnits="userSpaceOnUse">
-            <stop offset="0%"   stopColor="#05a0ec" stopOpacity="0.6" />
-            <stop offset="100%" stopColor="#06dcc3" stopOpacity="0.1" />
-          </linearGradient>
-          <linearGradient id="connGrad2" gradientUnits="userSpaceOnUse">
-            <stop offset="0%"   stopColor="#06dcc3" stopOpacity="0.6" />
-            <stop offset="100%" stopColor="#05a0ec" stopOpacity="0.1" />
-          </linearGradient>
-        </defs>
+        <svg
+          className="absolute inset-0 w-full h-full pointer-events-none"
+          style={{ zIndex: 3 }}
+          aria-hidden="true"
+        >
+          <defs>
+            <linearGradient id="connGrad1" gradientUnits="userSpaceOnUse">
+              <stop offset="0%"   stopColor="#05a0ec" stopOpacity="0.6" />
+              <stop offset="100%" stopColor="#06dcc3" stopOpacity="0.1" />
+            </linearGradient>
+            <linearGradient id="connGrad2" gradientUnits="userSpaceOnUse">
+              <stop offset="0%"   stopColor="#06dcc3" stopOpacity="0.6" />
+              <stop offset="100%" stopColor="#05a0ec" stopOpacity="0.1" />
+            </linearGradient>
+          </defs>
 
-        {lines.map((line, i) => {
-          const grad = i % 2 === 0 ? "url(#connGrad1)" : "url(#connGrad2)";
-          return (
-            <g key={line.id}>
-              <path
-                className="conn-path"
-                d={line.d}
-                fill="none"
-                stroke={grad}
-                strokeWidth="1.3"
-                opacity="0.75"
-                style={{ animationDelay: `${(i * 0.2) % 1.8}s` }}
-              />
-              <circle
-                className="conn-dot"
-                cx={line.sx}
-                cy={line.sy}
-                r="3"
-                fill="#05a0ec"
-                opacity="0.85"
-                style={{ animationDelay: `${(i * 0.2) % 2}s` }}
-              />
-              {/* <circle
-                className="conn-dot-orb"
-                cx={line.ex}
-                cy={line.ey}
-                r="2.5"
-                fill="#06dcc3"
-                opacity="0.7"
-                style={{ animationDelay: `${(i * 0.2 + 0.9) % 2}s` }}
-              /> */}
-            </g>
-          );
-        })}
-      </svg>
-
-      <div className="absolute top-0 left-0 w-64 h-64 bg-[#05a0ec]/10 blur-[100px] -z-10" />
-      <div className="absolute bottom-0 right-0 w-64 h-64 bg-[#06dcc3]/10 blur-[100px] -z-10" />
-
-      <Container className="relative">
-        <div className="flex flex-col items-center">
-
-          {/* Top Row */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12 lg:mb-40 w-full max-w-6xl">
-            {topItems.map((item, i) => {
-              const oi = orderedIdx++;
-              return (
-                <FeatureCard
-                  key={i}
-                  item={item}
-                  index={i}
-                  ref={setCardRef(oi)}
+          {lines.map((line, i) => {
+            const grad = i % 2 === 0 ? "url(#connGrad1)" : "url(#connGrad2)";
+            return (
+              <g key={line.id}>
+                <path
+                  className="conn-path"
+                  d={line.d}
+                  fill="none"
+                  stroke={grad}
+                  strokeWidth="1.3"
+                  opacity="0.75"
+                  style={{ animationDelay: `${(i * 0.2) % 1.8}s` }}
                 />
-              );
-            })}
-          </div>
+                <circle
+                  className="conn-dot"
+                  cx={line.sx}
+                  cy={line.sy}
+                  r="3"
+                  fill="#05a0ec"
+                  opacity="0.85"
+                  style={{ animationDelay: `${(i * 0.2) % 2}s` }}
+                />
+              </g>
+            );
+          })}
+        </svg>
 
-          {/* Middle Row */}
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-24 w-full max-w-[1600px] mb-12">
-            
-            {/* Left Side */}
-            <div className="flex flex-col gap-5 order-2 lg:order-1">
-              {leftItems.map((item, i) => {
+        <div className="absolute top-0 left-0 w-64 h-64 bg-[#05a0ec]/10 blur-[100px] -z-10" />
+        <div className="absolute bottom-0 right-0 w-64 h-64 bg-[#06dcc3]/10 blur-[100px] -z-10" />
+
+        <Container className="relative">
+          <div className="flex flex-col items-center">
+
+            {/* Top Row */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12 xl:mb-32 w-full max-w-6xl">
+              {topItems.map((item, i) => {
                 const oi = orderedIdx++;
                 return (
                   <FeatureCard
                     key={i}
                     item={item}
-                    index={i + 2}
+                    index={i}
                     ref={setCardRef(oi)}
                   />
                 );
               })}
             </div>
 
-            {/* Center Orb */}
-            <div className="order-1 lg:order-2">
-              <div className="relative w-[320px] h-[320px] md:w-[520px] md:h-[520px] flex items-center justify-center">
-                <div className="absolute inset-0 z-0 scale-110">
-                  <Orb
-                    hue={33}
-                    hoverIntensity={0}
-                    backgroundColor="#020617"
-                    forceHoverState={true}
+            {/* Middle Row */}
+            <div className="flex flex-col xl:flex-row items-center justify-between gap-10 xl:gap-12 2xl:gap-32 w-full max-w-[1700px] mb-12">
+              
+              {/* Left Side */}
+              <div className="flex flex-col gap-5 order-2 xl:order-1">
+                {leftItems.map((item, i) => {
+                  const oi = orderedIdx++;
+                  return (
+                    <FeatureCard
+                      key={i}
+                      item={item}
+                      index={i + 2}
+                      ref={setCardRef(oi)}
+                    />
+                  );
+                })}
+              </div>
+
+              {/* Center Orb */}
+              <div className="order-1 xl:order-2">
+                <div className="relative w-[300px] h-[300px] md:w-[400px] md:h-[400px] xl:w-[450px] xl:h-[450px] 2xl:w-[550px] 2xl:h-[550px] flex items-center justify-center">
+                  <div className="absolute inset-0 z-0 scale-110">
+                    <Orb
+                      hue={33}
+                      hoverIntensity={0}
+                      backgroundColor="#020617"
+                      forceHoverState={true}
+                    />
+                  </div>
+
+                  <div
+                    ref={orbRef}
+                    className="absolute rounded-full z-10 pointer-events-none"
+                    style={{
+                      width: 'calc(100% * 1)',
+                      height: 'calc(100% * 1.1)',
+                      top: '50%',
+                      left: '50%',
+                      transform: 'translate(-50%, -50%)',
+                    }}
                   />
-                </div>
 
-                {/*
-                  ✅ THE FIX: orbRef now covers the full container size,
-                  matching the actual visual boundary of the Orb component.
-                  Previously it was w-[55%] h-[55%] which made orbR too small,
-                  causing lines to terminate deep inside the bubble.
-                */}
-                <div
-                  ref={orbRef}
-                  className="absolute rounded-full z-10 pointer-events-none"
-                  style={{
-                    width: 'calc(100% * 1)',
-                    height: 'calc(100% * 1.1)',
-                    top: '50%',
-                    left: '50%',
-                    transform: 'translate(-50%, -50%)',
-                  }}
-                />
-
-                <div className="relative z-20 text-center max-w-[180px] md:max-w-[360px] pointer-events-none">
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1 }}
-                    className="space-y-3"
-                  >
-                    <span className="text-[11px] md:text-xs font-black text-slate-400 uppercase tracking-[0.4em] block mb-1">
-                      INSTANT VALUE STRIP
-                    </span>
-                    <h2 className="text-xl lg:text-[30px] font-black text-white leading-tight">
-                      Everything You Need to Grow{" "}
-                      <br />
-                      <span className="gradient-text">— In One Platform</span>
-                    </h2>
-                    <div className="h-px w-10 bg-white/10 mx-auto mt-4" />
-                  </motion.div>
+                  <div className="relative z-20 text-center max-w-[180px] md:max-w-[360px] pointer-events-none">
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 1 }}
+                      className="space-y-3"
+                    >
+                      <span className="text-[11px] md:text-xs font-black text-slate-400 uppercase tracking-[0.4em] block mb-1">
+                        INSTANT VALUE STRIP
+                      </span>
+                      <h2 className="text-xl lg:text-[30px] font-black text-white leading-tight">
+                        Everything You Need to Grow{" "}
+                        <br />
+                        <span className="gradient-text">— In One Platform</span>
+                      </h2>
+                      <div className="h-px w-10 bg-white/10 mx-auto mt-4" />
+                    </motion.div>
+                  </div>
                 </div>
+              </div>
+
+              {/* Right Side */}
+              <div className="flex flex-col gap-5 order-3">
+                {rightItems.map((item, i) => {
+                  const oi = orderedIdx++;
+                  return (
+                    <FeatureCard
+                      key={i}
+                      item={item}
+                      index={i + 4}
+                      ref={setCardRef(oi)}
+                    />
+                  );
+                })}
               </div>
             </div>
 
-            {/* Right Side */}
-            <div className="flex flex-col gap-5 order-3">
-              {rightItems.map((item, i) => {
+            {/* Bottom Row */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12 lg:mt-24 w-full max-w-6xl">
+              {bottomItems.map((item, i) => {
                 const oi = orderedIdx++;
                 return (
                   <FeatureCard
                     key={i}
                     item={item}
-                    index={i + 4}
+                    index={i + 7}
                     ref={setCardRef(oi)}
                   />
                 );
               })}
             </div>
-          </div>
 
-          {/* Bottom Row */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12 lg:mt-24 w-full max-w-6xl">
-            {bottomItems.map((item, i) => {
-              const oi = orderedIdx++;
-              return (
-                <FeatureCard
-                  key={i}
-                  item={item}
-                  index={i + 7}
-                  ref={setCardRef(oi)}
-                />
-              );
-            })}
           </div>
-
-        </div>
-      </Container>
-    </section>
+        </Container>
+      </section>
+    </>
   );
 }
