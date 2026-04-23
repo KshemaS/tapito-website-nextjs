@@ -61,7 +61,7 @@ const FeatureCard = forwardRef<HTMLDivElement, { item: typeof items[0]; index: n
         "group relative p-6 rounded-lg border border-white/10 bg-white/5 backdrop-blur-sm",
         "transition-all duration-500",
         "cursor-pointer overflow-hidden flex items-center gap-5 w-full min-h-[100px]",
-        (isLeft || isRight) && "xl:w-[300px] 2xl:w-[400px]",
+        (isLeft || isRight) && "xl:w-[300px] 4xl:w-[400px]",
         "flex-row text-left hover:bg-white/10"
       )}
     >
@@ -101,6 +101,7 @@ FeatureCard.displayName = "FeatureCard";
 
 import ValueStripMobile from "./ValueStripMobile";
 import AnimatedBorderLapSVG from "./ui/animating-border-lap";
+
 export default function ValueStrip() {
   const topItems    = items.filter(i => i.side === "top");
   const bottomItems = items.filter(i => i.side === "bottom");
@@ -127,7 +128,7 @@ export default function ValueStrip() {
       <section
         className="hidden xl:block bg-slate-950 py-[60px] lg:py-[80px] 2xl:py-[100px] 4xl:py-[120px] border-y border-white/5 overflow-hidden relative"
       >
-        {innerWidth > 1680 ? (
+        {innerWidth > 1880 ? (
           <AnimatedBorderLargeSVG />
         ) : (
           <AnimatedBorderLapSVG />
@@ -155,7 +156,6 @@ export default function ValueStrip() {
               {/* Left Side */}
               <div className="flex flex-col gap-5 order-2 xl:order-1">
                 {leftItems.map((item, i) => {
-                  const oi = orderedIdx++;
                   return (
                     <FeatureCard
                       key={i}
@@ -168,7 +168,7 @@ export default function ValueStrip() {
 
               {/* Center Orb */}
               <div className="order-1 xl:order-2">
-                <div className="relative w-[300px] h-[300px] md:w-[400px] md:h-[400px] xl:w-[450px] xl:h-[450px] 2xl:w-[550px] 2xl:h-[550px] flex items-center justify-center">
+                <div className="relative w-[300px] h-[300px] md:w-[400px] md:h-[400px] xl:w-[450px] xl:h-[450px] 2xl:w-[500px] 2xl:h-[500px] 3xl:w-[550px] 3xl:h-[550px] flex items-center justify-center">
                   <div className="absolute inset-0 z-0 scale-110">
                     <Orb
                       hue={33}
@@ -212,8 +212,7 @@ export default function ValueStrip() {
 
               {/* Right Side */}
               <div className="flex flex-col gap-5 order-3">
-                {rightItems.map((item, i) => {
-                  const oi = orderedIdx++;
+                {rightItems?.map((item, i) => {
                   return (
                     <FeatureCard
                       key={i}
@@ -228,7 +227,6 @@ export default function ValueStrip() {
             {/* Bottom Row */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12 lg:mt-24 w-full max-w-6xl">
               {bottomItems.map((item, i) => {
-                const oi = orderedIdx++;
                 return (
                   <FeatureCard
                     key={i}
