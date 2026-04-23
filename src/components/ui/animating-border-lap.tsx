@@ -3,6 +3,8 @@ export default function AnimatedBorderLapSVG() {
     <svg
           className="absolute inset-0 w-full h-full pointer-events-none"
           viewBox="0 0 960 640"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
           style={{ zIndex: 3 }}
           aria-hidden="true"
         >
