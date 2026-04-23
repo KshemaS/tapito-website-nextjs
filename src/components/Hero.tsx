@@ -4,12 +4,15 @@ import { motion } from "framer-motion";
 import { Play, ArrowRight, Sparkles } from "lucide-react";
 import Container from "@/components/Container";
 import DashboardPreview from "@/components/DashboardPreview";
+import { useRouter } from "next/navigation";
 
 type HeroProps = {
   keyHighlights: any[];
 };
 
 export default function Hero({ keyHighlights }: HeroProps) {
+  const router = useRouter();
+
   return (
     <section className="relative pb-20 bg-[#fafbfc] min-h-sreen pt-15 xl:pt-20 2xl:pt-40 min-h-screen">
       <Container className="relative z-10">
@@ -42,7 +45,7 @@ export default function Hero({ keyHighlights }: HeroProps) {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
-              <button className="btn-premium flex items-center gap-2 text-lg px-10 py-5 w-full sm:w-auto justify-center font-normal">
+              <button className="btn-premium flex items-center gap-2 text-lg px-10 py-5 w-full sm:w-auto justify-center font-normal" onClick={() => router.push('/contact')}>
                 Book a Demo
                 <ArrowRight size={20} />
               </button>

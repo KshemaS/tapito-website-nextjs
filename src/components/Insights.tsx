@@ -3,8 +3,12 @@
 import { motion } from "framer-motion";
 import { TrendingUp, Users, Gift, Lightbulb, Target, ArrowRight, ShieldCheck, Zap, Activity, Sparkles } from "lucide-react";
 import Container from "./Container";
+import { useRouter } from "next/navigation";
 
-const Item = ({ icon: Icon, title, desc, delay }: { icon: any, title: string, desc: string, delay: number }) => (
+const Item = ({ icon: Icon, title, desc, delay }: { icon: any, title: string, desc: string, delay: number }) => {
+  const router = useRouter();
+  
+  return (
   <motion.div
     initial={{ opacity: 0, x: -20 }}
     whileInView={{ opacity: 1, x: 0 }}
@@ -55,9 +59,11 @@ const Item = ({ icon: Icon, title, desc, delay }: { icon: any, title: string, de
       <p className="text-[16px] lg:text-[18px] 2xl:text-slate-500 leading-relaxed text-lg">{desc}</p>
     </div>
   </motion.div>
-);
+  );
+};
 
 export default function Insights() {
+  const router = useRouter();
   return (
     <section className="bg-slate-50 pb-[60px] lg:pb-[80px] 2xl:pb-[100px] 4xl:pb-[120px] relative overflow-hidden pt-20">
       {/* Background patterns */}
@@ -161,14 +167,27 @@ export default function Insights() {
                 ))}
               </div>
 
-              <div className="mt-16 p-6 rounded-3xl bg-slate-900 text-white flex items-center justify-between group cursor-pointer hover:bg-[#09358c] transition-colors duration-500">
+              <div className="mt-16 p-6 rounded-3xl bg-slate-50 border border-slate-100 flex items-center justify-between group">
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">
-                    <Lightbulb size={20} className="text-[#05a0ec]" />
+                  <div className="relative">
+                    <div className="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600 group-hover:scale-110 transition-transform duration-500">
+                      <Activity size={24} />
+                    </div>
+                    <div className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-500 rounded-full border-2 border-white animate-pulse" />
                   </div>
-                  <span className="font-bold">Generate Insight Report</span>
+                  <div>
+                    <span className="text-xs font-black text-slate-400 uppercase tracking-widest block mb-0.5">Engine Status</span>
+                    <div className="flex items-center gap-2">
+                       <span className="text-[15px] font-bold text-slate-900">AI Optimizing in Real-time</span>
+                    </div>
+                  </div>
                 </div>
-                <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" />
+                <div className="hidden sm:block text-right">
+                   <div className="flex flex-col items-end">
+                      <span className="text-[10px] font-black text-slate-300 uppercase tracking-[0.2em] mb-1">ACCURACY SCORE</span>
+                      <span className="text-sm font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-100">99.98%</span>
+                   </div>
+                </div>
               </div>
             </motion.div>
 
@@ -214,10 +233,6 @@ export default function Insights() {
                   </motion.div>
                 ))}
               </div>
-
-              <button className="mt-12 w-full py-5 bg-[#09358c] text-white rounded-3xl font-black uppercase tracking-widest text-sm hover:bg-[#05a0ec] transition-colors shadow-xl shadow-[#09358c]/20">
-                Apply Automated Adjustments
-              </button>
             </div>
           </div>
 
@@ -241,8 +256,12 @@ export default function Insights() {
             </p>
 
             <div className="flex gap-4">
-              <button className="btn-premium">Explore Strategies</button>
-              <button className="btn-secondary px-8 py-4 rounded-full font-bold">Case Studies</button>
+              <button
+                className="btn-secondary px-8 py-4 rounded-full font-bold"
+                onClick={() => router.push('/case-studies')}
+              >
+                Case Studies
+              </button>
             </div>
           </div>
         </div>
