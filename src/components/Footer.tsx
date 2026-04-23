@@ -33,9 +33,9 @@ export function Footer() {
                </div>
 
                <div>
-                  <h5 className="font-bold text-slate-900 mb-6 uppercase text-xs tracking-widest">Product</h5>
+                  <h5 className="font-bold text-slate-900 mb-6 uppercase text-xs tracking-widest">Features</h5>
                   <ul className="space-y-4">
-                     {["BI Dashboard", "AI Analytics", "Automation Engine", "Revenue Intelligence", "Campaigns"].map((item, i) => (
+                     {["Executive Dashboard", "Smart Analytics", "Campaign Automation", "Revenue Insights", "Predictive Engine", "Growth Simulator"].map((item, i) => (
                         <li key={i}><Link href="#" className="text-slate-500 hover:text-[#05a0ec] transition-colors">{item}</Link></li>
                      ))}
                   </ul>
@@ -44,7 +44,7 @@ export function Footer() {
                <div>
                   <h5 className="font-bold text-slate-900 mb-6 uppercase text-xs tracking-widest">Solutions</h5>
                   <ul className="space-y-4">
-                     {["Retail Chains", "E-commerce", "Supermarkets", "Fashion", "Electronics"].map((item, i) => (
+                     {["Supermarkets", "Fashion & Apparel", "Electronics", "Beauty & Wellness", "Home Furnishing", "Jewelry & Luxury"].map((item, i) => (
                         <li key={i}><Link href="#" className="text-slate-500 hover:text-[#05a0ec] transition-colors">{item}</Link></li>
                      ))}
                   </ul>
@@ -65,7 +65,7 @@ export function Footer() {
             </div>
 
             <div className="pt-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4">
-               <p className="text-slate-400 text-sm">© 2024 Tapito AI Inc. All rights reserved.</p>
+               <p className="text-slate-400 text-sm">© 2026 Tapito AI Inc. All rights reserved.</p>
                <div className="flex gap-8 text-sm">
                   <Link href="#" className="text-slate-400 hover:text-slate-900">Privacy Policy</Link>
                   <Link href="#" className="text-slate-400 hover:text-slate-900">Terms of Service</Link>

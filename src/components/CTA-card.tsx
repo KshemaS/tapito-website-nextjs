@@ -17,9 +17,9 @@ interface CTASectionProps {
 
 export default function CTASection({ title, description, badge, image, subtitle, isAbout, onClick }: CTASectionProps) {
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
+    <section className="bg-white relative overflow-hidden">
       <Container>
-        <div className="relative rounded-[1.5rem] bg-black p-12 md:p-20 overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,0.4)]">
+        <div className="relative rounded-[1.5rem] bg-black py-12 px-6 xl:p-16 3xl:p-20 overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,0.4)]">
             <div className="absolute top-0 right-0 w-full h-full lg:w-2/5 opacity-50 pointer-events-none select-none z-0">
                 <img 
                     src={image} 
@@ -49,7 +49,7 @@ export default function CTASection({ title, description, badge, image, subtitle,
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
-                    className="text-4xl md:text-6xl lg:text-7xl font-semibold text-white mb-8 tracking-tight leading-[1.05]"
+                    className="text-3xl md:text-6xl lg:text-7xl font-semibold text-white mb-8 tracking-tight leading-[1.05]"
                 >
                     {title} <br />
                     <span className="text-white">{subtitle}</span>
@@ -60,7 +60,7 @@ export default function CTASection({ title, description, badge, image, subtitle,
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.2 }}
-                    className="text-lg text-slate-400 font-medium mb-10 leading-relaxed max-w-xl"
+                    className="text-sm lg:text-lg text-slate-400 font-medium mb-10 leading-relaxed max-w-xl"
                 >
                     {description}
                 </motion.p>

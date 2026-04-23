@@ -51,9 +51,8 @@ export const SolutionsHero = ({
   ]
 }: SolutionsHeroProps) => {
   return (
-    <section className="relative lg:min-h-svh flex flex-col items-center justify-center pt-24 pb-12 overflow-hidden">
+    <section className="relative min-h-svh flex flex-col items-center justify-center pt-24 pb-12 overflow-hidden">
       <InteractiveGrid />
-
       {/* Floating Elements Rising from the Bottom */}
       {floatingBadges.map((badge, index) => (
         <FloatingBadge

@@ -42,7 +42,7 @@ const ItemBox = ({ icon, title, color, className, delay = 0 }: ItemBoxProps) => 
     transition={{ delay, duration: 0.5 }}
     whileHover={{ y: -1, scale: 1.01, boxShadow: "0 8px 20px -5px rgba(0,0,0,0.05)" }}
     className={cn(
-      "flex items-center gap-2 px-4 py-3 rounded-xl border-2 bg-white transition-all duration-300 w-[260px] mx-auto justify-center",
+      "flex items-center gap-2 px-4 py-3 rounded-xl border-2 bg-white transition-all duration-300 max-w-[180px] sm:max-w-full lg:max-w-[220px] xl:max-w-[260px] w-full mx-auto justify-center",
       className
     )}
     style={{ borderColor: color }}
@@ -50,12 +50,12 @@ const ItemBox = ({ icon, title, color, className, delay = 0 }: ItemBoxProps) => 
     <div className="p-2 rounded-md" style={{ color: color, backgroundColor: `${color}10` }}>
       {React.isValidElement(icon) ? React.cloneElement(icon as React.ReactElement<any>, { size: 20, strokeWidth: 2.5 }) : icon}
     </div>
-    <span className="font-bold text-slate-800 text-[18px] tracking-tight">{title}</span>
+    <span className="font-bold text-slate-800 text-[14px] sm:text-[16px] xl:text-[18px] tracking-tight">{title}</span>
   </motion.div>
 );
 
 const GroupIcon = ({ label, icons, colorClass = "text-blue-500" }: { label: string, icons: React.ReactNode[], colorClass?: string }) => (
-  <div className="flex flex-col items-center gap-2">
+  <div className="flex flex-col items-start 2xl:items-center gap-2">
     <div className="relative w-20 h-20 rounded-3xl flex items-center justify-center bg-slate-50/50 p-3 overflow-hidden group transition-colors">
       <div className="grid grid-cols-2 gap-2">
         {icons.map((icon, i) => (
@@ -65,12 +65,12 @@ const GroupIcon = ({ label, icons, colorClass = "text-blue-500" }: { label: stri
         ))}
       </div>
     </div>
-    <span className="text-[12px] font-black text-slate-700 uppercase tracking-[0.2em]">{label}</span>
+    <span className="text-[10px] 2xl:text-[12px] font-black text-slate-700 uppercase tracking-[0.2em]">{label}</span>
   </div>
 );
 
 const RightItem = ({ icon: Icon, label, colorClass = "text-blue-500" }: { icon: any, label: string, colorClass?: string }) => (
-  <div className="flex flex-col items-center gap-2 group cursor-pointer">
+  <div className="flex flex-col items-end lg:items-center gap-2 group cursor-pointer">
     <div className={cn("w-12 h-12 rounded-2xl bg-slate-100 flex items-center justify-center transition-all duration-300 group-hover:bg-blue-50 group-hover:border-blue-100 group-hover:scale-110 shadow-sm", colorClass)}>
       <Icon size={24} />
     </div>
@@ -224,7 +224,7 @@ export default function OverViewCard() {
       <div className="relative z-10 grid grid-cols-[140px_1fr_140px] items-center h-full">
 
         {/* Left Column: Input Sources - Colorful */}
-        <div className="flex flex-col gap-5">
+        <div className="flex flex-col gap-5 items-start">
           <GroupIcon
             label="ERP / CRM"
             colorClass="text-[#09358c]"

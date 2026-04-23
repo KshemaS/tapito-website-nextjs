@@ -34,7 +34,7 @@ export default function FeaturedVideo() {
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="relative aspect-video rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl group cursor-pointer"
+          className="relative aspect-video rounded-[30px] overflow-hidden border border-white/10 shadow-2xl group cursor-pointer"
         >
           {/* Using the retail dashboard as a "video" thumbnail */}
           <Image 

@@ -37,7 +37,7 @@ export default function Capabilities() {
       <div className="absolute top-0 right-0 w-1/2 h-full bg-slate-50/50 -skew-x-12 translate-x-1/4 -z-10" />
       
       <Container>
-        <div className="flex flex-col lg:flex-row gap-16 items-end mb-24">
+        <div className="flex flex-col lg:flex-row gap-[30px] lg:gap-16 lg:items-center mb-6 lg:mb-10 xl:mb-16 3xl:mb-24">
           <div className="flex-1">
              <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -52,8 +52,8 @@ export default function Capabilities() {
                Built for the <br /> <span className="text-[#09358c]">Top 1% of Retail</span>
              </h2>
           </div>
-          <div className="lg:w-1/3">
-             <p className="text-xl text-slate-500 leading-relaxed">
+          <div className="max-w-full lg:max-w-[453px]">
+             <p className="text-[16px] lg:text-[18px] 2xl:text-xl text-slate-500 leading-relaxed">
                We don't just provide tools. We provide the intelligence that separates market leaders from everyone else.
              </p>
           </div>
@@ -67,7 +67,7 @@ export default function Capabilities() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: cap.delay }}
               viewport={{ once: true }}
-              className="glass-card p-10 group"
+              className="glass-card p-[20px] md:p-[30px] xl:p-10 group"
             >
               <div className={cn("w-16 h-16 rounded-[20px] flex items-center justify-center mb-10 bg-gradient-to-br shadow-lg transition-all duration-500 group-hover:scale-110 group-hover:rotate-6", cap.color)}>
                 <cap.icon className="text-white" size={32} />
@@ -86,8 +86,8 @@ export default function Capabilities() {
               </div>
 
               <div className="pt-6 border-t border-slate-100 flex items-center justify-between group-hover:border-blue-100 transition-colors">
-                 <span className="text-sm font-bold text-slate-400 uppercase tracking-widest group-hover:text-[#000]">Learn More</span>
-                 <div className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-[#05a0ec] group-hover:text-white transition-all">
+                 <span className="text-sm font-bold text-[#000] md:text-slate-400 uppercase tracking-widest group-hover:text-[#000]">Learn More</span>
+                 <div className="w-8 h-8 rounded-full bg-[#05a0ec] md:bg-slate-50 flex items-center justify-center text-white md:text-slate-400 group-hover:bg-[#05a0ec] group-hover:text-white transition-all">
                     <ArrowRight size={16} />
                  </div>
               </div>
