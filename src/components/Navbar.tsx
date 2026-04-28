@@ -139,7 +139,7 @@ export default function Navbar() {
           <div className="max-w-360 mx-auto px-6 md:px-10 flex items-center justify-between">
             {/* Logo */}
             <Link onClick={closeMenu} href="/" className="flex items-center gap-3 group shrink-0">
-              <div className="relative w-28 h-10 lg:w-36 lg:h-12 flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
+              <div className="relative w-28 h-10 lg:w-36 lg:h-12 flex items-center justify-center">
                 <img
                   src="/logo.svg"
                   alt="Tapito Logo"

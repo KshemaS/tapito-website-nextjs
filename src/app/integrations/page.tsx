@@ -26,16 +26,17 @@ import {
 } from "lucide-react";
 import Container from "@/components/Container";
 import { InteractiveGrid } from "@/components/InteractiveGrid";
+import CTASection from "@/components/CTA-card";
 
 // ─── Animation ────────────────────────────────────────────────────────────────
 
 const fadeUp = (delay = 0) =>
-  ({
-    initial: { opacity: 0, y: 30, filter: "blur(8px)" },
-    whileInView: { opacity: 1, y: 0, filter: "blur(0px)" },
-    viewport: { once: true, amount: 0.2 },
-    transition: { duration: 0.8, delay, ease: "easeOut" },
-  } as any);
+({
+  initial: { opacity: 0, y: 30, filter: "blur(8px)" },
+  whileInView: { opacity: 1, y: 0, filter: "blur(0px)" },
+  viewport: { once: true, amount: 0.2 },
+  transition: { duration: 0.8, delay, ease: "easeOut" },
+} as any);
 
 const revealVariant = {
   initial: { opacity: 0, scale: 0.96, filter: "blur(10px)" },
@@ -261,7 +262,7 @@ function OrbitalHero() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ type: "spring", stiffness: 80, damping: 18, delay: 0.3 }}
               className="relative w-full h-full flex items-center justify-center p-8"
-            > 
+            >
               {[1.5, 1.25].map((scale, i) => (
                 <motion.div
                   key={i}
@@ -270,16 +271,16 @@ function OrbitalHero() {
                   transition={{ duration: 4, repeat: Infinity, delay: i * 2, ease: "easeInOut" }}
                 />
               ))}
-              
-             <div className="w-full h-full rounded-[2.2rem] md:rounded-[2.8rem] 
+
+              <div className="w-full h-full rounded-[2.2rem] md:rounded-[2.8rem] 
 bg-gradient-to-br from-blue-50 via-blue-50 to-cyan-50 
 border border-blue-100
 flex items-center justify-center relative z-10 p-4">
-               <img 
-                        src="/logo.svg" 
-                        alt="Tapito Logo" 
-                        className="w-full h-full object-contain"
-                     />
+                <img
+                  src="/logo.svg"
+                  alt="Tapito Logo"
+                  className="w-full h-full object-contain"
+                />
               </div>
             </motion.div>
           </div>
@@ -343,7 +344,7 @@ function IntegrationCard({ icon: Icon, name, desc, bullets, badge, index }: any)
       <div className="absolute right-0 top-0 w-32 h-32 bg-slate-50/50 rounded-bl-[4rem] -z-0 transition-colors group-hover:bg-[#09358c]/5" />
 
       <div className="relative z-10 flex items-start justify-between mb-6">
-        <div 
+        <div
           className="w-14 h-14 flex items-center justify-center rounded-2xl bg-slate-50 text-slate-600 border border-slate-100 group-hover:bg-[#09358c] group-hover:text-white group-hover:scale-110 transition-all duration-300"
         >
           <Icon size={28} />
@@ -603,49 +604,14 @@ export default function IntegrationsPage() {
       </section>
 
       {/* ── 5. Enterprise CTA ───────────────────────────────────────────── */}
-      <section className="py-20 md:py-28">
-        <Container>
-          <motion.div
-            variants={revealVariant}
-            initial="initial"
-            whileInView="whileInView"
-            viewport={{ once: true }}
-            className="relative rounded-[2.5rem] md:rounded-[4rem] overflow-hidden bg-slate-950 px-8 py-16 md:px-20 md:py-16 text-center shadow-[0_60px_130px_-50px_rgba(15,23,42,0.9)]"
-          >
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(9,53,140,0.18),transparent_60%),radial-gradient(circle_at_70%_50%,rgba(5,160,236,0.14),transparent_60%)] pointer-events-none" />
-            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#09358c]/30 to-transparent" />
-
-            <div className="relative z-10 max-w-3xl mx-auto">
-              <motion.div {...fadeUp()} className="mb-8 inline-flex items-center gap-2 rounded-full border border-[#09358c]/30 bg-[#09358c]/10 px-4 py-2 text-xs font-black uppercase tracking-[0.25em] text-[#05a0ec]">
-                Built for enterprise retail
-              </motion.div>
-              <motion.h2 {...fadeUp(0.08)} className="text-3xl sm:text-4xl md:text-6xl font-black tracking-[-0.06em] text-white mb-7 leading-[1.05]">
-                Your business tools<br />
-                work better{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#05a0ec] via-[#05a0ec] to-[#09358c]">
-                  together.
-                </span>
-              </motion.h2>
-              <motion.p {...fadeUp(0.16)} className="text-base md:text-lg font-medium text-slate-400 mb-12 leading-relaxed max-w-xl mx-auto">
-                Tapito is the intelligent glue for your retail stack — unifying silos, automating complexity, and driving growth across every touchpoint.
-              </motion.p>
-              <motion.div {...fadeUp(0.22)} className="flex flex-col sm:flex-row items-center justify-center gap-5">
-                <Link
-                  href="/contact"
-                  className="group inline-flex items-center gap-3 rounded-full bg-white px-9 py-4 text-sm font-black text-slate-950 shadow-[0_20px_50px_-15px_rgba(255,255,255,0.2)] transition-all hover:bg-[#09358c] hover:text-white hover:scale-[1.04] hover:shadow-[0_20px_50px_-15px_rgba(9,53,140,0.5)]"
-                >
-                  Book a Demo
-                  <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-                </Link>
-                <button className="inline-flex items-center gap-2 text-sm font-black text-slate-400 hover:text-white transition-colors">
-                  Talk to integration experts
-                  <ArrowRight size={16} />
-                </button>
-              </motion.div>
-            </div>
-          </motion.div>
-        </Container>
-      </section>
+      <CTASection
+        title="Stop Guessing."
+        subtitle="Start Growing."
+        description="Join hundreds of retail giants who have transformed their data into a revenue engine with Tapito."
+        badge="READY TO TRANSFORM?"
+        image="/assets/images/about/ready-to-tranform.png"
+        isAbout={false}
+      />
     </div>
   );
 }

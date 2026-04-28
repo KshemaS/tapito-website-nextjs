@@ -30,23 +30,24 @@ export default function Overview() {
               Tapito isn't just a dashboard. It's a comprehensive AI layer that sits on top of your existing retail stack,
               synthesizing every transaction into a strategic advantage.
             </p>
-            <div>
-              <Link 
-                href="/features" 
-                className="inline-flex items-center gap-3 text-[#09358c] font-black text-sm uppercase tracking-[0.2em] hover:gap-5 transition-all group"
-              >
-                <span>Explore More</span>
-                <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center group-hover:bg-[#09358c] group-hover:text-white transition-all">
-                  <ArrowRight size={16} />
-                </div>
-              </Link>
-            </div>
-            <div className="grid grid-cols-2 gap-6 pb-10">
+        
+            {/* <div className="grid grid-cols-2 gap-6 pb-10">
               <div className="p-6 bg-white rounded-3xl shadow-sm border border-slate-100">
                 <TrendingUp className="text-blue-600 mb-4" />
                 <h4 className="font-bold text-lg mb-1">24.2%</h4>
                 <p className="text-xs text-slate-400 uppercase font-black">Average ROI Gain</p>
               </div>
+            </div> */}
+            <div>
+              <Link
+                href="/integrations"
+                className="inline-flex items-center gap-4 bg-[#09358c] text-white px-8 py-4 rounded-full font-black text-sm uppercase tracking-[0.15em] hover:bg-[#0a3faa] transition-all shadow-xl shadow-blue-900/20 hover:shadow-2xl hover:shadow-blue-900/30 group active:scale-95"
+              >
+                <span>Explore More</span>
+                <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-[#09358c] transition-all duration-300">
+                  <ArrowRight size={14} />
+                </div>
+              </Link>
             </div>
           </motion.div>
 
@@ -55,7 +56,7 @@ export default function Overview() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="relative"
+            className="relative flex"
           >
             <OverViewCard />
           </motion.div>

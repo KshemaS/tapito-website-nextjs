@@ -347,7 +347,7 @@ export default function PartnersPage() {
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[600px] bg-[radial-gradient(circle_at_top_right,rgba(9,53,140,0.08),transparent_50%),radial-gradient(circle_at_top_left,rgba(5,160,236,0.05),transparent_40%)]" />
 
       {/* ── 1. Hero ─────────────────────────────────────────────────────── */}
-      <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden flex items-center min-h-[90vh]">
+      <section className="relative pt-20 pb-20 lg:pt-40 lg:pb-32 overflow-hidden flex items-center min-h-[90vh]">
         <Container>
           <div className="grid lg:grid-cols-2 items-center gap-12 lg:gap-20">
             {/* Left */}
@@ -481,7 +481,7 @@ export default function PartnersPage() {
                       key={i}
                       className="w-full shrink-0 flex justify-center px-4 md:px-12"
                     >
-                      <div className={`w-full max-w-6xl bg-white p-10 lg:p-14 rounded-[2.5rem] shadow-[0_50px_120px_-30px_rgba(9,53,140,0.12)] border border-slate-200/40 relative transition-all duration-1000 ${i % TESTIMONIALS.length === activeIndex % TESTIMONIALS.length ? "scale-100 opacity-100" : "scale-[0.92] opacity-50 blur-[6px]"}`}>
+                      <div className={`w-full max-w-6xl bg-white p-6 lg:p-10 4xl:p-14 rounded-2xl shadow-[0_50px_120px_-30px_rgba(9,53,140,0.12)] border border-slate-200/40 relative transition-all duration-1000 ${i % TESTIMONIALS.length === activeIndex % TESTIMONIALS.length ? "scale-100 opacity-100" : "scale-[0.92] opacity-50 blur-[6px]"}`}>
                         {/* Company Logo/Name (Modern Style) */}
                         <div className="flex items-center gap-2 mb-8 text-xl font-black text-slate-900 tracking-tighter opacity-15 uppercase">
                           {t.company}
@@ -668,28 +668,28 @@ export default function PartnersPage() {
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label className="text-xs font-black text-slate-400 uppercase tracking-widest pl-1">Full Name</label>
-                      <input type="text" placeholder="John Doe" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#09358c] focus:border-transparent transition-all" />
+                      <input type="text" placeholder="Full Name" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#09358c] focus:border-transparent transition-all mt-1" />
                     </div>
                     <div className="space-y-2">
                       <label className="text-xs font-black text-slate-400 uppercase tracking-widest pl-1">Company Name</label>
-                      <input type="text" placeholder="Acme Inc" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#09358c] focus:border-transparent transition-all" />
+                      <input type="text" placeholder="Company Name" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#09358c] focus:border-transparent transition-all mt-1" />
                     </div>
                   </div>
 
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label className="text-xs font-black text-slate-400 uppercase tracking-widest pl-1">Email</label>
-                      <input type="email" placeholder="john@example.com" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#09358c] focus:border-transparent transition-all" />
+                      <input type="email" placeholder="Company Email" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#09358c] focus:border-transparent transition-all mt-1" />
                     </div>
                     <div className="space-y-2">
                       <label className="text-xs font-black text-slate-400 uppercase tracking-widest pl-1">Phone Number</label>
-                      <input type="tel" placeholder="+1 (555) 000-0000" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#09358c] focus:border-transparent transition-all" />
+                      <input type="tel" placeholder="Phone Number" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#09358c] focus:border-transparent transition-all mt-1" />
                     </div>
                   </div>
 
                   <div className="space-y-2">
                     <label className="text-xs font-black text-slate-400 uppercase tracking-widest pl-1">Country / Region</label>
-                    <div className="relative">
+                    <div className="relative mt-1">
                       <select className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#09358c] focus:border-transparent transition-all appearance-none cursor-pointer">
                         <option value="">Select your country...</option>
                         <option value="AF">Afghanistan</option>
@@ -951,7 +951,7 @@ export default function PartnersPage() {
 
                   <div className="space-y-2">
                     <label className="text-xs font-black text-slate-400 uppercase tracking-widest pl-1">Message (Optional)</label>
-                    <textarea rows={4} placeholder="Tell us more about your partnership goals..." className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#09358c] focus:border-transparent transition-all resize-none" />
+                    <textarea rows={4} placeholder="Tell us more about your partnership goals..." className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#09358c] focus:border-transparent transition-all resize-none mt-1" />
                   </div>
 
                   <button className="w-full relative group bg-[#09358c] text-white rounded-xl py-4 text-sm font-bold shadow-xl shadow-[#09358c]/20 hover:bg-[#05a0ec] transition-all duration-300 overflow-hidden">

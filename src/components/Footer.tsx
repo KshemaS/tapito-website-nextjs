@@ -1,7 +1,10 @@
+"use client";
 import { ArrowRight, Share2, MessageCircle, Globe, Mail } from "lucide-react";
 import Link from "next/link";
 import Container from "./Container";
 import CTASection from "./CTASection";
+import { featuresData } from "@/components/features/FeaturesGrid";
+import { solutionsData } from "@/components/solutions/SolutionsGrid";
 
 export { CTASection };
 
@@ -35,8 +38,12 @@ export function Footer() {
                <div>
                   <h5 className="font-bold text-slate-900 mb-6 uppercase text-xs tracking-widest">Features</h5>
                   <ul className="space-y-4">
-                     {["Executive Dashboard", "Smart Analytics", "Campaign Automation", "Revenue Insights", "Predictive Engine", "Growth Simulator"].map((item, i) => (
-                        <li key={i}><Link href="#" className="text-slate-500 hover:text-[#05a0ec] transition-colors">{item}</Link></li>
+                     {featuresData.map((feature, i) => (
+                        <li key={i}>
+                           <Link href={`/features/${feature.slug}`} className="text-slate-500 hover:text-[#05a0ec] transition-colors">
+                              {feature.title}
+                           </Link>
+                        </li>
                      ))}
                   </ul>
                </div>
@@ -44,8 +51,12 @@ export function Footer() {
                <div>
                   <h5 className="font-bold text-slate-900 mb-6 uppercase text-xs tracking-widest">Solutions</h5>
                   <ul className="space-y-4">
-                     {["Supermarkets", "Fashion & Apparel", "Electronics", "Beauty & Wellness", "Home Furnishing", "Jewelry & Luxury"].map((item, i) => (
-                        <li key={i}><Link href="#" className="text-slate-500 hover:text-[#05a0ec] transition-colors">{item}</Link></li>
+                     {solutionsData.map((solution, i) => (
+                        <li key={i}>
+                           <Link href={`/solutions/${solution.slug}`} className="text-slate-500 hover:text-[#05a0ec] transition-colors">
+                              {solution.title}
+                           </Link>
+                        </li>
                      ))}
                   </ul>
                </div>

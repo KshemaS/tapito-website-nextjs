@@ -17,7 +17,7 @@ interface CTASectionProps {
 
 export default function CTASection({ title, description, badge, image, subtitle, isAbout, onClick }: CTASectionProps) {
   return (
-    <section className="bg-white relative overflow-hidden">
+    <section className="bg-white py-12 lg:py-24 relative overflow-hidden">
       <Container>
         <div className="relative rounded-[1.5rem] bg-black py-12 px-6 xl:p-16 3xl:p-20 overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,0.4)]">
             <div className="absolute top-0 right-0 w-full h-full lg:w-2/5 opacity-50 pointer-events-none select-none z-0">
