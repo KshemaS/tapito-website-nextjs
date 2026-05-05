@@ -59,7 +59,7 @@ export default function SmartAnalyticsPage() {
       <section className="relative py-12 md:py-20 4xl:py-30">
         <Container>
           <div className="text-center">
-            <motion.div {...fadeUp()} className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#09358c]/10 bg-[#09358c]/5 px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-[#09358c]">
+            <motion.div {...fadeUp()} className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#09358c]/10 bg-[#09358c]/5 px-2 lg:px-4 py-2 text-xs font-black uppercase tracking-wider lg:tracking-[0.22em] text-[#09358c]">
               <BrainCircuit size={14} /> AI thinking pipeline visualization
             </motion.div>
             <motion.h1 {...fadeUp(0.08)} className="mx-auto max-w-5xl text-3xl sm:text-4xl md:text-5xl 4xl:text-7xl font-black tracking-[-0.06em] text-slate-950">
@@ -103,7 +103,7 @@ export default function SmartAnalyticsPage() {
                     <Cpu size={36} className="mx-auto" />
                   </motion.div>
                   <p className="mt-6 text-[10px] font-black uppercase tracking-[0.3em] text-[#05a0ec]/40">Tapito AI Core</p>
-                  <p className="mt-3 text-4xl font-black">Score. Interpret. Recommend.</p>
+                  <p className="mt-3 text-2xl md:text-3xl lg:text-4xl font-black">Score. Interpret. Recommend.</p>
                 </div>
               </div>
 
@@ -133,7 +133,7 @@ export default function SmartAnalyticsPage() {
         <Container>
           <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="grid gap-6 lg:grid-cols-3">
             {[["Business problem", "Important patterns hide inside too much raw data for teams to catch consistently by hand.", "text-rose-500"], ["What Tapito detects", "Tapito scores anomalies, growth signals, churn risk, and margin movement across the retail engine.", "text-[#09358c]"], ["What action it enables", "Operators get prioritized recommendations instead of charts that still need interpretation.", "text-emerald-600"]].map(([title, text, tone], index) => (
-              <motion.div key={title} {...fadeUp(index * 0.12)} {...cardHover} className={`rounded-[2.5rem] border bg-white p-10 group transition-all ${index === 1 ? "border-[#09358c]/20 shadow-[0_40px_80px_-40px_rgba(9,53,140,0.2)] hover:bg-white" : "border-slate-200 hover:border-[#09358c]/20"}`}>
+              <motion.div key={title} {...fadeUp(index * 0.12)} {...cardHover} className={`rounded-[2rem] md:rounded-[2.5rem] border bg-white p-8 lg:p-10 group transition-all ${index === 1 ? "border-[#09358c]/20 shadow-[0_40px_80px_-40px_rgba(9,53,140,0.2)] hover:bg-white" : "border-slate-200 hover:border-[#09358c]/20"}`}>
                 <p className={`text-[11px] font-black uppercase tracking-[0.22em] ${tone}`}>{title}</p>
                 <p className="mt-4 text-xl font-black leading-8 text-slate-950">{text}</p>
               </motion.div>
@@ -142,22 +142,22 @@ export default function SmartAnalyticsPage() {
         </Container>
       </section>
 
-      <section className="py-16 4xl:py-24 overflow-hidden">
+      <section className="py-16 md:py-24 overflow-hidden">
         <Container>
           <div className="mb-14 max-w-3xl">
             <motion.p {...fadeUp()} className="text-xs font-black uppercase tracking-[0.22em] text-[#09358c]">How it works</motion.p>
-            <motion.h2 {...fadeUp(0.08)} className="mt-4 text-3xl md:text-4xl 4xl:text-5xl font-black tracking-[-0.05em] text-slate-950">A decision pipeline that turns noise into action.</motion.h2>
+            <motion.h2 {...fadeUp(0.08)} className="mt-4 text-3xl md:text-4xl font-black tracking-[-0.05em] text-slate-950">A decision pipeline that turns noise into action.</motion.h2>
           </div>
-          <div className="rounded-[3rem] border border-slate-200 bg-gradient-to-br from-white to-[#05a0ec]/5 p-6 lg:p-12 relative">
+          <div className="rounded-[2rem] md:rounded-[3rem] border border-slate-200 bg-gradient-to-br from-white to-[#05a0ec]/5 p-4 sm:p-6 lg:p-12 relative">
             <div className="absolute top-0 right-0 w-96 h-96 bg-[#09358c]/5 blur-[100px] pointer-events-none rounded-full" />
-            <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="grid gap-8 lg:grid-cols-4 relative z-10">
+            <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="grid gap-4 md:gap-6 md:grid-cols-2 lg:grid-cols-4 relative z-10">
               {[["01", "Data", "Sales, customers, inventory, pricing"], ["02", "AI scoring", "Patterns ranked by confidence and value"], ["03", "Insights", "What changed, where, and why it matters"], ["04", "Recommendations", "The next move your team should execute"]].map(([step, title, text], index) => (
                 <div key={step} className="relative group">
                   {index < 3 && <div className="connector-line absolute right-[-24px] top-1/2 hidden h-px w-10 lg:block bg-[#09358c]/10" />}
-                  <motion.div variants={fadeUp(index * 0.1)} {...cardHover} className="luminous-card luminous-surface-strong h-full rounded-[2rem] border border-[#09358c]/10 bg-white p-8 group-hover:bg-[#05a0ec]/5 transition-colors">
-                    <p className="text-xs font-black uppercase tracking-[0.2em] text-[#05a0ec]">Step {step}</p>
-                    <h3 className="mt-6 text-4xl font-black text-slate-950 transition-colors group-hover:text-[#09358c]">{title}</h3>
-                    <p className="mt-4 text-sm font-medium leading-7 text-slate-600">{text}</p>
+                  <motion.div variants={fadeUp(index * 0.1)} {...cardHover} className="luminous-card luminous-surface-strong h-full rounded-[1.75rem] md:rounded-[2rem] border border-[#09358c]/10 bg-white p-5 md:p-8 group-hover:bg-[#05a0ec]/5 transition-colors">
+                    <p className="text-[10px] md:text-xs font-black uppercase tracking-[0.2em] text-[#05a0ec]">Step {step}</p>
+                    <h3 className="mt-4 md:mt-6 text-xl sm:text-2xl lg:text-4xl font-black text-slate-950 transition-colors group-hover:text-[#09358c] break-words">{title}</h3>
+                    <p className="mt-4 text-sm font-medium leading-relaxed md:leading-7 text-slate-600">{text}</p>
                   </motion.div>
                 </div>
               ))}
@@ -173,10 +173,10 @@ export default function SmartAnalyticsPage() {
             <motion.p {...fadeUp()} className="text-xs font-black uppercase tracking-[0.22em] text-[#09358c]">Business impact</motion.p>
             <motion.h2 {...fadeUp(0.08)} className="mt-4 text-3xl md:text-4xl 4xl:text-5xl font-black tracking-[-0.05em] text-slate-950">Measured lift from always-on machine intelligence.</motion.h2>
           </div>
-          <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="grid gap-8 md:grid-cols-3">
+          <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="grid gap-6 lg:grid-cols-3">
             {[["98.4%", "Insight confidence", "AI confidence scores across 40+ indicators"], ["-95%", "Manual analysis time", "Reports delivered instantly via pipeline"], ["+12%", "Profit readiness", "Margin improvement via anomaly detection"]].map(([value, label, note], index) => (
-              <motion.div key={label} {...fadeUp(index * 0.1)} {...cardHover} className="rounded-[2.5rem] border border-slate-200 bg-white p-10 text-center group">
-                <motion.p initial={{ scale: 0.5, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} transition={{ duration: 1, delay: 0.4 + index * 0.1 }} className="text-6xl font-black text-[#09358c] transition-transform group-hover:scale-110">{value}</motion.p>
+              <motion.div key={label} {...fadeUp(index * 0.1)} {...cardHover} className="rounded-[2rem] md:rounded-[2.5rem] border border-slate-200 bg-white p-8 lg:p-10 text-center group">
+                <motion.p initial={{ scale: 0.5, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} transition={{ duration: 1, delay: 0.4 + index * 0.1 }} className="text-5xl lg:text-6xl font-black text-[#09358c] transition-transform group-hover:scale-110">{value}</motion.p>
                 <p className="mt-6 text-xl font-black text-slate-950">{label}</p>
                 <p className="mt-3 text-sm font-medium leading-7 text-slate-500">{note}</p>
               </motion.div>
@@ -190,22 +190,22 @@ export default function SmartAnalyticsPage() {
       <section className="py-16 4xl:py-24">
         <Container>
           <motion.div {...fadeUp()} className="mb-14 text-center"><h2 className="text-3xl md:text-4xl 4xl:text-5xl font-black tracking-[-0.05em] text-slate-950 uppercase tracking-tight">What Happens After You Enable This Feature?</h2></motion.div>
-          <div className="grid overflow-hidden rounded-[3.5rem] border border-slate-200 shadow-[0_50px_130px_-60px_rgba(15,23,42,0.35)] md:grid-cols-2">
-            <motion.div initial={{ x: -60, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} className="bg-white p-12 lg:p-20">
-              <p className="text-xs font-black uppercase tracking-[0.25em] text-slate-400">Before Tapito Intelligence</p>
-              <div className="mt-12 space-y-7 text-xl font-bold text-slate-400">
+          <div className="grid overflow-hidden rounded-[2.5rem] md:rounded-[3.5rem] border border-slate-400 shadow-[0_50px_130px_-60px_rgba(15,23,42,0.35)] md:grid-cols-2">
+            <motion.div initial={{ x: -60, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} className="bg-white p-8 md:p-12 lg:p-20">
+              <p className="text-xs font-black uppercase tracking-[0.25em] text-slate-600">Before Tapito Intelligence</p>
+              <div className="mt-6 lg:mt-12 space-y-3 lg:space-y-7 text-base lg:text-xl font-bold text-slate-600">
                 <p className="flex items-center gap-4">Reactive guesswork</p>
                 <p className="flex items-center gap-4">Manual dashboard diving</p>
                 <p className="flex items-center gap-4">Hidden revenue leakage</p>
                 <p className="flex items-center gap-4">Slow response to market shifts</p>
               </div>
             </motion.div>
-            <motion.div initial={{ x: 60, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} className="bg-slate-950 p-12 lg:p-20 text-white relative">
+            <motion.div initial={{ x: 60, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} className="bg-slate-950 p-8 md:p-12 lg:p-20 text-white relative">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(9,53,140,0.1),transparent_70%)]" />
               <p className="text-xs font-black uppercase tracking-[0.25em] text-[#05a0ec] relative z-10">After Tapito Intelligence</p>
-              <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" className="mt-12 space-y-7 text-xl font-black relative z-10">
+              <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" className="mt-6 lg:mt-12 space-y-3 lg:space-y-7 text-base lg:text-xl font-black relative z-10">
                 {["Evidence-based strategy", "Proactive scaling logic", "Optimized margins & ABV", "Autonomous opportunity scoring"].map((item) => (
-                  <motion.div key={item} variants={{ initial: { x: 30, opacity: 0 }, whileInView: { x: 0, opacity: 1 } }} className="flex items-center gap-5"><CheckCircle2 size={28} className="text-emerald-400" />{item}</motion.div>
+                  <motion.div key={item} variants={{ initial: { x: 30, opacity: 0 }, whileInView: { x: 0, opacity: 1 } }} className="flex gap-3 lg:gap-5"><CheckCircle2 size={28} className="text-emerald-400 shrink-0" /><span>{item}</span></motion.div>
                 ))}
               </motion.div>
             </motion.div>
@@ -218,7 +218,7 @@ export default function SmartAnalyticsPage() {
           <Container>
             <motion.div
               {...fadeUp(0)}
-              className="bg-gradient-to-br from-[#09358c] to-[#05a0ec] rounded-[2.5rem] p-10 md:p-14 lg:p-20 relative overflow-hidden"
+              className="bg-gradient-to-br from-[#09358c] to-[#05a0ec] rounded-[2rem] md:rounded-[2.5rem] p-8 md:p-14 lg:p-20 relative overflow-hidden"
             >
               {/* Decorative blobs */}
               <div className="absolute top-0 right-0 w-64 h-64 rounded-full bg-white/5 translate-x-1/3 -translate-y-1/3" />
@@ -226,7 +226,7 @@ export default function SmartAnalyticsPage() {
 
               <div className="relative z-10 max-w-3xl">
                 <Quote size={48} className="text-white/20 mb-6" />
-                <blockquote className="text-4xl md:text-3xl lg:text-4xl font-black text-white leading-tight mb-8">
+                <blockquote className="text-3xl md:text-3xl lg:text-4xl font-black text-white leading-tight mb-8">
                   {feature.quote.text}
                 </blockquote>
                 <p className="text-[#05a0ec]/80 font-bold text-base">

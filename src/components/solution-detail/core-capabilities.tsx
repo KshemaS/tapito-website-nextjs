@@ -84,8 +84,6 @@ const Capabilities = ({ data }: Props) => {
               >
                 <div className="flex flex-col items-center text-center">
                   <motion.div
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
                     className="w-20 h-20 rounded-3xl bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center text-white mb-6"
                   >
                     <Zap size={40} />

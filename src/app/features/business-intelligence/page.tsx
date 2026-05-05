@@ -31,10 +31,10 @@ const staggerContainer = {
 } as any;
 
 const cardHover = {
-  whileHover: { 
-    y: -10, 
+  whileHover: {
+    y: -10,
     scale: 1.02,
-    transition: { duration: 0.4, ease: "easeOut" } 
+    transition: { duration: 0.4, ease: "easeOut" }
   },
 } as any;
 
@@ -159,7 +159,7 @@ export default function BusinessIntelligencePage() {
       <section className="py-16 4xl:py-20 bg-slate-50/80 border-y border-slate-200/80">
         <Container>
           <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="grid gap-6 lg:grid-cols-3">
-            {[ ["Business problem", "Leaders lose speed when branch, category, and revenue signals live in disconnected reports.", "text-rose-500"], ["What Tapito detects", "Tapito spots KPI drift, branch gaps, and category momentum from one synchronized retail view.", "text-[#09358c]"], ["What action it enables", "Teams can escalate weak stores, rebalance focus, and move on opportunities before they become month-end misses.", "text-emerald-600"] ].map(([title, text, tone], index) => (
+            {[["Business problem", "Leaders lose speed when branch, category, and revenue signals live in disconnected reports.", "text-rose-500"], ["What Tapito detects", "Tapito spots KPI drift, branch gaps, and category momentum from one synchronized retail view.", "text-[#09358c]"], ["What action it enables", "Teams can escalate weak stores, rebalance focus, and move on opportunities before they become month-end misses.", "text-emerald-600"]].map(([title, text, tone], index) => (
               <motion.div key={title} {...fadeUp(index * 0.1)} {...cardHover} className={`rounded-[2rem] border p-8 group transition-all ${index === 1 ? "border-[#09358c]/20 bg-white shadow-[0_30px_70px_-45px_rgba(9,53,140,0.3)] hover:shadow-[0_40px_80px_-40px_rgba(9,53,140,0.4)]" : "border-slate-200 bg-white hover:border-[#09358c]/20"}`}>
                 <p className={`text-[11px] font-black uppercase tracking-[0.22em] ${tone}`}>{title}</p>
                 <p className="mt-4 text-xl font-black leading-8 text-slate-950">{text}</p>
@@ -179,7 +179,7 @@ export default function BusinessIntelligencePage() {
           </div>
           <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
             <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="space-y-4">
-              {[ ["01", "Sync every outlet", "POS, billing, inventory, and customer movement land in one live operating layer."], ["02", "Surface what matters", "Tapito highlights branch anomalies, category momentum, and revenue shifts automatically."], ["03", "Drive leadership action", "Managers drill into the exact branch or category that needs intervention next."] ].map(([step, title, text], index) => (
+              {[["01", "Sync every outlet", "POS, billing, inventory, and customer movement land in one live operating layer."], ["02", "Surface what matters", "Tapito highlights branch anomalies, category momentum, and revenue shifts automatically."], ["03", "Drive leadership action", "Managers drill into the exact branch or category that needs intervention next."]].map(([step, title, text], index) => (
                 <motion.div key={step} {...fadeUp(index * 0.1)} {...cardHover} className="rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-[0_20px_60px_-45px_rgba(15,23,42,0.35)] group">
                   <div className="flex items-start gap-4">
                     <motion.div whileHover={{ scale: 1.1, rotate: 10 }} className="flex h-12 w-12 shrink-0 items-center justify-center rounded-4xl bg-slate-950 text-sm font-black text-white transition-colors group-hover:bg-[#09358c]">{step}</motion.div>
@@ -193,11 +193,11 @@ export default function BusinessIntelligencePage() {
             </motion.div>
             <motion.div variants={revealVariant} initial="initial" whileInView="whileInView" viewport={{ once: true, amount: 0.16 }} className="rounded-[2.5rem] border border-[#09358c]/10 bg-gradient-to-br from-[#09358c]/5 via-white to-[#09358c]/5 p-6 lg:p-8">
               <div className="grid gap-4 md:grid-cols-2">
-                <div className="rounded-[1.5rem] border border-[#05a0ec]/10 bg-white p-5">
+                <div className="rounded-xl border border-[#05a0ec]/10 bg-white p-5">
                   <p className="text-sm font-black text-slate-950">KPI grid</p>
                   <div className="mt-4 grid grid-cols-2 gap-3">
                     {[["Bills", "12.4k"], ["ABV", "Rs 3.4k"], ["GP", "22.1%"], ["Stock", "Healthy"]].map(([label, value]) => (
-                      <motion.div key={label} whileHover={{ y: -5 }} className="luminous-card luminous-surface-strong soft-shine rounded-4xl bg-[#09358c]/5 p-3">
+                      <motion.div key={label} whileHover={{ y: -5 }} className="luminous-card luminous-surface-strong soft-shine rounded-xl bg-[#09358c]/5 p-3">
                         <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[#09358c]">{label}</p>
                         <p className="mt-2 text-lg font-black text-slate-950">{value}</p>
                       </motion.div>
@@ -219,7 +219,7 @@ export default function BusinessIntelligencePage() {
                   <p className="text-sm font-black text-slate-950">Decision board</p>
                   <div className="mt-4 grid gap-3 md:grid-cols-3">
                     {[["Store focus", "Rework assortment in Downtown Hub"], ["Category action", "Push Fashion in Central Hub this weekend"], ["Leadership note", "Margin expansion holding above target"]].map(([label, text], index) => (
-                      <motion.div key={label} whileHover={{ scale: 1.05 }} className="luminous-card-dark rounded-4xl border border-white/10 bg-slate-950 p-4 text-white">
+                      <motion.div key={label} whileHover={{ scale: 1.05 }} className="luminous-card-dark rounded-xl border border-white/10 bg-slate-950 p-4 text-white">
                         <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[#05a0ec]">{label}</p>
                         <p className="mt-3 text-sm font-bold leading-6">{text}</p>
                       </motion.div>
@@ -233,18 +233,18 @@ export default function BusinessIntelligencePage() {
       </section>
 
 
-      <section className="py-16 4xl:py-24 relative overflow-hidden">
+      <section className="py-16 md:py-24 relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle,rgba(9,53,140,0.02),transparent_70%)] pointer-events-none" />
         <Container>
           <div className="mb-12 text-center">
             <motion.p {...fadeUp()} className="text-xs font-black uppercase tracking-[0.22em] text-[#09358c]">Business impact</motion.p>
-            <motion.h2 {...fadeUp(0.08)} className="mt-4 text-4xl font-black tracking-[-0.05em] text-slate-950">Measurable operational lift across the network.</motion.h2>
+            <motion.h2 {...fadeUp(0.08)} className="mt-4 text-3xl md:text-4xl font-black tracking-[-0.05em] text-slate-950">Measurable operational lift across the network.</motion.h2>
           </div>
           <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="grid gap-6 md:grid-cols-3">
             {[["+300%", "Reporting speed", "Less waiting for consolidated files"], ["-68%", "Response time", "Managers act while issues are fresh"], ["360deg", "Business visibility", "Branch, category, and revenue in one flow"]].map(([value, label, note], index) => (
-              <motion.div key={label} {...fadeUp(index * 0.1)} {...cardHover} className="rounded-[2.5rem] border border-slate-200 bg-gradient-to-b from-white to-[#09358c]/5 p-10 text-center group">
-                <motion.p initial={{ scale: 0.5, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }} className="text-6xl font-black tracking-tight text-[#09358c] transition-transform group-hover:scale-110">{value}</motion.p>
-                <p className="mt-6 text-xl font-black text-slate-950">{label}</p>
+              <motion.div key={label} {...fadeUp(index * 0.1)} {...cardHover} className="rounded-[2rem] md:rounded-[2.5rem] border border-slate-200 bg-gradient-to-b from-white to-[#09358c]/5 p-8 lg:p-10 text-center group">
+                <motion.p initial={{ scale: 0.5, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }} viewport={{ once: true }} className="text-4xl 2xl:text-6xl font-black tracking-tight text-[#09358c] transition-transform group-hover:scale-110">{value}</motion.p>
+                <p className="mt-6 text-lg md:text-xl font-black text-slate-950">{label}</p>
                 <p className="mt-3 text-sm font-medium leading-7 text-slate-600">{note}</p>
               </motion.div>
             ))}
@@ -260,7 +260,7 @@ export default function BusinessIntelligencePage() {
           <div className="grid overflow-hidden rounded-[3rem] border border-slate-200 shadow-[0_45px_120px_-60px_rgba(15,23,42,0.4)] md:grid-cols-2">
             <motion.div initial={{ x: -50, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="bg-white p-12 lg:p-16">
               <p className="text-sm font-black uppercase tracking-[0.22em] text-slate-400">Before Tapito</p>
-              <div className="mt-10 space-y-6 text-xl font-bold text-slate-400">
+              <div className="mt-10 space-y-6 text-base lg:text-xl font-bold text-slate-400">
                 <p className="flex items-center gap-3">Manual analysis</p>
                 <p className="flex items-center gap-3">Delayed decisions</p>
                 <p className="flex items-center gap-3">Missed opportunities</p>
@@ -270,9 +270,9 @@ export default function BusinessIntelligencePage() {
             <motion.div initial={{ x: 50, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="bg-slate-950 p-12 lg:p-16 text-white relative">
               <div className="absolute inset-0 bg-gradient-to-br from-[#09358c]/20 to-transparent pointer-events-none" />
               <p className="text-sm font-black uppercase tracking-[0.22em] text-[#05a0ec] relative z-10">After Tapito</p>
-              <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" className="mt-10 space-y-6 text-xl font-black relative z-10">
+              <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" className="mt-10 space-y-4 lg:space-y-6 text-base lg:text-xl font-black relative z-10">
                 {["Instant insights", "Automated actions", "Predictable growth", "Leadership-grade visibility"].map((item) => (
-                  <motion.div key={item} variants={{ initial: { x: 20, opacity: 0 }, whileInView: { x: 0, opacity: 1 } }} className="flex items-center gap-4"><CheckCircle2 className="text-emerald-400" size={26} /><span>{item}</span></motion.div>
+                  <motion.div key={item} variants={{ initial: { x: 20, opacity: 0 }, whileInView: { x: 0, opacity: 1 } }} className="flex gap-4"><CheckCircle2 className="text-emerald-400" size={26} /><span>{item}</span></motion.div>
                 ))}
               </motion.div>
             </motion.div>
@@ -296,7 +296,7 @@ export default function BusinessIntelligencePage() {
                 <blockquote className="text-4xl md:text-3xl lg:text-4xl font-black text-white leading-tight mb-8">
                   {feature.quote.text}
                 </blockquote>
-                <p className="text-[#05a0ec]/80 font-bold text-base">
+                <p className="text-white/80 font-bold text-base">
                   — {feature.quote.author}
                 </p>
               </div>

@@ -44,7 +44,7 @@ const bentoItems: BentoItem[] = [
     textColor: "text-[#991b1b]",
     borderColor: "border-[#fecaca]",
     badgeColor: "bg-[#fee2e2]",
-    span: "col-span-1",
+    span: "",
     visual: (
       <div className="mt-6 flex flex-wrap gap-2">
         {[1, 2, 3, 4, 5].map(i => (
@@ -63,7 +63,7 @@ const bentoItems: BentoItem[] = [
     textColor: "text-[#09358c]",
     borderColor: "border-[#09358c]/10",
     badgeColor: "bg-[#09358c]/10",
-    span: "col-span-1",
+    span: "",
     visual: (
       <div className="mt-6 flex -space-x-3">
         {[1, 2, 3].map(i => (
@@ -82,7 +82,7 @@ const bentoItems: BentoItem[] = [
     textColor: "text-[#166534]",
     borderColor: "border-[#bbf7d0]",
     badgeColor: "bg-[#dcfce7]",
-    span: "col-span-1",
+    span: "",
     visual: (
       <div className="mt-6 flex items-end gap-1 h-12">
         {[40, 70, 55, 90, 65, 80].map((h, i) => (
@@ -101,7 +101,7 @@ const bentoItems: BentoItem[] = [
     textColor: "text-[#92400e]",
     borderColor: "border-[#fef3c7]",
     badgeColor: "bg-[#fef3c7]",
-    span: "row-span-2 col-span-1",
+    span: "lg:row-span-2",
     visual: (
       <div className="mt-8 space-y-4">
         {[100, 75, 40, 12].map((w, i) => (
@@ -124,7 +124,7 @@ const bentoItems: BentoItem[] = [
     textColor: "text-[#09358c]",
     borderColor: "border-[#05a0ec]/20",
     badgeColor: "bg-[#05a0ec]/10",
-    span: "col-span-2",
+    span: "md:col-span-2",
     visual: (
       <div className="mt-6 relative h-20 w-full overflow-hidden">
         <svg className="w-full h-full" viewBox="0 0 400 100">
@@ -146,7 +146,7 @@ const bentoItems: BentoItem[] = [
     textColor: "text-[#9a3412]",
     borderColor: "border-[#ffedd5]",
     badgeColor: "bg-[#ffedd5]",
-    span: "row-span-2 col-span-1",
+    span: "lg:row-span-2",
     visual: (
       <div className="mt-6 space-y-3">
         {[1, 2, 3, 4, 5, 6].map(i => (
@@ -168,7 +168,7 @@ const bentoItems: BentoItem[] = [
     textColor: "text-[#9d174d]",
     borderColor: "border-[#fbcfe8]",
     badgeColor: "bg-[#fce7f3]",
-    span: "col-span-1",
+    span: "",
     visual: (
       <div className="mt-6 grid grid-cols-2 gap-2">
         <div className="h-8 bg-pink-200/40 rounded-lg" />
@@ -186,7 +186,7 @@ const bentoItems: BentoItem[] = [
     textColor: "text-[#8a6423]",
     borderColor: "border-[#fbebc4]",
     badgeColor: "bg-[#fdf3d6]",
-    span: "col-span-1",
+    span: "",
     visual: (
       <div className="mt-6 flex items-center gap-4">
         <div className="w-10 h-10 rounded-xl bg-white border border-dashed border-amber-300 flex items-center justify-center">
@@ -209,7 +209,7 @@ const bentoItems: BentoItem[] = [
     textColor: "text-[#09358c]",
     borderColor: "border-[#05a0ec]/20",
     badgeColor: "bg-[#05a0ec]/10",
-    span: "col-span-1",
+    span: "",
     visual: (
       <div className="mt-6 flex gap-2 overflow-hidden">
         {[1, 2, 3].map(i => (
@@ -248,7 +248,7 @@ export const BentoAnalyticsGrid = ({
   const displayItems = items || defaultOrderedItems;
 
   return (
-    <section className="py-24 relative bg-[#fcfcfd]">
+    <section className="py-16 md:py-24 relative bg-[#fcfcfd]">
       <Container>
         <div className="mb-16 text-center lg:text-left">
           <motion.p
@@ -279,7 +279,7 @@ export const BentoAnalyticsGrid = ({
               transition={{ duration: 0.6, delay: idx * 0.05 }}
               whileHover={{ scale: 1.015, y: -5 }}
               className={`
-                ${item.span} ${item.color} rounded-[2.5rem] p-8 md:p-10 border ${item.borderColor}
+                ${item.span} ${item.color} rounded-[2rem] md:rounded-[2.5rem] p-8 md:p-10 border ${item.borderColor}
                 relative overflow-hidden cursor-pointer group transition-all duration-300
                 hover:shadow-[0_45px_110px_-40px_rgba(9,53,140,0.25)] flex flex-col
               `}
@@ -320,34 +320,34 @@ export const BentoAnalyticsGrid = ({
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 300, duration: 0.4 }}
               className={`
-                relative w-full max-w-3xl bg-white rounded-[4rem] overflow-hidden shadow-2xl
+                relative w-full max-w-3xl bg-white rounded-[2.5rem] md:rounded-[4rem] overflow-hidden shadow-2xl
                 flex flex-col max-h-[92vh] z-[1000] pointer-events-auto
               `}
             >
               <button
                 onClick={() => setSelectedItem(null)}
-                className="absolute top-10 right-10 w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center text-slate-500 hover:bg-slate-950 hover:text-white transition-all z-[1001] shadow-sm hover:rotate-90"
+                className="absolute top-6 right-6 md:top-10 md:right-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-slate-50 flex items-center justify-center text-slate-500 hover:bg-slate-950 hover:text-white transition-all z-[1001] shadow-sm hover:rotate-90"
               >
-                <X size={24} />
+                <X size={20} className="md:w-6 md:h-6" />
               </button>
 
-              <div className="p-12 md:p-16 overflow-y-auto custom-scrollbar flex-1 relative">
+              <div className="p-8 md:p-16 overflow-y-auto custom-scrollbar flex-1 relative">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-blue-50 blur-[100px] pointer-events-none rounded-full" />
 
                 <div className="relative z-10">
-                  <div className={`w-20 h-20 rounded-3xl ${selectedItem.badgeColor} ${selectedItem.textColor} flex items-center justify-center mb-10`}>
-                    <selectedItem.icon size={42} />
+                  <div className={`w-16 h-16 md:w-20 md:h-20 rounded-2xl md:rounded-3xl ${selectedItem.badgeColor} ${selectedItem.textColor} flex items-center justify-center mb-6 md:mb-10`}>
+                    <selectedItem.icon size={32} className="md:w-10 md:h-10" />
                   </div>
 
-                  <h3 className="text-4xl md:text-5xl font-black text-slate-950 mb-4 tracking-tighter uppercase">
+                  <h3 className="text-3xl md:text-5xl font-black text-slate-950 mb-4 tracking-tighter uppercase leading-tight">
                     {selectedItem.title}
                   </h3>
-                  <p className="text-xl font-bold text-[#05a0ec] mb-10">
+                  <p className="text-lg md:text-xl font-bold text-[#05a0ec] mb-8 md:mb-10">
                     {selectedItem.subtitle}
                   </p>
 
-                  <div className="space-y-10">
-                    <p className="text-xl font-medium leading-relaxed text-slate-600">
+                  <div className="space-y-8 md:space-y-10">
+                    <p className="text-lg md:text-xl font-medium leading-relaxed text-slate-600">
                       {selectedItem.description}
                     </p>
 

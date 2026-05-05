@@ -330,47 +330,73 @@ flex items-center justify-center relative z-10 p-4">
 
 // ─── Integration Card ──────────────────────────────────────────────────────────
 
-function IntegrationCard({ icon: Icon, name, desc, bullets, badge, index }: any) {
+function IntegrationCard({ icon: Icon, name, desc, bullets, index }: any) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.1 }}
-      transition={{ duration: 0.5, delay: index * 0.05 }}
-      whileHover={{ y: -10 }}
-      className="group relative flex flex-col h-full rounded-[2rem] border border-slate-100 bg-white p-7 lg:p-9 shadow-sm hover:shadow-xl transition-shadow duration-300 will-change-transform"
+      viewport={{ once: true }}
+      transition={{ duration: 0.8, delay: index * 0.05, ease: [0.21, 0.47, 0.32, 0.98] }}
+      whileHover={{ y: -8 }}
+      className="relative h-full group"
     >
-      {/* Decorative background accent */}
-      <div className="absolute right-0 top-0 w-32 h-32 bg-slate-50/50 rounded-bl-[4rem] -z-0 transition-colors group-hover:bg-[#09358c]/5" />
+      <div className="relative h-full p-7 lg:p-10 rounded-[2rem] md:rounded-[2.5rem] transition-all duration-700 flex flex-col justify-between overflow-hidden bg-white border border-slate-100 text-slate-900 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.03)] group-hover:shadow-[0_45px_90px_-20px_rgba(9,53,140,0.12)]">
 
-      <div className="relative z-10 flex items-start justify-between mb-6">
-        <div
-          className="w-14 h-14 flex items-center justify-center rounded-2xl bg-slate-50 text-slate-600 border border-slate-100 group-hover:bg-[#09358c] group-hover:text-white group-hover:scale-110 transition-all duration-300"
-        >
-          <Icon size={28} />
-        </div>
-      </div>
+        {/* Subtle Hover Gradient */}
+        <div className="absolute inset-0 bg-linear-to-br from-[#09358c]/[0.03] to-[#05a0ec]/[0.03] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
-      <div className="relative z-10 flex-1">
-        <h3 className="text-xl font-black mb-3 tracking-tight text-slate-900 group-hover:text-[#09358c] transition-colors">
-          {name}
-        </h3>
-        <p className="text-sm font-medium leading-relaxed mb-6 text-slate-500">
-          {desc}
-        </p>
+        {/* Decorative Background Element */}
+        <div className="absolute -right-16 -top-16 w-64 h-64 bg-slate-50 rounded-full transition-all duration-700 group-hover:bg-blue-600/5 group-hover:scale-150" />
 
-        <div className="space-y-3 mb-8">
-          {bullets.map((b: string, i: number) => (
-            <div key={i} className="flex items-center gap-3">
-              <CheckCircle2
-                size={14}
-                className="text-slate-200 group-hover:text-[#09358c] shrink-0 transition-colors duration-300"
-              />
-              <span className="text-[12px] font-bold text-slate-400 group-hover:text-slate-600 transition-colors">
-                {b}
-              </span>
+        <div className="relative z-10">
+          {/* Top Bar: Icon + Micro-Animation */}
+          <div className="flex items-center justify-between mb-8">
+            <motion.div
+              animate={{
+                y: [0, -6, 0],
+                rotate: [0, 5, -5, 0],
+                boxShadow: [
+                  "0px 0px 0px 0px rgba(9, 53, 140, 0)",
+                  "0px 10px 20px -5px rgba(9, 53, 140, 0.2)",
+                  "0px 0px 0px 0px rgba(9, 53, 140, 0)"
+                ]
+              }}
+              transition={{
+                duration: 3.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: index * 0.15
+              }}
+              className="w-16 h-16 flex items-center justify-center rounded-2xl transition-all duration-500 bg-[#09358c]/5 text-[#09358c] group-hover:bg-[#09358c] group-hover:text-white group-hover:scale-110 shadow-sm border border-slate-100 origin-center"
+            >
+              <Icon size={32} className="transition-transform duration-500 group-hover:scale-110" />
+            </motion.div>
+          </div>
+
+          <h3 className="text-xl md:text-2xl font-black mb-4 tracking-tight text-slate-900 transition-colors">
+            {name}
+          </h3>
+
+          <p className="text-sm md:text-[15px] font-medium leading-relaxed mb-8 text-slate-500 line-clamp-3">
+            {desc}
+          </p>
+
+          {/* Elaborated Content: Benefits List */}
+          {bullets && (
+            <div className="space-y-3.5">
+              {bullets.map((b: string, i: number) => (
+                <div key={i} className="flex items-center gap-3">
+                  <motion.div
+                    animate={{ scale: [1, 1.15, 1] }}
+                    transition={{ duration: 2, repeat: Infinity, delay: (index * 0.1) + (i * 0.3) }}
+                  >
+                    <CheckCircle2 size={18} className="text-[#09358c]/20 group-hover:text-[#09358c] shrink-0 transition-colors duration-500" />
+                  </motion.div>
+                  <span className="text-[13px] font-extrabold text-slate-400 group-hover:text-slate-600 transition-colors duration-500">{b}</span>
+                </div>
+              ))}
             </div>
-          ))}
+          )}
         </div>
       </div>
     </motion.div>

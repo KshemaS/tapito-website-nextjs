@@ -178,19 +178,19 @@ export default function RevenueInsightsPage() {
         </Container>
       </section>
 
-      <section className="py-16 4xl:py-24 relative overflow-hidden">
+      <section className="py-16 md:py-24 relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle,rgba(9,53,140,0.02),transparent_70%)] pointer-events-none" />
         <Container>
           <div className="mb-14 text-center">
             <motion.p {...fadeUp()} className="text-xs font-black uppercase tracking-[0.22em] text-[#09358c]">Business impact</motion.p>
-            <motion.h2 {...fadeUp(0.08)} className="mt-4 text-3xl md:text-4xl 4xl:text-5xl font-black tracking-[-0.05em] text-slate-950">Recover more value already inside the business.</motion.h2>
+            <motion.h2 {...fadeUp(0.08)} className="mt-4 text-3xl md:text-4xl font-black tracking-[-0.05em] text-slate-950">Recover more value already inside the business.</motion.h2>
           </div>
-          <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="grid gap-8 md:grid-cols-3">
+          <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {[["Rs 12L+", "Recovered revenue", "Attributed to SKU-level re-pricing moves"], ["+18%", "Average order value", "Lifted via smart bundle placement"], ["Realtime", "Pricing speed", "Response to market shifts within minutes"]].map(([value, label, note], index) => (
-              <motion.div key={label} {...fadeUp(index * 0.15)} {...cardHover} className="rounded-[3rem] border border-slate-200 bg-white p-12 text-center group hover:bg-[#05a0ec]/5 transition-all shadow-sm">
-                <motion.p animate={{ scale: [1, 1.05, 1], rotate: [0, 1, -1, 0] }} transition={{ duration: 4, repeat: Infinity }} className="text-6xl font-black tracking-tight text-[#09358c] transition-transform group-hover:scale-110">{value}</motion.p>
-                <p className="mt-8 text-4xl font-black text-slate-950">{label}</p>
-                <p className="mt-4 text-sm font-medium leading-8 text-slate-500 max-w-[200px] mx-auto italic opacity-70">"{note}"</p>
+              <motion.div key={label} {...fadeUp(index * 0.15)} {...cardHover} className={`rounded-[2rem] md:rounded-[3rem] border border-slate-200 bg-white p-8 lg:p-12 text-center group hover:bg-[#05a0ec]/5 transition-all shadow-sm ${index === 2 ? "sm:col-span-2 lg:col-span-1" : ""}`}>
+                <motion.p animate={{ scale: [1, 1.05, 1], rotate: [0, 1, -1, 0] }} transition={{ duration: 4, repeat: Infinity }} className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[#09358c] transition-transform group-hover:scale-110">{value}</motion.p>
+                <p className="mt-6 text-xl lg:text-2xl font-black text-slate-950 break-words">{label}</p>
+                <p className="mt-4 text-sm font-medium leading-7 md:leading-8 text-slate-500 max-w-xs mx-auto italic opacity-70">"{note}"</p>
               </motion.div>
             ))}
           </motion.div>
@@ -201,22 +201,22 @@ export default function RevenueInsightsPage() {
 
       <section className="py-16 4xl:py-24">
         <Container>
-          <motion.div {...fadeUp()} className="mb-14 text-center"><h2 className="text-3xl md:text-4xlfont-black tracking-[-0.05em] text-slate-950 font-outfit uppercase tracking-tight">What Happens After You Enable This Feature?</h2></motion.div>
+          <motion.div {...fadeUp()} className="mb-14 text-center"><h2 className="text-3xl md:text-4xl font-black tracking-[-0.05em] text-slate-950 font-outfit uppercase tracking-tight">What Happens After You Enable This Feature?</h2></motion.div>
           <div className="grid overflow-hidden rounded-[3.5rem] border border-slate-200 shadow-[0_50px_140px_-60px_rgba(15,23,42,0.4)] md:grid-cols-2 relative h-full">
             <motion.div initial={{ x: -100, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1 }} className="bg-white p-12 lg:p-20 relative overflow-hidden group">
               <div className="absolute top-0 left-0 w-full h-full bg-slate-50 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
               <p className="text-xs font-black uppercase tracking-[0.3em] text-slate-400 relative z-10">Before Tapito Revenue Hunting</p>
-              <div className="mt-12 space-y-8 text-4xl font-bold text-slate-400 relative z-10">
-                <p className="flex items-center gap-4 opacity-70">Invisible profit leaks</p>
-                <p className="flex items-center gap-4 opacity-70">Wasted inventory cycles</p>
-                <p className="flex items-center gap-4 opacity-70">Stagnant order values</p>
-                <p className="flex items-center gap-4 opacity-70">Reactive SKU management</p>
+              <div className="relative z-10 mt-4 sm:mt-6 md:mt-8 lg:mt-12 space-y-6 lg:space-y-8 text-base lg:text-xl font-bold text-slate-400">
+                <p className="flex items-center gap-3 sm:gap-4 opacity-70">Invisible profit leaks</p>
+                <p className="flex items-center gap-3 sm:gap-4 opacity-70">Wasted inventory cycles</p>
+                <p className="flex items-center gap-3 sm:gap-4 opacity-70">Stagnant order values</p>
+                <p className="flex items-center gap-3 sm:gap-4 opacity-70">Reactive SKU management</p>
               </div>
             </motion.div>
             <motion.div initial={{ x: 100, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1 }} className="bg-slate-950 p-12 lg:p-20 text-white relative h-full">
                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(9,53,140,0.12),transparent_70%)] pointer-events-none" />
               <p className="text-xs font-black uppercase tracking-[0.3em] text-[#05a0ec] relative z-10">After Tapito Revenue Hunting</p>
-              <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" className="mt-12 space-y-8 text-4xl font-black relative z-10">
+              <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" className="mt-6 lg:mt-12 space-y-4 lg:space-y-8 text-base lg:text-xl font-black relative z-10">
                 {["Captured growth pockets", "Optimized product mix", "Maximized profit margins", "Sku-level performance focus"].map((item) => (
                   <motion.div key={item} variants={{ initial: { x: 40, opacity: 0 }, whileInView: { x: 0, opacity: 1 } }} transition={{ duration: 0.6 }} className="flex items-center gap-6 group/item"><CheckCircle2 size={32} className="text-emerald-400 group-hover/item:scale-110 transition-transform" />{item}</motion.div>
                 ))}
@@ -239,7 +239,7 @@ export default function RevenueInsightsPage() {
 
               <div className="relative z-10 max-w-3xl">
                 <Quote size={48} className="text-white/20 mb-6" />
-                <blockquote className="text-4xl md:text-3xl lg:text-4xl font-black text-white leading-tight mb-8">
+                <blockquote className="text-2xl md:text-2xl lg:text-3xl font-black text-white leading-tight mb-8">
                   {feature.quote.text}
                 </blockquote>
                 <p className="text-[#05a0ec]/80 font-bold text-base">
