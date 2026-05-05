@@ -204,19 +204,19 @@ export default function SchemeGeneratorPage() {
         </Container>
       </section>
 
-      <section className="py-16 4xl:py-24 relative overflow-hidden font-inter">
+      <section className="py-16 md:py-24 relative overflow-hidden font-inter">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle,rgba(9,53,140,0.02),transparent_70%)] pointer-events-none" />
         <Container>
           <div className="mb-14 text-center">
             <motion.p {...fadeUp()} className="text-xs font-black uppercase tracking-[0.22em] text-[#09358c]">Business impact</motion.p>
-            <motion.h2 {...fadeUp(0.08)} className="mt-4 text-3xl md:text-4xl 4xl:text-5xl font-black tracking-[-0.05em] text-slate-950">Promotions that clear stock without destroying profit.</motion.h2>
+            <motion.h2 {...fadeUp(0.08)} className="mt-4 text-3xl md:text-4xl font-black tracking-[-0.05em] text-slate-950">Promotions that clear stock without destroying profit.</motion.h2>
           </div>
-          <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="grid gap-10 md:grid-cols-3">
+          <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {[["+15%", "Margin preserved", "Average margin saved vs flat discounting"], ["+45%", "Stock clearance", "Increase in velocity for slow-moving categories"], ["-70%", "Planning time", "Consolidated simulation instead of manual Excel testing"]].map(([value, label, note], index) => (
-              <motion.div key={label} {...fadeUp(index * 0.15)} {...cardHover} className="rounded-[2.5rem] md:rounded-[3rem] border border-slate-200 bg-white p-12 text-center group hover:bg-[#09358c]/5 transition-all shadow-sm">
-                <motion.p animate={{ scale: [1, 1.08, 1] }} transition={{ duration: 3.5, repeat: Infinity }} className="text-6xl font-black tracking-tight text-[#09358c] transition-transform group-hover:scale-110">{value}</motion.p>
-                <p className="mt-8 text-4xl font-black text-slate-950 uppercase tracking-tighter">{label}</p>
-                <p className="mt-4 text-sm font-medium leading-8 text-slate-500 max-w-[200px] mx-auto opacity-70 italic group-hover:opacity-100 transition-opacity">"{note}"</p>
+              <motion.div key={label} {...fadeUp(index * 0.15)} {...cardHover} className={`rounded-[2.5rem] md:rounded-[3rem] border border-slate-200 bg-white p-8 lg:p-12 text-center group hover:bg-[#09358c]/5 transition-all shadow-sm ${index === 2 ? "sm:col-span-2 lg:col-span-1" : ""}`}>
+                <motion.p animate={{ scale: [1, 1.08, 1] }} transition={{ duration: 3.5, repeat: Infinity }} className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[#09358c] transition-transform group-hover:scale-110">{value}</motion.p>
+                <p className="mt-6 text-xl lg:text-2xl font-black text-slate-950 uppercase tracking-tighter break-words">{label}</p>
+                <p className="mt-4 text-sm font-medium leading-7 md:leading-8 text-slate-500 max-w-xs mx-auto opacity-70 italic group-hover:opacity-100 transition-opacity">"{note}"</p>
               </motion.div>
             ))}
           </motion.div>
@@ -228,20 +228,20 @@ export default function SchemeGeneratorPage() {
       <section className="py-16 4xl:py-24">
         <Container>
           <motion.div {...fadeUp()} className="mb-14 text-center"><h2 className="text-3xl md:text-4xl 4xl:text-5xl font-black tracking-[-0.05em] text-slate-950 font-outfit uppercase tracking-tight">What Happens After You Enable This Feature?</h2></motion.div>
-          <div className="grid overflow-hidden rounded-[4rem] border border-slate-200 shadow-[0_50px_140px_-60px_rgba(15,23,42,0.4)] md:grid-cols-2 relative h-full">
-            <motion.div initial={{ x: -100, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1 }} className="bg-white p-12 lg:p-20 relative overflow-hidden group">
+          <div className="grid overflow-hidden rounded-[2rem] border border-slate-200 shadow-[0_50px_140px_-60px_rgba(15,23,42,0.4)] md:grid-cols-2 relative h-full">
+            <motion.div initial={{ x: -100, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1 }} className="bg-white p-8 lg:p-12 relative overflow-hidden group">
               <p className="text-xs font-black uppercase tracking-[0.4em] text-slate-400 relative z-10">Before Tapito Schemes</p>
-              <div className="mt-12 space-y-9 text-4xl font-bold text-slate-400 relative z-10 opacity-60">
+              <div className="mt-6 lg:mt-12 space-y-4 lg:space-y-9 text-lg lg:text-3xl font-bold text-slate-400 relative z-10 opacity-60">
                 <p>Random discount structures</p>
                 <p>Unseen margin erosion</p>
                 <p>Persistent dead stock</p>
                 <p>Excel-based offer guessing</p>
               </div>
             </motion.div>
-            <motion.div initial={{ x: 100, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1 }} className="bg-slate-950 p-12 lg:p-20 text-white relative h-full group">
+            <motion.div initial={{ x: 100, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1 }} className="bg-slate-950 p-8 lg:p-12 text-white relative h-full group">
                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(9,53,140,0.15),transparent_70%)] pointer-events-none" />
               <p className="text-xs font-black uppercase tracking-[0.4em] text-[#05a0ec] relative z-10">After Tapito Schemes</p>
-              <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" className="mt-12 space-y-9 text-4xl font-black relative z-10">
+              <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" className="mt-6 lg:mt-12 space-y-4 lg:space-y-9 text-lg lg:text-3xl font-black relative z-10">
                 {["Simulated profit-safe schemes", "Protected margin discipline", "Optimized stock clearance", "One-click POS deployment"].map((item) => (
                   <motion.div key={item} variants={{ initial: { x: 40, opacity: 0 }, whileInView: { x: 0, opacity: 1 } }} transition={{ duration: 0.6 }} className="flex items-center gap-7 group hover:translate-x-3 transition-transform cursor-default"><CheckCircle2 size={34} className="text-emerald-400 shrink-0" />{item}</motion.div>
                 ))}
@@ -264,7 +264,7 @@ export default function SchemeGeneratorPage() {
 
               <div className="relative z-10 max-w-3xl">
                 <Quote size={48} className="text-white/20 mb-6" />
-                <blockquote className="text-4xl md:text-3xl lg:text-4xl font-black text-white leading-tight mb-8">
+                <blockquote className="text-2xl md:text-3xl lg:text-4xl font-black text-white leading-tight mb-8">
                   {feature.quote.text}
                 </blockquote>
                 <p className="text-white/70 font-bold text-base">

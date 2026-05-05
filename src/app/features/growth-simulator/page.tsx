@@ -229,19 +229,19 @@ export default function GrowthSimulatorPage() {
         </Container>
       </section>
 
-      <section className="py-16 4xl:py-24 relative overflow-hidden font-inter">
+      <section className="py-16 md:py-24 relative overflow-hidden font-inter">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle,rgba(9,53,140,0.02),transparent_70%)] pointer-events-none" />
         <Container>
           <div className="mb-14 text-center">
             <motion.p {...fadeUp()} className="text-xs font-black uppercase tracking-[0.22em] text-[#09358c]">Business impact</motion.p>
-            <motion.h2 {...fadeUp(0.08)} className="mt-4 text-3xl md:text-4xl 4xl:text-5xl font-black tracking-[-0.05em] text-slate-950 uppercase tracking-tight">Growth bets become testable beforehand.</motion.h2>
+            <motion.h2 {...fadeUp(0.08)} className="mt-4 text-3xl md:text-4xl font-black tracking-[-0.05em] text-slate-950 uppercase tracking-tight">Growth bets become testable beforehand.</motion.h2>
           </div>
-          <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="grid gap-12 md:grid-cols-3">
+          <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {[["3x confidence", "Launch precision", "Projected vs actual rollout accuracy"], ["+40% speed", "Execution velocity", "Time saved in scenario justification"], ["Risk-Zero", "Strategy de-risking", "Modeled tradeoffs before budget deployment"]].map(([value, label, note], index) => (
-              <motion.div key={label} {...fadeUp(index * 0.15)} {...cardHover} className="rounded-[2.5rem] md:rounded-[3.5rem] border border-slate-200 bg-white p-14 text-center group hover:bg-[#09358c]/5 transition-all shadow-sm">
-                <motion.p animate={{ y: [0, -8, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="text-6xl font-black tracking-tight text-[#09358c] transition-transform group-hover:scale-110">{value.split(' ')[0]}</motion.p>
-                <p className="mt-8 text-4xl font-black text-slate-950 uppercase tracking-tighter">{label}</p>
-                <p className="mt-4 text-sm font-medium leading-8 text-slate-500 max-w-[220px] mx-auto opacity-70 italic group-hover:opacity-100 transition-opacity">"{note}"</p>
+              <motion.div key={label} {...fadeUp(index * 0.15)} {...cardHover} className={`rounded-[2rem] md:rounded-[3.5rem] border border-slate-200 bg-white p-8 lg:p-14 text-center group hover:bg-[#09358c]/5 transition-all shadow-sm ${index === 2 ? "sm:col-span-2 lg:col-span-1" : ""}`}>
+                <motion.p animate={{ y: [0, -8, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[#09358c] transition-transform group-hover:scale-110">{value.split(' ')[0]}</motion.p>
+                <p className="mt-6 text-xl lg:text-2xl font-black text-slate-950 uppercase tracking-tighter break-words">{label}</p>
+                <p className="mt-4 text-sm font-medium leading-7 md:leading-8 text-slate-500 max-w-xs mx-auto opacity-70 italic group-hover:opacity-100 transition-opacity">"{note}"</p>
               </motion.div>
             ))}
           </motion.div>
@@ -252,19 +252,19 @@ export default function GrowthSimulatorPage() {
         <Container>
           <motion.div {...fadeUp()} className="mb-14 text-center"><h2 className="text-3xl md:text-4xl 4xl:text-5xl font-black tracking-[-0.05em] text-slate-950 font-outfit uppercase tracking-tight">What Happens After You Enable This Feature?</h2></motion.div>
           <div className="grid overflow-hidden rounded-[2.5rem] md:rounded-[4.5rem] border border-slate-200 shadow-[0_50px_150px_-70px_rgba(15,23,42,0.4)] md:grid-cols-2 relative h-full">
-            <motion.div initial={{ x: -100, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1 }} className="bg-white p-14 lg:p-24 relative overflow-hidden group">
+            <motion.div initial={{ x: -100, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1 }} className="bg-white p-8 lg:p-14 relative overflow-hidden group">
               <p className="text-xs font-black uppercase tracking-[0.45em] text-slate-400 relative z-10">Before Tapito Simulator</p>
-              <div className="mt-14 space-y-10 text-3xl font-bold text-slate-400 relative z-10 opacity-60">
+              <div className="mt-8 lg:mt-14 lg:space-y-10 space-y-4 text-lg lg:text-3xl font-bold text-slate-400 relative z-10 opacity-60">
                 <p>Growth plateaus & guessing</p>
                 <p>Risky high-budget gambles</p>
                 <p>Unknown strategic outcomes</p>
                 <p>Theoretical boardroom hope</p>
               </div>
             </motion.div>
-            <motion.div initial={{ x: 100, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1 }} className="bg-slate-950 p-14 lg:p-24 text-white relative h-full group">
+            <motion.div initial={{ x: 100, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1 }} className="bg-slate-950 p-8 lg:p-14 text-white relative h-full group">
                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(9,53,140,0.15),transparent_70%)] pointer-events-none" />
               <p className="text-xs font-black uppercase tracking-[0.45em] text-[#05a0ec] relative z-10 font-black">After Tapito Simulator</p>
-              <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" className="mt-14 space-y-10 text-3xl font-black relative z-10">
+              <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" className="mt-8 lg:mt-14 space-y-4 lg:space-y-10 text-lg lg:text-3xl font-bold relative z-10">
                 {["Proven growth levers", "De-risked strategic scale", "Scale with model certainty", "Evidence-led execution"].map((item) => (
                   <motion.div key={item} variants={{ initial: { x: 50, opacity: 0 }, whileInView: { x: 0, opacity: 1 } }} transition={{ duration: 0.65 }} className="flex items-center gap-8 group hover:translate-x-4 transition-transform cursor-default"><CheckCircle2 size={38} className="text-emerald-400 shrink-0" />{item}</motion.div>
                 ))}
@@ -287,7 +287,7 @@ export default function GrowthSimulatorPage() {
 
               <div className="relative z-10 max-w-3xl">
                 <Quote size={48} className="text-white/20 mb-6" />
-                <blockquote className="text-4xl md:text-3xl lg:text-4xl font-black text-white leading-tight mb-8">
+                <blockquote className="text-2xl md:text-3xl lg:text-4xl font-black text-white leading-tight mb-8">
                   {feature.quote.text}
                 </blockquote>
                 <p className="text-white/70 font-bold text-base">

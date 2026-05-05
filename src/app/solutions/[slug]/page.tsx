@@ -88,7 +88,7 @@ const solutionDetails: Record<string, any> = {
       { 
         title: "Localized Stock Logic", 
         desc: "Shift inventory between locations dynamically based on local fashion adoption and weather patterns.", 
-        image: "https://images.unsplash.com/photo-1441984901-496662706fb5?q=80&w=1200&auto=format&fit=crop",
+        image: "/assets/images/solutions/fashion-localized-stock.png",
         icon: LayoutDashboard
       },
       { 
