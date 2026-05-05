@@ -197,8 +197,8 @@ export default function AIAssistantPage() {
           </div>
           <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="grid gap-8 md:grid-cols-3">
             {[["<2s", "Decision speed", "Average response for complex retail queries"], ["+100%", "Data adoption", "Teams using data to make floor-level decisions"], ["-90%", "Reporting burden", "Zero time spent building manual spreadsheets"]].map(([value, label, note], index) => (
-              <motion.div key={label} {...fadeUp(index * 0.15)} {...cardHover} className="rounded-[3rem] border border-slate-200 bg-white p-12 text-center group hover:bg-[#05a0ec]/5 transition-all shadow-sm">
-                <motion.p animate={{ scale: [1, 1.05, 1] }} transition={{ duration: 3, repeat: Infinity }} className="text-6xl font-black tracking-tight text-[#09358c] transition-transform group-hover:scale-110">{value}</motion.p>
+              <motion.div key={label} {...fadeUp(index * 0.15)} {...cardHover} className="rounded-[3rem] border border-slate-200 bg-white p-6 lg:p-12 text-center group hover:bg-[#05a0ec]/5 transition-all shadow-sm">
+                <motion.p animate={{ scale: [1, 1.05, 1] }} transition={{ duration: 3, repeat: Infinity }} className="text-4xl lg:text-6xl font-black tracking-tight text-[#09358c] transition-transform group-hover:scale-110">{value}</motion.p>
                 <p className="mt-8 text-2xl font-black text-slate-950">{label}</p>
                 <p className="mt-4 text-sm font-medium leading-8 text-slate-500 max-w-[200px] mx-auto opacity-70 italic">"{note}"</p>
               </motion.div>
@@ -212,10 +212,10 @@ export default function AIAssistantPage() {
       <section className="py-16 4xl:py-24">
         <Container>
           <motion.div {...fadeUp()} className="mb-14 text-center"><h2 className="text-4xl font-black tracking-[-0.05em] text-slate-950 font-outfit uppercase tracking-tight">What Happens After You Enable This Feature?</h2></motion.div>
-          <div className="grid overflow-hidden rounded-[3.5rem] border border-slate-200 shadow-[0_50px_140px_-60px_rgba(15,23,42,0.4)] md:grid-cols-2 relative h-full">
+          <div className="grid overflow-hidden rounded-[3.5rem] border border-slate-400 shadow-[0_50px_140px_-60px_rgba(15,23,42,0.4)] md:grid-cols-2 relative h-full">
             <motion.div initial={{ x: -100, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1 }} className="bg-white p-12 lg:p-20 relative overflow-hidden group">
               <p className="text-xs font-black uppercase tracking-[0.3em] text-slate-400 relative z-10">Before Tapito Assistant</p>
-              <div className="mt-12 space-y-8 text-2xl font-bold text-slate-400 relative z-10">
+              <div className="mt-6 lg:mt-12 space-y-4 lg:space-y-8 text-base lg:text-2xl font-bold text-slate-600 relative z-10">
                 <p className="flex items-center gap-4 opacity-70">Hunting for charts</p>
                 <p className="flex items-center gap-4 opacity-60">Exporting manual Excels</p>
                 <p className="flex items-center gap-4 opacity-70">Waiting for data analysts</p>
@@ -225,7 +225,7 @@ export default function AIAssistantPage() {
             <motion.div initial={{ x: 100, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1 }} className="bg-slate-950 p-12 lg:p-20 text-white relative h-full group">
                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(9,53,140,0.12),transparent_70%)] pointer-events-none" />
               <p className="text-xs font-black uppercase tracking-[0.3em] text-[#05a0ec] relative z-10">After Tapito Assistant</p>
-              <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" className="mt-12 space-y-8 text-2xl font-black relative z-10">
+              <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" className="mt-6 lg:mt-12 space-y-4 lg:space-y-8 text-base lg:text-2xl font-black relative z-10">
                 {["Voice query everything", "Instant business answers", "Total floor mobility", "Decision-ready brief"].map((item) => (
                   <motion.div key={item} variants={{ initial: { x: 40, opacity: 0 }, whileInView: { x: 0, opacity: 1 } }} transition={{ duration: 0.6 }} className="flex items-center gap-6 hover:translate-x-3 transition-transform cursor-default"><CheckCircle2 size={32} className="text-emerald-400" />{item}</motion.div>
                 ))}

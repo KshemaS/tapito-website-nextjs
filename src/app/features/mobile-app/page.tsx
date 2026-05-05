@@ -149,53 +149,53 @@ export default function MobileAppPage() {
         </Container>
       </section>
 
-      <section className="py-16 4xl:py-24 relative overflow-hidden font-inter">
+      <section className="py-16 md:py-24 relative overflow-hidden font-inter">
         <div className="absolute top-0 right-0 w-2/3 h-full bg-[radial-gradient(circle_at_top_right,rgba(9,53,140,0.02),transparent_70%)] pointer-events-none" />
         <Container>
           <div className="mb-14 max-w-3xl">
             <motion.p {...fadeUp()} className="text-xs font-black uppercase tracking-[0.22em] text-[#09358c]">How it works</motion.p>
-            <h2 className="mt-4 text-3xl md:text-4xl 4xl:text-5xl font-black tracking-[-0.05em] text-slate-950 uppercase tracking-tighter">A command surface for the palm.</h2>
+            <h2 className="mt-4 text-3xl md:text-4xl font-black tracking-[-0.05em] text-slate-950 uppercase tracking-tighter">A command surface for the palm.</h2>
           </div>
-          <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] items-center">
-            <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="space-y-6">
+          <div className="grid gap-10 lg:gap-12 lg:grid-cols-[0.8fr_1.2fr] items-center">
+            <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="space-y-4 md:space-y-6">
               {[["01", "Filter the noise", "Tapito filters signal from noise so leaders only get alerts worth acting on."], ["02", "Contextualize the alert", "Each push opens a quick mobile dashboard with trends, comparison tokens, and history."], ["03", "Take the action", "Escalate, approve, or investigate directly from the phone without a desktop login."]].map(([step, title, text], index) => (
-                <motion.div key={step} {...fadeUp(index * 0.15)} {...cardHover} className="rounded-[2.2rem] border border-slate-200 bg-white p-8 group hover:bg-slate-50 transition-colors h-full flex items-start gap-8 shadow-sm">
-                  <motion.div whileHover={{ scale: 1.1, rotate: 10 }} className="flex h-15 w-15 shrink-0 items-center justify-center rounded-[1.25rem] bg-slate-950 text-base font-black text-white group-hover:bg-[#09358c] transition-colors shadow-lg">{step}</motion.div>
+                <motion.div key={step} {...fadeUp(index * 0.15)} {...cardHover} className="rounded-[1.75rem] md:rounded-[2.2rem] border border-slate-200 bg-white p-6 md:p-8 group hover:bg-slate-50 transition-colors h-full flex items-start gap-4 md:gap-8 shadow-sm">
+                  <motion.div whileHover={{ scale: 1.1, rotate: 10 }} className="flex h-12 w-12 md:h-15 md:w-15 shrink-0 items-center justify-center rounded-[1rem] md:rounded-[1.25rem] bg-slate-950 text-sm md:text-base font-black text-white group-hover:bg-[#09358c] transition-colors shadow-lg">{step}</motion.div>
                   <div>
-                    <h3 className="text-4xl font-black text-slate-950 group-hover:text-[#09358c] transition-colors uppercase tracking-tight">{title}</h3>
-                    <p className="mt-3 text-base font-medium leading-8 text-slate-600">{text}</p>
+                    <h3 className="text-xl md:text-2xl lg:text-4xl font-black text-slate-950 group-hover:text-[#09358c] transition-colors uppercase tracking-tight">{title}</h3>
+                    <p className="mt-2 md:mt-3 text-sm md:text-base font-medium leading-relaxed md:leading-8 text-slate-600">{text}</p>
                   </div>
                 </motion.div>
               ))}
             </motion.div>
-            <motion.div variants={revealVariant} initial="initial" whileInView="whileInView" viewport={{ once: true, amount: 0.14 }} className="rounded-[2rem] md:rounded-[3.5rem] border border-blue-200 bg-gradient-to-br from-white via-blue-50/40 to-indigo-50/40 p-10 lg:p-14 relative backdrop-blur-sm group shadow-inner overflow-hidden">
-               <div className="grid gap-5 md:grid-cols-3 relative z-10">
+            <motion.div variants={revealVariant} initial="initial" whileInView="whileInView" viewport={{ once: true, amount: 0.14 }} className="rounded-[2rem] md:rounded-[3.5rem] border border-blue-200 bg-gradient-to-br from-white via-blue-50/40 to-indigo-50/40 p-6 md:p-10 lg:p-14 relative backdrop-blur-sm group shadow-inner overflow-hidden">
+               <div className="grid gap-4 md:gap-5 grid-cols-1 sm:grid-cols-3 relative z-10">
                 {[
                   { label: "Alert speed", value: "Realtime", icon: Bell },
                   { label: "Stores", value: "30+", icon: Smartphone },
                   { label: "Decision lag", value: "-60%", icon: Sparkles },
                 ].map((item, index) => (
-                  <motion.div key={item.label} variants={fadeUp(0.2 + index * 0.1)} {...cardHover} className="luminous-card luminous-surface-strong rounded-[2.2rem] border border-slate-100 bg-white p-7 text-center group/card">
-                    <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-[1.2rem] bg-[#09358c]/5 text-[#09358c] group-hover/card:bg-[#09358c] group-hover/card:text-white transition-all shadow-sm"><item.icon size={26} /></div>
-                    <p className="mt-5 text-[10px] font-black uppercase tracking-[0.25em] text-slate-400">{item.label}</p>
-                    <p className="mt-2 text-4xl font-black text-slate-950 group-hover/card:scale-110 transition-transform">{item.value}</p>
+                  <motion.div key={item.label} variants={fadeUp(0.2 + index * 0.1)} {...cardHover} className="luminous-card luminous-surface-strong rounded-[1.75rem] md:rounded-[2.2rem] border border-slate-100 bg-white p-5 md:p-7 text-center group/card">
+                    <div className="mx-auto flex h-10 w-10 md:h-14 md:w-14 items-center justify-center rounded-[0.8rem] md:rounded-[1.2rem] bg-[#09358c]/5 text-[#09358c] group-hover/card:bg-[#09358c] group-hover/card:text-white transition-all shadow-sm"><item.icon size={20} className="md:w-6 md:h-6" /></div>
+                    <p className="mt-4 md:mt-5 text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] md:tracking-[0.25em] text-slate-400">{item.label}</p>
+                    <p className="mt-1 md:mt-2 text-2xl md:text-4xl font-black text-slate-950 group-hover/card:scale-110 transition-transform">{item.value}</p>
                   </motion.div>
                 ))}
               </div>
-              <motion.div initial={{ y: 20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ delay: 0.8 }} className="mt-10 rounded-[2.5rem] border border-blue-100 bg-white p-8 relative z-10 shadow-sm cursor-default">
-                 <p className="text-xs font-black text-slate-800 uppercase tracking-widest">Active decision queue</p>
-                 <div className="mt-8 space-y-4">
+              <motion.div initial={{ y: 20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ delay: 0.8 }} className="mt-6 md:mt-10 rounded-[1.75rem] md:rounded-[2.5rem] border border-blue-100 bg-white p-6 md:p-8 relative z-10 shadow-sm cursor-default">
+                 <p className="text-[10px] md:text-xs font-black text-slate-800 uppercase tracking-widest">Active decision queue</p>
+                 <div className="mt-6 md:mt-8 space-y-3 md:space-y-4">
                     {[
                       { t: "Stock Push Approval", n: "Branch 02 requires 140 SKUs by EOD", p: "High" },
                       { t: "Price Correction", n: "Whitefield Saree bundle vs Target", p: "Medium" },
                       { t: "Staff Efficiency", n: "Indiranagar peak hour coverage low", p: "Alert" }
                     ].map(d => (
-                      <motion.div key={d.t} whileHover={{ scale: 1.02, x: 5 }} className="rounded-4xl bg-slate-50 px-6 py-5 border border-transparent hover:border-[#09358c]/20 hover:bg-white transition-all flex items-center justify-between group/q">
-                        <div>
-                          <p className="text-sm font-black text-slate-900 uppercase tracking-tight">{d.t}</p>
-                          <p className="mt-1 text-xs font-medium text-slate-500">{d.n}</p>
+                      <motion.div key={d.t} whileHover={{ scale: 1.02, x: 5 }} className="rounded-[1.5rem] md:rounded-4xl bg-slate-50 px-4 md:px-6 py-4 md:py-5 border border-transparent hover:border-[#09358c]/20 hover:bg-white transition-all flex items-center justify-between group/q">
+                        <div className="min-w-0 pr-4">
+                          <p className="text-xs md:text-sm font-black text-slate-900 uppercase tracking-tight truncate">{d.t}</p>
+                          <p className="mt-0.5 md:mt-1 text-[10px] md:text-xs font-medium text-slate-500 truncate">{d.n}</p>
                         </div>
-                        <span className="h-2 w-2 rounded-full bg-[#09358c] animate-pulse" />
+                        <span className="h-2 w-2 shrink-0 rounded-full bg-[#09358c] animate-pulse" />
                       </motion.div>
                     ))}
                  </div>
@@ -205,19 +205,19 @@ export default function MobileAppPage() {
         </Container>
       </section>
 
-      <section className="py-16 4xl:py-24 relative overflow-hidden font-inter">
+      <section className="py-16 md:py-24 relative overflow-hidden font-inter">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle,rgba(9,53,140,0.02),transparent_70%)] pointer-events-none" />
         <Container>
           <div className="mb-14 text-center">
             <motion.p {...fadeUp()} className="text-xs font-black uppercase tracking-[0.22em] text-[#09358c]">Business impact</motion.p>
-            <h2 className="mt-4 text-3xl md:text-4xl 4xl:text-5xl font-black tracking-[-0.05em] text-slate-950 uppercase tracking-tighter">Visibility that stays with the team.</h2>
+            <h2 className="mt-4 text-3xl md:text-4xl font-black tracking-[-0.05em] text-slate-950 uppercase tracking-tighter">Visibility that stays with the team.</h2>
           </div>
-          <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="grid gap-12 md:grid-cols-3">
+          <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {[["24/7 Access", "Constant visibility", "Operational window across all timezone branches"], ["Realtime Alerts", "Zero-lag notification", "Instant push between signal and leader pocket"], ["+30% Speed", "Operational velocity", "Observed increase in decision execution time"]] .map(([value, label, note], index) => (
-              <motion.div key={label} {...fadeUp(index * 0.15)} {...cardHover} className="rounded-[2rem] md:rounded-[3.5rem] border border-slate-200 bg-white p-14 text-center group hover:bg-[#09358c]/5 transition-all shadow-sm">
-                <motion.p animate={{ scale: [1, 1.05, 1] }} transition={{ duration: 4, repeat: Infinity }} className="text-5xl font-black tracking-tight text-[#09358c] transition-transform group-hover:scale-110">{value}</motion.p>
-                <p className="mt-8 text-4xl font-black text-slate-950 uppercase tracking-tighter">{label}</p>
-                <p className="mt-4 text-sm font-medium leading-8 text-slate-500 max-w-[220px] mx-auto opacity-70 italic group-hover:opacity-100 transition-opacity">"{note}"</p>
+              <motion.div key={label} {...fadeUp(index * 0.15)} {...cardHover} className={`rounded-[2rem] md:rounded-[3.5rem] border border-slate-200 bg-white p-8 lg:p-14 text-center group hover:bg-[#09358c]/5 transition-all shadow-sm ${index === 2 ? "sm:col-span-2 lg:col-span-1" : ""}`}>
+                <motion.p animate={{ scale: [1, 1.05, 1] }} transition={{ duration: 4, repeat: Infinity }} className="text-3xl md:text-4xl lg:text-6xl font-black tracking-tight text-[#09358c] transition-transform group-hover:scale-110">{value}</motion.p>
+                <p className="mt-6 text-xl lg:text-2xl font-black text-slate-950 uppercase tracking-tighter break-words">{label}</p>
+                <p className="mt-4 text-sm font-medium leading-7 md:leading-8 text-slate-500 max-w-[220px] mx-auto opacity-70 italic group-hover:opacity-100 transition-opacity">"{note}"</p>
               </motion.div>
             ))}
           </motion.div>
@@ -226,23 +226,23 @@ export default function MobileAppPage() {
 
 
 
-      <section className="py-16 4xl:py-24">
+      <section className="py-16 md:py-24">
         <Container>
-          <motion.div {...fadeUp()} className="mb-14 text-center"><h2 className="text-3xl md:text-4xl 4xl:text-5xl font-black tracking-[-0.05em] text-slate-950 font-outfit uppercase tracking-tight">What Happens After You Enable This Feature?</h2></motion.div>
-          <div className="grid overflow-hidden rounded-[2rem] md:rounded-[4.5rem] border border-slate-200 shadow-[0_50px_150px_-70px_rgba(15,23,42,0.4)] md:grid-cols-2 relative h-full">
-            <motion.div initial={{ x: -100, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1 }} className="bg-white p-14 lg:p-24 relative overflow-hidden group">
+          <motion.div {...fadeUp()} className="mb-14 text-center"><h2 className="text-3xl md:text-4xl font-black tracking-[-0.05em] text-slate-950 font-outfit uppercase tracking-tight">What Happens After You Enable This Feature?</h2></motion.div>
+          <div className="grid overflow-hidden rounded-[2rem] md:rounded-[4.5rem] border border-slate-200 shadow-[0_50px_150px_-70px_rgba(15,23,42,0.4)] lg:grid-cols-2 relative h-full">
+            <motion.div initial={{ x: -100, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1 }} className="bg-white p-8 lg:p-14 relative overflow-hidden group">
               <p className="text-xs font-black uppercase tracking-[0.45em] text-slate-400 relative z-10">Before Tapito Mobile</p>
-              <div className="mt-14 space-y-10 text-3xl font-bold text-slate-400 relative z-10 opacity-60">
+              <div className="mt-6 lg:mt-14 space-y-4 lg:space-y-10 text-base lg:text-2xl font-bold text-slate-400 relative z-10 opacity-60">
                 <p>Out-of-office blindness</p>
                 <p>Reactive phoned-in updates</p>
                 <p>Strategic response lag</p>
                 <p>Passive desk-locked data</p>
               </div>
             </motion.div>
-            <motion.div initial={{ x: 100, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1 }} className="bg-slate-950 p-14 lg:p-24 text-white relative h-full group">
+            <motion.div initial={{ x: 100, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1 }} className="bg-slate-950 p-8 lg:p-14 text-white relative h-full group">
                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(9,53,140,0.15),transparent_70%)] pointer-events-none" />
               <p className="text-xs font-black uppercase tracking-[0.45em] text-[#05a0ec] relative z-10 font-black">After Tapito Mobile</p>
-              <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" className="mt-14 space-y-10 text-3xl font-black relative z-10">
+              <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" className="mt-8 lg:mt-14 space-y-4 lg:space-y-10 text-base lg:text-2xl font-bold text-white relative z-10">
                 {["Pocket command center", "Realtime active alerts", "Scalable agile leadership", "One-tap decision cards"].map((item) => (
                   <motion.div key={item} variants={{ initial: { x: 50, opacity: 0 }, whileInView: { x: 0, opacity: 1 } }} transition={{ duration: 0.65 }} className="flex items-center gap-8 group hover:translate-x-4 transition-transform cursor-default"><CheckCircle2 size={38} className="text-emerald-400 shrink-0" />{item}</motion.div>
                 ))}
@@ -265,7 +265,7 @@ export default function MobileAppPage() {
 
               <div className="relative z-10 max-w-3xl">
                 <Quote size={48} className="text-white/20 mb-6" />
-                <blockquote className="text-4xl md:text-3xl lg:text-4xl font-black text-white leading-tight mb-8">
+                <blockquote className="text-2xl md:text-3xl lg:text-4xl font-black text-white leading-tight mb-8">
                   {feature.quote.text}
                 </blockquote>
                 <p className="text-white/70 font-bold text-base">
