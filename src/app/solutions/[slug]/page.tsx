@@ -20,13 +20,12 @@ import ClientStrip from "@/components/ClientStrip";
 import { FeatureShowcase } from "@/components/solution-detail/feature-showcase";
 import { IntegrationSection } from "@/components/solutions/IntegrationSection";
 import { SolutionTestimonials } from "@/components/solutions/SolutionTestimonials";
-import { cn } from "@/lib/utils";
 import Capabilities from "@/components/solution-detail/core-capabilities";
-import Impacts from "@/components/solution-detail/impacts";
 import StrategicAdvantage from "@/components/solution-detail/strategic-advantage";
 import Challenges from "@/components/solution-detail/challenges";
 import CTASection from "@/components/CTA-card";
 import { FAQ } from "@/components/solutions/FAQ";
+import { motion, AnimatePresence } from "framer-motion";
 
 const solutionDetails: Record<string, any> = {
   "building-materials": {
@@ -205,30 +204,38 @@ export default function SolutionDetailPage() {
   const params = useParams();
   const slug = params.slug as string;
   const data = solutionDetails[slug] || defaultData;
-
   return (
-    <main className="min-h-screen bg-white">
-      <SolutionsHero 
-        badge="VERTICAL SOLUTION"
-        titlePrimary={data.title}
-        titleSecondary="Solutions"
-        description={data.description}
-      />
-      <ClientStrip />
-      <StrategicAdvantage data={data} />
-      <Challenges data={data} />
-      <Capabilities data={data} />
-      <FeatureShowcase />
-      <IntegrationSection />
-      <SolutionTestimonials />
-      <FAQ items={data.faqs} />
-      <CTASection
-        title="Ready to solve your challenges?"
-        description="Join hundreds of retail giants who have transformed their data into a revenue engine with Tapito."
-        badge="READY TO TRANSFORM?"
-        image="/assets/images/about/ready-to-tranform.png"
-        isAbout={false}
-      />
-    </main>
+    <AnimatePresence mode="wait">
+      <motion.main
+        key={slug}
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -10 }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
+        className="min-h-screen bg-white"
+      >
+        <SolutionsHero 
+          badge="VERTICAL SOLUTION"
+          titlePrimary={data.title}
+          titleSecondary="Solutions"
+          description={data.description}
+        />
+        <ClientStrip />
+        <StrategicAdvantage data={data} />
+        <Challenges data={data} />
+        <Capabilities data={data} />
+        <FeatureShowcase />
+        <IntegrationSection />
+        <SolutionTestimonials />
+        <FAQ items={data.faqs} />
+        <CTASection
+          title="Ready to solve your challenges?"
+          description="Join hundreds of retail giants who have transformed their data into a revenue engine with Tapito."
+          badge="READY TO TRANSFORM?"
+          image="/assets/images/about/ready-to-tranform.png"
+          isAbout={false}
+        />
+      </motion.main>
+    </AnimatePresence>
   );
 }

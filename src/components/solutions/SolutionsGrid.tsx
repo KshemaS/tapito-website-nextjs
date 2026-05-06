@@ -109,7 +109,7 @@ function SolutionCard({ solution, index }: { solution: any, index: number }) {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: index * 0.1 }}
         viewport={{ once: true }}
-        className="group relative bg-white rounded-[2.5rem] p-8 lg:p-10 border-2 border-slate-100 transition-all duration-500 flex flex-col h-full overflow-hidden lg:hover:border-transparent max-lg:shadow-[0_40px_80px_-15px_rgba(5,160,236,0.12)] lg:hover:shadow-[0_40px_80px_-15px_rgba(5,160,236,0.12)] shadow-sm"
+        className="group relative bg-white rounded-[2.5rem] py-8 lg:py-12 4xl:py-20 px-8 lg:px-12 4xl:px-16 border-2 border-slate-100 transition-all duration-500 flex flex-col h-full overflow-hidden lg:hover:border-transparent max-lg:shadow-[0_40px_80px_-15px_rgba(5,160,236,0.12)] lg:hover:shadow-[0_40px_80px_-15px_rgba(5,160,236,0.12)] shadow-sm"
       >
         {/* Internal Grid Pattern */}
         <div className="absolute inset-0 bg-grid opacity-[0.02] pointer-events-none" />
@@ -165,7 +165,7 @@ export const SolutionsGrid = () => {
   return (
     <section className="section-padding">
       <Container>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20">
           {solutionsData.map((solution, i) => (
             <SolutionCard key={i} solution={solution} index={i} />
           ))}

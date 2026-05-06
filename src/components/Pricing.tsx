@@ -229,7 +229,7 @@ const FAQItem = ({ question, answer, index }: { question: string; answer: string
 };
 
 const Pricing = () => {
-  const [activePlan, setActivePlan] = useState(plans[2]);
+  const [activePlan, setActivePlan] = useState(plans[0]);
 
   return (
     <section className="pt-32 pb-32 lg:pt-48 relative overflow-hidden bg-[#fafbfc]">
@@ -291,7 +291,7 @@ const Pricing = () => {
               </motion.div>
               Pricing Plans
             </motion.div>
-            <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-slate-900 mb-8 sm:mb-10 tracking-tighter leading-[1] md:leading-[0.95]">
+            <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-slate-900 mb-8 sm:mb-10 tracking-tighter leading-[1] md:leading-[0.95] capitalize">
               Ready to revolutionize <br className="hidden sm:block" /> <span className="text-[#09358c]">your retail analytics?</span>
             </h2>
             <p className="text-lg md:text-2xl text-slate-500 max-w-2xl mx-auto leading-relaxed font-medium px-4">
@@ -303,13 +303,20 @@ const Pricing = () => {
         <div className="relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
             {/* Plan Selector */}
-            <div className="lg:col-span-4 flex flex-row lg:flex-col gap-4 overflow-x-auto lg:overflow-visible pb-6 lg:pb-0 scrollbar-hide -mx-4 px-4 lg:mx-0 lg:px-0">
-              {plans.map((plan, idx) => (
+            <div className="lg:col-span-4 flex flex-row lg:flex-col gap-4 overflow-x-auto lg:overflow-visible pb-6 lg:pb-0 scrollbar-hide -mx-4 px-4 lg:mx-0 lg:px-0 scroll-smooth">
+              {plans?.map((plan, idx) => (
                 <button
                   key={idx}
-                  onClick={() => setActivePlan(plan)}
+                  onClick={(e) => {
+                    setActivePlan(plan);
+                    e.currentTarget.scrollIntoView({
+                      behavior: "smooth",
+                      block: "nearest",
+                      inline: "center",
+                    });
+                  }}
                   className={cn(
-                    "group relative min-w-[200px] sm:min-w-[240px] lg:min-w-0 w-full text-left p-5 sm:p-6 rounded-2xl transition-all duration-500 border shrink-0",
+                    "group relative min-w-[200px] sm:min-w-[240px] lg:min-w-0 w-full text-left p-5 sm:p-6 rounded-2xl transition-all duration-500 border shrink-0 max-w-[240px] md:max-w-full",
                     activePlan.name === plan.name 
                       ? "bg-white border-[#05a0ec]/30 shadow-[0_20px_40px_-8px_rgba(9,53,140,0.12)]" 
                       : "bg-white/40 border-transparent hover:bg-white/80 hover:border-blue-100"
@@ -362,7 +369,7 @@ const Pricing = () => {
 
         {/* Feature Hub — Unique Comparison */}
         <div className="mt-10 relative z-10 w-full" id="comparison">
-          <div className="text-center mb-16 px-4">
+          <div className="text-center px-4">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -371,7 +378,7 @@ const Pricing = () => {
               <Zap size={10} className="fill-current" />
               Full Feature Hub
             </motion.div>
-            <h3 className="text-3xl md:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight mb-6 leading-tight">
+            <h3 className="text-3xl md:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight mb-6 leading-tight capitalize">
               The technical <span className="text-[#09358c]">breakdown.</span>
             </h3>
             <p className="text-slate-500 font-medium max-w-xl mx-auto text-base sm:text-lg">
@@ -380,9 +387,9 @@ const Pricing = () => {
           </div>
 
           <div className="w-full overflow-x-auto pb-8 scrollbar-hide">
-            <div className="min-w-[800px]">
+            <div className="min-w-[600px] md:min-w-[800px]">
               {/* Unique Floating Header */}
-              <div className="grid grid-cols-12 gap-4 mb-10 px-10 py-6 sticky top-24 z-50 bg-white/60 backdrop-blur-3xl rounded-[2rem] border border-white/40 shadow-[0_12px_40px_-12px_rgba(0,0,0,0.05)]">
+              <div className="grid grid-cols-12 gap-4 mb-10 px-4 lg:px-10 py-6 sticky top-24 z-50 bg-white/60 backdrop-blur-3xl rounded-[20px] md:rounded-[1rem] border border-white/40 shadow-[0_12px_40px_-12px_rgba(0,0,0,0.05)]">
                 <div className="col-span-4 flex items-center">
                   <span className="text-[11px] font-black uppercase tracking-[0.2em] text-slate-400">Capabilities</span>
                 </div>
@@ -449,10 +456,10 @@ const Pricing = () => {
                     {section.rows.map((row, rIdx) => (
                       <motion.div
                         key={rIdx}
-                        className="group grid grid-cols-12 gap-4 items-center bg-white/40 hover:bg-white/90 border border-white/40 hover:border-blue-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] px-10 py-5 rounded-[1.5rem] transition-all duration-300"
+                        className="group grid grid-cols-12 gap-4 items-center bg-white/40 hover:bg-white/90 border border-white/40 hover:border-blue-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] px-4 lg:px-10 py-5 rounded-[1.5rem] transition-all duration-300"
                       >
                         <div className="col-span-4">
-                          <span className="text-[15px] font-bold text-slate-500 group-hover:text-[#09358c] transition-colors">{row.name}</span>
+                          <span className="text-[14px] md:text-[16px] font-bold text-slate-500 group-hover:text-[#09358c] transition-colors">{row.name}</span>
                         </div>
                         <div className="col-span-2 flex justify-center">{ValueBadge(row.starter)}</div>
                         <div className="col-span-2 flex justify-center">{ValueBadge(row.growth)}</div>
@@ -468,16 +475,16 @@ const Pricing = () => {
 
         </div>
 
-        <div className="mt-40 relative z-10 lg:px-4">
+        <div className="mt-6 md:mt-10 lg:mt-14 xl:mt-20 2xl:mt-30 4xl:mt-40 relative z-10 lg:px-4">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
             <div className="lg:col-span-5 xl:col-span-4">
               <div className="sticky top-32">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="inline-flex items-center gap-2 px-3 py-1 mb-6 text-[10px] font-bold uppercase tracking-[0.1em] text-blue-600 bg-blue-50/50 rounded-full border border-blue-100/50"
+                 <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-[10px] font-black uppercase tracking-widest text-[#05a0ec] mb-6"
                 >
+                  <Zap size={10} className="fill-current" />
                   FAQ
                 </motion.div>
                 <h3 className="text-4xl md:text-5xl font-extrabold text-[#1e293b] mb-6 tracking-tight leading-[1.1]">
@@ -578,7 +585,7 @@ const ValueBadge = (value: string | boolean) => {
   }
   return (
     <div className="inline-flex items-center px-4 py-2 rounded-xl bg-[#09358c]/[0.03] border border-[#09358c]/[0.06] group-hover:bg-[#05a0ec]/10 group-hover:border-[#05a0ec]/20 transition-all duration-300">
-      <span className="text-[12px] font-extrabold text-slate-700 group-hover:text-[#05a0ec] tracking-tighter whitespace-nowrap uppercase">{value}</span>
+      <span className="text-[10px] md:text-[12px] font-extrabold text-slate-700 group-hover:text-[#05a0ec] tracking-tighter whitespace-nowrap uppercase">{value}</span>
     </div>
   );
 };

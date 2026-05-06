@@ -195,10 +195,10 @@ export default function Insights() {
             <motion.div
               animate={{ y: [0, -20, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -top-10 right-0 2xl:-right-10 bg-gradient-to-br from-[#09358c] to-[#05a0ec] text-white p-6 rounded-2xl shadow-2xl z-20"
+              className="absolute -top-14 right-0 2xl:-right-10 bg-gradient-to-br from-[#09358c] to-[#05a0ec] text-white p-4 md:p-6 rounded-2xl shadow-2xl z-20"
             >
               <span className="text-[12px] lg:text-sm font-bold block mb-1">AI Recommendation</span>
-              <span className="text-[20px] md:text-[18px] xl:text-[22px] xl:text-2xl font-black">Re-order Ready</span>
+              <span className="text-[18px] xl:text-[22px] xl:text-2xl font-black">Re-order Ready</span>
             </motion.div>
           </div>
         </div>

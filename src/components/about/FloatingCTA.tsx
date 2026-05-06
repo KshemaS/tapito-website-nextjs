@@ -28,15 +28,15 @@ export default function FloatingCTA() {
           initial={{ opacity: 0, scale: 0.5, y: 100 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.5, y: 100 }}
-          className="fixed bottom-8 right-8 z-[90]"
+          className="fixed bottom-10 md:bottom-28 right-4 md:right-8 z-[90]"
         >
           <Link
             href="/contact"
-            className="group relative flex items-center gap-3 bg-slate-950 text-white px-6 py-4 rounded-full shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300"
+            className="group relative flex items-center gap-3 bg-slate-950 text-white px-6 py-3 md:py-4 rounded-full shadow-2xl hover:scale-103 active:scale-95 transition-all duration-300"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-[#05a0ec] to-[#06dcc3] rounded-full opacity-0 group-hover:opacity-100 transition-opacity blur-md" />
+            <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity blur-md" />
             <div className="relative flex items-center gap-3">
-              <span className="text-sm font-black uppercase tracking-widest">Book Demo</span>
+              <span className="text-sm font-semibold sm:font-bold font-black uppercase tracking-widest">Book Demo</span>
               <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
                 <Calendar size={16} />
               </div>

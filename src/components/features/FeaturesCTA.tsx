@@ -18,7 +18,7 @@ export const FeaturesCTA = () => {
           
           <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-16">
             <div className="max-w-2xl ">
-              <h2 className="text-2xl md:text-4xl lg:text-5xl 4xl:text-6xl font-black mb-6 leading-[1.1] tracking-tight text-white text-center lg:text-left">
+              <h2 className="text-2xl md:text-4xl lg:text-5xl 4xl:text-6xl font-black mb-6 leading-[1.1] tracking-tight text-white text-center lg:text-left capitalize">
                 Ready to revolutionize <br className="hidden xl:block" /> your retail analytics?
               </h2>
               <p className="text-slate-400 text-sm lg:text-lg 4xl:text-2xl font-medium leading-relaxed max-w-xl mx-auto lg:mx-0">

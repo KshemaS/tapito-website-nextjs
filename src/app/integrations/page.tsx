@@ -272,10 +272,7 @@ function OrbitalHero() {
                 />
               ))}
 
-              <div className="w-full h-full rounded-[2.2rem] md:rounded-[2.8rem] 
-bg-gradient-to-br from-blue-50 via-blue-50 to-cyan-50 
-border border-blue-100
-flex items-center justify-center relative z-10 p-4">
+              <div className="w-full h-full rounded-[2.2rem] md:rounded-[2.8rem] bg-gradient-to-br from-blue-50 via-blue-50 to-cyan-50 border border-blue-100 flex items-center justify-center relative z-10 p-4">
                 <img
                   src="/logo.svg"
                   alt="Tapito Logo"
@@ -413,12 +410,17 @@ export default function IntegrationsPage() {
   }, []);
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-white text-slate-900 selection:bg-blue-100 selection:text-blue-900 font-inter">
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="relative min-h-screen overflow-x-hidden bg-white text-slate-900 selection:bg-blue-100 selection:text-blue-900 font-inter integrations-page-padding"
+    >
       <InteractiveGrid />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[500px] bg-[radial-gradient(circle_at_top,rgba(9,53,140,0.13),transparent_40%),radial-gradient(circle_at_top_right,rgba(5,160,236,0.10),transparent_28%)]" />
 
       {/* ── 1. Hero ─────────────────────────────────────────────────────── */}
-      <section className="relative h-svh max-h-screen overflow-hidden flex items-center">
+      <section className="relative h-svh max-h-screen overflow-hidden flex items-center pt-20 md:pt-0">
         <Container>
           <div className="grid lg:grid-cols-[1.1fr_0.9fr] items-center gap-4 lg:gap-14">
 
@@ -429,7 +431,7 @@ export default function IntegrationsPage() {
                 Integrations
               </motion.div>
 
-              <motion.h1 {...fadeUp(0.08)} className="text-3xl sm:text-6xl lg:text-60px 4xl:text-[5.2rem] font-black  text-slate-950 mb-2 lg:mb-8 leading-[110%] 4xl:leading-[120%]">
+              <motion.h1 {...fadeUp(0.08)} className="text-[40px] lg:text-[60px] 2xl:text-6xl lg:text-60px 4xl:text-[5.2rem] font-black text-slate-950 mb-2 lg:mb-8 leading-[110%] 4xl:leading-[120%]">
                 Bring Every System <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#09358c] via-[#09358c] to-[#05a0ec]">
                   Into One Flow
@@ -638,6 +640,6 @@ export default function IntegrationsPage() {
         image="/assets/images/about/ready-to-tranform.png"
         isAbout={false}
       />
-    </div>
+    </motion.div>
   );
 }

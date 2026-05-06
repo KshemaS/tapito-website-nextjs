@@ -75,10 +75,10 @@ export function Footer() {
                </div>
             </div>
 
-            <div className="pt-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="pt-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-start md:items-center gap-5 md:gap-4">
                <p className="text-slate-400 text-sm">© 2026 Tapito AI Inc. All rights reserved.</p>
-               <div className="flex gap-8 text-sm">
-                  <Link href="#" className="text-slate-400 hover:text-slate-900">Privacy Policy</Link>
+               <div className="flex gap-4 sm:gap-6 lg:gap-8 sm:flex-row flex-col text-sm">
+                  <Link href="/privacy" className="text-slate-400 hover:text-slate-900">Privacy Policy</Link>
                   <Link href="#" className="text-slate-400 hover:text-slate-900">Terms of Service</Link>
                   <Link href="#" className="text-slate-400 hover:text-slate-900">Cookie Policy</Link>
                </div>

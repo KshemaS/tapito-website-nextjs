@@ -196,9 +196,6 @@ export default function Navbar() {
 
             {/* CTA's */}
             <div className="hidden lg:flex items-center gap-4">
-              <button className="py-2.5 px-7 text-[12px] uppercase tracking-widest font-black border-2 border-[#09358c] rounded-full text-[#09358c] hover:bg-[#09358c] hover:text-white transition-all duration-300">
-                Log in
-              </button>
               <button className="bg-[#09358c] text-white py-2.5 px-7 text-[12px] uppercase tracking-widest font-black rounded-full hover:shadow-lg hover:bg-[#09358c] transition-all duration-300">
                 Access Portal
               </button>
@@ -339,9 +336,9 @@ export default function Navbar() {
                 <img src="/logo.svg" alt="Logo" className="h-8" />
                 <button
                   onClick={closeMenu}
-                  className="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center text-slate-900 active:scale-90 transition-transform"
+                  className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-900 active:scale-90 transition-transform"
                 >
-                  <X size={24} />
+                  <X size={22} />
                 </button>
               </div>
 
@@ -371,7 +368,7 @@ export default function Navbar() {
                                 ? (e) => { e.preventDefault(); setMobileCompanyOpen(!mobileCompanyOpen); }
                                 : closeMenu
                             }
-                            className="text-3xl font-black text-slate-900 hover:text-[#09358c] transition-colors flex items-center gap-4"
+                            className="text-[22px] font-black text-slate-900 hover:text-[#09358c] transition-colors flex items-center gap-4"
                           >
                             <span className="text-xs font-bold text-slate-400 tabular-nums">0{idx + 1}</span>
                             {item.label}
@@ -386,7 +383,7 @@ export default function Navbar() {
                               className="p-2"
                             >
                               <ChevronDown
-                                size={28}
+                                size={22}
                                 className={cn("transition-transform", isExpanded && "rotate-180")}
                               />
                             </button>
@@ -403,7 +400,7 @@ export default function Navbar() {
                               className="mt-6 pl-8 flex flex-col gap-4 overflow-hidden"
                             >
                               {features.map((f) => (
-                                <Link key={f.slug} href={`/features/${f.slug}`} onClick={closeMenu} className="text-lg font-bold text-slate-600 hover:text-[#09358c]">
+                                <Link key={f.slug} href={`/features/${f.slug}`} onClick={closeMenu} className="text-[16px] font-bold text-slate-600 hover:text-[#09358c]">
                                   {f.title}
                                 </Link>
                               ))}
@@ -417,7 +414,7 @@ export default function Navbar() {
                               className="mt-6 pl-8 flex flex-col gap-4 overflow-hidden"
                             >
                               {solutionsData.map((s) => (
-                                <Link key={s.slug} href={`/solutions/${s.slug}`} onClick={closeMenu} className="text-lg font-bold text-slate-600 hover:text-[#09358c]">
+                                <Link key={s.slug} href={`/solutions/${s.slug}`} onClick={closeMenu} className="text-[16px] font-bold text-slate-600 hover:text-[#09358c]">
                                   {s.title}
                                 </Link>
                               ))}

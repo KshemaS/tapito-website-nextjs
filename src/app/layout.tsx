@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { Noto_Sans } from "next/font/google";
 import "./globals.css";
+import { Suspense } from "react";
 import Navbar from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import FloatingCTA from "@/components/about/FloatingCTA";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const notoSans = Noto_Sans({ 
   subsets: ["latin"], 
@@ -28,6 +30,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${notoSans.variable} font-sans antialiased text-slate-900`}>
+        <Suspense fallback={null}>
+          <ScrollToTop />
+        </Suspense>
         <Navbar />
         {children}
         <FloatingCTA />

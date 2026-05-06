@@ -44,7 +44,7 @@ export default function Hero({ keyHighlights }: HeroProps) {
               AI-powered analytics, real-time insights, and fully automated customer engagement —built to grow your revenue without manual effort.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+            <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto px-1.5 sm:px-2 md:px-[2px]">
               <button className="btn-premium flex items-center gap-2 text-lg px-10 py-5 w-full sm:w-auto justify-center font-normal" onClick={() => router.push('/contact')}>
                 Book a Demo
                 <ArrowRight size={20} />

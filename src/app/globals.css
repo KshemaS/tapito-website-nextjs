@@ -58,6 +58,21 @@
   .cursor-pointer-all {
     cursor: pointer !important;
   }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  @media (max-width: 400px) {
+    .integrations-page-padding {
+      padding-top: 26px !important;
+    }
+  }
 }
 
 @layer components {
