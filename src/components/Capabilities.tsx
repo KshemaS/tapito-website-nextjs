@@ -45,17 +45,17 @@ export default function Capabilities() {
               viewport={{ once: true }}
               className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-[#09358c] text-xs font-bold mb-6"
              >
-                <Sparkles size={14} color="#09358c" />
+              <Sparkles size={14} color="#09358c" />
                CORE CAPABILITIES
              </motion.div>
              <h2 className="text-4xl md:text-6xl font-black text-slate-900 leading-[1.1]">
-               Built for the <br /> <span className="text-[#09358c]">Top 1% of Retail</span>
+               The Architecture of <br /> <span className="text-[#09358c]">Retail Dominance</span>
              </h2>
           </div>
           <div className="max-w-full lg:max-w-[453px]">
-             <p className="text-[16px] lg:text-[18px] 2xl:text-xl text-slate-500 leading-relaxed">
-               We don't just provide tools. We provide the intelligence that separates market leaders from everyone else.
-             </p>
+              <p className="text-[16px] lg:text-[18px] 2xl:text-xl text-slate-500 leading-relaxed italic">
+                &ldquo;We don't just provide tools. We provide the intelligence that separates market leaders from everyone else.&rdquo;
+              </p>
           </div>
         </div>
 

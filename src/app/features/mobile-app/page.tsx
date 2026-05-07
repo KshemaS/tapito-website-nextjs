@@ -89,14 +89,14 @@ export default function MobileAppPage() {
                   <div className="space-y-6 p-6">
                     <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.8 }}>
                       <p className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-400">Total revenue today</p>
-                      <motion.p animate={{ scale: [1, 1.02, 1] }} transition={{ duration: 4, repeat: Infinity }} className="mt-2 text-5xl font-black text-slate-950 tracking-tighter">Rs 4.24L</motion.p>
+                      <motion.p animate={{ scale: [1, 1.02, 1] }} transition={{ duration: 4, repeat: Infinity }} className="mt-2 text-5xl font-black text-slate-950 tracking-tighter">$5,240</motion.p>
                       <p className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-4 py-1.5 text-[10px] font-black text-emerald-600 uppercase tracking-widest">+12.4% vs L.W.</p>
                     </motion.div>
                     
                     <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" className="grid grid-cols-2 gap-4">
                       {[
                         { label: "Bills", value: "124", color: "text-[#09358c]" },
-                        { label: "ABV", value: "Rs 3.4k", color: "text-[#05a0ec]" }
+                        { label: "ABV", value: "$42", color: "text-[#05a0ec]" }
                       ].map((item, idx) => (
                         <motion.div key={item.label} variants={{ initial: { y: 20, opacity: 0 }, whileInView: { y: 0, opacity: 1 } }} className="rounded-4xl border border-slate-100 bg-slate-50 p-4 hover:border-[#09358c]/20 transition-colors">
                           <p className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-400">{item.label}</p>

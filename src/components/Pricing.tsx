@@ -545,10 +545,6 @@ const Pricing = () => {
                     answer: "Yes, Enterprise customers can utilize SSO integration (Okta, Azure AD) for secure and centralized access management."
                   },
                   {
-                    question: "What compliance certifications does Tapito hold?",
-                    answer: "Tapito is SOC2 Type II compliant and adheres to GDPR and CCPA regulations to ensure your data is always secure and handled ethically."
-                  },
-                  {
                     question: "What support options are available?",
                     answer: "Support varies by plan, ranging from email and chat for Starter to dedicated account managers and 24/7 priority support for Elite and Enterprise."
                   }

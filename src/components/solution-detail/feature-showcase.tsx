@@ -12,18 +12,21 @@ import {
   Users,
   ArrowRight,
   CheckCircle2,
-  ChevronDown
+  ChevronDown,
+  Package,
+  TrendingUp,
+  BarChart
 } from "lucide-react";
 import Container from "@/components/Container";
 import { cn } from "@/lib/utils";
 
 const showcaseItems = [
   {
-    id: "alerts",
-    icon: Bell,
-    title: "Deliver Critical Alerts With Real-Time Transactional Alerts",
-    description: "Ensure your customers are always informed with critical alerts through a unified API and a dedicated dashboard for effortless tracking.",
-    visual: "alerts"
+    id: "product-intelligence",
+    icon: BarChart,
+    title: "Intelligent Product Velocity & Performance",
+    description: "Gain a competitive edge with AI that continuously tracks product demand and performance, ensuring you always stock what your customers are searching for next.",
+    visual: "product-intelligence"
   },
   {
     id: "loyalty",
@@ -94,7 +97,7 @@ export const FeatureShowcase = () => {
               >
                 {/* Visual Area */}
                 <div className="relative flex-1 w-full overflow-hidden flex items-center justify-center mb-12">
-                   {safeIndex === 0 ? <AlertsVisual /> : safeIndex === 1 ? <LoyaltyVisual /> : <UpsellVisual />}
+                   {safeIndex === 0 ? <ProductVisual /> : safeIndex === 1 ? <LoyaltyVisual /> : <UpsellVisual />}
                 </div>
 
                 {/* Text Content */}
@@ -157,7 +160,7 @@ export const FeatureShowcase = () => {
                         {/* Visual Area (Responsive for mobile) */}
                         <div className="h-[350px] bg-slate-50 rounded-2xl overflow-hidden flex items-center justify-center relative">
                           <div className="scale-75 md:scale-90 transform origin-center w-full h-full">
-                            {index === 0 ? <AlertsVisual /> : index === 1 ? <LoyaltyVisual /> : <UpsellVisual />}
+                            {index === 0 ? <ProductVisual /> : index === 1 ? <LoyaltyVisual /> : <UpsellVisual />}
                           </div>
                         </div>
                         
@@ -185,41 +188,53 @@ export const FeatureShowcase = () => {
 
 /* Visual Components (Keep them local to the file for now) */
 
-const AlertsVisual = () => (
+const ProductVisual = () => (
   <div className="w-full h-full relative flex flex-col items-center justify-center">
-    <div className="absolute top-0 px-5 py-2.5 bg-[#09358c] rounded-full border border-white/10 shadow-[0_15px_30px_-5px_rgba(9,53,140,0.3)] z-20 flex items-center gap-4">
+    <div className="absolute top-0 px-5 py-2.5 bg-slate-900 rounded-full border border-white/10 shadow-2xl z-20 flex items-center gap-4">
       <div className="flex gap-1.5">
-        <motion.div animate={{ opacity: [0.4, 1, 0.4] }} transition={{ duration: 2, repeat: Infinity }} className="w-1.5 h-1.5 rounded-full bg-white" />
-        <motion.div animate={{ opacity: [0.4, 1, 0.4] }} transition={{ duration: 2, delay: 0.3, repeat: Infinity }} className="w-1.5 h-1.5 rounded-full bg-blue-300" />
+        <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity }} className="w-2 h-2 rounded-full bg-blue-500" />
       </div>
-      <span className="text-[9px] font-black text-white uppercase tracking-[0.3em] whitespace-nowrap">AI-Logic: Monitoring Patterns</span>
+      <span className="text-[9px] font-black text-white uppercase tracking-[0.3em] whitespace-nowrap">Live Analysis: Product Velocity</span>
     </div>
 
-    <div className="w-56 p-5 bg-white border border-slate-100 rounded-2xl shadow-xl flex flex-col items-center mt-16 mb-10 relative z-10">
-      <div className="flex items-center gap-3 mb-2">
-         <div className="w-8 h-8 rounded-lg bg-[#09358c] flex items-center justify-center text-white"><Zap size={18} fill="currentColor" /></div>
-         <span className="text-sm font-black text-slate-900 tracking-tight">Tapito Inform</span>
-      </div>
-      <span className="text-[11px] text-slate-400 font-bold uppercase tracking-widest">Single API</span>
-    </div>
-
-    <div className="relative">
-       <div className="relative w-[160px] h-[280px] bg-slate-900 rounded-[2rem] border-[4px] border-slate-800 shadow-2xl overflow-hidden flex flex-col pt-6">
-          <div className="w-12 h-1 bg-slate-800 rounded-full mx-auto mb-4" />
-          <div className="w-full px-4">
-            <motion.div 
-              initial={{ scale: 0.9, opacity: 0, y: 10 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="w-full bg-white rounded-xl shadow-xl overflow-hidden p-3 space-y-2"
-            >
-               <div className="h-16 bg-[#09358c] rounded-lg relative overflow-hidden">
-                 <div className="absolute inset-0 bg-gradient-to-t from-[#09358c] to-transparent opacity-50" />
-               </div>
-               <p className="text-[8px] font-black text-slate-900 leading-tight">Market Alert! 🚀</p>
-               <div className="w-full py-1.5 bg-[#09358c] rounded text-center text-[7px] text-white font-black">VIEW NOW</div>
-            </motion.div>
+    <div className="relative w-full max-w-[400px] h-[300px] bg-white rounded-3xl shadow-2xl border border-slate-100 p-8 flex flex-col">
+       <div className="flex items-center justify-between mb-8">
+          <div className="flex items-center gap-3">
+             <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600"><BarChart size={20} /></div>
+             <span className="text-base font-black text-slate-900 tracking-tight">Top Sellers</span>
           </div>
+          <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Real-time</span>
+       </div>
+
+       <div className="space-y-6 flex-1">
+          {[
+            { label: "Premium Tiles", val: 85, color: "bg-blue-600" },
+            { label: "Sanitaryware", val: 62, color: "bg-blue-400" },
+            { label: "Electricals", val: 45, color: "bg-slate-200" }
+          ].map((item, i) => (
+            <div key={i} className="space-y-2">
+               <div className="flex justify-between text-[11px] font-black text-slate-600 uppercase tracking-wider">
+                  <span>{item.label}</span>
+                  <span>{item.val}% Velocity</span>
+               </div>
+               <div className="w-full h-2 bg-slate-50 rounded-full overflow-hidden">
+                  <motion.div 
+                    initial={{ width: 0 }}
+                    whileInView={{ width: `${item.val}%` }}
+                    transition={{ duration: 1.5, delay: i * 0.2 }}
+                    className={cn("h-full rounded-full", item.color)} 
+                  />
+               </div>
+            </div>
+          ))}
+       </div>
+
+       <div className="mt-8 pt-6 border-t border-slate-50 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+             <div className="w-2 h-2 rounded-full bg-emerald-500" />
+             <span className="text-[10px] font-bold text-slate-500">Inventory Optimized</span>
+          </div>
+          <TrendingUp size={16} className="text-blue-600" />
        </div>
     </div>
   </div>

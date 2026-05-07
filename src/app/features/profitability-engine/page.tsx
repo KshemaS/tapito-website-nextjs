@@ -131,9 +131,9 @@ export default function ProfitabilityEnginePage() {
 
               <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" className="mt-6 grid gap-4 md:grid-cols-3 relative z-10">
                 {[
-                  { label: "Best case", value: "Rs 1.45Cr", tone: "text-emerald-400" },
-                  { label: "Base case", value: "Rs 1.31Cr", tone: "text-[#05a0ec]" },
-                  { label: "Risk case", value: "Rs 1.12Cr", tone: "text-rose-400" }
+                  { label: "Best case", value: "$1.45M", tone: "text-emerald-400" },
+                  { label: "Base case", value: "$1.31M", tone: "text-[#05a0ec]" },
+                  { label: "Risk case", value: "$1.12M", tone: "text-rose-400" }
                 ].map((item, index) => (
                   <motion.div key={item.label} variants={{ initial: { opacity: 0, scale: 0.9 }, whileInView: { opacity: 1, scale: 1 } }} {...cardHover} className="luminous-card-dark rounded-[1.75rem] border border-white/10 bg-white/8 p-5 text-white group hover:bg-white/12 transition-colors">
                     <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40">{item.label}</p>
@@ -198,7 +198,7 @@ export default function ProfitabilityEnginePage() {
                 <p className="text-sm font-black text-slate-950">Scenario comparison result</p>
                 <div className="mt-6 space-y-4">
                   {[
-                    ["Price increase +3%", "Expected margin lift of Rs 42k/mo", "text-emerald-600"],
+                    ["Price increase +3%", "Expected margin lift of $500/mo", "text-emerald-600"],
                     ["Supplier cost +6%", "Pressure on Fresh category by Wk 5", "text-rose-600"],
                     ["Inventory cut -10%", "Safer cash position, 0.4x stock-out risk", "text-[#09358c]"],
                   ].map(([title, note, tone], idx) => (

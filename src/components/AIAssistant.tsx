@@ -65,7 +65,7 @@ export default function AIAssistant() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentQuery((prev) => (prev + 1) % queries.length);
-    }, 6000);
+    }, 8000);
     return () => clearInterval(timer);
   }, []);
 
@@ -102,7 +102,7 @@ export default function AIAssistant() {
               </p>
 
               <div className="grid grid-cols-1 gap-4">
-                 {queries.map((q, i) => (
+                 {queries?.map((q, i) => (
                    <motion.button 
                     key={i}
                     initial={false}

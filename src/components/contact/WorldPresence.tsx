@@ -11,6 +11,7 @@ const LOCATIONS = [
   { 
     city: "Kochi", 
     country: "India", 
+    countryCode: "in",
     flag: "🇮🇳", 
     address: "3rd Floor, Noel Focus, Seaport - Airport Road, Kochi, Kerala 682037, India",
     x: 720, 
@@ -19,6 +20,7 @@ const LOCATIONS = [
   { 
     city: "Kannur", 
     country: "India", 
+    countryCode: "in",
     flag: "🇮🇳", 
     address: "STC Tower, Thana, Kannur, Kerala 670002, India",
     x: 712, 
@@ -27,6 +29,7 @@ const LOCATIONS = [
   { 
     city: "Hyderabad", 
     country: "India", 
+    countryCode: "in",
     flag: "🇮🇳", 
     address: "House No 12-26/D/A/1, NH 44, Shamshabad, Hyderabad, India",
     x: 694, 
@@ -35,6 +38,7 @@ const LOCATIONS = [
   { 
     city: "Dubai", 
     country: "UAE", 
+    countryCode: "ae",
     flag: "🇦🇪", 
     address: "RA08 YA03, Jebel Ali Free Zone North, P.O. Box 263950, Dubai, UAE",
     x: 635.3, 
@@ -43,6 +47,7 @@ const LOCATIONS = [
   { 
     city: "Doha", 
     country: "Qatar", 
+    countryCode: "qa",
     flag: "🇶🇦", 
     address: "Building No: 371, Zone 56, Street 340, Salwa Road, Doha, Qatar",
     x: 645, 
@@ -51,6 +56,7 @@ const LOCATIONS = [
   { 
     city: "Dar es Salaam", 
     country: "Tanzania", 
+    countryCode: "tz",
     flag: "🇹🇿", 
     address: "Plot No 21, Morocco Area, New Bagamoyo Road, Dar es Salaam, Tanzania",
     x: 583, 
@@ -59,6 +65,7 @@ const LOCATIONS = [
   { 
     city: "Cardiff", 
     country: "Australia", 
+    countryCode: "au",
     flag: "🇦🇺", 
     address: "Suite 5/40 Harrison Street, PO Box 298, Cardiff NSW 2285, Australia",
     x: 910, 
@@ -194,6 +201,11 @@ export default function WorldPresence() {
                               <span className="text-[14px] font-bold text-slate-900 tracking-tight">
                                 {loc.city}
                               </span>
+                              <img 
+                                src={`https://flagcdn.com/w40/${loc.countryCode}.png`} 
+                                alt={loc.country}
+                                className="w-5 h-auto rounded-[2px] shadow-sm"
+                              />
                             </div>
                             <p className="text-[11px] text-slate-500 leading-[1.4] font-medium">
                               {loc.address}
@@ -205,11 +217,15 @@ export default function WorldPresence() {
                             <>
                               <div className="w-px bg-slate-100 self-stretch" />
                               <div className="flex flex-col gap-1.5 min-w-[180px] max-w-[200px]">
-                                <div className="flex items-center gap-2.5">
-                                  <span className="text-xl leading-none">{LOCATIONS.find(l => l.city === "Kannur")?.flag}</span>
+                                <div className="flex items-center justify-between">
                                   <span className="text-[14px] font-bold text-slate-900 tracking-tight">
                                     Kannur
                                   </span>
+                                  <img 
+                                    src="https://flagcdn.com/w40/in.png" 
+                                    alt="India"
+                                    className="w-5 h-auto rounded-[2px] shadow-sm"
+                                  />
                                 </div>
                                 <p className="text-[11px] text-slate-500 leading-[1.4] font-medium">
                                   {LOCATIONS.find(l => l.city === "Kannur")?.address}
@@ -255,11 +271,15 @@ export default function WorldPresence() {
               <div className="absolute inset-0 bg-gradient-to-br from-blue-50/0 to-sky-50/0 group-hover:from-blue-50/60 group-hover:to-sky-50/40 transition-all duration-500 rounded-[1.5rem]" />
 
             <div className="relative z-10">
-              <div className="flex items-center gap-4 mb-4">
-                <span className="text-2xl">{office.flag}</span>
+              <div className="flex items-center justify-between mb-4">
                 <h4 className="text-xl font-black text-slate-900 group-hover:text-[#05a0ec] transition-colors uppercase tracking-tight">
                   {office.city}
                 </h4>
+                <img 
+                  src={`https://flagcdn.com/w80/${office.countryCode}.png`} 
+                  alt={office.country}
+                  className="w-8 h-auto rounded-sm shadow-sm border border-slate-100" 
+                />
               </div>
               <p className="text-[14px] text-slate-500 font-medium leading-relaxed">
                 {office.address}

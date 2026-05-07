@@ -85,9 +85,9 @@ export default function RevenueInsightsPage() {
             
               <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" className="mt-6 space-y-4 relative z-10">
                 {[
-                  { title: "Under-priced winner", text: "Organic Almonds priced below market", impact: "+Rs 84k/mo", action: "Reprice by Rs 45", theme: "bg-emerald-50 border-emerald-100 text-emerald-700 hover:bg-emerald-100/50" },
+                  { title: "Under-priced winner", text: "Organic Almonds priced below market", impact: "+$1,200/mo", action: "Reprice by $0.50", theme: "bg-emerald-50 border-emerald-100 text-emerald-700 hover:bg-emerald-100/50" },
                   { title: "Bundle upside", "text": "Yoga Mat buyers primed for Foam Rollers", impact: "+18% AOV", action: "Launch 'Yogi Pro' bundle", theme: "bg-[#05a0ec]/5 border-[#05a0ec]/10 text-[#09358c] hover:bg-[#05a0ec]/10" },
-                  { title: "Leak risk", "text": "Branch 04 velocity doesn't match sell-through", impact: "Recover Rs 12k", action: "Investigate shrinkage in Fresh", theme: "bg-rose-50 border-rose-100 text-rose-700 hover:bg-rose-100/50" },
+                  { title: "Leak risk", "text": "Branch 04 velocity doesn't match sell-through", impact: "Recover $150", action: "Investigate shrinkage in Fresh", theme: "bg-rose-50 border-rose-100 text-rose-700 hover:bg-rose-100/50" },
                 ].map((item, index) => (
                   <motion.div key={item.title} variants={{ initial: { opacity: 0, x: 20 }, whileInView: { opacity: 1, x: 0 } }} {...cardHover} className={`luminous-card rounded-[2rem] border p-6 transition-all group ${item.theme}`}>
                     <div className="flex items-start justify-between gap-4">
@@ -148,7 +148,7 @@ export default function RevenueInsightsPage() {
               <div className="grid gap-6 md:grid-cols-3 relative z-10">
                 {[
                   { icon: ShieldAlert, label: "Leak risk", value: "3 branches" },
-                  { icon: TrendingUp, label: "Upside found", value: "Rs 12L+" },
+                  { icon: TrendingUp, label: "Upside found", value: "$15,000+" },
                   { icon: Search, label: "Action queue", value: "6 ready" },
                 ].map((item, index) => (
                   <motion.div key={item.label} variants={fadeUp(0.2 + index * 0.1)} {...cardHover} className="luminous-card luminous-surface-strong rounded-[2rem] border border-[#09358c]/10 bg-white p-6 text-center group/card">
@@ -186,7 +186,7 @@ export default function RevenueInsightsPage() {
             <motion.h2 {...fadeUp(0.08)} className="mt-4 text-3xl md:text-4xl font-black tracking-[-0.05em] text-slate-950">Recover more value already inside the business.</motion.h2>
           </div>
           <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {[["Rs 12L+", "Recovered revenue", "Attributed to SKU-level re-pricing moves"], ["+18%", "Average order value", "Lifted via smart bundle placement"], ["Realtime", "Pricing speed", "Response to market shifts within minutes"]].map(([value, label, note], index) => (
+            {[["$15,000+", "Recovered revenue", "Attributed to SKU-level re-pricing moves"], ["+18%", "Average order value", "Lifted via smart bundle placement"], ["Realtime", "Pricing speed", "Response to market shifts within minutes"]].map(([value, label, note], index) => (
               <motion.div key={label} {...fadeUp(index * 0.15)} {...cardHover} className={`rounded-[2rem] md:rounded-[3rem] border border-slate-200 bg-white p-8 lg:p-12 text-center group hover:bg-[#05a0ec]/5 transition-all shadow-sm ${index === 2 ? "sm:col-span-2 lg:col-span-1" : ""}`}>
                 <motion.p animate={{ scale: [1, 1.05, 1], rotate: [0, 1, -1, 0] }} transition={{ duration: 4, repeat: Infinity }} className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[#09358c] transition-transform group-hover:scale-110">{value}</motion.p>
                 <p className="mt-6 text-xl lg:text-2xl font-black text-slate-950 break-words">{label}</p>

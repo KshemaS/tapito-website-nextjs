@@ -33,9 +33,10 @@ const companyLinks = [
 const navLinks = [
   { label: "Features", href: "/features" },
   { label: "Solutions", href: "/solutions" },
-  { label: "Pricing", href: "/pricing" },
+  { label: "Plans", href: "/pricing" },
   { label: "Partners", href: "/partners" },
   { label: "Company", href: "#" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export default function Navbar() {
@@ -193,14 +194,19 @@ export default function Navbar() {
                 })}
               </ul>
             </nav>
-
-            {/* CTA's */}
-            <div className="hidden lg:flex items-center gap-4">
-              <button className="bg-[#09358c] text-white py-2.5 px-7 text-[12px] uppercase tracking-widest font-black rounded-full hover:shadow-lg hover:bg-[#09358c] transition-all duration-300">
-                Access Portal
-              </button>
+            <div className="flex justify-end gap-4 items-center">
+              <div className="hidden lg:flex items-center gap-4">
+                <button className="border-2 border-[#09358c] text-[#09358c] py-2.5 px-7 text-[12px] uppercase tracking-widest font-black rounded-full hover:shadow-lg hover:text-white hover:bg-[#09358c] transition-all duration-300">
+                  Login
+                </button>
+              </div>
+              {/* CTA's */}
+              <div className="hidden lg:flex items-center gap-4">
+                <Link href="/contact" className="bg-[#09358c] text-white py-3 px-7 text-[12px] uppercase tracking-widest font-black rounded-full hover:shadow-lg hover:bg-[#09358c] transition-all duration-300">
+                  Request Demo
+                </Link>
+              </div>
             </div>
-
             {/* Mobile Toggle */}
             <button
               className="lg:hidden w-11 h-11 rounded-full bg-slate-900 text-white flex items-center justify-center shadow-lg transition-transform active:scale-95"
@@ -236,7 +242,7 @@ export default function Navbar() {
                       </div>
                       <div>
                         <h4 className="text-lg font-black text-slate-900 group-hover:text-[#09358c] transition-colors mb-2">{feature.title}</h4>
-                        <p className="text-sm text-slate-500 font-medium leading-relaxed line-clamp-2">{feature.description}</p>
+                        <p className="text-sm text-slate-500 font-medium leading-relaxed">{feature.description}</p>
                       </div>
                     </Link>
                   ))}
@@ -268,7 +274,7 @@ export default function Navbar() {
                       </div>
                       <div>
                         <h4 className="text-lg font-black text-slate-900 group-hover:text-[#09358c] transition-colors mb-2">{solution.title}</h4>
-                        <p className="text-sm text-slate-500 font-medium leading-relaxed line-clamp-2">{solution.desc}</p>
+                        <p className="text-sm text-slate-500 font-medium leading-relaxed">{solution.desc}</p>
                       </div>
                     </Link>
                   ))}
@@ -442,9 +448,9 @@ export default function Navbar() {
               </div>
 
               <div className="p-8 border-t border-slate-50 bg-slate-50/50">
-                <button className="w-full bg-[#09358c] text-white py-5 rounded-2xl font-black uppercase tracking-widest text-[13px] shadow-lg active:scale-95 transition-transform">
-                  Access Portal
-                </button>
+                <Link href="/contact" className="w-full bg-[#09358c] text-white py-5 rounded-2xl font-black uppercase tracking-widest text-[13px] shadow-lg active:scale-95 transition-transform">
+                  Request Demo
+                </Link>
                 <div className="mt-8 flex gap-6 grayscale opacity-50">
                   <span className="text-xs font-black uppercase tracking-widest text-slate-400">Follow us</span>
                   <div className="h-px flex-1 bg-slate-200 self-center" />

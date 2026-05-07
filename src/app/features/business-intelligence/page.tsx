@@ -46,7 +46,7 @@ const revealVariant = {
 } as any;
 
 const metrics = [
-  { label: "Network Revenue", value: "Rs 42.8L", note: "+14.2% this month" },
+  { label: "Network Revenue", value: "$52,800", note: "+14.2% this month" },
   { label: "Live Branches", value: "24", note: "All stores synced" },
   { label: "Margin Watch", value: "18.5%", note: "Top category holding" },
   { label: "Decision Lag", value: "-80%", note: "From report to action" },
@@ -125,7 +125,7 @@ export default function BusinessIntelligencePage() {
                 <div className="luminous-card-dark alive-panel rounded-[1.5rem] border border-white/12 bg-white/10 p-4">
                   <p className="text-sm font-black text-white">Branch Comparison</p>
                   <div className="mt-4 space-y-4">
-                    {[["Sector 12", "Rs 14.2L", "100%"], ["Industrial Park", "Rs 11.8L", "84%"], ["Downtown Hub", "Rs 9.4L", "68%"]].map(([name, value, width]) => (
+                    {[["Sector 12", "$17,200", "100%"], ["Industrial Park", "$14,800", "84%"], ["Downtown Hub", "$11,400", "68%"]].map(([name, value, width]) => (
                       <div key={name}>
                         <div className="mb-1 flex items-center justify-between text-xs font-bold text-white/80">
                           <span>{name}</span>
@@ -196,7 +196,7 @@ export default function BusinessIntelligencePage() {
                 <div className="rounded-xl border border-[#05a0ec]/10 bg-white p-5">
                   <p className="text-sm font-black text-slate-950">KPI grid</p>
                   <div className="mt-4 grid grid-cols-2 gap-3">
-                    {[["Bills", "12.4k"], ["ABV", "Rs 3.4k"], ["GP", "22.1%"], ["Stock", "Healthy"]].map(([label, value]) => (
+                    {[["Bills", "12.4k"], ["ABV", "$42"], ["GP", "22.1%"], ["Stock", "Healthy"]].map(([label, value]) => (
                       <motion.div key={label} whileHover={{ y: -5 }} className="luminous-card luminous-surface-strong soft-shine rounded-xl bg-[#09358c]/5 p-3">
                         <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[#09358c]">{label}</p>
                         <p className="mt-2 text-lg font-black text-slate-950">{value}</p>
@@ -241,7 +241,7 @@ export default function BusinessIntelligencePage() {
             <motion.h2 {...fadeUp(0.08)} className="mt-4 text-3xl md:text-4xl font-black tracking-[-0.05em] text-slate-950">Measurable operational lift across the network.</motion.h2>
           </div>
           <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="grid gap-6 md:grid-cols-3">
-            {[["+300%", "Reporting speed", "Less waiting for consolidated files"], ["-68%", "Response time", "Managers act while issues are fresh"], ["360deg", "Business visibility", "Branch, category, and revenue in one flow"]].map(([value, label, note], index) => (
+            {[["+300%", "Reporting speed", "Less waiting for consolidated files"], ["-68%", "Response time", "Managers act while issues are fresh"], ["360°", "Business visibility", "Branch, category, and revenue in one flow"]].map(([value, label, note], index) => (
               <motion.div key={label} {...fadeUp(index * 0.1)} {...cardHover} className="rounded-[2rem] md:rounded-[2.5rem] border border-slate-200 bg-gradient-to-b from-white to-[#09358c]/5 p-8 lg:p-10 text-center group">
                 <motion.p initial={{ scale: 0.5, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }} viewport={{ once: true }} className="text-4xl 2xl:text-6xl font-black tracking-tight text-[#09358c] transition-transform group-hover:scale-110">{value}</motion.p>
                 <p className="mt-6 text-lg md:text-xl font-black text-slate-950">{label}</p>

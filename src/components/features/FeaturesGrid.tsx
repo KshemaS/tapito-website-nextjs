@@ -124,7 +124,7 @@ export const featuresData = [
       { title: "Channel Attribution", description: "Understand whether your online or physical stores are driving your best customers and highest margins." },
       { title: "Pricing Strategy", description: "Simulate how a price change on a top SKU impacts overall revenue before committing to the change." },
     ],
-    quote: { text: "We found ₹12 lakhs of monthly revenue leakage within the first week of using Tapito.", author: "CFO, Electronics Retail" },
+    quote: { text: "We found $15,000 of monthly revenue leakage within the first week of using Tapito.", author: "CFO, Electronics Retail" },
   },
   {
     title: "AI Assistant with Voice Commands",

@@ -24,21 +24,25 @@ export const ExploreMoreFeatures = ({ currentSlug }: ExploreMoreFeaturesProps) =
   return (
     <section className="py-16 md:py-20 2xl:py-28 relative overflow-hidden bg-slate-50/50">
       <Container>
-        <div className="mb-16 text-center">
-          <motion.p {...fadeUp()} className="text-xs font-black uppercase tracking-[0.3em] text-[#09358c] mb-4">
-            Next Generation Retail
-          </motion.p>
-          <motion.h2 {...fadeUp(0.1)} className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-950 tracking-tight mb-6">
-            Explore More Features
-          </motion.h2>
-          <motion.p {...fadeUp(0.2)} className="text-base md:text-lg text-slate-600 max-w-2xl mx-auto font-medium">
-            Discover other powerful modules designed to transform your retail operations and drive exponential growth.
-          </motion.p>
+        <div className="mb-16 flex flex-col md:flex-row md:items-center justify-between gap-8">
+          <div className="max-w-3xl">
+            <motion.h2 {...fadeUp(0.1)} className="text-3xl md:text-4xl lg:text-5xl font-black text-[#09358c] tracking-tight mb-4">
+              Related Features
+            </motion.h2>
+          </div>
+          <motion.div {...fadeUp(0.3)}>
+            <Link 
+              href="/features" 
+              className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white text-[#09358c] border-2 border-[#09358c] text-sm font-black uppercase tracking-widest hover:bg-[#09358c] hover:text-white transition-all hover:scale-[1.05] shadow-lg shadow-slate-900/10"
+            >
+              View More <ArrowRight size={18} />
+            </Link>
+          </motion.div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {otherFeatures.map((feature, idx) => (
-              <motion.div
+            <motion.div
               key={feature.slug}
               {...fadeUp(0.1 + idx * 0.1)}
               whileHover={{ y: -10, transition: { duration: 0.3 } }}
@@ -50,12 +54,12 @@ export const ExploreMoreFeatures = ({ currentSlug }: ExploreMoreFeaturesProps) =
               <h3 className="text-xl font-black text-slate-950 mb-3 group-hover:text-[#09358c] transition-colors uppercase tracking-tight">
                 {feature.title}
               </h3>
-              <p className="text-slate-600 text-sm font-medium leading-relaxed mb-8 flex-1">
+              {/* <p className="text-slate-600 text-sm font-medium leading-relaxed mb-8 flex-1">
                 {feature.description}
-              </p>
+              </p> */}
               <Link 
                 href={`/features/${feature.slug}`}
-                className="inline-flex items-center gap-2 text-sm font-black uppercase tracking-widest text-slate-950 hover:text-[#09358c] transition-colors"
+                className="inline-flex items-center gap-2 text-sm font-black capitalize font-normal tracking-widest text-slate-950 hover:text-[#09358c] transition-colors"
               >
                 View Details <ArrowRight size={16} />
               </Link>

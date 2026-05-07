@@ -13,6 +13,11 @@ import {
   Users,
   Target,
   Rocket,
+  Brain,
+  MessageSquare,
+  Package,
+  Award,
+  DollarSign,
 } from "lucide-react";
 import Container from "@/components/Container";
 import { SolutionsHero } from "@/components/solutions/SolutionsHero";
@@ -26,52 +31,70 @@ import Challenges from "@/components/solution-detail/challenges";
 import CTASection from "@/components/CTA-card";
 import { FAQ } from "@/components/solutions/FAQ";
 import { motion, AnimatePresence } from "framer-motion";
+import IndustryExample from "@/components/solution-detail/industry-example";
 
 const solutionDetails: Record<string, any> = {
   "building-materials": {
     title: "Building Materials",
-    description: "Improve dealer and contractor engagement with real-time loyalty tracking and automated order management logic.",
+    description: "Turn Every Material Purchase Into Multiple Revenue Opportunities. Tapito helps building material businesses understand what customers are really trying to achieve, not just what they buy today.",
     howWeHelp: [
       { 
-        title: "Scale Contractor Loyalty", 
-        desc: "Automate rewards based on purchase frequency and bulk volume, ensuring contractors stay committed to your brand.", 
-        image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1200&auto=format&fit=crop",
-        icon: Users
+        title: "AI Sales Intelligence Engine", 
+        desc: "Tapito continuously analyzes purchase behavior, journey patterns, and product combinations to identify connected opportunities that sales teams often overlook.", 
+        image: "/ai-sales-intelligence.png",
+        icon: Brain
       },
       { 
-        title: "Dealer Visibility", 
-        desc: "Give every dealer a real-time dashboard of their material availability and regional demand trends.", 
+        title: "Predictive Opportunity Logic", 
+        desc: "When a customer purchases one product, Tapito predicts what they are likely to need next across categories like plumbing, tiles, and electricals.", 
         image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1200&auto=format&fit=crop",
-        icon: Search
+        icon: Zap
       },
       { 
-        title: "Order Automation", 
-        desc: "Replace slow manual checks with AI-verified order workflows for high-volume material transactions.", 
-        image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1200&auto=format&fit=crop",
-        icon: Zap
+        title: "Automated Conversion & Engagement", 
+        desc: "Automatically helps your business recommend, engage, and convert customers through smart follow-up reminders and automated campaigns.", 
+        image: "/automated-engagement.png",
+        icon: MessageSquare
+      },
+      { 
+        title: "Staff Incentive Intelligence", 
+        desc: "Motivate your sales force by providing real-time visibility into earned incentives and cross-category performance achievements.", 
+        image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop",
+        icon: Award
+      },
+      { 
+        title: "Strategic Business Mirror", 
+        desc: "Tapito acts as a mirror to your business, delivering deep behavioral insights and tailored recommendations for continuous success.", 
+        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop",
+        icon: LayoutDashboard
+      },
+      { 
+        title: "Marketing Cost Optimization", 
+        desc: "Eliminate wasteful spend by identifying high-conversion customers and automating highly targeted project-based campaigns.", 
+        image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1200&auto=format&fit=crop",
+        icon: DollarSign
       }
     ],
     challenges: [
-      { title: "Manual Order Intake", desc: "Dealers and contractors struggling with paper-based or slow digital order systems.", icon: Search },
-      { title: "Engagement Gaps", desc: "Minimal visibility into contractor purchase cycles and loyalty trends.", icon: ShieldAlert },
-      { title: "Supply Chain Latency", desc: "Delayed updates on material availability leading to regional warehouse bottlenecks.", icon: BarChart3 }
+      { title: "Missed Cross-Selling", desc: "Sales teams often only sell what is directly asked for, missing out on tiles, paints, or electricals for the same project.", icon: ShieldAlert },
+      { title: "Limited Customer Visibility", desc: "No intelligent system connecting customer intent with future purchasing needs leads to revenue leakage across categories.", icon: BarChart3 },
+      { title: "Unoptimized Marketing Spend", desc: "Traditional marketing wastes money targeting the wrong audience without identifying high-conversion customers.", icon: Rocket }
     ],
     features: [
-      { title: "Contractor Portal", desc: "A high-end mobile interface for contractors to track accounts, orders, and rewards.", icon: Smartphone },
-      { title: "Dealer Loyalty AI", desc: "Automated logic that predicts dealer churn and suggests inventory top-ups.", icon: Zap },
-      { title: "Real-time Order Sync", desc: "Unify every material order across your entire regional network instantly.", icon: PieChart }
+      { title: "Smart Cross-Selling Logic", desc: "Capture revenue opportunities that sales staff unintentionally miss during daily operations with automatic triggers for tiles, paints, and more.", icon: Zap },
+      { title: "Employee Incentive Intelligence", desc: "Motivate teams by showing incentives earned, cross-category performance, and product-wise achievements in real-time.", icon: Award },
+      { title: "Revenue Opportunity Detection", desc: "Highlights hidden revenue opportunities by continuously monitoring customer behavior and suggesting actions to increase revenue.", icon: TrendingUp }
     ],
     faqs: [
-      { question: "How does Tapito improve contractor loyalty?", answer: "Tapito uses AI to track contractor purchase cycles and volume. It automatically triggers personalized tier-based rewards and bulk-order incentives precisely when they are most likely to re-order, ensuring high engagement levels." },
-      { question: "Can it integrate with our existing ERP?", answer: "Yes, Tapito is built for seamless integration with major building material ERP systems. Our real-time sync ensures that material availability is consistently updated across all dealer dashboards." },
-      { question: "How long does the setup take?", answer: "Most building material providers are fully operational within 4-6 weeks, including data mapping and contractor portal deployment." },
-      { question: "Can it handle bulk pricing and specialized discounting?", answer: "Yes, Tapito’s engine supports complex pricing structures, allowing for automated, dynamic discounting based on dealer volume and loyalty tiers." },
-      { question: "Is there support for offline orders?", answer: "Tapito integrates with field sales tools to ensure that even offline orders taken at job sites are synced and attributed to the correct loyalty accounts once back online." }
+      { question: "How does Tapito identify connected purchase opportunities?", answer: "Using AI-powered behavioral intelligence, Tapito identifies patterns across categories like plumbing, tiles, electricals, paints, hardware, and interiors to predict what a customer will need next for their project." },
+      { question: "How does it help reduce marketing costs?", answer: "By identifying high-conversion customers and automating targeted campaigns based on buying intent, Tapito eliminates unnecessary promotions and ensures relevant offers reach the right customers." },
+      { question: "What can Tapito automate for our business?", answer: "It generates product recommendations, personalized offers, customer follow-up reminders, and automated engagement campaigns via WhatsApp, SMS, and Calls." },
+      { question: "How does it motivate sales teams?", answer: "Tapito shows staff their earned incentives and revenue contribution in real-time, encouraging them to recommend additional products and capture more opportunities." }
     ],
     impacts: [
-      { value: "42%", label: "Increase in Contractor Repeat Rates" },
-      { value: "28%", label: "Faster Order Processing Times" },
-      { value: "15%", label: "Uplift in Dealer Net Revenue" }
+      { value: "35%", label: "Increase in Average Order Value" },
+      { value: "42%", label: "Improvement in Cross-Category Sales" },
+      { value: "30%", label: "Reduction in Marketing Costs" }
     ]
   },
   "fashion": {
@@ -217,11 +240,11 @@ export default function SolutionDetailPage() {
         <SolutionsHero 
           badge="VERTICAL SOLUTION"
           titlePrimary={data.title}
-          titleSecondary="Solutions"
           description={data.description}
         />
         <ClientStrip />
         <StrategicAdvantage data={data} />
+        {slug === "building-materials" && <IndustryExample />}
         <Challenges data={data} />
         <Capabilities data={data} />
         <FeatureShowcase />

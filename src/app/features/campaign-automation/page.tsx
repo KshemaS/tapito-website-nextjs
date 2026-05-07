@@ -118,7 +118,7 @@ export default function CampaignAutomationPage() {
                     <p className="mt-2 text-sm font-bold text-white/80">Win-back conversion rate</p>
                   </div>
                   <div className="text-right">
-                    <p className="text-4xl font-black">Rs 2.4L recovered</p>
+                    <p className="text-4xl font-black">$3,000 recovered</p>
                     <p className="mt-1 text-sm font-medium text-white/70 italic">"from one automated intent flow"</p>
                   </div>
                 </div>

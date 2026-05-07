@@ -135,7 +135,7 @@ export default function GrowthSimulatorPage() {
                 <motion.div initial={{ x: 20, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ delay: 0.8 }} className="luminous-card-dark soft-shine rounded-[2.5rem] bg-slate-950 p-8 text-white shadow-[0_45px_120px_-60px_rgba(9,53,140,0.4)] relative overflow-hidden group/panel">
                   <div className="absolute top-0 right-0 w-32 h-32 bg-[#09358c]/20 blur-[60px] rounded-full pointer-events-none" />
                   <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#05a0ec]">Projected yield</p>
-                  <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }} className="mt-5 text-6xl font-black tracking-tighter group-hover/panel:scale-[1.02] transition-transform">Rs 85.4L</motion.p>
+                  <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }} className="mt-5 text-6xl font-black tracking-tighter group-hover/panel:scale-[1.02] transition-transform">$105,400</motion.p>
                   <p className="mt-2 text-sm font-bold text-slate-400 group-hover/panel:text-white/80 transition-colors italic">"Expected monthly revenue yield"</p>
                   
                   <div className="mt-8 h-2.5 rounded-full bg-white/10 overflow-hidden shadow-inner">

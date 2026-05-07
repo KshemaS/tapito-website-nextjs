@@ -60,8 +60,8 @@ export const solutionsData = [
     benefits: ["Trend Sync", "Localized Drops", "Viral Inventory"]
   },
   {
-    title: "Beauty",
-    slug: "beauty",
+    title: "Beauty & Health",
+    slug: "beauty-health",
     desc: "Personalize customer journeys with AI-driven skin profiles and hyper-targeted regime suggestions.",
     icon: Sparkle,
     color: "from-[#05a0ec] via-[#06dcc3] to-[#05a0ec]",
@@ -82,14 +82,6 @@ export const solutionsData = [
     icon: Utensils,
     color: "from-[#05a0ec] to-[#09358c]",
     benefits: ["Time-based Rewards", "Smart Menus", "Quick-Visit Logic"]
-  },
-  {
-    title: "eCommerce",
-    slug: "ecommerce",
-    desc: "Reduce cart abandonment with intelligent exit-intent behavioral triggers and multi-channel recovery.",
-    icon: Globe,
-    color: "from-[#09358c] via-[#05a0ec] to-[#06dcc3]",
-    benefits: ["Exit-Intent Logic", "Cart Recovery AI", "Behavioral Nudges"]
   },
   {
     title: "Travel & Hospitality",

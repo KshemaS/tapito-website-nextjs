@@ -35,7 +35,7 @@ export default function AboutPage() {
         
         <AboutDifferentiators />
 
-        <AboutTeam />
+        {/* <AboutTeam /> */}
         
         <AboutPresence />
         <CTASection

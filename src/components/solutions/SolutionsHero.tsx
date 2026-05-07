@@ -41,7 +41,6 @@ interface SolutionsHeroProps {
 export const SolutionsHero = ({
   badge = "ENTERPRISE SOLUTIONS",
   titlePrimary = "Retail Intelligence",
-  titleSecondary = "Redefined",
   description = "Tapito provides a comprehensive suite of AI-driven solutions designed to empower modern retail operations from the warehouse to the storefront.",
   floatingBadges = [
     { icon: Network, text: "Omnichannel Sync", delay: 0, left: 10 },
@@ -75,9 +74,9 @@ export const SolutionsHero = ({
           </span>
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl 4xl:text-8xl font-black text-slate-900 leading-none mb-10 tracking-tight font-medium">
             {titlePrimary} <br />
-            <span className="text-[#09358c]">
+            {/* <span className="text-[#09358c]">
               {titleSecondary}
-            </span>
+            </span> */}
           </h1>
           <p className="text-base md:text-lg lg:text-xl 4xl:text-2xl text-slate-500 max-w-3xl mx-auto leading-relaxed mb-12 font-medium">
             {description}

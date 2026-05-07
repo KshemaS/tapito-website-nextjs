@@ -101,7 +101,7 @@ export default function AIAssistantPage() {
 
               <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" className="mt-8 space-y-5 relative z-10">
                 <motion.div variants={bubbleVariant("left")} className="max-w-[85%] rounded-[2rem] rounded-tl-md bg-white/8 p-5 text-base font-medium leading-relaxed text-slate-200 border border-white/5">
-                  Good morning. Yesterday revenue closed at <span className="font-black text-white">Rs 14.5L</span>, up 8%. Want the strongest category and branch summary?
+                  Good morning. Yesterday revenue closed at <span className="font-black text-white">$17,500</span>, up 8%. Want the strongest category and branch summary?
                 </motion.div>
                 <motion.div variants={bubbleVariant("right")} className="ml-auto max-w-[80%] rounded-[2rem] rounded-tr-md bg-gradient-to-r from-[#09358c] to-[#05a0ec] p-5 text-base font-black leading-relaxed text-white shadow-xl shadow-[#09358c]/20">
                   Yes. Also tell me which branch had the highest GP margin.

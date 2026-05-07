@@ -18,7 +18,7 @@ export default function Automation() {
           <h2 className="text-sm font-bold uppercase tracking-widest text-[#09358c] mb-4">Automation Engine</h2>
           <h3 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Zero Manual Effort. <span className="text-[#09358c]">Maximum Impact.</span></h3>
           <p className="text-lg text-slate-600">
-            Set it and forget it. Tapito's automation engine works 24/7 to engage customers, recover carts, and drive repeat sales.
+            Set it and forget it. Tapito's automation engine works 24/7 to engage customers, retain them, and drive repeat sales.
           </p>
         </div>
 
@@ -93,7 +93,7 @@ export default function Automation() {
                   
                   <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-48 p-4 rounded-2xl bg-slate-900 text-white text-center shadow-2xl">
                      <span className="text-xs font-bold block mb-1">Conversion Rate</span>
-                     <span className="text-2xl font-bold text-emerald-400">+28.4%</span>
+                     <span className="text-2xl font-bold text-emerald-400">+48.4%</span>
                   </div>
                </div>
             </div>
