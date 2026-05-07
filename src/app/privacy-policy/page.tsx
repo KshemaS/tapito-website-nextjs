@@ -58,10 +58,6 @@ const PrivacyPage = () => {
             <h1 className="text-4xl md:text-6xl font-black text-slate-900 mb-6 tracking-tight">
               Privacy <span className="text-[#09358c]">Policy.</span>
             </h1>
-            <div className="flex items-center justify-center lg:justify-start gap-3 text-slate-400 font-medium">
-              <Clock size={16} />
-          
-            </div>
           </motion.div>
         </div>
 
