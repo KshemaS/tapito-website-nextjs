@@ -19,20 +19,20 @@ interface StrategicAdvantageProps {
 
 const StrategicAdvantage = ({ data }: StrategicAdvantageProps) => {
   return (
-    <section className="py-20 xl:py-20 3xl:py-32 bg-white overflow-hidden">
+    <section className="py-24 bg-white overflow-hidden relative">
       <Container>
         {/* Centered Heading */}
         <div className="text-center max-w-3xl mx-auto mb-20">
           <span className="text-xs font-black tracking-[0.4em] uppercase text-[#09358c] mb-6 block">
             STRATEGIC ADVANTAGE
           </span>
-          <h2 className="text-3xl md:text-6xl font-black text-slate-900 tracking-tight leading-tight">
+          <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tight leading-tight">
             Which way we help <br /> the{" "}
             <span className="text-[#09358c]">{data.title}</span> vertical
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch h-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {data?.howWeHelp.map((item: any, i: number) => (
             <motion.div
               key={i}
@@ -40,48 +40,54 @@ const StrategicAdvantage = ({ data }: StrategicAdvantageProps) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: i * 0.15 }}
-              className="group relative h-[450px] lg:h-[500px] 3xl:h-[600px] rounded-[18px] overflow-hidden cursor-pointer shadow-2xl shadow-slate-200/50"
+              className="group relative h-[500px] lg:h-[550px] rounded-[1.5rem] overflow-hidden cursor-pointer shadow-2xl shadow-slate-200/50 flex flex-col justify-end"
             >
-              {/* Background Image */}
-              <div className="absolute inset-0 transition-transform duration-1000 group-hover:scale-110">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-full object-cover"
+              {/* Full-Bleed Background Image */}
+              <div className="absolute inset-0 z-0">
+                <img 
+                  src={item.image} 
+                  alt={item.title} 
+                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                 />
-                {/* Overlays */}
-                <div className="absolute inset-0 bg-slate-950/40 group-hover:bg-slate-950/20 transition-colors duration-500" />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-100 transition-opacity" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-40" />
               </div>
 
-              {/* Content Container */}
-              <div className="absolute inset-0 p-6 2xl:p-10 flex flex-col justify-end">
-                {/* Numbering */}
-                <div className="text-[26px] xl:text-[34px] 3xl:text-4xl text-white lg:text-white/40 font-black mb-4 group-hover:text-white transition-colors font-medium">
-                  0{i + 1}
-                </div>
-
-                {/* Title and Expansion Description */}
-                <div className="space-y-4">
-                  <h3 className="text-[26px] lg:text-[30px] xl:text-[34px] 3xl:text-4xl font-black text-white leading-tight font-medium">
+              {/* Initially Visible Heading */}
+              <div className="absolute bottom-10 left-10 right-10 z-10 transition-all duration-500 group-hover:translate-y-20 group-hover:opacity-0">
+                 <h3 className="text-3xl lg:text-4xl font-black text-white leading-tight">
                     {item.title}
-                  </h3>
+                 </h3>
+                 <div className="mt-4 w-12 h-1 bg-[#09358c] rounded-full" />
+              </div>
 
-                  <div className="max-h-[300px] opacity-100 lg:max-h-0 lg:opacity-0 group-hover:max-h-[300px] group-hover:opacity-100 transition-all duration-700 ease-in-out overflow-hidden">
-                    <p className="text-base md:text-lg text-slate-200 font-medium leading-relaxed">
+              {/* Hover Revealed Glassmorphism Content Card */}
+              <div className="relative z-20 p-8 lg:p-10 m-4 rounded-[1rem] bg-white/10 backdrop-blur-2xl border border-white/20 shadow-2xl transition-all duration-700 translate-y-[110%] group-hover:translate-y-0 opacity-0 group-hover:opacity-100">
+                 {/* Floating Icon Badge */}
+                <div className="mt-6 space-y-4">
+                   <div className="w-12 h-12 rounded-2xl bg-[#09358c] shadow-xl shadow-blue-500/20 flex items-center justify-center text-white transform transition-transform duration-500 group-hover:scale-110 bg-white/10">
+                    <item.icon size={28} />
+                 </div>
+                    <h3 className="text-2xl lg:text-3xl font-black text-white leading-tight">
+                      {item.title}
+                    </h3>
+                    <p className="text-white/90 text-sm lg:text-base font-medium leading-relaxed">
                       {item.desc}
                     </p>
+                 </div>
 
-                    <button className="mt-8 flex items-center gap-2 text-white font-black text-xs uppercase tracking-widest bg-white/10 backdrop-blur-md px-6 py-3 rounded-full hover:bg-white hover:text-[#09358c] transition-all">
-                      Learn Detail <ArrowRight size={14} />
-                    </button>
-                  </div>
-                </div>
+                 {/* <div className="mt-8 flex items-center justify-between border-t border-white/10 pt-6">
+                    <span className="text-[10px] font-black text-white uppercase tracking-[0.2em] opacity-60">Strategic Advantage 0{i+1}</span>
+                    <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#09358c] shadow-lg transition-all duration-500 group-hover:translate-x-2">
+                       <ArrowRight size={18} />
+                    </div>
+                 </div> */}
               </div>
 
-              {/* Top Right Icon/Badge */}
-              <div className="absolute top-8 right-8 w-14 h-14 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl flex items-center justify-center text-white scale-100 lg:scale-0 group-hover:scale-100 transition-transform duration-500">
-                <item.icon size={24} />
+              {/* Top Right Decorative Badge */}
+              <div className="absolute top-8 right-8 px-4 py-4 bg-white backdrop-blur-md rounded-full border border-white text-white text-[9px] fon t-black uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200 ">
+                  {/* <div className="absolute -top-8 left-8 w-16 h-16 rounded-2xl bg-[#09358c] shadow-xl shadow-blue-500/20 flex items-center justify-center text-white transform transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-12"> */}
+                     <ArrowRight size={18} color="black" />
+                 {/* </div> */}
               </div>
             </motion.div>
           ))}

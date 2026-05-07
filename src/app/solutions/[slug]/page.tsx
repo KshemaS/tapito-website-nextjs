@@ -41,25 +41,25 @@ const solutionDetails: Record<string, any> = {
       { 
         title: "AI Sales Intelligence Engine", 
         desc: "Tapito continuously analyzes purchase behavior, journey patterns, and product combinations to identify connected opportunities that sales teams often overlook.", 
-        image: "/ai-sales-intelligence.png",
+        image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=1200&auto=format&fit=crop",
         icon: Brain
       },
       { 
         title: "Predictive Opportunity Logic", 
         desc: "When a customer purchases one product, Tapito predicts what they are likely to need next across categories like plumbing, tiles, and electricals.", 
-        image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1200&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1200&auto=format&fit=crop",
         icon: Zap
       },
       { 
         title: "Automated Conversion & Engagement", 
         desc: "Automatically helps your business recommend, engage, and convert customers through smart follow-up reminders and automated campaigns.", 
-        image: "/automated-engagement.png",
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop",
         icon: MessageSquare
       },
       { 
         title: "Staff Incentive Intelligence", 
         desc: "Motivate your sales force by providing real-time visibility into earned incentives and cross-category performance achievements.", 
-        image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=1200&auto=format&fit=crop",
         icon: Award
       },
       { 
@@ -71,7 +71,7 @@ const solutionDetails: Record<string, any> = {
       { 
         title: "Marketing Cost Optimization", 
         desc: "Eliminate wasteful spend by identifying high-conversion customers and automating highly targeted project-based campaigns.", 
-        image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1200&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=1200&auto=format&fit=crop",
         icon: DollarSign
       }
     ],
