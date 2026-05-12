@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 import { features } from "@/components/features/FeaturesGrid";
 import { solutionsData } from "@/components/solutions/SolutionsGrid";
+import AnimatedLucideIcon from "@/components/AnimatedLucideIcon";
 
 const companyLinks = [
   {
@@ -226,10 +227,10 @@ export default function Navbar() {
               exit={{ opacity: 0, y: 10 }}
               onMouseEnter={() => handleMouseEnter("Features")}
               onMouseLeave={handleMouseLeave}
-              className="absolute left-0 right-0 top-full bg-white border-b border-slate-100 shadow-2xl pointer-events-auto"
+              className="absolute left-0 right-0 top-full bg-white/95 backdrop-blur-2xl border-b border-slate-200/60 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] pointer-events-auto"
             >
-              <div className="max-w-7xl mx-auto p-10">
-                <div className="grid grid-cols-3 gap-8">
+              <div className="max-w-[1500px] mx-auto p-10">
+                <div className="grid grid-cols-3 gap-8 items-start">
                   {features.map((feature) => {
                     const isActive = pathname === `/features/${feature.slug}`;
                     return (
@@ -238,42 +239,49 @@ export default function Navbar() {
                         href={`/features/${feature.slug}`}
                         onClick={closeMenu}
                         className={cn(
-                          "group flex gap-5 p-5 rounded-3xl transition-all border shadow-sm",
-                          isActive 
-                            ? "bg-slate-50 border-slate-200" 
-                            : "bg-white border-transparent hover:bg-slate-50 hover:border-slate-100"
+                          "group relative rounded-3xl transition-all duration-300 border shadow-sm overflow-hidden",
+                          isActive
+                            ? "bg-[#09358c]/5 border-[#09358c]/20 shadow-inner"
+                            : "bg-white border-slate-100/60 hover:bg-white hover:border-[#09358c]/10 hover:shadow-[0_20px_40px_rgba(9,53,140,0.08)] hover:-translate-y-1"
                         )}
                       >
-                        <motion.div 
+                        <motion.div
                           initial="initial"
                           whileHover="hover"
-                          className="flex gap-5 w-full"
+                          className="flex gap-5 w-full p-6 relative z-10"
                         >
                           <div className={cn(
-                            "shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center transition-colors shadow-sm",
-                            isActive ? "bg-[#09358c] text-white" : "bg-slate-50 text-slate-900 group-hover:bg-[#09358c] group-hover:text-white"
+                            "shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 shadow-sm relative overflow-hidden",
+                            isActive 
+                              ? "bg-[#09358c] text-white shadow-[#09358c]/20 shadow-lg" 
+                              : "bg-slate-50 text-slate-600 group-hover:bg-[#09358c] group-hover:text-white group-hover:shadow-[#09358c]/30 group-hover:shadow-xl group-hover:scale-110"
                           )}>
-                            <feature.icon size={26} />
+                            <AnimatedLucideIcon icon={feature.icon} size={26} className="relative z-10 transition-transform duration-500 group-hover:rotate-6" />
+                            <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                           </div>
                           <div className="flex-1 min-w-0">
                             <h4 className={cn(
-                              "text-lg font-black transition-colors mb-1",
+                              "text-lg font-extrabold transition-colors mb-1.5",
                               isActive ? "text-[#09358c]" : "text-slate-900 group-hover:text-[#09358c]"
                             )}>{feature.title}</h4>
-                            <motion.div 
+                            <motion.div
                               variants={{
-                                initial: { height: 20 },
+                                initial: { height: 22 },
                                 hover: { height: "auto" }
                               }}
                               transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
                               className="relative overflow-hidden"
                             >
-                              <p className="text-sm text-slate-500 font-medium leading-relaxed truncate group-hover:whitespace-normal">
+                              <p className="text-[14px] text-slate-500 font-medium leading-relaxed line-clamp-1 group-hover:line-clamp-none group-hover:text-slate-600">
                                 {feature.description}
                               </p>
                             </motion.div>
                           </div>
                         </motion.div>
+                        {/* Subtle background glow on hover */}
+                        {!isActive && (
+                          <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#09358c]/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        )}
                       </Link>
                     );
                   })}
@@ -289,10 +297,10 @@ export default function Navbar() {
               exit={{ opacity: 0, y: 10 }}
               onMouseEnter={() => handleMouseEnter("Solutions")}
               onMouseLeave={handleMouseLeave}
-              className="absolute left-0 right-0 top-full bg-white border-b border-slate-100 shadow-2xl pointer-events-auto"
+              className="absolute left-0 right-0 top-full bg-white/95 backdrop-blur-2xl border-b border-slate-200/60 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] pointer-events-auto"
             >
-              <div className="max-w-7xl mx-auto p-10">
-                <div className="grid grid-cols-3 gap-8">
+              <div className="max-w-[1500px] mx-auto p-10">
+                <div className="grid grid-cols-3 gap-8 items-start">
                   {solutionsData.map((solution) => {
                     const isActive = pathname === `/solutions/${solution.slug}`;
                     return (
@@ -301,42 +309,48 @@ export default function Navbar() {
                         href={`/solutions/${solution.slug}`}
                         onClick={closeMenu}
                         className={cn(
-                          "group flex gap-5 p-5 rounded-3xl transition-all border shadow-sm hover:shadow-md",
-                          isActive 
-                            ? "bg-slate-50 border-slate-200" 
-                            : "bg-white border-transparent hover:bg-slate-50 hover:border-slate-100"
+                          "group relative rounded-3xl transition-all duration-300 border shadow-sm overflow-hidden",
+                          isActive
+                            ? "bg-[#09358c]/5 border-[#09358c]/20 shadow-inner"
+                            : "bg-white border-slate-100/60 hover:bg-white hover:border-[#09358c]/10 hover:shadow-[0_20px_40px_rgba(9,53,140,0.08)] hover:-translate-y-1"
                         )}
                       >
-                        <motion.div 
+                        <motion.div
                           initial="initial"
                           whileHover="hover"
-                          className="flex gap-5 w-full"
+                          className="flex gap-5 w-full p-6 relative z-10"
                         >
                           <div className={cn(
-                            "shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center transition-colors shadow-sm",
-                            isActive ? "bg-[#09358c] text-white" : "bg-slate-50 text-slate-900 group-hover:bg-[#09358c] group-hover:text-white"
+                            "shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 shadow-sm relative overflow-hidden",
+                            isActive 
+                              ? "bg-[#09358c] text-white shadow-[#09358c]/20 shadow-lg" 
+                              : "bg-slate-50 text-slate-600 group-hover:bg-[#09358c] group-hover:text-white group-hover:shadow-[#09358c]/30 group-hover:shadow-xl group-hover:scale-110"
                           )}>
-                            <solution.icon size={26} />
+                             <AnimatedLucideIcon icon={solution.icon} size={26} className="relative z-10 transition-transform duration-500 group-hover:rotate-6" />
+                            <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                           </div>
                           <div className="flex-1 min-w-0">
                             <h4 className={cn(
-                              "text-lg font-black transition-colors mb-1",
+                              "text-lg font-extrabold transition-colors mb-1.5",
                               isActive ? "text-[#09358c]" : "text-slate-900 group-hover:text-[#09358c]"
                             )}>{solution.title}</h4>
-                            <motion.div 
+                            <motion.div
                               variants={{
-                                initial: { height: 20 },
+                                initial: { height: 22 },
                                 hover: { height: "auto" }
                               }}
                               transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
                               className="relative overflow-hidden"
                             >
-                              <p className="text-sm text-slate-500 font-medium leading-relaxed truncate group-hover:whitespace-normal">
+                              <p className="text-[14px] text-slate-500 font-medium leading-relaxed line-clamp-1 group-hover:line-clamp-none group-hover:text-slate-600">
                                 {solution.desc}
                               </p>
                             </motion.div>
                           </div>
                         </motion.div>
+                        {!isActive && (
+                          <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#09358c]/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        )}
                       </Link>
                     );
                   })}
@@ -352,10 +366,10 @@ export default function Navbar() {
               exit={{ opacity: 0, y: 10 }}
               onMouseEnter={() => handleMouseEnter("Company")}
               onMouseLeave={handleMouseLeave}
-              className="absolute left-0 right-0 top-full bg-white border-b border-slate-100 shadow-2xl pointer-events-auto"
+              className="absolute left-0 right-0 top-full bg-white/95 backdrop-blur-2xl border-b border-slate-200/60 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] pointer-events-auto"
             >
               <div className="max-w-7xl mx-auto px-10 py-8">
-                <div className="grid grid-cols-3 gap-6">
+                <div className="grid grid-cols-3 gap-6 items-start">
                   {companyLinks.map((link) => {
                     const isActive = pathname === link.href;
                     return (
@@ -364,42 +378,48 @@ export default function Navbar() {
                         href={link.href}
                         onClick={closeMenu}
                         className={cn(
-                          "group flex gap-5 p-5 rounded-3xl transition-all border shadow-sm hover:shadow-md",
-                          isActive 
-                            ? "bg-slate-50 border-slate-200" 
-                            : "bg-white border-transparent hover:bg-slate-50 hover:border-slate-100"
+                          "group relative rounded-3xl transition-all duration-300 border shadow-sm overflow-hidden",
+                          isActive
+                            ? "bg-[#09358c]/5 border-[#09358c]/20 shadow-inner"
+                            : "bg-white border-slate-100/60 hover:bg-white hover:border-[#09358c]/10 hover:shadow-[0_20px_40px_rgba(9,53,140,0.08)] hover:-translate-y-1"
                         )}
                       >
-                        <motion.div 
+                        <motion.div
                           initial="initial"
                           whileHover="hover"
-                          className="flex gap-5 w-full"
+                          className="flex gap-5 w-full p-6 relative z-10"
                         >
                           <div className={cn(
-                            "shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center transition-colors shadow-sm",
-                            isActive ? "bg-[#09358c] text-white" : "bg-slate-50 text-slate-900 group-hover:bg-[#09358c] group-hover:text-white"
+                            "shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 shadow-sm relative overflow-hidden",
+                            isActive 
+                              ? "bg-[#09358c] text-white shadow-[#09358c]/20 shadow-lg" 
+                              : "bg-slate-50 text-slate-600 group-hover:bg-[#09358c] group-hover:text-white group-hover:shadow-[#09358c]/30 group-hover:shadow-xl group-hover:scale-110"
                           )}>
-                            <link.icon size={26} />
+                            <AnimatedLucideIcon icon={link.icon} size={26} className="relative z-10 transition-transform duration-500 group-hover:rotate-6" />
+                            <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                           </div>
                           <div className="flex-1 min-w-0">
                             <h4 className={cn(
-                              "text-lg font-black transition-colors mb-1",
+                              "text-lg font-extrabold transition-colors mb-1.5",
                               isActive ? "text-[#09358c]" : "text-slate-900 group-hover:text-[#09358c]"
                             )}>{link.label}</h4>
-                            <motion.div 
+                            <motion.div
                               variants={{
-                                initial: { height: 20 },
+                                initial: { height: 22 },
                                 hover: { height: "auto" }
                               }}
                               transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
                               className="relative overflow-hidden"
                             >
-                              <p className="text-sm text-slate-500 font-medium leading-relaxed truncate group-hover:whitespace-normal">
+                              <p className="text-[14px] text-slate-500 font-medium leading-relaxed line-clamp-1 group-hover:line-clamp-none group-hover:text-slate-600">
                                 {link.description}
                               </p>
                             </motion.div>
                           </div>
                         </motion.div>
+                        {!isActive && (
+                          <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#09358c]/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        )}
                       </Link>
                     );
                   })}
@@ -452,10 +472,10 @@ export default function Navbar() {
                       item.label === "Features"
                         ? mobileFeaturesOpen
                         : item.label === "Solutions"
-                        ? mobileSolutionsOpen
-                        : item.label === "Company"
-                        ? mobileCompanyOpen
-                        : false;
+                          ? mobileSolutionsOpen
+                          : item.label === "Company"
+                            ? mobileCompanyOpen
+                            : false;
 
                     return (
                       <div key={item.label} className="flex flex-col">

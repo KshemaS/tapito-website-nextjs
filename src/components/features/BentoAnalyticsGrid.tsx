@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import Container from "@/components/Container";
 import Link from "next/link";
+import AnimatedLucideIcon from "@/components/AnimatedLucideIcon";
 
 interface BentoItem {
   id: string;
@@ -287,7 +288,7 @@ export const BentoAnalyticsGrid = ({
               <div className="relative z-10 h-full flex flex-col">
                 <div>
                   <div className={`w-14 h-14 rounded-2xl ${item.badgeColor} flex items-center justify-center ${item.textColor} mb-7 transition-all group-hover:scale-110 group-hover:bg-white group-hover:shadow-md duration-500`}>
-                    <item.icon size={28} />
+                    <AnimatedLucideIcon icon={item.icon} size={28} />
                   </div>
                   <h3 className={`text-2xl font-black ${item.textColor} mb-2 uppercase tracking-tight`}>{item.title}</h3>
                   <p className={`${item.textColor} opacity-70 text-sm font-bold leading-relaxed mb-6`}>{item.subtitle}</p>
@@ -336,7 +337,7 @@ export const BentoAnalyticsGrid = ({
 
                 <div className="relative z-10">
                   <div className={`w-16 h-16 md:w-20 md:h-20 rounded-2xl md:rounded-3xl ${selectedItem.badgeColor} ${selectedItem.textColor} flex items-center justify-center mb-6 md:mb-10`}>
-                    <selectedItem.icon size={32} className="md:w-10 md:h-10" />
+                    <AnimatedLucideIcon icon={selectedItem.icon} />
                   </div>
 
                   <h3 className="text-3xl md:text-5xl font-black text-slate-950 mb-4 tracking-tighter uppercase leading-tight">
@@ -365,7 +366,7 @@ export const BentoAnalyticsGrid = ({
                           transition={{ delay: 0.1 * i }}
                           className="flex gap-4 p-6 rounded-3xl bg-slate-50 border border-slate-100 items-start hover:bg-white hover:border-[#05a0ec]/30 transition-all group/benefit hover:shadow-lg"
                         >
-                          <div className="w-7 h-7 rounded-full bg-emerald-100 flex items-center justify-center shrink-0 mt-0.5 group-hover/benefit:bg-emerald-500 group-hover/benefit:text-white transition-colors"><CheckCircle2 size={16} /></div>
+                          <div className="w-7 h-7 rounded-full bg-emerald-100 flex items-center justify-center shrink-0 mt-0.5 group-hover/benefit:bg-emerald-500 group-hover/benefit:text-white transition-colors"><AnimatedLucideIcon icon={CheckCircle2} /></div>
                           <p className="text-[15px] font-bold text-slate-700 leading-relaxed">{benefit}</p>
                         </motion.div>
                       ))}

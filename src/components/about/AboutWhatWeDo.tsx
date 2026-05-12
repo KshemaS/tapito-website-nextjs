@@ -1,150 +1,288 @@
 "use client";
 
-import ScrollStack, { ScrollStackItem } from "@/components/ui/ScrollStack";
+import { useState } from "react";
 import Container from "@/components/Container";
-import { 
-  ArrowRight, Activity, Cpu, Sparkles, Target, BarChart, 
-  Zap, Users, TrendingUp, Search, MessageSquare, Layers, 
-  MousePointer2 
-} from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Search, Zap, TrendingUp, Cpu, ArrowRight, TrendingUpIcon } from "lucide-react";
+import AnimatedLucideIcon from "@/components/AnimatedLucideIcon";
+import { cn } from "@/lib/utils";
 
 const SECTIONS = [
   {
-    title: "Understand customers deeply",
-    desc: "Transform raw data into deep behavioral insights. We help you know not just what your customers buy, but why they buy it.",
-    steps: [
-      { title: "Behavioral Mapping", icon: Search },
-      { title: "Persona Profiling", icon: Users },
-      { title: "Trend Analytics", icon: BarChart },
-    ],
-    color: "#00f2ad",
-    iconColor: "#057a58"
+    id: "insights",
+    title: "Deep Behavioral Insights",
+    shortTitle: "Insights",
+    desc: "Transform raw retail data into deep behavioral mapping. Know not just what your customers buy, but why.",
+    steps: ["Behavioral Mapping", "Persona Profiling", "Trend Analytics"],
+    icon: Search,
+    color: "#10b981", // Emerald
+    bg: "bg-emerald-50/50",
+    glow: "from-emerald-500/20 to-teal-500/0",
+    lightColor: "bg-emerald-50 text-emerald-600"
   },
   {
-    title: "Automate engagement",
-    desc: "Connect with your audience effortlessly. Our AI-driven automation ensures every interaction is timely, relevant, and personal.",
-    steps: [
-      { title: "Triggered Workflows", icon: Zap },
-      { title: "Smart Conversations", icon: MessageSquare },
-      { title: "Omnichannel Reach", icon: Layers },
-    ],
-    color: "#05a0ec",
-    iconColor: "#09358c"
+    id: "automation",
+    title: "Automated Engagement",
+    shortTitle: "Automation",
+    desc: "Connect with your audience effortlessly. Our AI-driven automation ensures every interaction is timely and personal.",
+    steps: ["Triggered Workflows", "Smart Conversations", "Omnichannel Reach"],
+    icon: Zap,
+    color: "#3b82f6", // Blue
+    bg: "bg-blue-50/50",
+    glow: "from-blue-500/20 to-indigo-500/0",
+    lightColor: "bg-blue-50 text-blue-600"
   },
   {
-    title: "Drive consistent revenue growth",
-    desc: "Turn engagement into sustainable profit. Our strategies are designed to maximize customer lifetime value and optimize ROI.",
-    steps: [
-      { title: "Growth Orchestration", icon: TrendingUp },
-      { title: "Conversion Optimization", icon: MousePointer2 },
-      { title: "Performance Insights", icon: Activity },
-    ],
-    color: "#09358c",
-    iconColor: "#05a0ec"
+    id: "growth",
+    title: "Sustainable Revenue Growth",
+    shortTitle: "Growth",
+    desc: "Turn engagement into profit. Strategies designed to maximize lifetime value and optimize ROI across all channels.",
+    steps: ["Growth Orchestration", "Conversion Optimization", "Performance Insights"],
+    icon: TrendingUpIcon,
+    color: "#09358c", // Tapito Blue
+    bg: "bg-indigo-50/50",
+    glow: "from-[#09358c]/20 to-[#05a0ec]/0",
+    lightColor: "bg-indigo-50 text-[#09358c]"
   },
   {
-    title: "Orchestrate Superior Experiences",
-    desc: "Deliver hyper-personalized moments that matter. We help you build trust and loyalty through intelligent, real-time AI orchestration.",
-    steps: [
-      { title: "Experience Analytics", icon: Target },
-      { title: "Loyalty Automation", icon: Sparkles },
-      { title: "Hyper-Personalization", icon: Cpu },
-    ],
-    color: "#7c3aed",
-    iconColor: "#7c3aed"
+    id: "orchestration",
+    title: "Superior AI Orchestration",
+    shortTitle: "Orchestration",
+    desc: "Deliver hyper-personalized moments that matter. Build trust and loyalty through real-time AI orchestration.",
+    steps: ["Experience Analytics", "Loyalty Automation", "Hyper-Personalization"],
+    icon: Cpu,
+    color: "#8b5cf6", // Purple
+    bg: "bg-purple-50/50",
+    glow: "from-purple-500/20 to-pink-500/0",
+    lightColor: "bg-purple-50 text-purple-600"
   }
 ];
 
 export default function AboutWhatWeDo() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const activeSection = SECTIONS[activeIndex];
+
   return (
-    <section className="py-24 bg-[#fafbfc] relative min-h-screen">
+    <section className="py-20 lg:py-32 bg-white relative overflow-hidden">
       <Container>
-        <div className="mb-12 sm:mb-20 text-center lg:text-left">
-           <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-slate-900 tracking-tight leading-[1.1] mb-6">
+        {/* Mobile View: Vertical Cards (lg:hidden) */}
+        <div className="lg:hidden space-y-12">
+          <div className="text-center mb-12">
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-50 border border-slate-100 mb-4"
+            >
+              <span className="text-[9px] font-black uppercase tracking-[0.2em] text-[#09358c]">Our Capabilities</span>
+            </motion.div>
+            <h2 className="text-3xl font-black text-slate-900 tracking-tight leading-tight">
               What We Do
-          </h2>
-          <p className="text-slate-500 font-medium text-lg sm:text-xl max-w-2xl mx-auto lg:mx-0 px-4 sm:px-0">
-            We empower retail businesses to:
-          </p>
-        </div>
+            </h2>
+          </div>
 
-        <ScrollStack 
-          itemStackDistance={20}
-          itemScale={0.05}
-        >
-          {SECTIONS.map((section, sIdx) => (
-            <ScrollStackItem key={sIdx}>
-              <div className="relative w-full h-full p-6 sm:p-10 lg:p-16 flex flex-col lg:flex-row items-center justify-between gap-12 overflow-hidden">
-                {/* Visual Accent */}
-                <div 
-                  className="absolute top-0 right-0 w-32 h-32 blur-[80px] opacity-20 pointer-events-none"
-                  style={{ backgroundColor: section.color }}
-                />
-
-                {/* Left Content */}
-                <div className="flex-1 space-y-10 relative z-10">
-                  <div className="space-y-6">
-                    <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 tracking-tight leading-none">
+          <div className="grid grid-cols-1 gap-6">
+            {SECTIONS.map((section, idx) => (
+              <motion.div
+                key={section.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className={cn(
+                  "p-8 rounded-[2rem] border border-slate-100 shadow-sm relative overflow-hidden",
+                  section.bg
+                )}
+              >
+                <div className={cn(
+                  "absolute top-0 right-0 w-32 h-32 blur-3xl opacity-20 pointer-events-none",
+                  section.glow.split(' ')[0]
+                )} />
+                
+                <div className="relative z-10 space-y-6">
+                  <div className={cn("w-12 h-12 rounded-xl flex items-center justify-center bg-white shadow-sm", section.lightColor)}>
+                    <AnimatedLucideIcon icon={section.icon} size={24} />
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <h3 className="text-xl font-black text-slate-900 tracking-tight">
                       {section.title}
                     </h3>
-                    <p className="text-slate-500 font-medium text-sm md:text-base max-w-sm leading-relaxed">
+                    <p className="text-slate-500 font-medium text-sm leading-relaxed">
                       {section.desc}
                     </p>
-                    
-                    <button className="btn-premium !text-sm !py-3 !px-8 flex items-center gap-2 group shadow-xl">
-                      Know more
-                      <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                    </button>
                   </div>
 
-                  {/* Vertical Step List */}
-                  <div className="flex flex-col gap-3">
-                    {section.steps.map((step, i) => (
-                      <div
-                        key={i}
-                        className="w-full max-w-sm bg-white/50 backdrop-blur-sm p-4 rounded-xl border border-slate-100 shadow-sm flex items-center gap-4 group"
-                      >
-                        <div 
-                          className="w-10 h-10 rounded-lg flex items-center justify-center bg-slate-50"
-                          style={{ color: section.iconColor }}
-                        >
-                          <step.icon size={20} strokeWidth={1.5} />
-                        </div>
-                        <span className="text-slate-900 font-bold text-sm tracking-tight capitalize">
-                          {step.title}
-                        </span>
-                      </div>
+                  <div className="flex flex-wrap gap-2 pt-4 border-t border-slate-900/5">
+                    {section.steps.map((step) => (
+                      <span key={step} className="text-[10px] font-black uppercase tracking-wider px-3 py-1.5 rounded-lg bg-white/50 text-slate-500 border border-slate-100/50">
+                        {step}
+                      </span>
                     ))}
                   </div>
                 </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
 
-                {/* Right Graphic Area */}
-                <div className="flex-1 relative hidden lg:flex justify-end pr-8">
-                  <div className="relative w-72 h-72">
-                    <svg viewBox="0 0 200 200" className="w-full h-full drop-shadow-2xl overflow-visible">
-                      <defs>
-                        <linearGradient id={`grad-stack-${sIdx}`} x1="0%" y1="0%" x2="100%" y2="0%">
-                          <stop offset="0%" style={{ stopColor: section.color, stopOpacity: 0.2 }} />
-                          <stop offset="100%" style={{ stopColor: section.color, stopOpacity: 1 }} />
-                        </linearGradient>
-                      </defs>
-                      <path
-                        d="M 60 40 L 140 100 L 60 160"
-                        stroke={`url(#grad-stack-${sIdx})`}
-                        strokeWidth="25"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        fill="none"
-                      />
-                      <circle cx="60" cy="40" r="12" fill="none" stroke={section.color} strokeWidth="2" />
-                      <circle cx="60" cy="160" r="12" fill="none" stroke={section.color} strokeWidth="2" />
-                    </svg>
+        {/* Desktop View: Interactive Stage (hidden lg:flex) */}
+        <div className="hidden lg:flex flex-row items-start gap-24">
+          {/* Left Side: Interactive Nav */}
+          <div className="w-[400px] space-y-12">
+            <div>
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-50 border border-slate-100 mb-6"
+              >
+                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#09358c]">Our Core Capabilities</span>
+              </motion.div>
+              <h2 className="text-5xl font-black text-slate-900 tracking-tight leading-tight mb-6">
+                What We Do
+              </h2>
+              <p className="text-slate-500 font-medium leading-relaxed">
+                Explore our core pillars to see how we orchestrate intelligence across the retail value chain.
+              </p>
+            </div>
+
+            <nav className="flex flex-col gap-3">
+              {SECTIONS.map((section, idx) => (
+                <button
+                  key={section.id}
+                  onMouseEnter={() => setActiveIndex(idx)}
+                  onClick={() => setActiveIndex(idx)}
+                  className={cn(
+                    "group relative w-full text-left p-6 rounded-3xl transition-all duration-500",
+                    activeIndex === idx 
+                      ? "bg-slate-900 text-white shadow-2xl shadow-slate-200 scale-105 z-10" 
+                      : "bg-white text-slate-400 hover:bg-slate-50 hover:text-slate-600"
+                  )}
+                >
+                  <div className="flex items-center justify-between gap-4">
+                    <div className="flex items-center gap-4">
+                      <div className={cn(
+                        "w-10 h-10 rounded-xl flex items-center justify-center transition-colors duration-500",
+                        activeIndex === idx ? "bg-white/10" : "bg-slate-50"
+                      )}>
+                        <AnimatedLucideIcon 
+                          icon={section.icon} 
+                          size={20} 
+                          className={activeIndex === idx ? "text-white" : "text-slate-400"}
+                        />
+                      </div>
+                      <span className={cn(
+                        "text-lg font-black tracking-tight transition-all duration-500",
+                        activeIndex === idx ? "translate-x-1" : ""
+                      )}>
+                        {section.shortTitle}
+                      </span>
+                    </div>
+                    {activeIndex === idx && (
+                      <motion.div layoutId="arrow">
+                        <ArrowRight size={18} />
+                      </motion.div>
+                    )}
                   </div>
+                </button>
+              ))}
+            </nav>
+          </div>
+
+          {/* Right Side: Dynamic Stage */}
+          <div className="flex-1 min-h-[600px] relative">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeSection.id}
+                initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 1.05, y: -20 }}
+                transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+                className={cn(
+                  "w-full h-full rounded-[3rem] p-20 border border-slate-100 shadow-[0_40px_100px_rgba(0,0,0,0.03)] flex flex-col justify-center overflow-hidden relative",
+                  activeSection.bg
+                )}
+              >
+                {/* Background Glow */}
+                <div className={cn(
+                  "absolute inset-0 bg-gradient-to-br transition-all duration-1000",
+                  activeSection.glow
+                )} />
+
+                <div className="relative z-10 space-y-10">
+                  <div className="flex flex-col gap-6">
+                    <motion.div
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.2 }}
+                      className="w-20 h-20 rounded-3xl bg-white shadow-xl shadow-slate-200/50 flex items-center justify-center"
+                      style={{ color: activeSection.color }}
+                    >
+                      <AnimatedLucideIcon icon={activeSection.icon} size={40} />
+                    </motion.div>
+                    
+                    <motion.h3
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.3 }}
+                      className="text-6xl font-black text-slate-900 tracking-tight leading-none"
+                    >
+                      {activeSection.title}
+                    </motion.h3>
+                    
+                    <motion.p
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.4 }}
+                      className="text-slate-500 font-medium text-xl max-w-xl leading-relaxed"
+                    >
+                      {activeSection.desc}
+                    </motion.p>
+                  </div>
+
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.5 }}
+                    className="space-y-4"
+                  >
+                    <p className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400">Key Outcomes</p>
+                    <div className="flex flex-wrap gap-3">
+                      {activeSection.steps.map((step, i) => (
+                        <motion.div
+                          key={step}
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ delay: 0.6 + (i * 0.1) }}
+                          className="px-6 py-3 rounded-2xl bg-white border border-slate-100 shadow-sm text-sm font-black text-slate-900 tracking-tight flex items-center gap-3"
+                        >
+                          <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: activeSection.color }} />
+                          {step}
+                        </motion.div>
+                      ))}
+                    </div>
+                  </motion.div>
+                  
+                  <motion.button
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.8 }}
+                    className="inline-flex items-center gap-2 text-[#09358c] font-black uppercase tracking-widest text-xs group pt-4"
+                  >
+                    View technical specifications
+                    <ArrowRight size={14} className="group-hover:translate-x-2 transition-transform" />
+                  </motion.button>
                 </div>
-              </div>
-            </ScrollStackItem>
-          ))}
-        </ScrollStack>
+
+                {/* Floating Decorative Icon */}
+                <div className="absolute bottom-0 right-0 opacity-5 pointer-events-none">
+                  <activeSection.icon size={300} />
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </div>
       </Container>
     </section>
   );

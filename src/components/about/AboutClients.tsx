@@ -20,7 +20,7 @@ const CLIENTS = [
 
 export default function AboutClients() {
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
+    <section className="py-12 lg:py-24 bg-white relative overflow-hidden">
       <Container>
         <div className="flex flex-col items-center">
             <motion.p 

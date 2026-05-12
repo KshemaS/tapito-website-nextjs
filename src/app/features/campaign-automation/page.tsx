@@ -15,6 +15,8 @@ import {
   Zap,
   Quote,
 } from "lucide-react";
+import { useState, useEffect } from "react";
+import { cn } from "@/lib/utils";
 import { featuresData } from "@/components/features/FeaturesGrid";
 import Container from "@/components/Container";
 import { InteractiveGrid } from "@/components/InteractiveGrid";
@@ -49,6 +51,16 @@ const revealVariant = {
 } as any;
 
 export default function CampaignAutomationPage() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev === 0 ? 1 : 0));
+    }, 10000);
+    return () => clearInterval(timer);
+  }, [currentSlide, isPaused]);
   const feature = featuresData.find(f => f.slug === "campaign-automation");
   if (!feature) return null;
 
@@ -82,48 +94,120 @@ export default function CampaignAutomationPage() {
               </motion.div>
             </div>
 
-            <motion.div variants={revealVariant} initial="initial" whileInView="whileInView" viewport={{ once: true, amount: 0.3 }} className="rounded-[2.5rem] md:rounded-[3rem] border border-slate-200 bg-slate-950 p-6 md:p-8 shadow-[0_50px_130px_-60px_rgba(9,53,140,0.4)] relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-[#09358c]/10 blur-[80px] rounded-full -translate-y-1/2 translate-x-1/2" />
+            <div className="relative">
+              <motion.div
+                variants={revealVariant}
+                initial="initial"
+                whileInView="whileInView"
+                viewport={{ once: true, amount: 0.3 }}
+                onMouseEnter={() => setIsPaused(true)}
+                onMouseLeave={() => setIsPaused(false)}
+                className="relative"
+              >
+                <div className="overflow-hidden rounded-[2.5rem] md:rounded-[3rem]">
+                  <motion.div
+                    animate={{ x: `-${currentSlide * 100}%` }}
+                    transition={{ type: "spring", damping: 25, stiffness: 120 }}
+                    className="flex"
+                  >
+                    {/* Slide 1: Original Dashboard Mockup */}
+                    <div className="min-w-full">
+                      <div className="rounded-[2.5rem] md:rounded-[3rem] border border-slate-200 bg-slate-950 p-6 md:p-8 shadow-[0_50px_130px_-60px_rgba(9,53,140,0.4)] relative overflow-hidden h-full">
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-[#09358c]/10 blur-[80px] rounded-full -translate-y-1/2 translate-x-1/2" />
 
-              <div className="flex items-center justify-between rounded-4xl border border-white/10 bg-white/5 px-5 py-4">
-                <div>
-                  <p className="text-xs font-black uppercase tracking-[0.22em] text-[#05a0ec]">Journey builder</p>
-                  <p className="mt-1 text-sm font-bold text-white">Staff Nudge Flow active</p>
-                </div>
-                <div className="flex items-center gap-2 rounded-full bg-emerald-400/10 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.2em] text-emerald-300 soft-shine">
-                  <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" /> Active
-                </div>
-              </div>
+                        <div className="flex items-center justify-between rounded-4xl border border-white/10 bg-white/5 px-5 py-4">
+                          <div>
+                            <p className="text-xs font-black uppercase tracking-[0.22em] text-[#05a0ec]">Journey builder</p>
+                            <p className="mt-1 text-sm font-bold text-white">Staff Nudge Flow active</p>
+                          </div>
+                          <div className="flex items-center gap-2 rounded-full bg-emerald-400/10 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.2em] text-emerald-300 soft-shine">
+                            <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" /> Active
+                          </div>
+                        </div>
 
-              <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" className="mt-8 grid gap-4 lg:grid-cols-2 xl:grid-cols-4">
-                {[
-                  { icon: Users, title: "Staff Segment", text: "Single-Category Staff" },
-                  { icon: Target, title: "Trigger", text: "Low cross-sell rate" },
-                  { icon: MessageSquare, title: "Nudge", text: "Incentive Boost 2.5%" },
-                  { icon: Send, title: "Execution", text: "App Push & SMS" },
-                ].map((item, index) => (
-                  <motion.div key={item.title} variants={{ initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 } }} className="luminous-card-dark rounded-[1.75rem] border border-white/10 bg-white/5 p-5 group hover:bg-white/10 transition-colors">
-                    <motion.div whileHover={{ rotate: 15, scale: 1.1 }} className="flex h-12 w-12 items-center justify-center rounded-4xl bg-[#09358c]/20 text-[#05a0ec] transition-colors group-hover:bg-[#09358c] group-hover:text-white"><item.icon size={22} /></motion.div>
-                    <p className="mt-5 text-[10px] font-black uppercase tracking-[0.2em] text-white/40">{item.title}</p>
-                    <p className="mt-2 text-sm font-black leading-6 text-white">{item.text}</p>
+                        <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" className="mt-8 grid gap-4 lg:grid-cols-2 xl:grid-cols-4">
+                          {[
+                            { icon: Users, title: "Staff Segment", text: "Single-Category Staff" },
+                            { icon: Target, title: "Trigger", text: "Low cross-sell rate" },
+                            { icon: MessageSquare, title: "Nudge", text: "Incentive Boost 2.5%" },
+                            { icon: Send, title: "Execution", text: "App Push & SMS" },
+                          ].map((item, index) => (
+                            <motion.div key={item.title} variants={{ initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 } }} className="luminous-card-dark rounded-[1.75rem] border border-white/10 bg-white/5 p-5 group hover:bg-white/10 transition-colors">
+                              <motion.div whileHover={{ rotate: 15, scale: 1.1 }} className="flex h-12 w-12 items-center justify-center rounded-4xl bg-[#09358c]/20 text-[#05a0ec] transition-colors group-hover:bg-[#09358c] group-hover:text-white"><item.icon size={22} /></motion.div>
+                              <p className="mt-5 text-[10px] font-black uppercase tracking-[0.2em] text-white/40">{item.title}</p>
+                              <p className="mt-2 text-sm font-black leading-6 text-white">{item.text}</p>
+                            </motion.div>
+                          ))}
+                        </motion.div>
+
+                        <motion.div initial={{ scale: 0.9, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} transition={{ delay: 0.8 }} className="mt-8 rounded-[2rem] bg-gradient-to-r from-[#09358c] to-[#05a0ec] p-8 text-white shadow-[0_30px_90px_-30px_rgba(9,53,140,0.5)] group">
+                          <p className="text-xs font-black uppercase tracking-[0.22em] text-white/80 ">Performance outcome</p>
+                          <div className="mt-6 flex flex-wrap items-end justify-between gap-6">
+                            <div>
+                              <p className="text-5xl font-black transition-transform group-hover:scale-105">12.5%</p>
+                              <p className="mt-2 text-sm font-bold text-white/80">Cross-sell conversion rate</p>
+                            </div>
+                            <div className="text-right">
+                              <p className="text-4xl font-black">$12,400 Protected</p>
+                              <p className="mt-1 text-sm font-medium text-white/70 italic">"from staff incentive nudges"</p>
+                            </div>
+                          </div>
+                        </motion.div>
+                      </div>
+                    </div>
+
+                    {/* Slide 2: Video Walkthrough */}
+                    <div className="min-w-full">
+                      <div className="rounded-[2.5rem] md:rounded-[3rem] border border-slate-200 bg-slate-950 p-6 md:p-8 shadow-[0_50px_130px_-60px_rgba(9,53,140,0.4)] relative overflow-hidden h-full flex flex-col">
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-[#05a0ec]/10 blur-[80px] rounded-full -translate-y-1/2 translate-x-1/2" />
+
+                        <div className="flex items-center justify-between rounded-4xl border border-white/10 bg-white/5 px-5 py-4">
+                          <div>
+                            <p className="text-xs font-black uppercase tracking-[0.22em] text-[#05a0ec]">Feature Walkthrough</p>
+                            <p className="mt-1 text-sm font-bold text-white">Campaign Automation in Action</p>
+                          </div>
+                          <div className="flex items-center gap-2 rounded-full bg-blue-400/10 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.2em] text-[#05a0ec] soft-shine">
+                            <Sparkles size={12} className="text-[#05a0ec]" /> AI Powered
+                          </div>
+                        </div>
+
+                        <div className="mt-8 relative flex-1 rounded-[2rem] overflow-hidden border border-white/10 bg-white/5 shadow-2xl group min-h-[300px] md:min-h-[400px]">
+                          <video
+                            src="/assets/videos/campaign-automation.webm"
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            className="w-full h-full object-cover"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent pointer-events-none" />
+                          <div className="absolute bottom-6 left-6 flex items-center gap-3">
+                            <div className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+                            <p className="text-xs font-bold text-white/80 uppercase tracking-widest">Workflow Simulation</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </motion.div>
-                ))}
-              </motion.div>
+                </div>
 
-              <motion.div initial={{ scale: 0.9, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} transition={{ delay: 0.8 }} className="mt-8 rounded-[2rem] bg-gradient-to-r from-[#09358c] to-[#05a0ec] p-8 text-white shadow-[0_30px_90px_-30px_rgba(9,53,140,0.5)] group">
-                <p className="text-xs font-black uppercase tracking-[0.22em] text-white/80 ">Performance outcome</p>
-                <div className="mt-6 flex flex-wrap items-end justify-between gap-6">
-                  <div>
-                    <p className="text-5xl font-black transition-transform group-hover:scale-105">12.5%</p>
-                    <p className="mt-2 text-sm font-bold text-white/80">Cross-sell conversion rate</p>
-                  </div>
-                  <div className="text-right">
-                    <p className="text-4xl font-black">$12,400 Protected</p>
-                    <p className="mt-1 text-sm font-medium text-white/70 italic">"from staff incentive nudges"</p>
+                {/* Slider Controls */}
+                <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-6 z-20">
+                  <div className="flex gap-2">
+                    {[0, 1].map((idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => setCurrentSlide(idx)}
+                        className={cn(
+                          "h-1.5 rounded-full transition-all duration-500",
+                          currentSlide === idx ? "w-8 bg-[#09358c]" : "w-2 bg-slate-300"
+                        )}
+                      />
+                    ))}
                   </div>
                 </div>
               </motion.div>
-            </motion.div>
+            </div>
           </div>
         </Container>
       </section>
@@ -217,7 +301,7 @@ export default function CampaignAutomationPage() {
                 <p className="flex items-center gap-4 opacity-60">Low engagement rates</p>
                 <p className="flex items-center gap-4 opacity-60">Revenue leakage via inactivity</p>
               </div>
-            </motion.div> 
+            </motion.div>
             <motion.div initial={{ x: 100, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1 }} className="bg-slate-950 p-12 lg:p-20 text-white relative h-full">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(9,53,140,0.15),transparent_70%)] pointer-events-none" />
               <p className="text-xs font-black uppercase tracking-[0.3em] text-[#05a0ec] relative z-10">After Tapito Automation</p>

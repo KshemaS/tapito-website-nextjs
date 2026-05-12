@@ -3,17 +3,23 @@
 import { motion } from "framer-motion";
 import Container from "@/components/Container";
 import { Mic, TrendingDown, TrendingUp, ShieldCheck, PieChart, PlayCircle } from "lucide-react";
+import AnimatedLucideIcon from "../AnimatedLucideIcon";
 
 export default function AboutDifferentiators() {
   return (
-    <section className="pt-24 pb-12 bg-white relative overflow-hidden">
+    <section className="lg:pt-24 pb-12 bg-white relative overflow-hidden">
       <Container>
-        <div className="flex flex-col lg:flex-row gap-16 items-start mb-12">
-            <div className="lg:w-1/2">
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 text-[#09358c] text-[11px] font-bold uppercase tracking-widest mb-6">
+        <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-stretch mb-12">
+            <div className="w-full lg:w-1/2">
+                <motion.div 
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 text-[#09358c] text-[11px] font-bold uppercase tracking-widest mb-6"
+                >
                     Our Edge
-                </div>
-                <h2 className="text-4xl md:text-6xl font-bold text-slate-900 mb-8 tracking-tighter leading-[1.1]">
+                </motion.div>
+                <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-8 tracking-tighter leading-[1.1]">
                     Outperforming the <br /> Competition with AI
                 </h2>
                 <div className="space-y-6">
@@ -30,8 +36,8 @@ export default function AboutDifferentiators() {
                             transition={{ delay: i * 0.1 }}
                             className="flex gap-5"
                         >
-                            <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center">
-                                <item.icon className="text-[#05a0ec]" size={20} />
+                            <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center text-[#05a0ec]">
+                                <AnimatedLucideIcon icon={item.icon} size={20} />
                             </div>
                             <div>
                                 <h4 className="text-lg font-bold text-slate-900 mb-1">{item.title}</h4>
@@ -42,7 +48,7 @@ export default function AboutDifferentiators() {
                 </div>
             </div>
 
-            <div className="lg:w-1/2 relative h-full min-h-[400px] lg:min-h-[500px] rounded-[1.5rem] overflow-hidden shadow-[0_32px_84px_-12px_rgba(0,0,0,0.3)] group bg-slate-950">
+            <div className="w-full lg:w-1/2 relative min-h-[350px] sm:min-h-[400px] lg:min-h-[500px] rounded-[2rem] overflow-hidden shadow-[0_32px_84px_-12px_rgba(0,0,0,0.15)] group bg-slate-950">
                 <motion.div 
                     initial={{ scale: 1.1, opacity: 0 }}
                     whileInView={{ scale: 1, opacity: 1 }}
@@ -53,8 +59,9 @@ export default function AboutDifferentiators() {
                     <img 
                         src="/assets/images/about/embracing-artificial-intelligence-business-innovation.jpg" 
                         alt="Our Edge - AI Performance" 
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent" />
                 </motion.div>
             </div>
         </div>

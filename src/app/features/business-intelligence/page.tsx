@@ -5,12 +5,10 @@ import { motion } from "framer-motion";
 import {
   ArrowRight,
   BarChart3,
-  CheckCircle2,
-  LayoutDashboard,
-  Play,
   Quote,
   Sparkles,
 } from "lucide-react";
+import AnimatedLucideIcon from "@/components/AnimatedLucideIcon";
 import { featuresData } from "@/components/features/FeaturesGrid";
 import Container from "@/components/Container";
 import { InteractiveGrid } from "@/components/InteractiveGrid";
@@ -66,7 +64,7 @@ export default function BusinessIntelligencePage() {
           <div className="grid items-center gap-8 lg:gap-16 lg:grid-cols-[1.05fr_0.95fr]">
             <div>
               <motion.div {...fadeUp()} className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#09358c]/10 bg-[#09358c]/5 px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-[#09358c]">
-                <LayoutDashboard size={14} /> Executive analytics workspace
+                <AnimatedLucideIcon name="LayoutDashboard" size={14} /> Executive analytics workspace
               </motion.div>
               <motion.h1 {...fadeUp(0.08)} className="max-w-3xl text-3xl sm:text-4xl md:text-5xl 4xl:text-7xl font-black tracking-[-0.06em] text-slate-950">
                 Your Entire Business. <span className="text-[#09358c]">One Screen.</span>
@@ -76,7 +74,7 @@ export default function BusinessIntelligencePage() {
               </motion.p>
               <motion.div {...fadeUp(0.24)} className="mt-10 flex flex-wrap items-center gap-4">
                 <Link href="/contact" className="group inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-[#09358c] to-[#05a0ec] px-8 py-4 text-base font-black text-white shadow-[0_20px_60px_-18px_rgba(9,53,140,0.4)] transition-all hover:scale-[1.05] hover:shadow-[0_25px_70px_-15px_rgba(5,160,236,0.4)]">
-                  <Play size={16} fill="currentColor" className="transition-transform group-hover:scale-110" />
+                  <AnimatedLucideIcon name="Play" size={16} className="transition-transform group-hover:scale-110" />
                   Book a Demo
                 </Link>
                 <div className="inline-flex items-center gap-2 text-sm font-bold text-slate-600">
@@ -272,7 +270,7 @@ export default function BusinessIntelligencePage() {
               <p className="text-sm font-black uppercase tracking-[0.22em] text-[#05a0ec] relative z-10">After Tapito</p>
               <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" className="mt-10 space-y-4 lg:space-y-6 text-base lg:text-xl font-black relative z-10">
                 {["Instant insights", "Automated actions", "Predictable growth", "Leadership-grade visibility"].map((item) => (
-                  <motion.div key={item} variants={{ initial: { x: 20, opacity: 0 }, whileInView: { x: 0, opacity: 1 } }} className="flex gap-4"><CheckCircle2 className="text-emerald-400" size={26} /><span>{item}</span></motion.div>
+                  <motion.div key={item} variants={{ initial: { x: 20, opacity: 0 }, whileInView: { x: 0, opacity: 1 } }} className="flex gap-4"><AnimatedLucideIcon name="CheckCircle2" className="text-emerald-400" size={26} /><span>{item}</span></motion.div>
                 ))}
               </motion.div>
             </motion.div>

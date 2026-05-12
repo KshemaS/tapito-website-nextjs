@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, LucideIcon, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
+import AnimatedLucideIcon from "@/components/AnimatedLucideIcon";
 
 interface FeatureCardProps {
   title: string;
@@ -55,7 +56,7 @@ export const FeatureCard = ({ title, description, benefits, icon: Icon, index, s
                 }}
                 className="w-16 h-16 flex items-center justify-center rounded-2xl transition-all duration-500 bg-[#09358c]/5 text-[#09358c] group-hover:bg-[#09358c] group-hover:text-white group-hover:scale-110 shadow-sm border border-slate-100 origin-center"
               >
-                <Icon size={32} className="transition-transform duration-500 group-hover:scale-110" />
+                <AnimatedLucideIcon icon={Icon} size={32} className="transition-transform duration-500 group-hover:scale-110" />
               </motion.div>
             </div>
 
@@ -76,7 +77,7 @@ export const FeatureCard = ({ title, description, benefits, icon: Icon, index, s
                       animate={{ scale: [1, 1.15, 1] }}
                       transition={{ duration: 2, repeat: Infinity, delay: (index * 0.1) + (i * 0.3) }}
                     >
-                      <CheckCircle2 size={18} className="text-[#09358c]/20 group-hover:text-[#09358c] shrink-0 transition-colors duration-500" />
+                      <AnimatedLucideIcon icon={CheckCircle2} size={18} className="text-[#09358c]/20 group-hover:text-[#09358c] shrink-0 transition-colors duration-500" />
                     </motion.div>
                     <span className="text-[13px] font-extrabold text-slate-400 group-hover:text-slate-600 transition-colors duration-500">{benefit}</span>
                   </div>
