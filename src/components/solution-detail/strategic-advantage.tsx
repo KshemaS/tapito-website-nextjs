@@ -47,14 +47,25 @@ const StrategicAdvantage = ({ data }: StrategicAdvantageProps) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {data?.howWeHelp.map((item: any, i: number) => {
             const themes = [
-              { bg: "from-emerald-50/80", glow: "bg-emerald-400/20", icon: "bg-emerald-500" },
-              { bg: "from-blue-50/80", glow: "bg-blue-400/20", icon: "bg-blue-500" },
-              { bg: "from-purple-50/80", glow: "bg-purple-400/20", icon: "bg-purple-500" },
-              { bg: "from-indigo-50/80", glow: "bg-indigo-400/20", icon: "bg-indigo-500" },
-              { bg: "from-orange-50/80", glow: "bg-orange-400/20", icon: "bg-orange-500" },
-              { bg: "from-teal-50/80", glow: "bg-teal-400/20", icon: "bg-teal-500" }
+              { bg: "from-emerald-50/60", glow: "bg-emerald-400/15", icon: "from-emerald-500 to-emerald-600" },
+              { bg: "from-blue-50/60", glow: "bg-blue-400/15", icon: "from-blue-500 to-blue-600" },
+              { bg: "from-purple-50/60", glow: "bg-purple-400/15", icon: "from-purple-500 to-purple-600" },
+              { bg: "from-indigo-50/60", glow: "bg-indigo-400/15", icon: "from-indigo-500 to-indigo-600" },
+              { bg: "from-orange-50/60", glow: "bg-orange-400/15", icon: "from-orange-500 to-orange-600" },
+              { bg: "from-teal-50/60", glow: "bg-teal-400/15", icon: "from-teal-500 to-teal-600" }
             ];
+            
+            const vectorImages = [
+              "/assets/vectors/undraw_revenue-analysis_fjh2.svg",
+              "/assets/vectors/undraw_performance-overview_1b4y.svg",
+              "/assets/vectors/undraw_target_d6hf.svg",
+              "/assets/vectors/undraw_progress-data_gvcq.svg",
+              "/assets/vectors/undraw_portfolio_btd8.svg",
+              "/assets/vectors/undraw_under-construction_hdrn.svg"
+            ];
+            
             const theme = themes[i % themes.length];
+            const vectorImage = vectorImages[i % vectorImages.length];
             
             return (
               <motion.div
@@ -64,39 +75,36 @@ const StrategicAdvantage = ({ data }: StrategicAdvantageProps) => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: i * 0.15 }}
                 className={cn(
-                  "group relative h-[420px] rounded-[2.5rem] border-2 border-white p-10 cursor-pointer shadow-xl shadow-slate-200/40 flex flex-col transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl overflow-hidden bg-gradient-to-br to-white",
+                  "group relative h-[340px] rounded-[2.5rem] border border-white p-10 cursor-pointer shadow-xl shadow-slate-200/40 flex flex-col transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl overflow-hidden bg-gradient-to-br to-white",
                   theme.bg
                 )}
               >
+                {/* Vector Background Image from Assets */}
+                <div className="absolute -bottom-6 -left-2 w-48 h-48 opacity-[0.08] grayscale text-slate-900 pointer-events-none group-hover:scale-125 group-hover:translate-x-4 group-hover:-translate-y-4 group-hover:opacity-[0.15] transition-all duration-1000">
+                  <img src={vectorImage} alt="" className="w-full h-full object-contain" />
+                </div>
+
                 {/* Reference-style Background Glow */}
                 <div className={cn(
                   "absolute -bottom-24 -left-24 w-80 h-80 blur-[100px] rounded-full transition-opacity duration-700 opacity-60 group-hover:opacity-100",
                   theme.glow
                 )} />
                 
-                {/* Top Row: Dual Icons & Action */}
-                <div className="flex items-start justify-between mb-10 relative z-10">
-                  <div className="flex items-center gap-3">
-                    <div className={cn(
-                      "w-14 h-14 rounded-2xl flex items-center justify-center text-white shadow-lg",
-                      theme.icon
-                    )}>
-                      <AnimatedLucideIcon icon={item.icon} size={26} />
-                    </div>
-                    <div className="w-14 h-14 rounded-2xl bg-white/80 backdrop-blur-md border border-white flex items-center justify-center text-slate-400 shadow-sm group-hover:text-[#09358c] transition-colors">
-                      <Plus size={22} />
-                    </div>
+                {/* Header: Icon + Title */}
+                <div className="flex items-center gap-5 mb-6 relative z-10">
+                  <div className={cn(
+                    "shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center text-white shadow-xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 bg-gradient-to-br shadow-blue-500/10",
+                    theme.icon
+                  )}>
+                    <AnimatedLucideIcon icon={item.icon} size={26} />
                   </div>
-                  <div className="w-8 h-8 rounded-full border border-slate-200/60 flex items-center justify-center text-slate-300 group-hover:border-[#09358c]/30 transition-colors">
-                    <div className="w-1.5 h-1.5 rounded-full bg-slate-200 group-hover:bg-[#09358c] transition-colors" />
-                  </div>
+                  <h3 className="text-xl lg:text-2xl font-black text-slate-900 leading-tight tracking-tight group-hover:text-[#09358c] transition-colors">
+                    {item.title}
+                  </h3>
                 </div>
 
                 {/* Content */}
                 <div className="relative z-10 flex-1">
-                  <h3 className="text-2xl lg:text-3xl font-black text-slate-900 mb-4 leading-tight tracking-tight">
-                    {item.title}
-                  </h3>
                   <p className="text-slate-500 font-medium leading-relaxed line-clamp-4">
                     {item.desc}
                   </p>
@@ -104,7 +112,7 @@ const StrategicAdvantage = ({ data }: StrategicAdvantageProps) => {
 
                 {/* Bottom Redirection Arrow */}
                 <div className="relative z-10 flex justify-end">
-                  <div className="w-12 h-12 rounded-full bg-white/80 backdrop-blur-md border border-white shadow-lg flex items-center justify-center text-slate-900 transition-all duration-500 group-hover:bg-[#09358c] group-hover:text-white group-hover:scale-110">
+                  <div className="w-12 h-12 rounded-xl bg-white/80 backdrop-blur-md border border-white shadow-lg flex items-center justify-center text-slate-400 transition-all duration-500 group-hover:bg-[#09358c] group-hover:text-white group-hover:translate-x-1">
                     <ArrowRight size={20} />
                   </div>
                 </div>
