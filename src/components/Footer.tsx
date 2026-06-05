@@ -76,10 +76,20 @@ export function Footer() {
             </div>
 
             <div className="pt-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-start md:items-center gap-5 md:gap-4">
-               <p className="text-slate-400 text-sm">© 2026 Tapito AI Inc. All rights reserved.</p>
+               <p className="text-slate-400 text-sm">
+                  © {new Date().getFullYear()} Tapito AI Inc. All rights reserved. Developed by 
+                  <a 
+                     href="https://fegno.com?utm_source=client_website&utm_medium=agency_credit&utm_campaign=portfolio_referral&utm_id=tapito&utm_content=tapito" 
+                     target="_blank" 
+                     rel="noopener noreferrer" 
+                     className="hover:text-slate-900 transition-colors font-bold"
+                  >
+                     Fegno Technologies
+                  </a>.
+               </p>
                <div className="flex gap-4 sm:gap-6 lg:gap-8 sm:flex-row flex-col text-sm">
                   <Link href="/privacy-policy" className="text-slate-400 hover:text-slate-900">Privacy Policy</Link>
-                  <Link href="#" className="text-slate-400 hover:text-slate-900">Terms of Service</Link>
+                  <Link href="/terms-of-service" className="text-slate-400 hover:text-slate-900">Terms of Service</Link>
                   <Link href="#" className="text-slate-400 hover:text-slate-900">Cookie Policy</Link>
                </div>
             </div>

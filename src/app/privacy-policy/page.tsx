@@ -233,8 +233,8 @@ const PrivacyPage = () => {
               <h2 className="text-3xl font-black text-slate-900 mb-6 tracking-tight">Account Deletion</h2>
               <p className="text-slate-600 leading-relaxed text-lg font-medium">
                 Users may request account deletion by contacting:<br />
-                Email: [Insert Support Email]<br />
-                Website: [Insert Website URL]
+                Email: support@tapito.ai<br />
+                Website: https://tapito.ai
               </p>
             </section>
 
@@ -260,7 +260,7 @@ const PrivacyPage = () => {
                     </div>
                     <div>
                       <p className="text-[10px] uppercase tracking-[0.2em] opacity-60 font-black mb-1">Email Support</p>
-                      <p className="font-black text-lg">[Insert Support Email]</p>
+                      <p className="font-black text-lg">support@tapito.ai</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-4">
@@ -269,7 +269,7 @@ const PrivacyPage = () => {
                     </div>
                     <div>
                       <p className="text-[10px] uppercase tracking-[0.2em] opacity-60 font-black mb-1">Official Website</p>
-                      <p className="font-black text-lg">[Insert Website URL]</p>
+                      <p className="font-black text-lg">https://tapito.ai</p>
                     </div>
                   </div>
                 </div>

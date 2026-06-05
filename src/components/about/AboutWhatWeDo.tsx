@@ -264,7 +264,7 @@ export default function AboutWhatWeDo() {
                     </div>
                   </motion.div>
                   
-                  <motion.button
+                  {/* <motion.button
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.8 }}
@@ -272,7 +272,7 @@ export default function AboutWhatWeDo() {
                   >
                     View technical specifications
                     <ArrowRight size={14} className="group-hover:translate-x-2 transition-transform" />
-                  </motion.button>
+                  </motion.button> */}
                 </div>
 
                 {/* Floating Decorative Icon */}

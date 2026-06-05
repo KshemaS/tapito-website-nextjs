@@ -65,7 +65,7 @@ export default function AIAssistant() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentQuery((prev) => (prev + 1) % queries.length);
-    }, 8000);
+    }, 10000);
     return () => clearInterval(timer);
   }, []);
 

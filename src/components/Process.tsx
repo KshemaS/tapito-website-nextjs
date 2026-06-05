@@ -27,7 +27,7 @@ const steps = [
 
 export default function Process() {
   return (
-    <section className="section-padding relative overflow-hidden bg-white">
+    <section id="how-it-works" className="section-padding relative overflow-hidden bg-white">
       {/* 1. Multi-layered Gradient Background */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(9,53,140,0.03),transparent_40%),radial-gradient(circle_at_bottom_left,rgba(5,160,236,0.03),transparent_40%)]" />
       <div className="absolute inset-0 bg-[#fafafa]/50" />
@@ -112,10 +112,10 @@ export default function Process() {
               METHODOLOGY
               </div>
             </motion.div>
-          <h3 className="text-5xl md:text-7xl font-black text-slate-900 mb-10 leading-[1.05] tracking-tight">
+          <h3 className="text-3xl lg:text-5xl 3xl:text-7xl font-black text-slate-900 mb-10 leading-[1.05] tracking-tight">
             From Data to Decisions<br /><span className="text-[#09358c]">— In Seconds.</span>
           </h3>
-          <p className="text-xl text-slate-500 font-medium leading-relaxed max-w-2xl mx-auto opacity-80">
+          <p className="text-md lg:text-xl text-slate-500 font-medium leading-relaxed max-w-2xl mx-auto opacity-80">
             Precision-engineered analytics that transform raw retail data into actionable growth strategies.
           </p>
         </div>

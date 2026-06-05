@@ -377,12 +377,12 @@ export default function PartnersPage() {
                   <ArrowRight size={16} className="relative z-10 transition-transform group-hover:translate-x-1" />
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
                 </Link>
-                <Link
+                {/* <Link
                   href="#"
                   className="inline-flex items-center gap-2 rounded-full px-8 py-4 text-sm font-bold text-slate-600 transition-colors hover:text-[#09358c]"
                 >
                   Talk to Partnership Team
-                </Link>
+                </Link> */}
               </motion.div>
             </div>
 

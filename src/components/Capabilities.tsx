@@ -149,13 +149,6 @@ export default function Capabilities() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-white/40 to-transparent" />
               </div>
-
-              <div className="pt-6 border-t border-slate-100 flex items-center justify-between group-hover:border-blue-100 transition-colors">
-                 <span className="text-sm font-bold text-[#000] md:text-slate-400 uppercase tracking-widest group-hover:text-[#000]">Learn More</span>
-                 <div className="w-8 h-8 rounded-full bg-[#05a0ec] md:bg-slate-50 flex items-center justify-center text-white md:text-slate-400 group-hover:bg-[#05a0ec] group-hover:text-white transition-all">
-                    <AnimatedLucideIcon name="ArrowRight" size={16} />
-                 </div>
-              </div>
             </motion.div>
           ))}
         </div>

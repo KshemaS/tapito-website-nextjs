@@ -7,7 +7,7 @@ import CardSwap, { Card } from "@/components/ui/CardSwap";
 
 export default function AboutHero() {
   return (
-    <section className="relative h-auto min-h-screen flex items-center bg-transparent overflow-hidden py-24 sm:py-0">
+    <section className="relative h-auto min-h-screen flex items-center bg-transparent overflow-hidden pt-28 pb-12 sm:py-0">
       {/* Background Patterns */}
       <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:32px_32px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-20 pointer-events-none" />
       
@@ -66,7 +66,7 @@ export default function AboutHero() {
           </div>
 
           {/* Right Side: CardSwap */}
-          <div className="relative w-full lg:w-[500px] h-[300px] sm:h-[400px] flex justify-center lg:block lg:translate-y-20 scale-75 sm:scale-90 lg:scale-100">
+          <div className="relative w-full lg:w-[500px] h-[300px] sm:h-[400px] flex justify-center lg:block lg:translate-y-20">
             <CardSwap
               width={500}
               height={400}

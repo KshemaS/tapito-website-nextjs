@@ -19,6 +19,17 @@ const slides = [
 export default function Hero() {
   const router = useRouter();
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    if(window?.innerWidth === undefined) return;
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 400);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -51,14 +62,14 @@ export default function Hero() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="mb-8 px-[14px] py-[8px] rounded-full border border-[#BFBFBF] flex items-center gap-2"
+              className="mb-8 px-[14px] py-[6px] 2xl:py-[8px] rounded-full border border-[#BFBFBF] flex items-center gap-2"
             >
-              <span className="text-[16px] font-normal text-[#AFAFAF] uppercase tracking-wide leading-normal">
+              <span className="text-[12px] lg:text-[13px] 2xl:text-[16px] font-normal text-[#AFAFAF] uppercase tracking-wide leading-normal">
                 THE FUTURE OF RETAIL AI
               </span>
             </motion.div>
 
-            <h1 className="text-[58px] font-bold leading-[75px] text-white font-satoshi">
+            <h1 className={`${isMobile ? "text-[34px]" : "text-[40px]"} lg:text-[44px] 3xl:text-[58px] 2xl:text-[58px] font-bold xl:leading-[50px] 2xl:leading-[60px] 4xl:leading-[75px] text-white font-satoshi`}>
               Turn Your Retail Data Into Revenue
               <br />
               <span className="pb-2 px-1 inline-block bg-clip-text text-transparent bg-[linear-gradient(90deg,#09358C_0%,#FFFFFF_100%)]">
@@ -67,7 +78,7 @@ export default function Hero() {
               </span>
             </h1>
 
-            <p className="text-xl lg:text-[18px] xl:text-[20px] 4xl:text-[22px] mb-[60px] leading-relaxed font-normal text-[#BEBEBE]">
+            <p className="text-[16px] lg:text-[18px] xl:text-[20px] 4xl:text-[22px] mb-[30px] lg:mb-[40px] 2xl:mb-[60px] leading-relaxed font-normal text-[#BEBEBE]">
               AI-powered analytics, real-time insights, and fully automated
               customer engagement —built to grow your revenue without manual
               effort.
@@ -75,19 +86,24 @@ export default function Hero() {
 
             <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto px-1.5 sm:px-2 md:px-[2px]">
               <button
-                className="btn-premium flex items-center gap-2 text-lg px-10 py-5 w-full sm:w-auto justify-center font-normal"
+                className="btn-premium text-[16px] lg:text-[18px] 3xl:text-[22px] flex items-center gap-2 text-lg px-10 py-5 w-full sm:w-auto justify-center font-normal"
                 onClick={() => router.push("/contact")}
               >
                 Book Demo
                 <ArrowRightIcon color="#017DC0C4" size={20} />
               </button>
-              <button className="px-8 py-3.5 rounded-full flex items-center gap-3 group text-lg w-full sm:w-auto justify-center transition-all bg-none border-1 border-[#017DC0C4] font-normal text-white text-[20px]">
+              <button 
+                className="px-8 py-3.5 rounded-full flex items-center gap-3 group text-lg w-full sm:w-auto justify-center transition-all bg-none border-1 border-[#017DC0C4] font-normal text-white text-[16px] lg:text-[18px] 3xl:text-[22px]"
+                onClick={() => {
+                  document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
                 <div className="w-10 h-10 rounded-full gradient-bg-anim flex items-center justify-center text-white transition-all shadow-lg shadow-blue-500/10">
                   <img
                     src={pause.src}
                     className="fill-current ml-1"
                     alt="Play Icon"
-                  />
+                  /> 
                 </div>
                 See How It Works
               </button>
@@ -114,7 +130,7 @@ export default function Hero() {
                       initial={{ opacity: 0, y: -20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.3, duration: 0.6 }}
-                      className={`absolute top-0 3xl:top-22 4xl:top-30 left-0 z-20 ${isMobileVideo ? "left-1/2 -translate-x-1/2" : "left-0"}`}
+                      className={`absolute z-20 ${isMobileVideo ? "top-0 3xl:top-22 4xl:top-30 left-1/2 -translate-x-1/2" : "top-0 3xl:top-16 4xl:top-15 left-20"}`}
                     >
                       <h2 className="text-white text-sm font-semibold tracking-widest uppercase bg-white/5 backdrop-blur-md px-6 py-2.5 rounded-full border border-white/10 shadow-2xl whitespace-nowrap">
                         {currentSlide.title}
@@ -128,7 +144,7 @@ export default function Hero() {
                       muted
                       loop
                       playsInline
-                      className={`max-w-full max-h-full object-contain drop-shadow-2xl 4xl:pt-20 ${isMobileVideo ? "origin-bottom" : ""}`}
+                      className={`max-w-full max-h-full object-contain drop-shadow-2xl 4xl:pt-20 origin-bottom`}
                     />
                     <div className="absolute inset-0 via-transparent to-transparent pointer-events-none" />
                   </div>

@@ -119,17 +119,19 @@ export const SolutionsHero = ({
       </div>
 
       {/* Orbital Icons */}
-      {floatingBadges.map((badge, index) => (
-        <OrbitalIcon
-          key={index}
-          icon={badge.icon}
-          text={badge.text}
-          x={badge.x}
-          y={badge.y}
-          delay={badge.delay}
-        />
-      ))}
-
+      <div className="md:block hidden">
+        {floatingBadges.map((badge, index) => (
+          <OrbitalIcon
+            key={index}
+            icon={badge.icon}
+            text={badge.text}
+            x={badge.x}
+            y={badge.y}
+            delay={badge.delay}
+          />
+        ))}
+      </div>
+      
       <Container className="relative z-10 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -161,9 +163,6 @@ export const SolutionsHero = ({
               onClick={() => router.push("/contact")}
             >
               Book Demo
-            </button>
-            <button className="bg-white/5 hover:bg-white/10 text-white border border-white/10 px-10 py-5 rounded-2xl font-black text-lg backdrop-blur-xl transition-all hover:scale-105 active:scale-95">
-              Watch Product Tour
             </button>
           </div>
         </motion.div>

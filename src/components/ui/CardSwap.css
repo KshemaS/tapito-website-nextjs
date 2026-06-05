@@ -30,21 +30,30 @@
 
 @media (max-width: 1024px) {
   .card-swap-container {
-    transform: scale(0.8) translate(0%, 15%);
-    left: 10%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    transform-origin: center center;
+    margin-left: 0;
   }
 }
 
 @media (max-width: 768px) {
   .card-swap-container {
-    transform: scale(0.7) translate(15%, 20%);
     left: 50%;
-    margin-left: -150px;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.7);
+    transform-origin: center center;
+    margin-left: 0;
   }
 }
 
 @media (max-width: 480px) {
   .card-swap-container {
-    transform: scale(0.55) translate(25%, 25%);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.55);
+    transform-origin: center center;
+    margin-left: 0;
   }
 }

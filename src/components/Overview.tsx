@@ -22,7 +22,7 @@ export default function Overview() {
               <AnimatedLucideIcon name="BarChart3" size={14} color="#09358c" />
               PLATFORM OVERVIEW
             </div>
-            <h2 className="text-4xl md:text-6xl font-black text-slate-900 leading-tight">
+            <h2 className="text-4xl lg:text-5xl 2xl:text-6xl font-black text-slate-900 leading-tight">
               One Unified Engine. <br />
               <span className="text-[#09358c]">Infinite Integrations.</span>
             </h2>
@@ -33,7 +33,7 @@ export default function Overview() {
             <div>
               <Link
                 href="/integrations"
-                className="inline-flex items-center gap-4 bg-[#09358c] text-white px-8 py-4 rounded-full font-black text-sm uppercase tracking-[0.15em] hover:bg-[#0a3faa] transition-all shadow-xl shadow-blue-900/20 hover:shadow-2xl hover:shadow-blue-900/30 group active:scale-95"
+                className="inline-flex items-center gap-4 bg-[#09358c] text-white px-8 py-4 rounded-full font-medium text-sm uppercase tracking-[0.15em] hover:bg-[#0a3faa] transition-all shadow-xl shadow-blue-900/20 hover:shadow-2xl hover:shadow-blue-900/30 group active:scale-95"
               >
                 <span>Explore More</span>
                 <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-[#09358c] transition-all duration-300">

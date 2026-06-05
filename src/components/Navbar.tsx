@@ -28,7 +28,7 @@ const companyLinks = [
 const navLinks = [
   { label: "Features", href: "/features" },
   { label: "Solutions", href: "/solutions" },
-  { label: "Plans", href: "/pricing" },
+  { label: "Plans", href: "/plans" },
   { label: "Partners", href: "/partners" },
   { label: "Company", href: "#" },
   { label: "Contact", href: "/contact" },
@@ -576,7 +576,6 @@ export default function Navbar() {
                           )}
                         </div>
 
-                        {/* Nested items for mobile */}
                         <AnimatePresence>
                           {item.label === "Features" && mobileFeaturesOpen && (
                             <motion.div
@@ -588,7 +587,7 @@ export default function Navbar() {
                               {features.map((f) => (
                                 <Link key={f.slug} href={`/features/${f.slug}`} onClick={closeMenu} className="flex items-center gap-3 p-3 rounded-xl bg-slate-50/50 hover:bg-slate-100 transition-colors">
                                   <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center text-[#09358c] shadow-sm">
-                                    <AnimatedLucideIcon icon={f.icon} size={14} />
+                                    <f.icon size={14} color="#09358c" />
                                   </div>
                                   <span className="text-[14px] font-bold text-slate-700">{f.title}</span>
                                 </Link>
@@ -605,7 +604,7 @@ export default function Navbar() {
                               {solutionsData.map((s) => (
                                 <Link key={s.slug} href={`/solutions/${s.slug}`} onClick={closeMenu} className="flex items-center gap-3 p-3 rounded-xl bg-slate-50/50 hover:bg-slate-100 transition-colors">
                                   <div className={cn("w-8 h-8 rounded-lg flex items-center justify-center text-white shadow-sm", s.color)}>
-                                    <s.icon size={14} />
+                                    <s.icon size={14} color="#09358c"/>
                                   </div>
                                   <span className="text-[14px] font-bold text-slate-700">{s.title}</span>
                                 </Link>

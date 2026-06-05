@@ -42,7 +42,8 @@ export default function AboutClients() {
                             repeat: Infinity,
                             ease: "linear"
                         }}
-                        className="flex items-center gap-24 whitespace-nowrap"
+                        style={{ willChange: "transform" }}
+                        className="flex items-center gap-12 md:gap-24 whitespace-nowrap"
                     >
                         {[...CLIENTS, ...CLIENTS, ...CLIENTS].map((client, idx) => (
                             <div 
@@ -52,7 +53,7 @@ export default function AboutClients() {
                                 <img 
                                     src={client.url} 
                                     alt={client.name}
-                                    className="h-9 md:h-12 w-auto object-contain"
+                                    className="h-12 md:h-16 w-auto object-contain"
                                     onError={(e) => {
                                         (e.target as HTMLImageElement).style.display = 'none';
                                     }}

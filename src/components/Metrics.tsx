@@ -79,16 +79,23 @@ export default function Metrics() {
                     ))}
                  </ul>
                  
-                 <div className="mt-12 pt-8 border-t border-white/10 flex items-center gap-4">
-                    <div className="flex -space-x-3">
-                       {[1,2,3,4].map(i => (
-                          <div key={i} className="w-10 h-10 rounded-full border-2 border-[#09358c] bg-slate-200" />
-                       ))}
-                    </div>
-                    <span className="text-sm font-medium text-blue-100">
-                      Joined by 100+ global brands
-                    </span>
-                 </div>
+                  <div className="mt-12 pt-8 border-t border-white/10 flex items-center gap-4">
+                     <div className="flex -space-x-3">
+                        {[
+                          { icon: "Shirt" },
+                          { icon: "Laptop" },
+                          { icon: "Store" },
+                          { icon: "Utensils" }
+                        ].map((item, i) => (
+                           <div key={i} className="w-10 h-10 rounded-full border-2 border-[#09358c] bg-white flex items-center justify-center relative z-10 shadow-sm text-[#09358c]">
+                              <AnimatedLucideIcon name={item.icon} size={16} className="#09358c" />
+                           </div>
+                        ))}
+                     </div>
+                     <span className="text-sm font-medium text-blue-100">
+                       Serving 10+ industry verticals
+                     </span>
+                  </div>
               </div>
            </div>
         </div>
