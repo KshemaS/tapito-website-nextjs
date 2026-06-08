@@ -75,7 +75,7 @@ export default function OverViewCard() {
             whileInView={{ opacity: 1 }}
             transition={{ duration: 1.2, ease: "easeOut" }}
             viewport={{ once: true }}
-            transform="translate(222.626, 350) rotate(270) scale(1.6, 1.4) translate(-160, -41.500)"
+            transform="translate(222.626, 250) rotate(270) scale(1.6, 1.4) translate(-160, -41.500)"
           > 
             <g stroke="#05a0ec" strokeDasharray="0.1 6" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" mask="url(#fade_mask)">
               <animate attributeName="stroke-dashoffset" values="0;-6" dur="0.8s" repeatCount="indefinite"></animate>
@@ -106,7 +106,7 @@ export default function OverViewCard() {
             whileInView={{ opacity: 1 }}
             transition={{ duration: 1.2, ease: "easeOut" }}
             viewport={{ once: true }}
-            transform="translate(730, 350) rotate(90) scale(1.6, 1.4) translate(-160, -41.500)"
+            transform="translate(730, 250) rotate(90) scale(1.6, 1.4) translate(-160, -41.500)"
           > 
             <g stroke="#05a0ec" strokeDasharray="0.1 6" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" mask="url(#fade_mask_2)">
               <animate attributeName="stroke-dashoffset" values="0;-6" dur="0.8s" repeatCount="indefinite"></animate>

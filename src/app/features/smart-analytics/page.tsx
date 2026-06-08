@@ -46,10 +46,21 @@ const revealVariant = {
 } as any;
 
 import { ExploreMoreFeatures } from "@/components/features/ExploreMoreFeatures";
+import { useEffect, useState } from "react";
 
 export default function SmartAnalyticsPage() {
   const feature = featuresData.find(f => f.slug === "smart-analytics");
   if (!feature) return null;
+  const [isExtraSmall, setIsExtraSmall] = useState(false);
+
+  useEffect(() => {
+    if(window.innerWidth !== undefined) {
+      const width = window.innerWidth;
+      if(width < 350) {
+        setIsExtraSmall(true);
+      }
+    }
+  },[])
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-white pt-24 text-slate-900 selection:bg-[#09358c]/10 selection:text-[#09358c]">
@@ -219,8 +230,8 @@ export default function SmartAnalyticsPage() {
                   </div>
                 </div>
 
-                {/* Floating Signal Cards */}
-                {[
+                {!isExtraSmall && 
+                [
                   { label: "Branch 04", score: "Critical", tone: "bg-rose-500", pos: "top-0 -left-10" },
                   { label: "Inventory", score: "Optimal", tone: "bg-emerald-500", pos: "bottom-10 -right-10" },
                 ].map((card, i) => (
@@ -237,7 +248,8 @@ export default function SmartAnalyticsPage() {
                       <p className="text-sm font-black">{card.score}</p>
                     </div>
                   </motion.div>
-                ))}
+                ))
+                }
               </div>
             </motion.div>
           </div>
