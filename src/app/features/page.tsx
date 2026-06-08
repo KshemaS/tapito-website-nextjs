@@ -2,7 +2,7 @@
 
 import { FeaturesHero } from "@/components/features/FeaturesHero";
 import { FeaturesGrid } from "@/components/features/FeaturesGrid";
-import { FeaturesCTA } from "@/components/features/FeaturesCTA";
+import CTASection from "@/components/CTA-card";
 
 export default function FeaturesPage() {
   return (
@@ -15,7 +15,14 @@ export default function FeaturesPage() {
       <FeaturesGrid />
 
       {/* Call to Action Section */}
-      <FeaturesCTA />
+      <CTASection
+        title="Ready to revolutionize your retail analytics?"
+        description="Join 500+ leading retailers who use Tapito to make smarter, faster, more profitable decisions every day."
+        badge="GET STARTED"
+        image="/assets/images/about/ready-to-tranform.png"
+        isAbout={false}
+        showTalkButton={false}
+      />
     </div>
   );
 }

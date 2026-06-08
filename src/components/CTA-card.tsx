@@ -52,7 +52,7 @@ export default function CTASection({ title, description, badge, image, subtitle,
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
                     className={cn(
-                        "text-3xl md:text-6xl lg:text-7xl font-semibold text-white mb-8 leading-[1.05]",
+                        "text-[22px] md:text-[32px] lg:text-[40px] 2xl:text-[52px]  font-semibold text-white mb-8 leading-[1.05]",
                         isAbout ? "tracking-normal uppercase" : "tracking-tight"
                     )}
                 >
@@ -91,12 +91,12 @@ export default function CTASection({ title, description, badge, image, subtitle,
                         {isAbout ? "Launch Product Tour" : "Talk To Experts"}
                     </button>
                     )}
-                    {isAbout && (
+                    {/* {isAbout && (
                         <button className="group relative px-8 py-4 border border-sky-400/30 text-white/70 text-[13px] font-bold uppercase tracking-widest hover:border-sky-400 hover:text-sky-400 transition-all duration-300 rounded-lg flex items-center gap-2 whitespace-nowrap">
                             <AnimatedLucideIcon name="Calculator" size={16} className="text-sky-400" />
                             <span>ROI Calculator</span>
                         </button>
-                    )}
+                    )} */}
                 </motion.div>
             </div>
         </div>

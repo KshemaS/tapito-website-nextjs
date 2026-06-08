@@ -74,10 +74,10 @@ export default function AboutCTA() {
                         Launch Product Tour
                     </button>
 
-                    <button className="group relative px-8 py-4 border border-sky-400/30 text-white/70 text-[13px] font-bold uppercase tracking-widest hover:border-sky-400 hover:text-sky-400 transition-all duration-300 rounded-lg flex items-center gap-2 whitespace-nowrap">
+                    {/* <button className="group relative px-8 py-4 border border-sky-400/30 text-white/70 text-[13px] font-bold uppercase tracking-widest hover:border-sky-400 hover:text-sky-400 transition-all duration-300 rounded-lg flex items-center gap-2 whitespace-nowrap">
                         <Calculator size={16} className="text-sky-400" />
                         <span>ROI Calculator</span>
-                    </button>
+                    </button> */}
                 </motion.div>
             </div>
         </div>

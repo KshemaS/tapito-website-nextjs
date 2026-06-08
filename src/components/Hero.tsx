@@ -130,7 +130,7 @@ export default function Hero() {
                       initial={{ opacity: 0, y: -20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.3, duration: 0.6 }}
-                      className={`absolute z-20 ${isMobileVideo ? "top-0 3xl:top-22 4xl:top-30 left-1/2 -translate-x-1/2" : "top-0 3xl:top-16 4xl:top-15 left-20"}`}
+                      className={`absolute z-20 ${isMobileVideo ? "top-0 3xl:top-10 4xl:top-30 left-1/2 -translate-x-1/2" : "top-0 3xl:top-2 4xl:top-15 left-20"}`}
                     >
                       <h2 className="text-white text-sm font-semibold tracking-widest uppercase bg-white/5 backdrop-blur-md px-6 py-2.5 rounded-full border border-white/10 shadow-2xl whitespace-nowrap">
                         {currentSlide.title}
