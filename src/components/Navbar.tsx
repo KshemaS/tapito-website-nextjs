@@ -9,6 +9,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { features } from "@/components/features/FeaturesGrid";
 import { solutionsData } from "@/components/solutions/SolutionsGrid";
 import AnimatedLucideIcon from "@/components/AnimatedLucideIcon";
+import BusinessIntelligence from "@/public/assets/images/features/Business Intelligence Dashboard.png";
+import AIsmartanaliticsengine from "@/public/assets/images/features/AI Smart Analytics Engine.png";
+import campaignautomation from "@/public/assets/images/features/Campaign Automation.png";
+import revanuegrowth from "@/public/assets/images/features/Revenue Growth Insights.png";
+import voicepowered from "@/public/assets/images/features/Voice-Powered AI Command Center.png";
+import smartscheme from "@/public/assets/images/features/Smart Scheme Generator.png";
 
 const companyLinks = [
   {
@@ -37,9 +43,13 @@ const navLinks = [
 const FeatureSlider = () => {
   const [index, setIndex] = useState(0);
   const slides = [
-    { src: "/assets/images/home/devices.png", title: "AI Assistant" },
-    { src: "/assets/images/home/supermarket.png", title: "Growth Engine" },
-    { src: "/assets/images/home/retail.png", title: "Data Insights" },
+    { src: voicepowered.src, title: "Voice-Powered AI Command Center" },
+    { src: smartscheme.src, title: "Smart Scheme Generator" },
+    { src: BusinessIntelligence.src, title: "Business Intelligence Dashboard" },
+    { src: AIsmartanaliticsengine.src, title: "AI Smart Analytics Engine" },
+    { src: campaignautomation.src, title: "Campaign Automation" },
+    { src: revanuegrowth.src, title: "Revenue Growth Insights" },
+
   ];
 
   useEffect(() => {
@@ -58,18 +68,13 @@ const FeatureSlider = () => {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.8, y: -20 }}
           transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-          className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center"
+          className="absolute inset-0 flex flex-col items-center justify-center p-3 text-center"
         >
           <div className="absolute inset-0 bg-blue-500/5 blur-3xl rounded-full scale-110" />
-          <img src={slides[index].src} alt={slides[index].title} className="w-40 h-auto drop-shadow-2xl mb-4" />
-          <span className="text-sm font-black text-slate-900/40 uppercase tracking-[0.2em]">{slides[index].title}</span>
+          <img src={slides[index].src} alt={slides[index].title} className="w-60 h-auto drop-shadow-2xl mb-4" />
+          <span className="text-sm font-semibold font-black text-slate-900/40 uppercase tracking-normal">{slides[index].title}</span>
         </motion.div>
       </AnimatePresence>
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-        {slides.map((_, i) => (
-          <div key={i} className={cn("w-1.5 h-1.5 rounded-full transition-all duration-300", i === index ? "bg-[#09358c] w-4" : "bg-slate-200")} />
-        ))}
-      </div>
     </div>
   );
 };
@@ -98,10 +103,10 @@ const SolutionSlider = () => {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.8, y: -20 }}
           transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-          className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center"
+          className="absolute inset-0 flex flex-col items-center justify-center text-center"
         >
           <div className="absolute inset-0 bg-blue-500/5 blur-3xl rounded-full scale-110" />
-          <img src={slides[index].src} alt={slides[index].title} className="w-40 h-auto drop-shadow-2xl mb-4" />
+          <img src={slides[index].src} alt={slides[index].title} className="w-full h-auto drop-shadow-2xl mb-4" />
           <span className="text-sm font-black text-slate-900/40 uppercase tracking-[0.2em]">{slides[index].title}</span>
         </motion.div>
       </AnimatePresence>
