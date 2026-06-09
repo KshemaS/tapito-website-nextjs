@@ -32,6 +32,9 @@ import {
 } from "lucide-react";
 import AnimatedLucideIcon from "../AnimatedLucideIcon";
 import { ActivityIcon } from "lucide-animated";
+import Image from "next/image";
+import analyzesBg from "@/public/assets/images/solutions/analyzes-beauty-health.jpg";
+import generatesBg from "@/public/assets/images/solutions/generates-beauty-health.jpg";
 
 const BeautyHealth = () => {
   const containerRef = useRef<HTMLElement>(null);
@@ -194,10 +197,12 @@ const BeautyHealth = () => {
                 {/* Background Image Overlay */}
                 <div className="absolute inset-0 z-0">
                   <div className="absolute inset-0 bg-slate-950" />
-                  <img 
-                    src="https://images.unsplash.com/photo-1512432368975-f2d3c1eb3012?auto=format&fit=crop&q=80&w=1000" 
+                  <Image 
+                    src={analyzesBg} 
                     alt="Beauty Analyzes" 
-                    className="w-full h-full object-cover opacity-40 mix-blend-overlay group-hover:scale-105 transition-transform duration-700"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover opacity-40 mix-blend-overlay group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-blue-600/20 via-transparent to-transparent" />
                 </div>
@@ -247,10 +252,12 @@ const BeautyHealth = () => {
                 {/* Background Image Overlay */}
                 <div className="absolute inset-0 z-0">
                   <div className="absolute inset-0 bg-slate-950" />
-                  <img 
-                    src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&q=80&w=1000" 
+                  <Image 
+                    src={generatesBg} 
                     alt="Wellness Generates" 
-                    className="w-full h-full object-cover opacity-40 mix-blend-overlay group-hover:scale-105 transition-transform duration-700"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover opacity-40 mix-blend-overlay group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-purple-600/20 via-transparent to-transparent" />
                 </div>
