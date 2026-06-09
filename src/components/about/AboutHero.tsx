@@ -4,6 +4,10 @@ import { motion } from "framer-motion";
 import Container from "@/components/Container";
 import { Sparkles, ArrowRight } from "lucide-react";
 import CardSwap, { Card } from "@/components/ui/CardSwap";
+import Image from "next/image";
+import about1 from '@/public/assets/images/about/about-1.avif';
+import about2 from '@/public/assets/images/about/about-2.avif';
+import about3 from '@/public/assets/images/about/about-3.avif';
 
 export default function AboutHero() {
   return (
@@ -75,16 +79,24 @@ export default function AboutHero() {
               delay={3500}
               skewAmount={6}
               pauseOnHover={true}
+              easing="linear"
             >
               {[
-                { img: "/retail_ai_dashboard_premium_1775651628420.png" },
-                { img: "/about-hero.png" },
-                { img: "/retail_customer_analytics_digital_overlay_1775651982487.png" }
+                { img: about1 },
+                { img: about2 },
+                { img: about3 }
               ].map((item, idx) => (
                 <Card key={idx}>
                   <div className="relative w-full h-full bg-white flex flex-col items-center justify-center">
-                    <div className="w-full h-full rounded-xl overflow-hidden shadow-inner border border-slate-100">
-                      <div className={`w-full h-full bg-cover bg-center`} style={{ backgroundImage: `url('${item.img}')` }} />
+                    <div className="w-full h-full rounded-xl overflow-hidden shadow-inner border border-slate-100 relative">
+                      <Image
+                        src={item.img}
+                        alt={`About Tapito ${idx + 1}`}
+                        fill
+                        priority={idx === 0}
+                        sizes="(max-width: 1024px) 100vw, 500px"
+                        className="object-cover"
+                      />
                     </div>
                   </div>
                 </Card>

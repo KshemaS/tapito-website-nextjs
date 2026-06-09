@@ -6,6 +6,9 @@ import AnimatedLucideIcon from "./AnimatedLucideIcon";
 import { cn } from "@/lib/utils";
 import Container from "./Container";
 import Image from "next/image";
+import dashboardimg from "@/public/assets/images/tapito_monitor.avif";
+import smart_analytics from "@/public/assets/images/smart-analytics.avif";
+import predictive_inventory from "@/public/assets/images/predictive_inventory.avif";
 
 const coreCapabilities = [
   {
@@ -142,7 +145,7 @@ export default function Capabilities() {
               
               <div className="relative h-64 rounded-2xl overflow-hidden border border-slate-100 bg-slate-50 mb-8">
                 <Image 
-                  src={i === 0 ? "/retail_ai_dashboard_premium_1775651628420.png" : i === 1 ? "/retail_customer_analytics_digital_overlay_1775651982487.png" : "/predictive_inventory_retail_ai_1775652149852.png"}
+                  src={i === 0 ? dashboardimg.src : i === 1 ? smart_analytics.src : predictive_inventory.src}
                   alt={cap.title}
                   fill
                   sizes="(max-width: 1024px) 100vw, 33vw"
