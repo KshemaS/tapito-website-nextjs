@@ -145,6 +145,7 @@ export default function Capabilities() {
                   src={i === 0 ? "/retail_ai_dashboard_premium_1775651628420.png" : i === 1 ? "/retail_customer_analytics_digital_overlay_1775651982487.png" : "/predictive_inventory_retail_ai_1775652149852.png"}
                   alt={cap.title}
                   fill
+                  sizes="(max-width: 1024px) 100vw, 33vw"
                   className="object-cover opacity-100 group-hover:scale-110 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-white/40 to-transparent" />

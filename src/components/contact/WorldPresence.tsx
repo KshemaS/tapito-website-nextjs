@@ -101,7 +101,14 @@ export default function WorldPresence({ showCards = true }: { showCards?: boolea
           {/* Map background */}
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-full h-full relative">
-              <Image src={mapBg} alt="Presence Around the World" fill className="object-fill opacity-90" priority />
+              <Image 
+                src={mapBg} 
+                alt="Presence Around the World" 
+                fill 
+                sizes="(max-width: 768px) 100vw, 1440px"
+                className="object-fill opacity-90" 
+                priority 
+              />
             </div>
           </div>
 

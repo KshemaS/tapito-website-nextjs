@@ -4,6 +4,7 @@ import AnimatedLucideIcon from "./AnimatedLucideIcon";
 import { motion } from "framer-motion";
 import Container from "./Container";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 import store from '@/public/assets/images/home/store.png';
 import fashion from '@/public/assets/images/home/fashion.png';
 import food from '@/public/assets/images/home/food.png';
@@ -17,42 +18,42 @@ const industries = [
     icon: "Building2", 
     name: "Retail Chains", 
     desc: "Centralize operations across multiple stores and boost performance at every location.",
-    img: store.src
+    img: store
   },
   { 
     id: "02", 
     icon: "ShoppingCart", 
     name: "Supermarkets", 
     desc: "Optimize inventory, reduce wastage, and ensure the right products are always in stock.",
-    img: supermarket.src 
+    img: supermarket 
   },
   { 
     id: "03", 
     icon: "Shirt", 
     name: "Fashion & Apparel", 
     desc: "Track trends, manage collections, and improve sell-through rates with AI insights.",
-    img: fashion.src 
+    img: fashion 
   },
   { 
     id: "04", 
     icon: "Utensils", 
     name: "F&B Chains", 
     desc: "Optimize menu performance, control costs, and deliver great customer experiences consistently.",
-    img: food.src 
+    img: food 
   },
   { 
     id: "05", 
     icon: "Laptop", 
     name: "Electronics", 
     desc: "Track high-value inventory, analyze demand, and maximize sales opportunities.",
-    img: electronics.src 
+    img: electronics 
   },
   { 
     id: "06", 
     icon: "Sparkles", 
     name: "Beauty & Wellness", 
     desc: "Personalize customer experiences and boost loyalty with smart AI recommendations.",
-    img: beauty.src 
+    img: beauty 
   },
 ];
 
@@ -112,10 +113,12 @@ export default function Audience() {
                 <div className="w-[40%] relative overflow-hidden">
                   {/* Circular mask for image */}
                   <div className="absolute top-1/2 left-0 w-[200%] h-[120%] rounded-full -translate-y-1/2 -translate-x-1/4 group-hover:scale-110 transition-transform duration-700" />
-                  <img 
+                  <Image 
                     src={item.img} 
                     alt={item.name} 
-                    className="absolute inset-0 w-full h-full object-contain p-4 z-10 group-hover:scale-110 transition-transform duration-700"
+                    fill
+                    sizes="(max-width: 768px) 30vw, 150px"
+                    className="object-contain p-4 z-10 group-hover:scale-110 transition-transform duration-700"
                   />
                 </div>
               </div>

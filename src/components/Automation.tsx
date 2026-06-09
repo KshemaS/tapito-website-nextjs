@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import AnimatedLucideIcon from "./AnimatedLucideIcon";
 import Container from "./Container";
@@ -11,6 +12,23 @@ const workflows = [
 ];
 
 export default function Automation() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isIntersecting, setIsIntersecting] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsIntersecting(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px" }
+    );
+    if (videoRef.current) observer.observe(videoRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section className="bg-slate-50 section-padding relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -97,7 +115,8 @@ export default function Automation() {
           <div className="relative">
                  <div className="aspect-square bg-white rounded-[30px] shadow-2xl overflow-hidden border border-slate-100 flex items-center justify-center p-[10px] ">
                   <video
-                     src="/videos/dashboard.webm"
+                     ref={videoRef}
+                     src={isIntersecting ? "/videos/dashboard.webm" : undefined}
                      autoPlay
                      muted
                      loop

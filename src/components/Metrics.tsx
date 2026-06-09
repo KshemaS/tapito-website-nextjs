@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import AnimatedLucideIcon from "./AnimatedLucideIcon";
 import Container from "./Container";
@@ -12,6 +13,23 @@ const stats = [
 ];
 
 export default function Metrics() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isIntersecting, setIsIntersecting] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsIntersecting(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px" }
+    );
+    if (videoRef.current) observer.observe(videoRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section className="bg-white">
       <Container>
@@ -50,14 +68,14 @@ export default function Metrics() {
               <div className="absolute -inset-4 bg-blue-50 rounded-[3.5rem] -z-10 rotate-2" />
               <div className="relative h-[500px] w-full rounded-[3rem] overflow-hidden shadow-2xl border border-slate-100 mb-12">
                  <video 
+                    ref={videoRef}
+                    src={isIntersecting ? "/videos/business-impact.mp4" : undefined}
                     className="w-full h-full object-cover opacity-90"
                     autoPlay 
                     loop 
                     muted 
                     playsInline
-                  >
-                    <source src="/videos/business-impact.mp4" type="video/mp4" />
-                  </video>
+                  />
                 <div className="absolute inset-0 bg-[#09358c]/10" />
               </div>
 

@@ -114,124 +114,131 @@ export default function ValueStrip() {
   
   let orderedIdx = 0;
 
-  return (
-    <>
-      <ValueStripMobile />
-      <section
-        className="hidden xl:block bg-slate-950 py-[60px] lg:py-[80px] 2xl:py-[100px] 4xl:py-[120px] border-y border-white/5 overflow-hidden relative"
-      >
-        {innerWidth > 1880 ? (
-          <AnimatedBorderLargeSVG />
-        ) : (
-          <AnimatedBorderLapSVG />
-        )}
-        <Container className="relative">
-          <div className="flex flex-col items-center">
+  if (innerWidth === 0) {
+    return (
+      <section className="bg-slate-950 py-[60px] lg:py-[80px] 2xl:py-[100px] 4xl:py-[120px] border-y border-white/5 overflow-hidden relative min-h-[600px] lg:min-h-[800px]" />
+    );
+  }
 
-            {/* Top Row */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12 xl:mb-32 w-full max-w-6xl">
-              {topItems.map((item, i) => {
-                const oi = orderedIdx++;
+  if (innerWidth < 1292) {
+    return <ValueStripMobile />;
+  }
+
+  return (
+    <section
+      className="hidden xl:block bg-slate-950 py-[60px] lg:py-[80px] 2xl:py-[100px] 4xl:py-[120px] border-y border-white/5 overflow-hidden relative"
+    >
+      {innerWidth > 1880 ? (
+        <AnimatedBorderLargeSVG />
+      ) : (
+        <AnimatedBorderLapSVG />
+      )}
+      <Container className="relative">
+        <div className="flex flex-col items-center">
+
+          {/* Top Row */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12 xl:mb-32 w-full max-w-6xl">
+            {topItems.map((item, i) => {
+              const oi = orderedIdx++;
+              return (
+                <FeatureCard
+                  key={i}
+                  item={item}
+                  index={i}
+                />
+              );
+            })}
+          </div>
+
+          {/* Middle Row */}
+          <div className="flex flex-col xl:flex-row items-center justify-between gap-10 xl:gap-12 2xl:gap-32 w-full max-w-[1700px] mb-12">
+            
+            {/* Left Side */}
+            <div className="flex flex-col gap-5 order-2 xl:order-1">
+              {leftItems.map((item, i) => {
                 return (
                   <FeatureCard
                     key={i}
                     item={item}
-                    index={i}
+                    index={i + 2}
                   />
                 );
               })}
             </div>
 
-            {/* Middle Row */}
-            <div className="flex flex-col xl:flex-row items-center justify-between gap-10 xl:gap-12 2xl:gap-32 w-full max-w-[1700px] mb-12">
-              
-              {/* Left Side */}
-              <div className="flex flex-col gap-5 order-2 xl:order-1">
-                {leftItems.map((item, i) => {
-                  return (
-                    <FeatureCard
-                      key={i}
-                      item={item}
-                      index={i + 2}
-                    />
-                  );
-                })}
-              </div>
-
-              {/* Center Orb */}
-              <div className="order-1 xl:order-2">
-                <div className="relative w-[300px] h-[300px] md:w-[400px] md:h-[400px] xl:w-[450px] xl:h-[450px] 2xl:w-[500px] 2xl:h-[500px] 3xl:w-[550px] 3xl:h-[550px] flex items-center justify-center">
-                  <div className="absolute inset-0 z-0 scale-110">
-                    <Orb
-                      hue={33}
-                      hoverIntensity={0}
-                      backgroundColor="#020617"
-                      forceHoverState={true}
-                    />
-                  </div>
-
-                  <div
-                    className="absolute rounded-full z-10 pointer-events-none"
-                    style={{
-                      width: 'calc(100% * 1)',
-                      height: 'calc(100% * 1.1)',
-                      top: '50%',
-                      left: '50%',
-                      transform: 'translate(-50%, -50%)',
-                    }}
+            {/* Center Orb */}
+            <div className="order-1 xl:order-2">
+              <div className="relative w-[300px] h-[300px] md:w-[400px] md:h-[400px] xl:w-[450px] xl:h-[450px] 2xl:w-[500px] 2xl:h-[500px] 3xl:w-[550px] 3xl:h-[550px] flex items-center justify-center">
+                <div className="absolute inset-0 z-0 scale-110">
+                  <Orb
+                    hue={33}
+                    hoverIntensity={0}
+                    backgroundColor="#020617"
+                    forceHoverState={true}
                   />
+                </div>
 
-                  <div className="relative z-20 text-center max-w-[180px] md:max-w-[360px] pointer-events-none">
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 1 }}
-                      className="space-y-3"
-                    >
-                      <span className="text-[11px] md:text-xs font-black text-slate-400 uppercase tracking-[0.4em] block mb-1">
-                        INSTANT VALUE STRIP
-                      </span>
-                      <h2 className="text-xl lg:text-[30px] font-black text-white leading-tight">
-                        Everything You Need to Grow{" "}
-                        <br />
-                        <span className="gradient-text">— In One Platform</span>
-                      </h2>
-                      <div className="h-px w-10 bg-white/10 mx-auto mt-4" />
-                    </motion.div>
-                  </div>
+                <div
+                  className="absolute rounded-full z-10 pointer-events-none"
+                  style={{
+                    width: 'calc(100% * 1)',
+                    height: 'calc(100% * 1.1)',
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                  }}
+                />
+
+                <div className="relative z-20 text-center max-w-[180px] md:max-w-[360px] pointer-events-none">
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1 }}
+                    className="space-y-3"
+                  >
+                    <span className="text-[11px] md:text-xs font-black text-slate-400 uppercase tracking-[0.4em] block mb-1">
+                      INSTANT VALUE STRIP
+                    </span>
+                    <h2 className="text-xl lg:text-[30px] font-black text-white leading-tight">
+                      Everything You Need to Grow{" "}
+                      <br />
+                      <span className="gradient-text">— In One Platform</span>
+                    </h2>
+                    <div className="h-px w-10 bg-white/10 mx-auto mt-4" />
+                  </motion.div>
                 </div>
               </div>
-
-              {/* Right Side */}
-              <div className="flex flex-col gap-5 order-3">
-                {rightItems?.map((item, i) => {
-                  return (
-                    <FeatureCard
-                      key={i}
-                      item={item}
-                      index={i + 4}
-                    />
-                  );
-                })}
-              </div>
             </div>
 
-            {/* Bottom Row */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12 lg:mt-24 w-full max-w-6xl">
-              {bottomItems.map((item, i) => {
+            {/* Right Side */}
+            <div className="flex flex-col gap-5 order-3">
+              {rightItems?.map((item, i) => {
                 return (
                   <FeatureCard
                     key={i}
                     item={item}
-                    index={i + 7}
+                    index={i + 4}
                   />
                 );
               })}
             </div>
-
           </div>
-        </Container>
-      </section>
-    </>
+
+          {/* Bottom Row */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12 lg:mt-24 w-full max-w-6xl">
+            {bottomItems.map((item, i) => {
+              return (
+                <FeatureCard
+                  key={i}
+                  item={item}
+                  index={i + 7}
+                />
+              );
+            })}
+          </div>
+
+        </div>
+      </Container>
+    </section>
   );
 }

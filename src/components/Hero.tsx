@@ -4,8 +4,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import Container from "@/components/Container";
 import { useRouter } from "next/navigation";
-import bg from "@/public/assets/images/home-bg.png";
-import pause from "@/public/assets/images/pause.svg";
+import Image from "next/image";
+import bg from "@/public/assets/images/home-bg.avif";
 import { ArrowRightIcon } from "lucide-animated";
 
 const slides = [
@@ -44,10 +44,13 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center">
       <div className="absolute inset-0 z-0">
-        <img
-          src={bg.src}
-          className="w-full h-full object-cover"
-          alt="Background"
+        <Image
+          src={bg}
+          alt="Hero Background"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
         />
       </div>
       <Container className="relative z-10">
@@ -99,11 +102,9 @@ export default function Hero() {
                 }}
               >
                 <div className="w-10 h-10 rounded-full gradient-bg-anim flex items-center justify-center text-white transition-all shadow-lg shadow-blue-500/10">
-                  <img
-                    src={pause.src}
-                    className="fill-current ml-1"
-                    alt="Play Icon"
-                  /> 
+                  <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg" className="fill-current ml-1" aria-hidden="true">
+                    <path d="M0 10.5807V1.30649C0 0.301562 1.08846 -0.325997 1.95815 0.177507L10.3491 5.03541C11.2373 5.54965 11.2113 6.84078 10.303 7.3188L1.91212 11.7351C1.04341 12.1923 0 11.5623 0 10.5807Z" fill="currentColor"/>
+                  </svg> 
                 </div>
                 See How It Works
               </button>

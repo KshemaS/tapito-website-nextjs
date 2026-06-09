@@ -41,6 +41,7 @@ export default function FeaturedVideo() {
             src="/retail_ai_dashboard_premium_1775651628420.png"
             alt="Product Walkthrough"
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
             className="object-cover group-hover:scale-105 transition-transform duration-1000"
           />
           <div className="absolute inset-0 bg-slate-900/40 group-hover:bg-slate-900/20 transition-colors duration-500 flex items-center justify-center">

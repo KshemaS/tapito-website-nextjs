@@ -207,15 +207,15 @@ export default function Navbar() {
         onMouseEnter={() => setIsHeaderHovered(true)}
         onMouseLeave={() => setIsHeaderHovered(false)}
         className={cn(
-          "fixed top-0 left-0 right-0 z-100 transition-all duration-500 ease-in-out w-full",
+          "fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ease-in-out w-full",
           isVisible ? "translate-y-0" : "-translate-y-full"
         )}
       >
         <div
           className={cn(
             "w-full transition-all duration-500 ease-in-out py-3 lg:py-4 2xl:py-6",
-            isScrolled || !isHomePage
-              ? "bg-white/80 backdrop-blur-xl shadow-md"
+            isScrolled || activeMenu || isHeaderHovered || !isHomePage
+              ? "bg-white shadow-md border-b border-slate-100"
               : "bg-transparent"
           )}
         >
@@ -512,7 +512,7 @@ export default function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={closeMenu}
-              className="fixed inset-0 z-200 bg-black/60 backdrop-blur-sm lg:hidden"
+              className="fixed inset-0 z-[200] bg-black/60 backdrop-blur-sm lg:hidden"
             />
 
             {/* Menu Panel */}
@@ -521,7 +521,7 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed inset-y-0 right-0 z-201 w-full max-w-100 bg-white lg:hidden shadow-2xl flex flex-col"
+              className="fixed inset-y-0 right-0 z-[201] w-full max-w-100 bg-white lg:hidden shadow-2xl flex flex-col"
             >
               <div className="flex items-center justify-between p-8 border-b border-slate-50">
                 <img src="/logo.svg" alt="Logo" className="h-8" />
