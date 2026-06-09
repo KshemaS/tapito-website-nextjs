@@ -16,6 +16,7 @@ import revanuegrowth from "@/public/assets/images/features/Revenue Growth Insigh
 import voicepowered from "@/public/assets/images/features/Voice-Powered AI Command Center.png";
 import smartscheme from "@/public/assets/images/features/Smart Scheme Generator.png";
 
+
 const companyLinks = [
   {
     label: "About Us",

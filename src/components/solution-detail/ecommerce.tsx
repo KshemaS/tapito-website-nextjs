@@ -39,8 +39,8 @@ import {
 import AnimatedLucideIcon from "../AnimatedLucideIcon";
 import { ActivityIcon } from "lucide-animated";
 import Image from "next/image";
-import analyzesBg from "@/public/assets/images/solutions/analyzes-ecommerce.jpg";
-import generatesBg from "@/public/assets/images/solutions/generates-ecommerce.jpg";
+// import analyzesBg from "@/public/assets/images/solutions/analyzes-ecommerce.jpg";
+// import generatesBg from "@/public/assets/images/solutions/generates-ecommerce.jpg";
 
 const Ecommerce = () => {
   const containerRef = useRef<HTMLElement>(null);
@@ -203,13 +203,13 @@ const Ecommerce = () => {
                 {/* Background Image Overlay */}
                 <div className="absolute inset-0 z-0">
                   <div className="absolute inset-0 bg-slate-950" />
-                  <Image 
+                  {/* <Image 
                     src={analyzesBg} 
                     alt="eCommerce Analyzes" 
                     fill
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover opacity-40 mix-blend-overlay group-hover:scale-105 transition-transform duration-700"
-                  />
+                  /> */}
                   <div className="absolute inset-0 bg-gradient-to-t from-blue-600/20 via-transparent to-transparent" />
                 </div>
 
@@ -258,13 +258,13 @@ const Ecommerce = () => {
                 {/* Background Image Overlay */}
                 <div className="absolute inset-0 z-0">
                   <div className="absolute inset-0 bg-slate-950" />
-                  <Image 
+                  {/* <Image 
                     src={generatesBg} 
                     alt="eCommerce Generates" 
                     fill
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover opacity-40 mix-blend-overlay group-hover:scale-105 transition-transform duration-700"
-                  />
+                  /> */}
                   <div className="absolute inset-0 bg-gradient-to-t from-purple-600/20 via-transparent to-transparent" />
                 </div>
 

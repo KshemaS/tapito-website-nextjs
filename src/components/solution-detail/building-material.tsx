@@ -7,8 +7,9 @@ import { CheckCircle2, Package, Home, PaintBucket, Lightbulb, Bath, Armchair, XC
 import AnimatedLucideIcon from "../AnimatedLucideIcon";
 import { ActivityIcon } from "lucide-animated";
 import Image from "next/image";
-import analyzesBg from "@/public/assets/images/solutions/analyzes-building-material.jpg";
-import generatesBg from "@/public/assets/images/solutions/generates-building-material.jpg";
+// import analyzesBg from "@/public/assets/images/solutions/analyzes-building-material.jpg";
+// import generatesBg from "@/public/assets/images/solutions/generates-building-material.jpg";
+import logo from '@/public/assets/images/tapito_o.avif';
 
 const BuildingMaterial = () => {
   const containerRef = useRef<HTMLElement>(null);
@@ -116,7 +117,7 @@ const BuildingMaterial = () => {
               <div className="relative z-10 bg-white rounded-[3.5rem] p-10 lg:p-16 shadow-2xl shadow-blue-950/40 overflow-hidden">
                   <div className="flex items-center gap-3 mb-10">
                     <div className="flex items-center gap-3 px-4 py-2 bg-slate-50 rounded-full border border-slate-100 shadow-sm">
-                      <img src="/logo.svg" alt="Tapito" className="h-4 w-auto" />
+                      <img src={logo.src} alt="Tapito" className="w-6 h-6 w-auto" />
                     </div>
                     <span className="text-xl font-black text-slate-900 tracking-tight">Tapito Intelligence</span>
                  </div>
@@ -171,13 +172,13 @@ const BuildingMaterial = () => {
                 {/* Background Image Overlay */}
                 <div className="absolute inset-0 z-0">
                   <div className="absolute inset-0 bg-slate-950" />
-                  <Image 
+                  {/* <Image 
                     src={analyzesBg} 
                     alt="Analyzes Background" 
                     fill
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover opacity-40 mix-blend-overlay group-hover:scale-105 transition-transform duration-700"
-                  />
+                  /> */}
                   <div className="absolute inset-0 bg-gradient-to-t from-blue-600/20 via-transparent to-transparent" />
                 </div>
 
@@ -228,13 +229,13 @@ const BuildingMaterial = () => {
                 {/* Background Image Overlay */}
                 <div className="absolute inset-0 z-0">
                   <div className="absolute inset-0 bg-slate-950" />
-                  <Image 
+                  {/* <Image 
                     src={generatesBg} 
                     alt="Generates Background" 
                     fill
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover opacity-40 mix-blend-overlay group-hover:scale-105 transition-transform duration-700"
-                  />
+                  /> */}
                   <div className="absolute inset-0 bg-gradient-to-t from-purple-600/20 via-transparent to-transparent" />
                 </div>
 

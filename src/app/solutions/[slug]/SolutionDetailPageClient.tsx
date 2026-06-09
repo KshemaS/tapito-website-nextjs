@@ -1,6 +1,6 @@
 "use client";
 
-import { solutionDetails, defaultData } from "./solution-data";
+import { solutionDetails, defaultData } from "./solution-data";   
 import { SolutionsHero } from "@/components/solutions/SolutionsHero";
 import ClientStrip from "@/components/ClientStrip";
 import { FeatureShowcase } from "@/components/solution-detail/feature-showcase";
@@ -21,6 +21,7 @@ import Jewelry from "@/components/solution-detail/jewelry";
 import FBRetail from "@/components/solution-detail/fb-retail";
 import Ecommerce from "@/components/solution-detail/ecommerce";
 import cta_img from '@/public/assets/images/about/ready-to-tranform.avif';
+import { SolutionTestimonials } from "@/components/solutions/SolutionTestimonials";
 
 export default function SolutionDetailPageClient({ slug }: { slug: string }) {
   const data = solutionDetails[slug] || defaultData;
@@ -58,7 +59,7 @@ export default function SolutionDetailPageClient({ slug }: { slug: string }) {
         }} />
         <FeatureShowcase items={data.showcaseItems} industry={slug} />
         <IntegrationSection />
-        {/* <SolutionTestimonials /> */}
+        <SolutionTestimonials />
         <FAQ items={data.faqs} />
         <CTASection
           title="Ready to solve your challenges?"

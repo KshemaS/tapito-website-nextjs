@@ -27,8 +27,8 @@ import {
 import AnimatedLucideIcon from "../AnimatedLucideIcon";
 import { ActivityIcon } from "lucide-animated";
 import Image from "next/image";
-import analyzesBg from "@/public/assets/images/solutions/analyzes-home-furnishing.jpg";
-import generatesBg from "@/public/assets/images/solutions/generates-home-furnishing.jpg";
+// import analyzesBg from "@/public/assets/images/solutions/analyzes-home-furnishing.jpg";
+// import generatesBg from "@/public/assets/images/solutions/generates-home-furnishing.jpg";
 
 const HomeFurnishing = () => {
   const containerRef = useRef<HTMLElement>(null);
@@ -191,13 +191,13 @@ const HomeFurnishing = () => {
                 {/* Background Image Overlay */}
                 <div className="absolute inset-0 z-0">
                   <div className="absolute inset-0 bg-slate-950" />
-                  <Image 
+                  {/* <Image 
                     src={analyzesBg} 
                     alt="Living Room Analyzes" 
                     fill
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover opacity-40 mix-blend-overlay group-hover:scale-105 transition-transform duration-700"
-                  />
+                  /> */}
                   <div className="absolute inset-0 bg-gradient-to-t from-indigo-600/20 via-transparent to-transparent" />
                 </div>
 
@@ -246,13 +246,13 @@ const HomeFurnishing = () => {
                 {/* Background Image Overlay */}
                 <div className="absolute inset-0 z-0">
                   <div className="absolute inset-0 bg-slate-950" />
-                  <Image 
+                  {/* <Image 
                     src={generatesBg} 
                     alt="Furnishing Generates" 
                     fill
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover opacity-40 mix-blend-overlay group-hover:scale-105 transition-transform duration-700"
-                  />
+                  /> */}
                   <div className="absolute inset-0 bg-gradient-to-t from-purple-600/20 via-transparent to-transparent" />
                 </div>
 

@@ -1,6 +1,71 @@
 "use client";
-import { ArrowRight, Share2, MessageCircle, Globe, Mail } from "lucide-react";
+import { ArrowRight, Mail } from "lucide-react";
 import Link from "next/link";
+
+interface IconProps extends React.SVGProps<SVGSVGElement> {
+   size?: number | string;
+}
+
+const InstagramIcon = ({ size = 24, ...props }: IconProps) => (
+   <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+   >
+      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+   </svg>
+);
+
+const YoutubeIcon = ({ size = 24, ...props }: IconProps) => (
+   <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+   >
+      <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17" />
+      <polygon points="10 15 15 12 10 9" />
+   </svg>
+);
+
+const FacebookIcon = ({ size = 24, ...props }: IconProps) => (
+   <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+   >
+      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+   </svg>
+);
+
+const socialLinks = [
+   { Icon: InstagramIcon, href: "https://www.instagram.com/tapito.ai/" },
+   { Icon: YoutubeIcon, href: "https://www.youtube.com/@tapitoai" },
+   { Icon: FacebookIcon, href: "https://www.facebook.com/tapitoai" },
+   { Icon: Mail, href: "mailto:hello@tapito.ai" }
+];
 import Container from "./Container";
 import CTASection from "./CTASection";
 import { featuresData } from "@/components/features/FeaturesGrid";
@@ -27,8 +92,8 @@ export function Footer() {
                      The AI-powered customer engagement platform for modern retail. Data → Insights → Action → Growth.
                   </p>
                   <div className="flex gap-4">
-                     {[Share2, MessageCircle, Globe, Mail].map((Icon, i) => (
-                        <Link key={i} href="#" className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 hover:text-[#05a0ec] hover:border-[#05a0ec] transition-all">
+                     {socialLinks.map(({ Icon, href }, i) => (
+                        <Link key={i} href={href} target={href.startsWith("http") ? "_blank" : undefined} rel={href.startsWith("http") ? "noopener noreferrer" : undefined} className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 hover:text-[#05a0ec] hover:border-[#05a0ec] transition-all">
                            <Icon size={18} />
                         </Link>
                      ))}
