@@ -6,11 +6,13 @@ import Container from "@/components/Container";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
+import Image, { StaticImageData } from "next/image";
+
 interface CTASectionProps {
     title: string;
     description: string;
     badge: string;
-    image: string;
+    image: string | StaticImageData;
     subtitle?: string;
     isAbout?: boolean;
     onClick?: () => void;
@@ -23,11 +25,21 @@ export default function CTASection({ title, description, badge, image, subtitle,
       <Container>
         <div className="relative rounded-[1.5rem] bg-black py-12 px-6 xl:p-16 3xl:p-20 overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,0.4)]">
             <div className="absolute top-0 right-0 w-full h-full lg:w-2/5 opacity-50 pointer-events-none select-none z-0">
-                <img 
-                    src={image} 
-                    alt={title} 
-                    className="w-full h-full object-cover object-left"
-                />
+                {typeof image === "string" ? (
+                    <img 
+                        src={image} 
+                        alt={title} 
+                        className="w-full h-full object-cover object-left"
+                    />
+                ) : (
+                    <Image 
+                        src={image} 
+                        alt={title} 
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 40vw"
+                        className="object-cover object-left"
+                    />
+                )}
                 <div className="absolute inset-0 bg-linear-to-r from-black via-black/20 to-transparent" />
             </div>
 

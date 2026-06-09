@@ -47,7 +47,7 @@ export default function AboutPage() {
           title="Unlock Your Growth Potential"
           description="Join hundreds of retail brands that are scaling with zero manual effort. See the difference AI can make in your revenue growth."
           badge="READY TO TRANSFORM?"
-          image={cta.src}
+          image={cta}
           isAbout={true}
           // onClick={() => {""}}
         />

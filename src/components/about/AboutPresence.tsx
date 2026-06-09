@@ -115,7 +115,7 @@ export default function AboutPresence() {
                                 loop
                                 muted
                                 playsInline
-                                preload="metadata"
+                                preload="none"
                             >
                                 <source src="/assets/images/about/globe.webm" type="video/webm" />
                             </video>
