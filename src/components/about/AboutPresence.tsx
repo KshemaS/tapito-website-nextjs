@@ -2,10 +2,8 @@
 
 import Container from "@/components/Container";
 import { MapPin, Globe, ArrowUpRight, Globe2Icon } from "lucide-react";
-import AnimatedLucideIcon from "@/components/AnimatedLucideIcon";
 import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
-import fegno from "@/public/assets/images/about/fegno.png"
+import fegno from "@/public/assets/images/about/fegno.avif"
 import Image from "next/image";
 
 export default function AboutPresence() {
@@ -63,7 +61,9 @@ export default function AboutPresence() {
                                 <Image
                                     src={fegno}
                                     alt="Kochi Headquarters"
-                                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-60"
+                                    fill
+                                    sizes="(max-width: 768px) 100vw, 500px"
+                                    className="object-cover transition-transform duration-1000 group-hover:scale-110 opacity-60"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
                                 <div className="absolute bottom-8 left-8 right-8">
@@ -80,7 +80,7 @@ export default function AboutPresence() {
                                     </a>
                                 </div>
                             </motion.div>
-
+ 
                             <motion.div
                                 initial={{ opacity: 0, scale: 0.95 }}
                                 whileInView={{ opacity: 1, scale: 1 }}
@@ -100,7 +100,7 @@ export default function AboutPresence() {
                             </motion.div>
                         </div>
                     </div>
-
+ 
                     <motion.div
                         initial={{ opacity: 0, x: 50 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -115,6 +115,7 @@ export default function AboutPresence() {
                                 loop
                                 muted
                                 playsInline
+                                preload="metadata"
                             >
                                 <source src="/assets/images/about/globe.webm" type="video/webm" />
                             </video>
