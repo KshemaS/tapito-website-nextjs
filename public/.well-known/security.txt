@@ -1,0 +1,10 @@
+# Security Contact Information (RFC 9116)
+# https://securitytxt.org/
+
+Contact: mailto:security@tapito.com
+Expires: 2027-12-31T23:59:59.000Z
+Preferred-Languages: en
+Canonical: https://tapito.com/.well-known/security.txt
+
+# Please report security vulnerabilities responsibly
+# We appreciate coordinated disclosure and will respond within 48 hours
