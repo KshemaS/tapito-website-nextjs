@@ -414,7 +414,7 @@ export default function IntegrationsPage() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="relative min-h-screen overflow-x-hidden bg-white text-slate-900 selection:bg-blue-100 selection:text-blue-900 font-inter integrations-page-padding"
+      className="relative min-h-screen overflow-x-hidden bg-white text-slate-900 selection:bg-blue-600 selection:text-white font-inter integrations-page-padding"
     >
       <InteractiveGrid />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[500px] bg-[radial-gradient(circle_at_top,rgba(9,53,140,0.13),transparent_40%),radial-gradient(circle_at_top_right,rgba(5,160,236,0.10),transparent_28%)]" />

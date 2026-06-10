@@ -47,11 +47,18 @@ export default function FeaturedVideo() {
               autoPlay
               onEnded={() => setIsPlaying(false)}
               className="w-full h-full object-cover"
-            />
+              aria-label="Product demonstration video"
+            >
+              <track kind="captions" src="/captions/dashboard-overview.vtt" srcLang="en" label="English" />
+            </video>
           ) : (
-            <div 
+            <div
               className="absolute inset-0 w-full h-full cursor-pointer"
               onClick={() => setIsPlaying(true)}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setIsPlaying(true); }}}
+              role="button"
+              tabIndex={0}
+              aria-label="Play product demonstration video"
             >
               {/* Cover Image */}
               <Image 
@@ -65,6 +72,7 @@ export default function FeaturedVideo() {
               {/* Play Button Overlay */}
               <div className="absolute inset-0 bg-slate-900/40 group-hover:bg-slate-900/20 transition-colors duration-500 flex items-center justify-center">
                  <button
+                    type="button"
                     onClick={(e) => {
                       e.stopPropagation();
                       setIsPlaying(true);

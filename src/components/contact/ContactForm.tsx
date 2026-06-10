@@ -67,19 +67,19 @@ export default function ContactForm() {
               >
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
                   <Field>
-                    <input type="text" className={inputCls} placeholder="First Name *" />
+                    <input type="text" className={inputCls} placeholder="First Name *" aria-label="First Name" />
                   </Field>
                   <Field>
-                    <input type="text" className={inputCls} placeholder="Last Name *" />
+                    <input type="text" className={inputCls} placeholder="Last Name *" aria-label="Last Name" />
                   </Field>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
                   <Field>
-                    <input type="email" className={inputCls} placeholder="Work Email *" />
+                    <input type="email" className={inputCls} placeholder="Work Email *" aria-label="Work Email" />
                   </Field>
                   <Field>
-                    <input type="text" className={inputCls} placeholder="Company *" />
+                    <input type="text" className={inputCls} placeholder="Company *" aria-label="Company Name" />
                   </Field>
                 </div>
 
@@ -128,6 +128,7 @@ export default function ContactForm() {
                   <textarea
                     className={cn(inputCls, "min-h-[150px] resize-none")}
                     placeholder="How can we help you?"
+                    aria-label="Message"
                   />
                 </Field>
 

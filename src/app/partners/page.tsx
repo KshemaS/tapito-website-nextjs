@@ -667,30 +667,30 @@ export default function PartnersPage() {
                 <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <label className="text-xs font-black text-slate-400 uppercase tracking-widest pl-1">Full Name</label>
-                      <input type="text" placeholder="Full Name" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#09358c] focus:border-transparent transition-all mt-1" />
+                      <label htmlFor="partner-full-name" className="text-xs font-black text-slate-400 uppercase tracking-widest pl-1">Full Name</label>
+                      <input id="partner-full-name" type="text" placeholder="Full Name" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#09358c] focus:border-transparent transition-all mt-1" />
                     </div>
                     <div className="space-y-2">
-                      <label className="text-xs font-black text-slate-400 uppercase tracking-widest pl-1">Company Name</label>
-                      <input type="text" placeholder="Company Name" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#09358c] focus:border-transparent transition-all mt-1" />
+                      <label htmlFor="partner-company-name" className="text-xs font-black text-slate-400 uppercase tracking-widest pl-1">Company Name</label>
+                      <input id="partner-company-name" type="text" placeholder="Company Name" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#09358c] focus:border-transparent transition-all mt-1" />
                     </div>
                   </div>
 
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <label className="text-xs font-black text-slate-400 uppercase tracking-widest pl-1">Email</label>
-                      <input type="email" placeholder="Company Email" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#09358c] focus:border-transparent transition-all mt-1" />
+                      <label htmlFor="partner-email" className="text-xs font-black text-slate-400 uppercase tracking-widest pl-1">Email</label>
+                      <input id="partner-email" type="email" placeholder="Company Email" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#09358c] focus:border-transparent transition-all mt-1" />
                     </div>
                     <div className="space-y-2">
-                      <label className="text-xs font-black text-slate-400 uppercase tracking-widest pl-1">Phone Number</label>
-                      <input type="tel" placeholder="Phone Number" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#09358c] focus:border-transparent transition-all mt-1" />
+                      <label htmlFor="partner-phone" className="text-xs font-black text-slate-400 uppercase tracking-widest pl-1">Phone Number</label>
+                      <input id="partner-phone" type="tel" placeholder="Phone Number" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#09358c] focus:border-transparent transition-all mt-1" />
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-xs font-black text-slate-400 uppercase tracking-widest pl-1">Country / Region</label>
+                    <label htmlFor="partner-country" className="text-xs font-black text-slate-400 uppercase tracking-widest pl-1">Country / Region</label>
                     <div className="relative mt-1">
-                      <select className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#09358c] focus:border-transparent transition-all appearance-none cursor-pointer">
+                      <select id="partner-country" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#09358c] focus:border-transparent transition-all appearance-none cursor-pointer">
                         <option value="">Select your country...</option>
                         <option value="AF">Afghanistan</option>
                         <option value="AX">Aland Islands</option>
@@ -950,11 +950,11 @@ export default function PartnersPage() {
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-xs font-black text-slate-400 uppercase tracking-widest pl-1">Message (Optional)</label>
-                    <textarea rows={4} placeholder="Tell us more about your partnership goals..." className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#09358c] focus:border-transparent transition-all resize-none mt-1" />
+                    <label htmlFor="partner-message" className="text-xs font-black text-slate-400 uppercase tracking-widest pl-1">Message (Optional)</label>
+                    <textarea id="partner-message" rows={4} placeholder="Tell us more about your partnership goals..." className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#09358c] focus:border-transparent transition-all resize-none mt-1" />
                   </div>
 
-                  <button className="w-full relative group bg-[#09358c] text-white rounded-xl py-4 text-sm font-bold shadow-xl shadow-[#09358c]/20 hover:bg-[#05a0ec] transition-all duration-300 overflow-hidden">
+                  <button type="submit" className="w-full relative group bg-[#09358c] text-white rounded-xl py-4 text-sm font-bold shadow-xl shadow-[#09358c]/20 hover:bg-[#05a0ec] transition-all duration-300 overflow-hidden">
                     <span className="relative z-10">Submit Application</span>
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
                   </button>

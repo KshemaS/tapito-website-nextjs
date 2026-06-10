@@ -67,14 +67,15 @@ export default function Metrics() {
            <div className="relative">
               <div className="absolute -inset-4 bg-blue-50 rounded-[3.5rem] -z-10 rotate-2" />
               <div className="relative h-[500px] w-full rounded-[3rem] overflow-hidden shadow-2xl border border-slate-100 mb-12">
-                 <video 
+                 <video
                     ref={videoRef}
                     src={isIntersecting ? "/videos/business-impact.mp4" : undefined}
                     className="w-full h-full object-cover opacity-90"
-                    autoPlay 
-                    loop 
-                    muted 
+                    autoPlay
+                    loop
+                    muted
                     playsInline
+                    aria-label="Business impact demonstration"
                   />
                 <div className="absolute inset-0 bg-[#09358c]/10" />
               </div>

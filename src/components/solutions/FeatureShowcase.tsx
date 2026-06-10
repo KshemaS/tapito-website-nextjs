@@ -166,7 +166,7 @@ const AlertsVisual = () => (
               className="w-full bg-white rounded-2xl shadow-xl overflow-hidden"
             >
               <div className="h-28 bg-[#09358c] relative overflow-hidden flex items-center justify-center">
-                 <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=400&auto=format&fit=crop" className="w-full h-full object-cover opacity-60 mix-blend-overlay" />
+                 <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=400&auto=format&fit=crop" alt="" className="w-full h-full object-cover opacity-60 mix-blend-overlay" />
                  <div className="absolute inset-0 bg-gradient-to-t from-[#09358c] via-transparent to-transparent" />
                  <div className="absolute top-2 right-2 w-6 h-6 rounded-full bg-emerald-500 flex items-center justify-center text-white shadow-lg"><Zap size={10} fill="currentColor" /></div>
               </div>

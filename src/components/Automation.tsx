@@ -121,6 +121,7 @@ export default function Automation() {
                      muted
                      loop
                      playsInline
+                     aria-label="Automation workflow visualization"
                      className="w-full h-full object-contain"
                   />
                {/* <div className="w-full h-full relative">

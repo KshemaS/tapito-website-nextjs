@@ -145,6 +145,7 @@ export default function Hero() {
                       muted
                       loop
                       playsInline
+                      aria-label={currentSlide.title}
                       className={`max-w-full max-h-full object-contain drop-shadow-2xl 4xl:pt-20 origin-bottom`}
                     />
                     <div className="absolute inset-0 via-transparent to-transparent pointer-events-none" />
