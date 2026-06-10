@@ -111,6 +111,7 @@ export default function DashboardPreview({ keyHighlights }: DashboardPreviewProp
                            muted
                            loop
                            playsInline
+                           aria-label={"Dashboard preview"}
                            className="w-full h-full object-contain opacity-90 shadow-2xl"
                         >
                            <source src={keyHighlights[activeIndex]?.video || "/dashboard-overview.mp4"} type="video/mp4" />

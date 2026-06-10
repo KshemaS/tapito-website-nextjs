@@ -116,6 +116,7 @@ export default function AboutPresence() {
                                 muted
                                 playsInline
                                 preload="none"
+                                aria-label="Global presence visualization"
                             >
                                 <source src="/assets/images/about/globe.webm" type="video/webm" />
                             </video>
