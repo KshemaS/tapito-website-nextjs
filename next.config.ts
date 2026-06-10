@@ -57,7 +57,7 @@ const nextConfig: NextConfig = {
               // Production: strict | Development: allow unsafe-eval/inline for HMR
               isDevelopment
                 ? "script-src 'self' 'unsafe-eval' 'unsafe-inline'"
-                : "script-src 'self'",
+                : "script-src 'self' 'unsafe-inline'",
               "style-src 'self' 'unsafe-inline'",
               "img-src 'self' data: https://images.unsplash.com",
               "font-src 'self' data:",
