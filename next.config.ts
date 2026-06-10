@@ -18,6 +18,8 @@ const nextConfig: NextConfig = {
 
   // Security Headers Configuration
   async headers() {
+    const isDevelopment = process.env.NODE_ENV === 'development';
+
     return [
       {
         source: "/:path*",
@@ -52,7 +54,10 @@ const nextConfig: NextConfig = {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-eval' 'unsafe-inline'", // Next.js requires unsafe-inline/eval for development
+              // Production: strict script policy | Development: allow unsafe for HMR
+              isDevelopment
+                ? "script-src 'self' 'unsafe-eval' 'unsafe-inline'"
+                : "script-src 'self'",
               "style-src 'self' 'unsafe-inline'", // Tailwind requires unsafe-inline
               "img-src 'self' data: https://images.unsplash.com",
               "font-src 'self' data:",
