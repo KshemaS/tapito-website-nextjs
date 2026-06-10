@@ -70,6 +70,7 @@ export const CaseStudiesListing = () => {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search case studies…"
+              aria-label="Search case studies"
               className="w-full pl-10 pr-4 py-2.5 rounded-full bg-white border border-slate-200 text-[13px] font-medium text-slate-700 placeholder:text-slate-400 focus:outline-none focus:border-[#05a0ec] focus:ring-2 focus:ring-[#05a0ec]/15 transition-all duration-200"
             />
           </div>

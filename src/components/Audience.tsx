@@ -97,7 +97,7 @@ export default function Audience() {
                   <div className="text-slate-500 font-bold text-lg mb-4 group-hover:text-slate-700 transition-colors">{item.id}</div>
                   
                   <div className="flex items-center gap-3 mb-2">
-                    <div className="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center text-slate-900 group-hover:bg-blue-50 transition-colors">
+                    <div className="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center text-slate-900 group-hover:bg-blue-600 group-hover:text-white transition-colors">
                       <AnimatedLucideIcon name={item.icon as any} size={20} />
                     </div>
                     <h4 className="text-xl font-bold text-slate-900">{item.name}</h4>

@@ -178,6 +178,7 @@ export default function CampaignAutomationPage() {
                             muted
                             loop
                             playsInline
+                            aria-label="Campaign automation workflow simulation"
                             className="w-full h-full object-cover"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent pointer-events-none" />
@@ -197,7 +198,9 @@ export default function CampaignAutomationPage() {
                     {[0, 1].map((idx) => (
                       <button
                         key={idx}
+                        type="button"
                         onClick={() => setCurrentSlide(idx)}
+                        aria-label={`Go to slide ${idx + 1}`}
                         className={cn(
                           "h-1.5 rounded-full transition-all duration-500",
                           currentSlide === idx ? "w-8 bg-[#09358c]" : "w-2 bg-slate-300"

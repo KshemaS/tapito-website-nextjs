@@ -130,8 +130,8 @@ export function Footer() {
                   <h5 className="font-bold text-slate-900 mb-6 uppercase text-xs tracking-widest">Connect with Us</h5>
                   <p className="text-sm text-slate-500 mb-4">Stay updated with the latest in retail AI.</p>
                   <div className="flex gap-2">
-                     <input type="email" placeholder="Your email" className="bg-white border border-slate-200 rounded-lg px-4 py-2 text-sm flex-1 focus:outline-none focus:border-[#05a0ec]" />
-                     <button className="bg-[#09358c] text-white rounded-lg px-4 py-2 text-sm font-bold hover:bg-[#05a0ec] transition-colors"><ArrowRight size={16} /></button>
+                     <input type="email" placeholder="Your email" aria-label="Email address for newsletter" className="bg-white border border-slate-200 rounded-lg px-4 py-2 text-sm flex-1 focus:outline-none focus:border-[#05a0ec]" />
+                     <button type="submit" aria-label="Subscribe to newsletter" className="bg-[#09358c] text-white rounded-lg px-4 py-2 text-sm font-bold hover:bg-[#05a0ec] transition-colors"><ArrowRight size={16} /></button>
                   </div>
                   {/* <div className="mt-8 flex items-center gap-2 text-slate-400">
                      <Globe size={14} />
