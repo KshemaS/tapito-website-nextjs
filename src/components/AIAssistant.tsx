@@ -198,7 +198,7 @@ export default function AIAssistant() {
                                    <div className="p-4 bg-white/5 rounded-xl border border-white/5">
                                       <div className="flex justify-between items-start mb-3">
                                          <div>
-                                            <span className="text-slate-500 text-[9px] font-bold uppercase tracking-wider block mb-0.5">{activeResult.label}</span>
+                                            <span className="text-slate-300 text-[9px] font-bold uppercase tracking-wider block mb-0.5">{activeResult.label}</span>
                                             <span className="text-xl font-black text-white">{activeResult.value}</span>
                                          </div>
                                          <div className={cn("text-[10px] font-bold flex items-center gap-0.5", activeResult.isPositive ? "text-emerald-400" : "text-rose-400")}>
@@ -291,7 +291,7 @@ export default function AIAssistant() {
                                                  ].map((cat, i) => (
                                                     <div key={i} className="flex items-center gap-1.5">
                                                        <div className={cn("w-1.5 h-1.5 rounded-full", cat.color)} />
-                                                       <span className="text-[8px] text-slate-400 font-bold whitespace-nowrap">{cat.name}</span>
+                                                       <span className="text-[8px] text-slate-300 font-bold whitespace-nowrap">{cat.name}</span>
                                                     </div>
                                                  ))}
                                               </div>
@@ -333,7 +333,7 @@ export default function AIAssistant() {
                         <AnimatedLucideIcon name="Zap" size={24} />
                      </div>
                      <div>
-                        <span className="text-slate-400 text-xs font-bold block mb-1 uppercase tracking-widest">Growth Detected</span>
+                        <span className="text-slate-600 text-xs font-bold block mb-1 uppercase tracking-widest">Growth Detected</span>
                         <span className="text-slate-900 font-black">AOV +15.5% with AI</span>
                      </div>
                   </div>
