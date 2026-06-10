@@ -125,7 +125,7 @@ const Supermarket = () => {
                   <p className="text-rose-400 text-xs font-black uppercase tracking-widest mb-4">Without Tapito, this leads to:</p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {consequences.map((text, i) => (
-                      <div key={i} className="flex items-center gap-2 text-slate-400 text-xs font-bold">
+                      <div key={i} className="flex items-center gap-2 text-slate-300 text-xs font-bold">
                         <AnimatedLucideIcon icon={XCircle} size={14} className="text-rose-500/50" /> {text}
                       </div>
                     ))}

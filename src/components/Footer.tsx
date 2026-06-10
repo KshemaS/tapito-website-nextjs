@@ -61,10 +61,10 @@ const FacebookIcon = ({ size = 24, ...props }: IconProps) => (
 );
 
 const socialLinks = [
-   { Icon: InstagramIcon, href: "https://www.instagram.com/tapito.ai/" },
-   { Icon: YoutubeIcon, href: "https://www.youtube.com/@tapitoai" },
-   { Icon: FacebookIcon, href: "https://www.facebook.com/tapitoai" },
-   { Icon: Mail, href: "mailto:hello@tapito.ai" }
+   { Icon: InstagramIcon, href: "https://www.instagram.com/tapito.ai/", label: "Tapito AI on Instagram" },
+   { Icon: YoutubeIcon, href: "https://www.youtube.com/@tapitoai", label: "Tapito AI on YouTube" },
+   { Icon: FacebookIcon, href: "https://www.facebook.com/tapitoai", label: "Tapito AI on Facebook" },
+   { Icon: Mail, href: "mailto:hello@tapito.ai", label: "Email Tapito AI" }
 ];
 import Container from "./Container";
 import CTASection from "./CTASection";
@@ -92,9 +92,9 @@ export function Footer() {
                      The AI-powered customer engagement platform for modern retail. Data → Insights → Action → Growth.
                   </p>
                   <div className="flex gap-4">
-                     {socialLinks.map(({ Icon, href }, i) => (
-                        <Link key={i} href={href} target={href.startsWith("http") ? "_blank" : undefined} rel={href.startsWith("http") ? "noopener noreferrer" : undefined} className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 hover:text-[#05a0ec] hover:border-[#05a0ec] transition-all">
-                           <Icon size={18} />
+                     {socialLinks.map(({ Icon, href, label }, i) => (
+                        <Link key={i} href={href} aria-label={label} target={href.startsWith("http") ? "_blank" : undefined} rel={href.startsWith("http") ? "noopener noreferrer" : undefined} className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 hover:text-[#05a0ec] hover:border-[#05a0ec] transition-all">
+                           <Icon size={18} aria-hidden="true" />
                         </Link>
                      ))}
                   </div>
@@ -141,20 +141,20 @@ export function Footer() {
             </div>
 
             <div className="pt-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-start md:items-center gap-5 md:gap-4">
-               <p className="text-slate-400 text-sm">
+               <p className="text-slate-600 text-sm">
                   © {new Date().getFullYear()} Tapito AI Inc. All rights reserved. Developed by&nbsp;
-                  <a 
-                     href="https://fegno.com?utm_source=client_website&utm_medium=agency_credit&utm_campaign=portfolio_referral&utm_id=tapito&utm_content=tapito" 
-                     target="_blank" 
-                     rel="noopener noreferrer" 
-                     className="hover:text-slate-900 transition-colors font-bold"
+                  <a
+                     href="https://fegno.com?utm_source=client_website&utm_medium=agency_credit&utm_campaign=portfolio_referral&utm_id=tapito&utm_content=tapito"
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     className="text-slate-600 hover:text-slate-900 transition-colors font-bold"
                   >
                      Fegno Technologies
                   </a>.
                </p>
                <div className="flex gap-4 sm:gap-6 lg:gap-8 sm:flex-row flex-col text-sm">
-                  <Link href="/privacy-policy" className="text-slate-400 hover:text-slate-900">Privacy Policy</Link>
-                  <Link href="/terms-of-service" className="text-slate-400 hover:text-slate-900">Terms of Service</Link>
+                  <Link href="/privacy-policy" className="text-slate-600 hover:text-slate-900">Privacy Policy</Link>
+                  <Link href="/terms-of-service" className="text-slate-600 hover:text-slate-900">Terms of Service</Link>
                </div>
             </div>
          </Container>
