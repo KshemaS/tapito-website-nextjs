@@ -43,7 +43,7 @@ export default function AboutPresence() {
                             className="space-y-6 mb-12"
                         >
                             <p className="text-lg text-slate-400 font-medium leading-relaxed">
-                                <span className="text-white font-bold">Tapito</span> is an advanced AI-powered business intelligence and customer engagement platform developed by <a href="https://fegno.com?utm_source=client_website&utm_medium=agency_credit&utm_campaign=portfolio_referral&utm_id=tapito&utm_content=tapito" target="_blank" className="text-[#05a0ec] hover:underline decoration-2 underline-offset-4 font-black">Fegno Technologies</a>, a leading technology company expertise in digital transformation, enterprise solutions, artificial intelligence, and scalable software platforms.
+                                <span className="text-white font-bold">Tapito</span> is an advanced AI-powered business intelligence and customer engagement platform developed by <a href="https://fegno.com?utm_source=client_website&utm_medium=agency_credit&utm_campaign=portfolio_referral&utm_id=tapito&utm_content=tapito" target="_blank" rel="noopener noreferrer" className="text-[#05a0ec] hover:underline decoration-2 underline-offset-4 font-black">Fegno Technologies</a>, a leading technology company expertise in digital transformation, enterprise solutions, artificial intelligence, and scalable software platforms.
                             </p>
                             <p className="text-lg text-slate-500 font-medium leading-relaxed">
                                 Designed for modern retail and distribution businesses, Tapito enables organizations to transform operational and customer data into actionable insights, intelligent automation, and sustainable revenue growth through AI-driven analytics.
@@ -74,7 +74,7 @@ export default function AboutPresence() {
                                     <p className="text-sm text-slate-400 font-bold leading-relaxed mb-4">
                                         Kochi, Kerala, India
                                     </p>
-                                    <a href="https://www.fegno.com?utm_source=client_website&utm_medium=agency_credit&utm_campaign=portfolio_referral&utm_id=tapito&utm_content=tapito" target="_blank" className="inline-flex items-center gap-2 text-[#05a0ec] font-black text-xs uppercase tracking-widest hover:text-white transition-colors group/link">
+                                    <a href="https://www.fegno.com?utm_source=client_website&utm_medium=agency_credit&utm_campaign=portfolio_referral&utm_id=tapito&utm_content=tapito" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-[#05a0ec] font-black text-xs uppercase tracking-widest hover:text-white transition-colors group/link">
                                         Visit fegno.com
                                         <ArrowUpRight size={14} className="group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
                                     </a>

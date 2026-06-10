@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "security:audit": "npm audit --production",
+    "security:audit:all": "npm audit",
+    "security:check": "npm outdated && npm audit",
+    "security:update": "npm update && npm audit fix"
   },
   "dependencies": {
     "@base-ui/react": "^1.4.1",
