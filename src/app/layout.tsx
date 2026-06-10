@@ -31,7 +31,9 @@ export default function RootLayout({
           <ScrollToTop />
         </Suspense>
         <Navbar />
-        {children}
+        <main>
+          {children}
+        </main>
         <FloatingCTA />
         <Footer />
       </body>
