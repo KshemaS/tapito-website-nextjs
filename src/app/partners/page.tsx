@@ -500,7 +500,7 @@ export default function PartnersPage() {
                             className="w-14 h-14 rounded-xl object-cover shadow-sm bg-slate-100"
                           />
                           <div className="flex flex-col">
-                            <h4 className="text-lg font-black text-[#05a0ec] leading-none mb-2">{t.name}</h4>
+                            <p className="text-lg font-black text-[#05a0ec] leading-none mb-2">{t.name}</p>
                             <p className="text-sm font-bold text-slate-800 ">{t.role}</p>
                           </div>
                         </div>

@@ -101,7 +101,7 @@ export function Footer() {
                </div>
 
                <div>
-                  <h5 className="font-bold text-slate-900 mb-6 uppercase text-xs tracking-widest">Features</h5>
+                  <h2 className="font-bold text-slate-900 mb-6 uppercase text-xs tracking-widest">Features</h2>
                   <ul className="space-y-4">
                      {featuresData.map((feature, i) => (
                         <li key={i}>
@@ -114,7 +114,7 @@ export function Footer() {
                </div>
 
                <div>
-                  <h5 className="font-bold text-slate-900 mb-6 uppercase text-xs tracking-widest">Solutions</h5>
+                  <h2 className="font-bold text-slate-900 mb-6 uppercase text-xs tracking-widest">Solutions</h2>
                   <ul className="space-y-4">
                      {solutionsData.map((solution, i) => (
                         <li key={i}>
@@ -127,7 +127,7 @@ export function Footer() {
                </div>
 
                <div>
-                  <h5 className="font-bold text-slate-900 mb-6 uppercase text-xs tracking-widest">Connect with Us</h5>
+                  <h2 className="font-bold text-slate-900 mb-6 uppercase text-xs tracking-widest">Connect with Us</h2>
                   <p className="text-sm text-slate-500 mb-4">Stay updated with the latest in retail AI.</p>
                   <div className="flex gap-2">
                      <input type="email" placeholder="Your email" aria-label="Email address for newsletter" className="bg-white border border-slate-200 rounded-lg px-4 py-2 text-sm flex-1 focus:outline-none focus:border-[#05a0ec]" />
