@@ -3,7 +3,9 @@
 import { motion } from "framer-motion";
 import Container from "@/components/Container";
 import { ArrowRight, Calculator, PieChart, Sparkles } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
+import readyToTransform from "@/public/assets/images/about/ready-to-tranform.avif";
 
 export default function AboutCTA() {
   return (
@@ -12,10 +14,12 @@ export default function AboutCTA() {
         <div className="relative rounded-[1.5rem] bg-black p-8 sm:p-12 md:p-20 overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,0.4)]">
             {/* High-tech mesh background visual - constrained to card */}
             <div className="absolute top-0 right-0 w-full h-full lg:w-2/5 opacity-50 pointer-events-none select-none z-0">
-                <img 
-                    src="/assets/images/about/ready-to-tranform.png" 
+                <Image 
+                    src={readyToTransform} 
                     alt="Ready to Transform" 
-                    className="w-full h-full object-cover object-left"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 40vw"
+                    className="object-cover object-left"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-black via-black/20 to-transparent" />
             </div>
@@ -74,10 +78,10 @@ export default function AboutCTA() {
                         Launch Product Tour
                     </button>
 
-                    <button className="group relative px-8 py-4 border border-sky-400/30 text-white/70 text-[13px] font-bold uppercase tracking-widest hover:border-sky-400 hover:text-sky-400 transition-all duration-300 rounded-lg flex items-center gap-2 whitespace-nowrap">
+                    {/* <button className="group relative px-8 py-4 border border-sky-400/30 text-white/70 text-[13px] font-bold uppercase tracking-widest hover:border-sky-400 hover:text-sky-400 transition-all duration-300 rounded-lg flex items-center gap-2 whitespace-nowrap">
                         <Calculator size={16} className="text-sky-400" />
                         <span>ROI Calculator</span>
-                    </button>
+                    </button> */}
                 </motion.div>
             </div>
         </div>

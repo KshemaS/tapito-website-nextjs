@@ -1,4 +1,4 @@
-import { 
+import {
   TrendingUp,
   ShieldAlert,
   BarChart3,
@@ -13,15 +13,15 @@ import {
   Sofa,
   Heart,
   Star,
-  Gem, 
-  Crown, 
-  Gift, 
-  Coffee, 
-  Utensils, 
-  ShoppingCart, 
-  MousePointer2, 
-  Target, 
-  RefreshCcw 
+  Gem,
+  Crown,
+  Gift,
+  Coffee,
+  Utensils,
+  ShoppingCart,
+  MousePointer2,
+  Target,
+  RefreshCcw
 } from "lucide-react";
 
 import aisales from '@/public/assets/images/ai-slaes.png';
@@ -36,40 +36,40 @@ export const solutionDetails: Record<string, any> = {
     title: "Building Materials",
     description: "Turn Every Material Purchase Into Multiple Revenue Opportunities. Tapito helps building material businesses understand what customers are really trying to achieve, not just what they buy today.",
     howWeHelp: [
-      { 
-        title: "Construction Lifecycle Analytics", 
-        desc: "Tapito maps out project timelines, analyzing purchase phases to reveal connected opportunities that manual sales tracking often misses.", 
+      {
+        title: "Project Timeline Intelligence",
+        desc: "Tapito maps out project timelines, analyzing purchase phases to reveal connected opportunities that manual sales tracking often misses.",
         image: aisales.src,
         icon: Brain
       },
-      { 
-        title: "Predictive Opportunity Logic", 
-        desc: "When a customer purchases one product, Tapito predicts what they are likely to need to purchase next across categories like plumbing, tiles, and electricals.", 
-        image:predictiveprofit.src,
+      {
+        title: "Construction Demand Prediction",
+        desc: "When a customer purchases one product, Tapito predicts what they are likely to need to purchase next across categories like plumbing, tiles, and electricals.",
+        image: predictiveprofit.src,
         icon: Zap
       },
-      { 
-        title: "Dynamic Builder Retention", 
-        desc: "Convert site visits into ongoing contracts through intelligent project reminders and automated contractor loyalty programs.", 
+      {
+        title: "Dynamic Builder Retention",
+        desc: "Convert site visits into ongoing contracts through intelligent project reminders and automated contractor loyalty programs.",
         image: staffconversion.src,
         icon: MessageSquareDashed
       },
-      { 
-        title: "Performance Revenue Tracker", 
-        desc: "Energize your floor staff with live updates on incentives earned through successful project-based cross-selling and volume milestones.", 
-        image:empoyeeincentives.src,
+      {
+        title: "Performance Revenue Mapping",
+        desc: "Energize your floor staff with live updates on incentives earned through successful project-based cross-selling and volume milestones.",
+        image: empoyeeincentives.src,
         icon: Award
       },
-      { 
-        title: "Project Portfolio Analysis", 
-        desc: "Tapito provides a high-definition view of your market's construction trends, delivering the clarity needed for smarter inventory decisions.", 
+      {
+        title: "Project Portfolio Clarity",
+        desc: "Tapito provides a high-definition view of your market's construction trends, delivering the clarity needed for smarter inventory decisions.",
         image: strategicmirror.src,
         icon: LayoutDashboard
       },
-      { 
-        title: "High-Efficiency Project Targeting", 
-        desc: "Stop broad-spectrum advertising and focus your marketing spend on active contractors with high conversion potential for current builds.", 
-        image:marketingcost.src,
+      {
+        title: "Contractor Growth Precision",
+        desc: "Stop broad-spectrum advertising and focus your marketing spend on active contractors with high conversion potential for current builds.",
+        image: marketingcost.src,
         icon: DollarSign
       }
     ],
@@ -124,39 +124,39 @@ export const solutionDetails: Record<string, any> = {
     title: "Home Furnishing",
     description: "Transform Customer Preferences Into Higher Value Sales. Tapito helps home furnishing businesses understand customer lifestyle preferences, interior interests, and buying behavior — not just the products they purchase today.",
     howWeHelp: [
-      { 
-        title: "Lifestyle Design Analytics", 
-        desc: "Tapito tracks individual aesthetic choices and room-by-room needs, turning simple visits into high-value interior transformations.", 
+      {
+        title: "Personalized Design Profiling",
+        desc: "Tapito tracks individual aesthetic choices and room-by-room needs, turning simple visits into high-value interior transformations.",
         image: aisales.src,
         icon: Brain
       },
-      { 
-        title: "Room-by-Room Intent Tracking", 
-        desc: "When a customer picks a sofa, our AI instantly anticipates their need for matching lamps, rugs, and decor to complete the living space.", 
+      {
+        title: "Interior Vision Discovery",
+        desc: "When a customer picks a sofa, our AI instantly anticipates their need for matching lamps, rugs, and decor to complete the living space.",
         image: predictiveprofit.src,
         icon: Zap
       },
-      { 
-        title: "Seamless Decor Discovery", 
-        desc: "Keep your collections top-of-mind with personalized digital lookbooks and automated project follow-ups that inspire the next home upgrade.", 
+      {
+        title: "Seamless Decor Inspiration",
+        desc: "Keep your collections top-of-mind with personalized digital lookbooks and automated project follow-ups that inspire the next home upgrade.",
         image: staffconversion.src,
         icon: MessageSquareDashed
       },
-      { 
-        title: "Design Advisory Motivation", 
-        desc: "Empower your showroom consultants with real-time tracking of their styling successes and incentive growth based on basket size.", 
+      {
+        title: "Design Advisory Rewards",
+        desc: "Empower your showroom consultants with real-time tracking of their styling successes and incentive growth based on basket size.",
         image: empoyeeincentives.src,
         icon: Award
       },
-      { 
-        title: "Homeowner Preference Map", 
-        desc: "Deep-dive into your customers' design souls, understanding style trends and lifestyle shifts to stay ahead of the next big furniture wave.", 
+      {
+        title: "Homeowner Style Vision",
+        desc: "Deep-dive into your customers' design souls, understanding style trends and lifestyle shifts to stay ahead of the next big furniture wave.",
         image: strategicmirror.src,
         icon: LayoutDashboard
       },
-      { 
-        title: "High-Value Aesthetic Targeting", 
-        desc: "Boost your ROI by directing your marketing energy toward active homeowners who show a high preference for your upcoming premium collections.", 
+      {
+        title: "Premium Collection Focus",
+        desc: "Boost your ROI by directing your marketing energy toward active homeowners who show a high preference for your upcoming premium collections.",
         image: marketingcost.src,
         icon: DollarSign
       }
@@ -212,39 +212,39 @@ export const solutionDetails: Record<string, any> = {
     title: "Electronics",
     description: "Turn Every Customer Purchase Into Smarter Upselling Opportunities. Tapito helps electronics businesses understand customer buying intent, technology preferences, and upgrade behavior — not just the product they purchase today.",
     howWeHelp: [
-      { 
-        title: "Gadget Ecosystem Analytics", 
-        desc: "Tapito maps out tech ownership cycles, identifying the perfect moment for upgrades and accessory additions that standard CRM systems miss.", 
+      {
+        title: "Tech Lifecycle Intelligence",
+        desc: "Tapito maps out tech ownership cycles, identifying the perfect moment for upgrades and accessory additions that standard CRM systems miss.",
         image: aisales.src,
         icon: Brain
       },
-      { 
-        title: "Next-Gen Upgrade Prediction", 
-        desc: "Our AI forecasts tech needs by analyzing previous device generations and usage intensity, suggesting the latest innovations precisely when users are ready.", 
+      {
+        title: "Innovation Cycle Forecasting",
+        desc: "Our AI forecasts tech needs by analyzing previous device generations and usage intensity, suggesting the latest innovations precisely when users are ready.",
         image: predictiveprofit.src,
         icon: Zap
       },
-      { 
-        title: "Smart Support & Accessory Upsell", 
-        desc: "Keep your tech community engaged with automated setup guides and essential accessory recommendations that maximize their device's potential.", 
+      {
+        title: "Smart Support & Ecosystem Growth",
+        desc: "Keep your tech community engaged with automated setup guides and essential accessory recommendations that maximize their device's potential.",
         image: staffconversion.src,
         icon: MessageSquareDashed
       },
-      { 
-        title: "Tech Advisor Revenue Tracking", 
-        desc: "Boost your floor team's motivation by providing a transparent view of incentives earned from ecosystem selling and extended warranty attachments.", 
+      {
+        title: "Tech Advisor Incentive Flow",
+        desc: "Boost your floor team's motivation by providing a transparent view of incentives earned from ecosystem selling and extended warranty attachments.",
         image: empoyeeincentives.src,
         icon: Award
       },
-      { 
-        title: "Digital Ecosystem Insights", 
-        desc: "Tapito decodes your customers' technology stacks, giving you the clarity to optimize product bundles and future-proof your inventory.", 
+      {
+        title: "Digital Connectivity Map",
+        desc: "Tapito decodes your customers' technology stacks, giving you the clarity to optimize product bundles and future-proof your inventory.",
         image: strategicmirror.src,
         icon: LayoutDashboard
       },
-      { 
-        title: "High-Intent Tech Targeting", 
-        desc: "Streamline your marketing spend by focusing on power users and high-intent shoppers who are actively researching their next primary device.", 
+      {
+        title: "Early Adopter Engagement",
+        desc: "Streamline your marketing spend by focusing on power users and high-intent shoppers who are actively researching their next primary device.",
         image: marketingcost.src,
         icon: DollarSign
       }
@@ -300,39 +300,39 @@ export const solutionDetails: Record<string, any> = {
     title: "Supermarket",
     description: "Turn Everyday Shopping Data Into Higher Customer Spending. Tapito helps supermarkets understand customer buying behavior, shopping patterns, and household preferences — not just the products customers purchase today.",
     howWeHelp: [
-      { 
-        title: "Basket Pattern Analytics", 
-        desc: "Tapito deciphers the hidden links between grocery items, uncovering cross-category opportunities that standard POS data ignores.", 
+      {
+        title: "Shopping Habit Intelligence",
+        desc: "Tapito deciphers the hidden links between grocery items, uncovering cross-category opportunities that standard POS data ignores.",
         image: aisales.src,
         icon: Brain
       },
-      { 
-        title: "Household Refill Prediction", 
-        desc: "Our AI anticipates when a household is running low on essentials—from dairy to detergents—triggering perfectly timed reminders.", 
+      {
+        title: "Essential Replenishment Alerts",
+        desc: "Our AI anticipates when a household is running low on essentials—from dairy to detergents—triggering perfectly timed reminders.",
         image: predictiveprofit.src,
         icon: Zap
       },
-      { 
-        title: "Dynamic Pantry Re-Engagement", 
-        desc: "Bring shoppers back more frequently with automated inventory-based alerts and personalized deals on their weekly staples.", 
+      {
+        title: "Dynamic Pantry Engagement",
+        desc: "Bring shoppers back more frequently with automated inventory-based alerts and personalized deals on their weekly staples.",
         image: staffconversion.src,
         icon: MessageSquareDashed
       },
-      { 
-        title: "Store Staff Incentive Tracker", 
-        desc: "Drive checkout-line efficiency by rewarding staff for successful basket-expansion prompts and high-value loyalty signups.", 
+      {
+        title: "Checkout Efficiency Rewards",
+        desc: "Drive checkout-line efficiency by rewarding staff for successful basket-expansion prompts and high-value loyalty signups.",
         image: empoyeeincentives.src,
         icon: Award
       },
-      { 
-        title: "Inventory-to-Consumer Insights", 
-        desc: "Gain a transparent view of household consumption habits, allowing you to align your shelves with the actual needs of your neighborhood.", 
+      {
+        title: "Household Consumption Clarity",
+        desc: "Gain a transparent view of household consumption habits, allowing you to align your shelves with the actual needs of your neighborhood.",
         image: strategicmirror.src,
         icon: LayoutDashboard
       },
-      { 
-        title: "High-Frequency Buyer Targeting", 
-        desc: "Maximize your loyalty ROI by focusing marketing efforts on high-frequency shoppers with a high preference for premium fresh categories.", 
+      {
+        title: "Loyalty Value Optimization",
+        desc: "Maximize your loyalty ROI by focusing marketing efforts on high-frequency shoppers with a high preference for premium fresh categories.",
         image: marketingcost.src,
         icon: DollarSign
       }
@@ -388,39 +388,39 @@ export const solutionDetails: Record<string, any> = {
     title: "Fashion",
     description: "Turn Customer Style Preferences Into Smarter Fashion Selling. Tapito helps fashion businesses understand customer style preferences, shopping behavior, and seasonal buying patterns — not just the products customers purchase today.",
     howWeHelp: [
-      { 
-        title: "Aesthetic DNA Analytics", 
-        desc: "Tapito decodes individual style DNA, identifying the aesthetic preferences that drive high-value wardrobe choices beyond single transactions.", 
+      {
+        title: "Style Identity Intelligence",
+        desc: "Tapito decodes individual style DNA, identifying the aesthetic preferences that drive high-value wardrobe choices beyond single transactions.",
         image: aisales.src,
         icon: Brain
       },
-      { 
-        title: "Trend-Driven Intent Prediction", 
-        desc: "Our AI forecasts seasonal demand by matching past purchases with upcoming fashion cycles, ensuring your lookbooks are perfectly timed for the next season.", 
+      {
+        title: "Wardrobe Cycle Forecasting",
+        desc: "Our AI forecasts seasonal demand by matching past purchases with upcoming fashion cycles, ensuring your lookbooks are perfectly timed for the next season.",
         image: predictiveprofit.src,
         icon: Zap
       },
-      { 
-        title: "Personalized Lookbook Automation", 
-        desc: "Maintain constant style relevance with automated new-arrival alerts and curated outfit suggestions that mirror your customers' unique tastes.", 
+      {
+        title: "Personalized Lookbook Delivery",
+        desc: "Maintain constant style relevance with automated new-arrival alerts and curated outfit suggestions that mirror your customers' unique tastes.",
         image: staffconversion.src,
         icon: MessageSquareDashed
       },
-      { 
-        title: "Stylist Incentive Monitoring", 
-        desc: "Drive showroom excellence by giving your sales team real-time visibility into their earned rewards for successful head-to-toe styling.", 
+      {
+        title: "Stylist Performance Mapping",
+        desc: "Drive showroom excellence by giving your sales team real-time visibility into their earned rewards for successful head-to-toe styling.",
         image: empoyeeincentives.src,
         icon: Award
       },
-      { 
-        title: "Wardrobe Preference Mapping", 
-        desc: "Tapito delivers a high-definition view of your customers' closets, allowing you to optimize your collections and marketing for maximum style impact.", 
+      {
+        title: "Closet Composition Clarity",
+        desc: "Tapito delivers a high-definition view of your customers' closets, allowing you to optimize your collections and marketing for maximum style impact.",
         image: strategicmirror.src,
         icon: LayoutDashboard
       },
-      { 
-        title: "Style-Conscious Spend Efficiency", 
-        desc: "Stop wasting budget on generic fashion ads and focus your spend on high-intent style segments ready to invest in premium seasonal pieces.", 
+      {
+        title: "High-Fashion Growth Precision",
+        desc: "Stop wasting budget on generic fashion ads and focus your spend on high-intent style segments ready to invest in premium seasonal pieces.",
         image: marketingcost.src,
         icon: DollarSign
       }
@@ -476,39 +476,39 @@ export const solutionDetails: Record<string, any> = {
     title: "Beauty & Health",
     description: "Transform Customer Wellness, Beauty & Fitness Preferences Into Long-Term Engagement. Tapito helps beauty, wellness, pharmacy, gyms, and healthcare businesses understand customer preferences, purchase behavior, and recurring wellness needs.",
     howWeHelp: [
-      { 
-        title: "Care Continuity Analytics", 
-        desc: "Tapito bridges the gap between beauty and wellness, tracking personal care cycles to reveal connected routines that standard retail systems ignore.", 
+      {
+        title: "Wellness Journey Intelligence",
+        desc: "Tapito bridges the gap between beauty and wellness, tracking personal care cycles to reveal connected routines that standard retail systems ignore.",
         image: aisales.src,
         icon: Brain
       },
-      { 
-        title: "Recurring Care Cycle Prediction", 
-        desc: "Our AI anticipates exactly when a customer's skincare or supplements are running low, suggesting the perfect refill at the height of their intent.", 
+      {
+        title: "Supplement Refill Forecasting",
+        desc: "Our AI anticipates exactly when a customer's skincare or supplements are running low, suggesting the perfect refill at the height of their intent.",
         image: predictiveprofit.src,
         icon: Zap
       },
-      { 
-        title: "Health & Beauty Habit Formation", 
-        desc: "Strengthen customer bonds with automated routine reminders, personalized wellness guides, and timely membership renewal follow-ups.", 
+      {
+        title: "Health & Beauty Habit Creation",
+        desc: "Strengthen customer bonds with automated routine reminders, personalized wellness guides, and timely membership renewal follow-ups.",
         image: staffconversion.src,
         icon: MessageSquareDashed
       },
-      { 
-        title: "Wellness Consultant Motivation", 
-        desc: "Inspire your showroom and counter teams with transparent, real-time tracking of incentives earned for building complete wellness bundles.", 
+      {
+        title: "Wellness Advisory Rewards",
+        desc: "Inspire your showroom and counter teams with transparent, real-time tracking of incentives earned for building complete wellness bundles.",
         image: empoyeeincentives.src,
         icon: Award
       },
-      { 
-        title: "Personal Care Journey Map", 
-        desc: "Tapito delivers a high-definition view of your customers' health and beauty interests, allowing you to optimize services and inventory for true care continuity.", 
+      {
+        title: "Personal Care Path Clarity",
+        desc: "Tapito delivers a high-definition view of your customers' health and beauty interests, allowing you to optimize services and inventory for true care continuity.",
         image: strategicmirror.src,
         icon: LayoutDashboard
       },
-      { 
-        title: "High-Trust Revenue Optimization", 
-        desc: "Maximize your marketing efficiency by focusing on high-trust segments ready for premium skincare, supplements, and long-term wellness plans.", 
+      {
+        title: "Premium Care Engagement",
+        desc: "Maximize your marketing efficiency by focusing on high-trust segments ready for premium skincare, supplements, and long-term wellness plans.",
         image: marketingcost.src,
         icon: DollarSign
       }
@@ -564,39 +564,39 @@ export const solutionDetails: Record<string, any> = {
     title: "Jewelry",
     description: "Turn Customer Purchase Behavior Into High-Value Relationship Selling. Tapito helps jewelry businesses understand customer preferences, buying behavior, and lifecycle purchasing patterns — not just the products customers purchase today.",
     howWeHelp: [
-      { 
-        title: "Precious Lifecycle Analytics", 
-        desc: "Tapito maps out the long-term relationships behind every purchase, identifying the milestones that drive high-value jewelry collections.", 
+      {
+        title: "Heirloom Relationship Intelligence",
+        desc: "Tapito maps out the long-term relationships behind every purchase, identifying the milestones that drive high-value jewelry collections.",
         image: aisales.src,
         icon: Brain
       },
-      { 
-        title: "Occasion-Based Intent Engine", 
-        desc: "Our AI forecasts upcoming anniversaries and milestones by matching past purchase dates with family relationship cycles, ensuring perfectly timed gifting reminders.", 
+      {
+        title: "Milestone Gift Forecasting",
+        desc: "Our AI forecasts upcoming anniversaries and milestones by matching past purchase dates with family relationship cycles, ensuring perfectly timed gifting reminders.",
         image: predictiveprofit.src,
         icon: Zap
       },
-      { 
-        title: "Milestone Relationship Nurturing", 
-        desc: "Keep your clients connected with automated anniversary alerts, exclusive preview invitations, and personalized gifting recommendations that honor every special moment.", 
+      {
+        title: "Life-Event Connection Flow",
+        desc: "Keep your clients connected with automated anniversary alerts, exclusive preview invitations, and personalized gifting recommendations that honor every special moment.",
         image: staffconversion.src,
         icon: MessageSquareDashed
       },
-      { 
-        title: "Master Stylist Revenue Tracking", 
-        desc: "Drive showroom performance by giving your senior consultants real-time visibility into their earned rewards for building complete heirloom sets.", 
+      {
+        title: "Expert Gemologist Rewards",
+        desc: "Drive showroom performance by giving your senior consultants real-time visibility into their earned rewards for building complete heirloom sets.",
         image: empoyeeincentives.src,
         icon: Award
       },
-      { 
-        title: "High-Value Client Blueprint", 
-        desc: "Tapito delivers a high-definition view of your clients' aesthetic tastes and family connections, allowing you to curate your collections for true relationship selling.", 
+      {
+        title: "High-Value Client Vision",
+        desc: "Tapito delivers a high-definition view of your clients' aesthetic tastes and family connections, allowing you to curate your collections for true relationship selling.",
         image: strategicmirror.src,
         icon: LayoutDashboard
       },
-      { 
-        title: "Heirloom Revenue Acceleration", 
-        desc: "Maximize your marketing impact by focusing on high-value families ready for their next major milestone investment, from bridal sets to anniversary gems.", 
+      {
+        title: "Major Investment Precision",
+        desc: "Maximize your marketing impact by focusing on high-value families ready for their next major milestone investment, from bridal sets to anniversary gems.",
         image: marketingcost.src,
         icon: DollarSign
       }
@@ -652,39 +652,39 @@ export const solutionDetails: Record<string, any> = {
     title: "F&B Retail",
     description: "Turn Customer Food Preferences Into Repeat Visits & Higher Spending. Tapito helps food and beverage retail businesses understand customer taste preferences, ordering behavior, and purchase patterns — not just the products customers purchase today.",
     howWeHelp: [
-      { 
-        title: "Taste Profile Analytics", 
-        desc: "Tapito deciphers the hidden taste preferences behind every order, uncovering combo opportunities that standard POS systems miss.", 
+      {
+        title: "Flavor Preference Intelligence",
+        desc: "Tapito deciphers the hidden taste preferences behind every order, uncovering combo opportunities that standard POS systems miss.",
         image: aisales.src,
         icon: Brain
       },
-      { 
-        title: "Dine-In Demand Prediction", 
-        desc: "Our AI forecasts peak ordering times and seasonal cravings by matching past taste profiles with real-time dining trends.", 
+      {
+        title: "Culinary Craving Forecasting",
+        desc: "Our AI forecasts peak ordering times and seasonal cravings by matching past taste profiles with real-time dining trends.",
         image: predictiveprofit.src,
         icon: Zap
       },
-      { 
-        title: "Dynamic Cravings Re-Engagement", 
-        desc: "Keep your diners coming back with automated taste-based alerts, personalized combo offers, and perfectly timed menu updates.", 
+      {
+        title: "Dynamic Taste Engagement",
+        desc: "Keep your diners coming back with automated taste-based alerts, personalized combo offers, and perfectly timed menu updates.",
         image: staffconversion.src,
         icon: MessageSquareDashed
       },
-      { 
-        title: "Server Upsell Incentive Tracker", 
-        desc: "Drive floor team performance by giving your servers real-time visibility into their earned rewards for successful meal bundling.", 
+      {
+        title: "Server Bundle Rewards",
+        desc: "Drive floor team performance by giving your servers real-time visibility into their earned rewards for successful meal bundling.",
         image: empoyeeincentives.src,
         icon: Award
       },
-      { 
-        title: "Menu-to-Palate Visibility", 
-        desc: "Tapito delivers a high-definition view of your customers' dining habits, allowing you to align your menu with the actual cravings of your neighborhood.", 
+      {
+        title: "Menu-to-Palate Clarity",
+        desc: "Tapito delivers a high-definition view of your customers' dining habits, allowing you to align your menu with the actual cravings of your neighborhood.",
         image: strategicmirror.src,
         icon: LayoutDashboard
       },
-      { 
-        title: "AOV-Driven Combo Expansion", 
-        desc: "Maximize your revenue by focusing on high-frequency diners ready for their next meal upgrade, from beverages to desserts.", 
+      {
+        title: "Menu Profitability Precision",
+        desc: "Maximize your revenue by focusing on high-frequency diners ready for their next meal upgrade, from beverages to desserts.",
         image: marketingcost.src,
         icon: DollarSign
       }
@@ -740,39 +740,39 @@ export const solutionDetails: Record<string, any> = {
     title: "eCommerce",
     description: "Turn Customer Browsing Behavior Into Higher Conversions & Repeat Sales. Tapito helps eCommerce businesses understand customer interests, browsing behavior, shopping intent, and purchase patterns — not just the products customers buy today.",
     howWeHelp: [
-      { 
-        title: "Digital Intent Analytics", 
-        desc: "Tapito decodes the clickstream data behind every session, revealing the hidden shopping intent that standard analytics suites overlook.", 
+      {
+        title: "Clickstream Behavior Intelligence",
+        desc: "Tapito decodes the clickstream data behind every session, revealing the hidden shopping intent that standard analytics suites overlook.",
         image: aisales.src,
         icon: Brain
       },
-      { 
-        title: "Funnel Leakage Prediction", 
-        desc: "Our AI identifies high-intent shoppers nearing abandonment, triggering perfectly timed recovery offers and product suggestions.", 
+      {
+        title: "Conversion Recovery Logic",
+        desc: "Our AI identifies high-intent shoppers nearing abandonment, triggering perfectly timed recovery offers and product suggestions.",
         image: predictiveprofit.src,
         icon: Target
       },
-      { 
-        title: "Seamless Cart Re-Engagement", 
-        desc: "Recover lost revenue with automated cart reminders, personalized browsing alerts, and exclusive digital offers across WhatsApp and SMS.", 
+      {
+        title: "Seamless Cart Recovery",
+        desc: "Recover lost revenue with automated cart reminders, personalized browsing alerts, and exclusive digital offers across WhatsApp and SMS.",
         image: staffconversion.src,
         icon: MessageSquareDashed
       },
-      { 
-        title: "Digital Support Revenue Rewards", 
-        desc: "Empower your remote support and sales teams with real-time visibility into their earned incentives for successful high-conversion interactions.", 
+      {
+        title: "Support Conversion Rewards",
+        desc: "Empower your remote support and sales teams with real-time visibility into their earned incentives for successful high-conversion interactions.",
         image: empoyeeincentives.src,
         icon: Award
       },
-      { 
-        title: "Browser-to-Buyer Blueprint", 
-        desc: "Gain a high-definition view of your digital storefront's performance, allowing you to optimize your UX and inventory for true conversion momentum.", 
+      {
+        title: "Browser-to-Buyer Strategy",
+        desc: "Gain a high-definition view of your digital storefront's performance, allowing you to optimize your UX and inventory for true conversion momentum.",
         image: strategicmirror.src,
         icon: LayoutDashboard
       },
-      { 
-        title: "LTV-Driven Basket Expansion", 
-        desc: "Maximize your digital ROI by focusing on high-LTV segments ready for their next major tech or fashion investment with automated bundle suggestions.", 
+      {
+        title: "Digital Growth Precision",
+        desc: "Maximize your digital ROI by focusing on high-LTV segments ready for their next major tech or fashion investment with automated bundle suggestions.",
         image: marketingcost.src,
         icon: RefreshCcw
       }
@@ -830,9 +830,24 @@ export const defaultData = {
   title: "Vertical Growth",
   description: "Tapito transforms your industry-specific data into a strategic growth advantage with tailored AI logic.",
   howWeHelp: [
-    { title: "Predictive Optimization", desc: "Anticipate market shifts and adjust your strategy in real-time.", image: "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?q=80&w=1200&auto=format&fit=crop", icon: TrendingUp },
-    { title: "Operational Clarity", desc: "Remove the fog of raw data with actionable, business-ready insights.", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop", icon: BarChart3 },
-    { title: "Customer Retention", desc: "Build lasting relationships with automated, personalized engagement.", image: "https://images.unsplash.com/photo-1556745757-8d76bdb6984b?q=80&w=1200&auto=format&fit=crop", icon: Heart },
+    {
+      title: "Growth Acceleration Logic",
+      desc: "Anticipate market shifts and adjust your strategy in real-time.",
+      image: "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?q=80&w=1200&auto=format&fit=crop",
+      icon: TrendingUp
+    },
+    {
+      title: "Strategic Decision Clarity",
+      desc: "Remove the fog of raw data with actionable, business-ready insights.",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop",
+      icon: BarChart3
+    },
+    {
+      title: "Relationship Retention Flow",
+      desc: "Build lasting relationships with automated, personalized engagement.",
+      image: "https://images.unsplash.com/photo-1556745757-8d76bdb6984b?q=80&w=1200&auto=format&fit=crop",
+      icon: Heart
+    },
   ],
   challenges: [
     { title: "Data Silos", desc: "Fragmented information across departments leads to missed opportunities.", icon: ShieldAlert },

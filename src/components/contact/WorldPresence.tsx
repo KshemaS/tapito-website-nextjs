@@ -18,15 +18,6 @@ const LOCATIONS = [
     y: 294 
   },
   { 
-    city: "Kannur", 
-    country: "India", 
-    countryCode: "in",
-    flag: "🇮🇳", 
-    address: "STC Tower, Thana, Kannur, Kerala 670002, India",
-    x: 712, 
-    y: 288 
-  },
-  { 
     city: "Hyderabad", 
     country: "India", 
     countryCode: "in",
@@ -74,10 +65,9 @@ const LOCATIONS = [
 ];
 
 const OFFICES = LOCATIONS;
-// Combine Kochi and Kannur into one pin for the map
-const MAP_DOTS = LOCATIONS.filter(loc => loc.city !== "Kannur");
+const MAP_DOTS = LOCATIONS;
 
-export default function WorldPresence() {
+export default function WorldPresence({ showCards = true }: { showCards?: boolean }) {
   const [hoveredCity, setHoveredCity] = useState<string | null>(null);
 
   return (
@@ -96,8 +86,8 @@ export default function WorldPresence() {
               Global Presence
             </span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-black mb-6 tracking-tight">
-            Presence Around the World
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-black mb-6 tracking-normal capitalize">
+            Presence Around the <span className="text-[#09358c]">World</span>
           </h2>
           <p className="text-base sm:text-lg text-slate-500 font-medium max-w-2xl mx-auto px-4">
             Get in touch with us for any queries. We are happy to help you!
@@ -111,7 +101,14 @@ export default function WorldPresence() {
           {/* Map background */}
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-full h-full relative">
-              <Image src={mapBg} alt="Presence Around the World" fill className="object-fill opacity-90" priority />
+              <Image 
+                src={mapBg} 
+                alt="Presence Around the World" 
+                fill 
+                sizes="(max-width: 768px) 100vw, 1440px"
+                className="object-fill opacity-90" 
+                priority 
+              />
             </div>
           </div>
 
@@ -180,9 +177,9 @@ export default function WorldPresence() {
                 <AnimatePresence>
                   {hoveredCity === loc.city && (
                     <foreignObject
-                      x={loc.city === "Kochi" ? loc.x - 220 : loc.x - 110} 
+                      x={loc.x - 110} 
                       y={loc.y - 120}
-                      width={loc.city === "Kochi" ? "440" : "220"} 
+                      width="220" 
                       height="150"
                       className="pointer-events-none overflow-visible"
                     >
@@ -193,8 +190,7 @@ export default function WorldPresence() {
                         transition={{ duration: 0.2, ease: "easeOut" }}
                         className="bg-white p-4 rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.12)] border border-slate-100 flex relative"
                       >
-                        <div className={`flex ${loc.city === "Kochi" ? "flex-row gap-6" : "flex-col gap-2"}`}>
-                          {/* Render Main City Info */}
+                        <div className="flex flex-col gap-2">
                           <div className="flex flex-col gap-1.5 min-w-[180px] max-w-[200px]">
                             <div className="flex items-center gap-2.5">
                               <span className="text-xl leading-none">{loc.flag}</span>
@@ -211,30 +207,7 @@ export default function WorldPresence() {
                               {loc.address}
                             </p>
                           </div>
-
-                          {/* Side-by-side extra card for Kochi */}
-                          {loc.city === "Kochi" && (
-                            <>
-                              <div className="w-px bg-slate-100 self-stretch" />
-                              <div className="flex flex-col gap-1.5 min-w-[180px] max-w-[200px]">
-                                <div className="flex items-center justify-between">
-                                  <span className="text-[14px] font-bold text-slate-900 tracking-tight">
-                                    Kannur
-                                  </span>
-                                  <img 
-                                    src="https://flagcdn.com/w40/in.png" 
-                                    alt="India"
-                                    className="w-5 h-auto rounded-[2px] shadow-sm"
-                                  />
-                                </div>
-                                <p className="text-[11px] text-slate-500 leading-[1.4] font-medium">
-                                  {LOCATIONS.find(l => l.city === "Kannur")?.address}
-                                </p>
-                              </div>
-                            </>
-                          )}
                         </div>
-                        
                       </motion.div>
                     </foreignObject>
                   )}
@@ -246,48 +219,50 @@ export default function WorldPresence() {
       </div>
 
       {/* Office cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {OFFICES.map((office, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.05 }}
-              whileHover={{ y: -8 }}
-              className="group relative p-8 rounded-[1.5rem] bg-white border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_32px_64px_-16px_rgba(9,53,140,0.12)] transition-all duration-500 overflow-hidden"
-            >
-              <BorderGlow 
-                colorFrom="#09358c" 
-                colorTo="#05a0ec" 
-                duration={5} 
-                size={180} 
-                borderRadius="1.5rem" 
-                borderWidth={1.5}
-                className="opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-              />
-              
-              {/* Hover glow */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-50/0 to-sky-50/0 group-hover:from-blue-50/60 group-hover:to-sky-50/40 transition-all duration-500 rounded-[1.5rem]" />
-
-            <div className="relative z-10">
-              <div className="flex items-center justify-between mb-4">
-                <h4 className="text-xl font-black text-slate-900 group-hover:text-[#05a0ec] transition-colors uppercase tracking-tight">
-                  {office.city}
-                </h4>
-                <img 
-                  src={`https://flagcdn.com/w80/${office.countryCode}.png`} 
-                  alt={office.country}
-                  className="w-8 h-auto rounded-sm shadow-sm border border-slate-100" 
+      {showCards && (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {OFFICES.map((office, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.05 }}
+                whileHover={{ y: -8 }}
+                className="group relative p-8 rounded-[1.5rem] bg-white border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_32px_64px_-16px_rgba(9,53,140,0.12)] transition-all duration-500 overflow-hidden"
+              >
+                <BorderGlow 
+                  colorFrom="#09358c" 
+                  colorTo="#05a0ec" 
+                  duration={5} 
+                  size={180} 
+                  borderRadius="1.5rem" 
+                  borderWidth={1.5}
+                  className="opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                 />
+                
+                {/* Hover glow */}
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-50/0 to-sky-50/0 group-hover:from-blue-50/60 group-hover:to-sky-50/40 transition-all duration-500 rounded-[1.5rem]" />
+
+              <div className="relative z-10">
+                <div className="flex items-center justify-between mb-4">
+                  <h4 className="text-xl font-black text-slate-900 group-hover:text-[#05a0ec] transition-colors uppercase tracking-normal">
+                    {office.city}
+                  </h4>
+                  <img 
+                    src={`https://flagcdn.com/w80/${office.countryCode}.png`} 
+                    alt={office.country}
+                    className="w-8 h-auto rounded-sm shadow-sm border border-slate-100" 
+                  />
+                </div>
+                <p className="text-[14px] text-slate-500 font-medium leading-relaxed">
+                  {office.address}
+                </p>
               </div>
-              <p className="text-[14px] text-slate-500 font-medium leading-relaxed">
-                {office.address}
-              </p>
-            </div>
-          </motion.div>
-        ))}
-      </div>
+            </motion.div>
+          ))}
+        </div>
+      )}
     </>
   );
 }

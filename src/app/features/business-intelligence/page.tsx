@@ -56,7 +56,7 @@ export default function BusinessIntelligencePage() {
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-white pt-24 text-slate-900 selection:bg-[#09358c]/10 selection:text-[#09358c]">
-      <InteractiveGrid />
+      {/* <InteractiveGrid /> */}
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[400px] lg:h-[520px] bg-[radial-gradient(circle_at_top_right,rgba(9,53,140,0.12),transparent_42%),radial-gradient(circle_at_top_left,rgba(5,160,236,0.1),transparent_30%)]" />
 
       <section className="relative py-12 md:py-20 4xl:py-28">
@@ -66,7 +66,7 @@ export default function BusinessIntelligencePage() {
               <motion.div {...fadeUp()} className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#09358c]/10 bg-[#09358c]/5 px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-[#09358c]">
                 <AnimatedLucideIcon name="LayoutDashboard" size={14} /> Executive analytics workspace
               </motion.div>
-              <motion.h1 {...fadeUp(0.08)} className="max-w-3xl text-3xl sm:text-4xl md:text-5xl 4xl:text-7xl font-black tracking-[-0.06em] text-slate-950">
+              <motion.h1 {...fadeUp(0.08)} className="max-w-3xl text-3xl sm:text-4xl md:text-5xl 4xl:text-7xl font-bold tracking-normal text-slate-950">
                 Your Entire Business. <span className="text-[#09358c]">One Screen.</span>
               </motion.h1>
               <motion.p {...fadeUp(0.16)} className="mt-6 max-w-4xl text-base md:text-lg 4xl:text-xl font-medium leading-7 md:leading-8 text-slate-600">

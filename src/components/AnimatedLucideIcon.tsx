@@ -5,9 +5,15 @@ import { motion } from "framer-motion";
 import * as LucideIcons from "lucide-react";
 import * as AnimatedIcons from "lucide-animated";
 import { ActivityIcon } from "./ui/activity";
+import { SendIcon } from "./ui/send";
+import { ChartPieIcon } from "./ui/chart-pie";
+import { ChartSplineIcon } from "./ui/chart-spline";
 
 const LocalAnimatedIcons = {
   ActivityIcon,
+  SendIcon,
+  ChartPieIcon,
+  ChartSplineIcon,
 };
 
 interface AnimatedLucideIconProps {

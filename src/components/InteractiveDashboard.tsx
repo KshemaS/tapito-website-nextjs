@@ -47,6 +47,7 @@ export default function InteractiveDashboard() {
                   src="/retail_ai_dashboard_premium_1775651628420.png" 
                   alt="Retail AI Dashboard" 
                   fill 
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 

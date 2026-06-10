@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence, useMotionValue, useTransform } from "framer-motion";
 import { Send, CheckCircle2, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -112,7 +113,7 @@ export default function ContactForm() {
                         required
                       >
                         <option value="" disabled>Contact Reason *</option>
-                        <option value="demo">Request a Demo</option>
+                        <option value="demo">Book Demo</option>
                         <option value="partner">Partnership Inquiry</option>
                         <option value="support">Technical Support</option>
                         <option value="press">Press &amp; Media</option>
@@ -133,9 +134,9 @@ export default function ContactForm() {
                 <div className="pt-4 flex flex-col md:flex-row items-center justify-between gap-8">
                   <p className="text-[13px] text-slate-500 font-medium leading-relaxed max-w-sm">
                     By submitting this form, I agree to Tapito&apos;s{" "}
-                    <a href="#" className="text-[#05a0ec] font-bold hover:underline">privacy policy</a>{" "}
+                    <Link href="/privacy-policy" className="text-[#05a0ec] font-bold hover:underline">privacy policy</Link>{" "}
                     and{" "}
-                    <a href="#" className="text-[#05a0ec] font-bold hover:underline">terms of service</a>.
+                    <Link href="/terms-of-service" className="text-[#05a0ec] font-bold hover:underline">terms of service</Link>.
                   </p>
                   <button
                     type="submit"

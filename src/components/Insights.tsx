@@ -1,11 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { TrendingUp, Users, Gift, Lightbulb, Target, ArrowRight, ShieldCheck, Zap, Activity, Sparkles } from "lucide-react";
+import AnimatedLucideIcon from "./AnimatedLucideIcon";
 import Container from "./Container";
 import { useRouter } from "next/navigation";
 
-const Item = ({ icon: Icon, title, desc, delay }: { icon: any, title: string, desc: string, delay: number }) => {
+const Item = ({ icon, title, desc, delay }: { icon: string, title: string, desc: string, delay: number }) => {
   const router = useRouter();
   
   return (
@@ -43,13 +43,13 @@ const Item = ({ icon: Icon, title, desc, delay }: { icon: any, title: string, de
             transition={{ duration: 0.4, ease: "backOut" }}
           >
              <div className="group-hover:-translate-y-12 transition-transform duration-500 flex items-center justify-center">
-                <Icon size={32} />
+                <AnimatedLucideIcon name={icon} size={32} />
              </div>
           </motion.div>
 
           {/* Second icon (Slides from bottom) */}
           <div className="absolute translate-y-12 group-hover:translate-y-0 transition-transform duration-500 flex items-center justify-center">
-             <Icon size={32} />
+             <AnimatedLucideIcon name={icon} size={32} />
           </div>
         </motion.div>
       </motion.div>
@@ -79,7 +79,7 @@ export default function Insights() {
               viewport={{ once: true }}
               className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-[#09358c] text-xs font-bold mb-8"
             >
-              <ShieldCheck size={14} color="#09358c" />
+              <AnimatedLucideIcon name="ShieldCheck" size={14} color="#09358c" />
               PRECISION ANALYTICS
             </motion.div>
 
@@ -93,19 +93,19 @@ export default function Insights() {
 
             <div className="grid grid-cols-1 gap-4">
               <Item
-                icon={Activity}
+                icon="Activity"
                 title="Health Score"
                 desc="A composite index monitoring the operational vitality of your stores, from inventory flow to personnel efficiency."
                 delay={0}
               />
               <Item
-                icon={TrendingUp}
+                icon="TrendingUp"
                 title="Growth Simulation"
                 desc="Predictive forecasting that models expansion scenarios, allowing you to visualize ROI before a single dollar is spent."
                 delay={0.1}
               />
               <Item
-                icon={Sparkles}
+                icon="Sparkles"
                 title="Incentive Stimulation"
                 desc="Neural-network driven rewards that automatically identify and motivate high-impact behaviors across your network."
                 delay={0.2}
@@ -126,7 +126,7 @@ export default function Insights() {
                   <span className="text-slate-400 font-bold uppercase text-[10px] tracking-[0.2em]">Q4 PERFORMANCE DATA</span>
                 </div>
                 <div className="w-14 h-14 rounded-2xl bg-slate-50 flex items-center justify-center text-slate-900 border border-slate-100">
-                  <Zap size={24} />
+                  <AnimatedLucideIcon name="Zap" size={24} />
                 </div>
               </div>
 
@@ -171,7 +171,7 @@ export default function Insights() {
                 <div className="flex items-center gap-4">
                   <div className="relative">
                     <div className="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600 group-hover:scale-110 transition-transform duration-500">
-                      <Activity size={24} />
+                      <AnimatedLucideIcon name="Activity" size={24} />
                     </div>
                     <div className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-500 rounded-full border-2 border-white animate-pulse" />
                   </div>
@@ -211,7 +211,7 @@ export default function Insights() {
               <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/20 blur-3xl rounded-full translate-x-1/2 -translate-y-1/2 group-hover:bg-blue-600/40 transition-colors duration-1000" />
 
               <h5 className="text-[#05a0ec] font-black uppercase text-xs tracking-widest mb-10 flex items-center gap-2">
-                <Lightbulb size={18} />
+                <AnimatedLucideIcon name="Lightbulb" size={18} />
                 AI-DRIVEN STRATEGY RECOMMENDATIONS
               </h5>
 
@@ -243,7 +243,7 @@ export default function Insights() {
               viewport={{ once: true }}
               className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-100 text-[#09358c] text-xs font-bold mb-8"
             >
-              <Target size={14} color="#09358c" />
+              <AnimatedLucideIcon name="Target" size={14} color="#09358c" />
               STRATEGIC GROWTH
             </motion.div>
 
@@ -269,3 +269,4 @@ export default function Insights() {
     </section>
   );
 }
+

@@ -1,127 +1,126 @@
 "use client";
-
+import React, { useState } from "react";
 import { motion } from "framer-motion";
-import Container from "@/components/Container";
-import { ArrowRight, Plus } from "lucide-react";
-import AnimatedLucideIcon from "../AnimatedLucideIcon";
-import { cn } from "@/lib/utils";
+import Container from "../Container";
 
-interface StrategicAdvantageProps {
-  data: {
+type CardProps = {
+  data?: {
     title: string;
-    howWeHelp: {
-      title: string;
-      desc: string;
-      image: string;
-      icon: any;
-    }[];
-  };
-}
+    desc: string;
+    icon: any;
+  }[];
+};
 
-const StrategicAdvantage = ({ data }: StrategicAdvantageProps) => {
+const StrategicAdvantage: React.FC<CardProps> = ({ data }) => {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+  const columns = 3;
+
   return (
-    <section className="py-24 bg-white overflow-hidden relative">
-      <Container>
-        {/* Centered Heading */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
-        <div className="flex justify-center mb-6">
-          <motion.div 
-            initial={{ opacity: 0, y: -10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="flex items-center gap-3 px-4 py-2 bg-slate-50 rounded-full border border-slate-100 shadow-sm"
-          >
-            <img src="/logo.svg" alt="Tapito" className="h-4 w-auto" />
-            <div className="w-[1px] h-3 bg-slate-300" />
-            <span className="text-[10px] font-black tracking-[0.2em] uppercase text-[#09358c]">
-              Strategic Advantage
-            </span>
-          </motion.div>
-        </div>
-          <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tight leading-tight">
-            Which way we help <br /> the{" "}
-            <span className="text-[#09358c]">{data.title}</span> vertical
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {data?.howWeHelp.map((item: any, i: number) => {
-            const themes = [
-              { bg: "from-emerald-50/60", glow: "bg-emerald-400/15", icon: "from-emerald-500 to-emerald-600" },
-              { bg: "from-blue-50/60", glow: "bg-blue-400/15", icon: "from-blue-500 to-blue-600" },
-              { bg: "from-purple-50/60", glow: "bg-purple-400/15", icon: "from-purple-500 to-purple-600" },
-              { bg: "from-indigo-50/60", glow: "bg-indigo-400/15", icon: "from-indigo-500 to-indigo-600" },
-              { bg: "from-orange-50/60", glow: "bg-orange-400/15", icon: "from-orange-500 to-orange-600" },
-              { bg: "from-teal-50/60", glow: "bg-teal-400/15", icon: "from-teal-500 to-teal-600" }
-            ];
-            
-            const vectorImages = [
-              "/assets/vectors/undraw_revenue-analysis_fjh2.svg",
-              "/assets/vectors/undraw_performance-overview_1b4y.svg",
-              "/assets/vectors/undraw_target_d6hf.svg",
-              "/assets/vectors/undraw_progress-data_gvcq.svg",
-              "/assets/vectors/undraw_portfolio_btd8.svg",
-              "/assets/vectors/undraw_under-construction_hdrn.svg"
-            ];
-            
-            const theme = themes[i % themes.length];
-            const vectorImage = vectorImages[i % vectorImages.length];
-            
-            return (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: i * 0.15 }}
-                className={cn(
-                  "group relative h-[340px] rounded-[2.5rem] border border-white p-10 cursor-pointer shadow-xl shadow-slate-200/40 flex flex-col transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl overflow-hidden bg-gradient-to-br to-white",
-                  theme.bg
-                )}
+    <Container>
+      {/* Desktop view */}
+      <div className="hidden sm:grid grid-cols-2 lg:grid-cols-3 border-[#09358c] py-[120px]">
+        {data?.map((item, index) => {
+          const isHovered = hoveredIndex === index;
+          const isFirstRow = index < columns;
+          const isLastRow = index >= (data?.length || 0) - columns;
+          const isFirstCol = index % columns === 0;
+          const isLastCol = (index + 1) % columns === 0;
+          return (
+            <motion.div
+              key={index}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+              animate={{
+                backgroundColor: isHovered ? "#09358c" : "#fff",
+                transition: { duration: 0.4, ease: "easeInOut" },
+              }}
+              className={`
+                relative px-[40px] pt-[60px] pb-[60px] h-[492px] overflow-hidden cursor-pointer
+                border-[#09358c]
+                  ${isLastRow ? "" : "border-b"}
+                  ${isLastCol ? "" : "border-r"}
+                  ${isFirstRow ? "border-t-0" : ""}
+                  ${isFirstCol ? "border-l-0" : ""}
+              `}
+            >
+            <motion.div
+              animate={{
+                borderColor: isHovered ? "#fff" : "#09358c",
+                marginLeft: isHovered ? (isFirstCol ? "40px" : "0px") : "0px",
+              }}
+                className={`w-[60px] h-[60px] rounded-full flex items-center justify-center bg-white absolute top-[40px] ${isFirstCol ? 'left-1' : 'left-[40px]'} shrink-0`}
+            >
+                <item.icon
+                  size={40}
+                  className="text-[#09358c]"
+                />
+            </motion.div>
+            <motion.h3
+                className={`${
+                  isFirstCol ? "left-1" : "left-[40px]"
+                } absolute right-[40px] md:text-[24px] lg:text-[26px] 2xl:text-[30px] 3xl:text-[36px] 4xl:text-[40px] font-medium font-outfit leading-[110%] z-10`}
+                animate={{
+                  y: isHovered ? 80 : 300,
+                  color: isHovered ? "#fff" : "#09358c",
+                  paddingLeft: isHovered ? (isFirstCol ? "40px" : "0px") : "0px",
+                }}
+                transition={{
+                  duration: 0.6,
+                  ease: "easeInOut",
+                }}
               >
-                {/* Vector Background Image from Assets */}
-                <div className="absolute -bottom-6 -left-2 w-48 h-48 opacity-[0.08] grayscale text-slate-900 pointer-events-none group-hover:scale-125 group-hover:translate-x-4 group-hover:-translate-y-4 group-hover:opacity-[0.15] transition-all duration-1000">
-                  <img src={vectorImage} alt="" className="w-full h-full object-contain" />
-                </div>
+                {item.title}
+              </motion.h3>
 
-                {/* Reference-style Background Glow */}
-                <div className={cn(
-                  "absolute -bottom-24 -left-24 w-80 h-80 blur-[100px] rounded-full transition-opacity duration-700 opacity-60 group-hover:opacity-100",
-                  theme.glow
-                )} />
-                
-                {/* Header: Icon + Title */}
-                <div className="flex items-center gap-5 mb-6 relative z-10">
-                  <div className={cn(
-                    "shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center text-white shadow-xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 bg-gradient-to-br shadow-blue-500/10",
-                    theme.icon
-                  )}>
-                    <AnimatedLucideIcon icon={item.icon} size={26} />
-                  </div>
-                  <h3 className="text-xl lg:text-2xl font-black text-slate-900 leading-tight tracking-tight group-hover:text-[#09358c] transition-colors">
-                    {item.title}
-                  </h3>
-                </div>
+              {/* Description */}
+              <motion.p
+                className={`${
+                  isFirstCol ? "left-1" : "left-[40px]"
+                } absolute right-[40px] text-[16px] xl:text-[18px] 2xl:text-[20px] font-outfit leading-[160%] text-white z-0`}
+                animate={{
+                  opacity: isHovered ? 1 : 0,
+                  y: isHovered ? 180 : 300,
+                  paddingLeft: isHovered ? (isFirstCol ? "40px" : "0px") : "0px",
+                }}
+                transition={{
+                  duration: 0.6,
+                  delay: isHovered ? 0.4 : 0,
+                  ease: "easeOut",
+                }}
+              >
+                {item.desc}
+              </motion.p>
+            </motion.div>
+          );
+        })}
+      </div>
 
-                {/* Content */}
-                <div className="relative z-10 flex-1">
-                  <p className="text-slate-500 font-medium leading-relaxed line-clamp-4">
-                    {item.desc}
-                  </p>
-                </div>
-
-                {/* Bottom Redirection Arrow */}
-                <div className="relative z-10 flex justify-end">
-                  <div className="w-12 h-12 rounded-xl bg-white/80 backdrop-blur-md border border-white shadow-lg flex items-center justify-center text-slate-400 transition-all duration-500 group-hover:bg-[#09358c] group-hover:text-white group-hover:translate-x-1">
-                    <ArrowRight size={20} />
-                  </div>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
-      </Container>
-    </section>
+      {/* Mobile view */}
+      <div className="block sm:hidden py-[60px] space-y-6">
+        {data?.map((item, index) => {
+          return (
+            <div
+              key={index}
+              className="relative px-[30px] pt-[120px] pb-[40px] bg-[#09358c] text-white rounded-[2rem] overflow-hidden shadow-lg border border-[#09358c]/20"
+            >
+              <div className="w-[60px] h-[60px] rounded-full flex items-center justify-center bg-white absolute top-[40px] left-[30px] shrink-0 border border-white">
+                <item.icon
+                  size={36}
+                  className="text-[#09358c]"
+                />
+              </div>
+              <h3 className="text-[22px] font-medium font-outfit leading-[110%] mb-4 text-white">
+                {item.title}
+              </h3>
+              <p className="text-[15px] font-outfit leading-[160%] text-blue-100/90">
+                {item.desc}
+              </p>
+            </div>
+          );
+        })}
+      </div>
+    </Container>
   );
 };
 

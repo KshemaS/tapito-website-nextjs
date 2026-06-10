@@ -370,19 +370,19 @@ export default function PartnersPage() {
 
               <motion.div {...fadeUp(0.3)} className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
                 <Link
-                  href="#partner-form"
+                  href="/contact"
                   className="group relative inline-flex items-center gap-3 rounded-full bg-[#09358c] px-8 py-4 text-sm font-bold text-white shadow-lg shadow-[#09358c]/30 transition-all hover:bg-[#05a0ec] hover:scale-[1.02] overflow-hidden"
                 >
                   <span className="relative z-10">Become a Partner</span>
                   <ArrowRight size={16} className="relative z-10 transition-transform group-hover:translate-x-1" />
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
                 </Link>
-                <Link
+                {/* <Link
                   href="#"
                   className="inline-flex items-center gap-2 rounded-full px-8 py-4 text-sm font-bold text-slate-600 transition-colors hover:text-[#09358c]"
                 >
                   Talk to Partnership Team
-                </Link>
+                </Link> */}
               </motion.div>
             </div>
 

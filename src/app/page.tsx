@@ -58,7 +58,7 @@ export default function Home() {
   return (
     <div className="relative w-full overflow-x-hidden">
       <main className="flex flex-col w-full">
-        <Hero keyHighlights={keyHighlights} />
+        <Hero />
         <Process />
         <Overview />
         <ValueStrip />

@@ -29,6 +29,7 @@ export const InteractiveGrid = () => {
   const mouseCurrent = useRef({ x: -2000, y: -2000 });
   const beams = useRef<LightBeam[]>([]);
   const animFrameRef = useRef<number>(0);
+  const rectRef = useRef<DOMRect | null>(null);
 
   // 1. Separate Beam Spawning Logic
   const spawnBeam = useCallback((w: number, h: number) => {
@@ -164,6 +165,17 @@ export const InteractiveGrid = () => {
   useEffect(() => {
     resize();
     
+    // Initialize rect cache
+    if (canvasRef.current) {
+      rectRef.current = canvasRef.current.getBoundingClientRect();
+    }
+
+    const updateRect = () => {
+      if (canvasRef.current) {
+        rectRef.current = canvasRef.current.getBoundingClientRect();
+      }
+    };
+
     // Create a stable animation loop that doesn't rely on 'draw' being declared yet
     const animate = () => {
       draw();
@@ -175,7 +187,10 @@ export const InteractiveGrid = () => {
     const handleMove = (e: MouseEvent) => {
       const canvas = canvasRef.current;
       if (!canvas) return;
-      const rect = canvas.getBoundingClientRect();
+      if (!rectRef.current) {
+        rectRef.current = canvas.getBoundingClientRect();
+      }
+      const rect = rectRef.current;
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
       mouseTarget.current = { x, y };
@@ -185,13 +200,20 @@ export const InteractiveGrid = () => {
       if (Math.random() < 0.05) spawnBeam(w, h);
     };
 
+    const handleResize = () => {
+      resize();
+      updateRect();
+    };
+
     window.addEventListener("mousemove", handleMove);
-    window.addEventListener("resize", resize);
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("scroll", updateRect, { passive: true });
 
     return () => {
       cancelAnimationFrame(animFrameRef.current);
       window.removeEventListener("mousemove", handleMove);
-      window.removeEventListener("resize", resize);
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("scroll", updateRect);
     };
   }, [draw, resize, spawnBeam]);
 
@@ -200,6 +222,7 @@ export const InteractiveGrid = () => {
       <canvas
         ref={canvasRef}
         className="absolute inset-0 opacity-70"
+        style={{ willChange: "transform" }}
       />
       <div className="absolute inset-0 bg-linear-to-b from-white via-transparent to-white opacity-40" />
     </div>

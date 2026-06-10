@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Plus, Minus } from "lucide-react";
 import Container from "@/components/Container";
@@ -16,6 +17,7 @@ interface FAQProps {
 }
 
 export function FAQ({ items }: FAQProps) {
+  const router = useRouter();
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
@@ -47,7 +49,10 @@ export function FAQ({ items }: FAQProps) {
                 <p className="text-slate-400 text-sm mb-6 relative z-10 leading-relaxed font-medium">
                   Our solutions architects are ready to help you with a custom strategy.
                 </p>
-                <button className="relative z-10 w-full py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl transition-all shadow-lg shadow-blue-600/20">
+                <button 
+                  onClick={() => router.push("/contact")}
+                  className="relative z-10 w-full py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl transition-all shadow-lg shadow-blue-600/20"
+                >
                   Talk to an Expert
                 </button>
               </div>

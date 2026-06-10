@@ -15,6 +15,11 @@ import {
   Target,
   Clock,
   UserMinus,
+  Crown,
+  User,
+  Smile,
+  Shirt,
+  Smartphone,
 } from "lucide-react";
 import Container from "@/components/Container";
 import Link from "next/link";
@@ -67,8 +72,14 @@ const bentoItems: BentoItem[] = [
     span: "",
     visual: (
       <div className="mt-6 flex -space-x-3">
-        {[1, 2, 3].map(i => (
-          <div key={i} className="w-9 h-9 rounded-full border-2 border-white bg-[#05a0ec]/30" />
+        {[
+          { icon: Crown, color: "text-[#09358c]", bg: "bg-blue-50" },
+          { icon: User, color: "text-[#05a0ec]", bg: "bg-sky-50" },
+          { icon: Smile, color: "text-emerald-500", bg: "bg-emerald-50" }
+        ].map((item, i) => (
+          <div key={i} className={`w-9 h-9 rounded-full border-2 border-white ${item.bg} flex items-center justify-center relative z-10 shadow-sm`}>
+            <item.icon size={16} className={item.color} />
+          </div>
         ))}
       </div>
     )
@@ -213,9 +224,13 @@ const bentoItems: BentoItem[] = [
     span: "",
     visual: (
       <div className="mt-6 flex gap-2 overflow-hidden">
-        {[1, 2, 3].map(i => (
+        {[
+          { icon: Shirt, color: "text-[#09358c]" },
+          { icon: Smartphone, color: "text-[#05a0ec]" },
+          { icon: ShoppingBag, color: "text-emerald-500" }
+        ].map((item, i) => (
           <div key={i} className="w-10 h-10 rounded-lg bg-white shadow-sm border border-slate-100 flex items-center justify-center shrink-0">
-            <ShoppingBag size={16} className="text-[#05a0ec]/40" />
+            <item.icon size={16} className={item.color} />
           </div>
         ))}
       </div>

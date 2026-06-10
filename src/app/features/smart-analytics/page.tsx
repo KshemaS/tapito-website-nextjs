@@ -46,10 +46,21 @@ const revealVariant = {
 } as any;
 
 import { ExploreMoreFeatures } from "@/components/features/ExploreMoreFeatures";
+import { useEffect, useState } from "react";
 
 export default function SmartAnalyticsPage() {
   const feature = featuresData.find(f => f.slug === "smart-analytics");
   if (!feature) return null;
+  const [isExtraSmall, setIsExtraSmall] = useState(false);
+
+  useEffect(() => {
+    if(window.innerWidth !== undefined) {
+      const width = window.innerWidth;
+      if(width < 350) {
+        setIsExtraSmall(true);
+      }
+    }
+  },[])
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-white pt-24 text-slate-900 selection:bg-[#09358c]/10 selection:text-[#09358c]">
@@ -173,11 +184,11 @@ export default function SmartAnalyticsPage() {
             <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" viewport={{ once: true }}>
               <motion.p {...fadeUp()} className="text-xs font-black uppercase tracking-[0.22em] text-[#05a0ec]">Portfolio Intelligence</motion.p>
               <motion.h2 {...fadeUp(0.08)} className="mt-4 text-4xl md:text-5xl lg:text-6xl font-black tracking-[-0.05em] leading-[1.1]">The Pulse of Your Retail Health.</motion.h2>
-              <motion.p {...fadeUp(0.16)} className="mt-8 text-lg font-medium leading-relaxed text-slate-400">
+              <motion.p {...fadeUp(0.16)} className="mt-8 text-[14px] sm:text-lg font-medium leading-relaxed text-slate-400 max-w-[340px] xs:max-w-none w-full">
                 Tapito aggregates thousands of signals into a single, unified Health Score. Instantly see which branches are thriving and which need immediate operational intervention.
               </motion.p>
 
-              <div className="mt-12 space-y-6">
+              <div className="mt-12 space-y-6 max-w-[320px] sm:max-w-none w-full">
                 {[
                   { label: "Margin Protection", value: "92/100", color: "bg-emerald-500" },
                   { label: "Stock Momentum", value: "78/100", color: "bg-[#05a0ec]" },
@@ -202,7 +213,7 @@ export default function SmartAnalyticsPage() {
             </motion.div>
 
             <motion.div variants={revealVariant} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="relative">
-              <div className="relative mx-auto flex h-[350px] w-[350px] sm:h-[450px] sm:w-[450px] items-center justify-center rounded-full border border-white/10 bg-white/5 backdrop-blur-3xl shadow-[0_0_100px_rgba(9,53,140,0.3)]">
+              <div className="relative mx-auto flex h-[300px] w-[300px] sm:w-[350px] sm:h-[450px] sm:w-[450px] items-center justify-center rounded-full border border-white/10 bg-white/5 backdrop-blur-3xl shadow-[0_0_100px_rgba(9,53,140,0.3)]">
                 <div className="absolute inset-0 rounded-full bg-[conic-gradient(from_0deg,#09358c,#05a0ec,#09358c)] opacity-20 blur-2xl" />
                 
                 <div className="text-center relative z-10">
@@ -219,8 +230,8 @@ export default function SmartAnalyticsPage() {
                   </div>
                 </div>
 
-                {/* Floating Signal Cards */}
-                {[
+                {!isExtraSmall && 
+                [
                   { label: "Branch 04", score: "Critical", tone: "bg-rose-500", pos: "top-0 -left-10" },
                   { label: "Inventory", score: "Optimal", tone: "bg-emerald-500", pos: "bottom-10 -right-10" },
                 ].map((card, i) => (
@@ -237,7 +248,8 @@ export default function SmartAnalyticsPage() {
                       <p className="text-sm font-black">{card.score}</p>
                     </div>
                   </motion.div>
-                ))}
+                ))
+                }
               </div>
             </motion.div>
           </div>

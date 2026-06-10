@@ -3,9 +3,13 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import Container from "@/components/Container";
-import { CheckCircle2, Package, Home, PaintBucket, Lightbulb, Bath, Armchair, XCircle, Brain, Zap, MessageSquare, DollarSign, Layers, ShieldCheck, Repeat, UserCheck, BarChart, Users, Search, Target } from "lucide-react";
+import { CheckCircle2, Package, Home, PaintBucket, Lightbulb, Bath, Armchair, XCircle, Zap, MessageSquare, DollarSign, Layers, Repeat, UserCheck, BarChart, Users, Search, Target } from "lucide-react";
 import AnimatedLucideIcon from "../AnimatedLucideIcon";
 import { ActivityIcon } from "lucide-animated";
+import Image from "next/image";
+// import analyzesBg from "@/public/assets/images/solutions/analyzes-building-material.jpg";
+// import generatesBg from "@/public/assets/images/solutions/generates-building-material.jpg";
+import logo from '@/public/assets/images/tapito_o.avif';
 
 const BuildingMaterial = () => {
   const containerRef = useRef<HTMLElement>(null);
@@ -111,8 +115,10 @@ const BuildingMaterial = () => {
               className="lg:w-1/2 relative"
             >
               <div className="relative z-10 bg-white rounded-[3.5rem] p-10 lg:p-16 shadow-2xl shadow-blue-950/40 overflow-hidden">
-                 <div className="flex items-center gap-3 mb-10">
-                    <div className="w-10 h-10 rounded-xl bg-[#09358c] flex items-center justify-center text-white font-black text-xl italic">T</div>
+                  <div className="flex items-center gap-3 mb-10">
+                    <div className="flex items-center gap-3 px-4 py-2 bg-slate-50 rounded-full border border-slate-100 shadow-sm">
+                      <img src={logo.src} alt="Tapito" className="w-6 h-6 w-auto" />
+                    </div>
                     <span className="text-xl font-black text-slate-900 tracking-tight">Tapito Intelligence</span>
                  </div>
 
@@ -166,11 +172,13 @@ const BuildingMaterial = () => {
                 {/* Background Image Overlay */}
                 <div className="absolute inset-0 z-0">
                   <div className="absolute inset-0 bg-slate-950" />
-                  <img 
-                    src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=1000" 
+                  {/* <Image 
+                    src={analyzesBg} 
                     alt="Analyzes Background" 
-                    className="w-full h-full object-cover opacity-40 mix-blend-overlay group-hover:scale-105 transition-transform duration-700"
-                  />
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover opacity-40 mix-blend-overlay group-hover:scale-105 transition-transform duration-700"
+                  /> */}
                   <div className="absolute inset-0 bg-gradient-to-t from-blue-600/20 via-transparent to-transparent" />
                 </div>
 
@@ -221,11 +229,13 @@ const BuildingMaterial = () => {
                 {/* Background Image Overlay */}
                 <div className="absolute inset-0 z-0">
                   <div className="absolute inset-0 bg-slate-950" />
-                  <img 
-                    src="https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&q=80&w=1000" 
+                  {/* <Image 
+                    src={generatesBg} 
                     alt="Generates Background" 
-                    className="w-full h-full object-cover opacity-40 mix-blend-overlay group-hover:scale-105 transition-transform duration-700"
-                  />
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover opacity-40 mix-blend-overlay group-hover:scale-105 transition-transform duration-700"
+                  /> */}
                   <div className="absolute inset-0 bg-gradient-to-t from-purple-600/20 via-transparent to-transparent" />
                 </div>
 

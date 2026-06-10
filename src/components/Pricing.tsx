@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from "framer-motion";
 import { Check, X, ArrowRight, Zap, Target, Rocket, Shield, Globe, ZapIcon, Layers3, TrendingUp, Sparkles, Building2, ChevronDown, Mail } from "lucide-react";
 import Container from "./Container";
@@ -25,7 +26,7 @@ const plans = [
       "Email & chat support",
       "API integrations (POS, CRM)",
     ],
-    cta: "Book a Demo",
+    cta: "Book Demo",
     popular: false,
     color: "blue",
     hue: 210,
@@ -46,7 +47,7 @@ const plans = [
       "Priority support",
       "Free AI tokens (limited)",
     ],
-    cta: "Book a Demo",
+    cta: "Book Demo",
     popular: false,
     color: "sky",
     hue: 195,
@@ -68,7 +69,7 @@ const plans = [
       "Advanced API integrations",
       "High-volume AI token access",
     ],
-    cta: "Book a Demo",
+    cta: "Book Demo",
     popular: true,
     color: "brand-sky",
     hue: 200,
@@ -229,6 +230,7 @@ const FAQItem = ({ question, answer, index }: { question: string; answer: string
 };
 
 const Pricing = () => {
+  const router = useRouter();
   const [activePlan, setActivePlan] = useState(plans[0]);
 
   return (
@@ -509,7 +511,10 @@ const Pricing = () => {
                       <h5 className="font-black text-white text-2xl tracking-tight mb-3">Still have questions?</h5>
                       <p className="text-slate-400 text-[15px] font-medium leading-relaxed">Our strategic team responds within 24 hours.</p>
                     </div>
-                    <button className="w-full mt-4 bg-white text-slate-900 py-5 rounded-2xl font-black text-[13px] uppercase tracking-[0.2em] transition-all hover:bg-[#05a0ec] hover:text-white shadow-xl shadow-black/20 hover:shadow-blue-600/30 hover:-translate-y-1">
+                    <button 
+                      onClick={() => router.push("/contact")}
+                      className="w-full mt-4 bg-white text-slate-900 py-5 rounded-2xl font-black text-[13px] uppercase tracking-[0.2em] transition-all hover:bg-[#05a0ec] hover:text-white shadow-xl shadow-black/20 hover:shadow-blue-600/30 hover:-translate-y-1"
+                    >
                       Contact support
                     </button>
                   </div>
@@ -588,6 +593,7 @@ const ValueBadge = (value: string | boolean) => {
 
 const PricingCard = ({ plan }: { plan: typeof plans[0] }) => {
   const Icon = plan.icon;
+  const router = useRouter();
 
   return (
     <SpotlightCard popular={plan.popular} hue={plan.hue}>
@@ -615,6 +621,7 @@ const PricingCard = ({ plan }: { plan: typeof plans[0] }) => {
 
           <div className="mt-auto">
             <motion.button
+              onClick={() => router.push("/contact")}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className="w-full lg:w-fit px-12 py-5 font-bold transition-all duration-500 flex items-center justify-center gap-4 btn-premium group/btn"

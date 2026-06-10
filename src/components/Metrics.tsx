@@ -1,24 +1,43 @@
 "use client";
 
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { TrendingUp, Users, ShoppingCart, ArrowUpRight } from "lucide-react";
+import AnimatedLucideIcon from "./AnimatedLucideIcon";
 import Container from "./Container";
 import Image from "next/image";
 
 const stats = [
-  { label: "Average Revenue Increase", value: "+24%", icon: TrendingUp, color: "text-[#05a0ec]", bg: "bg-blue-50" },
-  { label: "Customer Retention", value: "+40%", icon: Users, color: "text-[#09358c]", bg: "bg-indigo-50" },
-  { label: "Avg Ticket Size (AOV)", value: "+18%", icon: ShoppingCart, color: "text-[#06dcc3]", bg: "bg-teal-50" },
+  { label: "Average Revenue Increase", value: "+24%", icon: "TrendingUp", color: "text-[#05a0ec]", bg: "bg-blue-50" },
+  { label: "Customer Retention", value: "+40%", icon: "Users", color: "text-[#09358c]", bg: "bg-indigo-50" },
+  { label: "Avg Ticket Size (AOV)", value: "+18%", icon: "ShoppingCart", color: "text-[#06dcc3]", bg: "bg-teal-50" },
 ];
 
 export default function Metrics() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isIntersecting, setIsIntersecting] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsIntersecting(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px" }
+    );
+    if (videoRef.current) observer.observe(videoRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section className="bg-white">
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center py-14">
            <div>
               <h2 className="text-sm font-bold uppercase tracking-widest text-[#09358c] mb-4">Business Impact</h2>
-              <h3 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Real Results. <span className="text-[#09358c]">Proven Scale.</span></h3>
+            <h3 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+              Real Results. <span className="text-[#09358c]">Proven Scale.</span></h3>
               <p className="text-lg text-slate-600 mb-10">
                 Companies using Tapito see an immediate impact on their bottom line through automated intelligence and better decision making.
               </p>
@@ -33,13 +52,13 @@ export default function Metrics() {
                     className="flex items-center gap-6 p-6 rounded-3xl border border-slate-100 bg-slate-50/50"
                   >
                     <div className={`w-14 h-14 rounded-2xl ${stat.bg} ${stat.color} flex items-center justify-center`}>
-                      <stat.icon size={28} />
+                      <AnimatedLucideIcon name={stat.icon} size={28} />
                     </div>
                     <div>
                        <span className="text-3xl font-bold text-slate-900">{stat.value}</span>
                        <span className="text-slate-500 block text-sm font-medium">{stat.label}</span>
                     </div>
-                    <ArrowUpRight className="ml-auto text-slate-300" />
+                    <AnimatedLucideIcon name="ArrowUpRight" className="ml-auto text-slate-300" />
                   </motion.div>
                 ))}
               </div>
@@ -48,13 +67,16 @@ export default function Metrics() {
            <div className="relative">
               <div className="absolute -inset-4 bg-blue-50 rounded-[3.5rem] -z-10 rotate-2" />
               <div className="relative h-[500px] w-full rounded-[3rem] overflow-hidden shadow-2xl border border-slate-100 mb-12">
-                 <Image 
-                  src="/retail_customer_analytics_digital_overlay_1775651982487.png"
-                  alt="Customer Analytics"
-                  fill
-                  className="object-cover"
-                 />
-                 <div className="absolute inset-0 bg-[#09358c]/10" />
+                 <video 
+                    ref={videoRef}
+                    src={isIntersecting ? "/videos/business-impact.mp4" : undefined}
+                    className="w-full h-full object-cover opacity-90"
+                    autoPlay 
+                    loop 
+                    muted 
+                    playsInline
+                  />
+                <div className="absolute inset-0 bg-[#09358c]/10" />
               </div>
 
               <div className="bg-gradient-to-br from-[#09358c] to-[#05a0ec] rounded-[3rem] p-12 text-white shadow-2xl overflow-hidden relative">
@@ -75,16 +97,23 @@ export default function Metrics() {
                     ))}
                  </ul>
                  
-                 <div className="mt-12 pt-8 border-t border-white/10 flex items-center gap-4">
-                    <div className="flex -space-x-3">
-                       {[1,2,3,4].map(i => (
-                          <div key={i} className="w-10 h-10 rounded-full border-2 border-[#09358c] bg-slate-200" />
-                       ))}
-                    </div>
-                    <span className="text-sm font-medium text-blue-100">
-                      Joined by 100+ global brands
-                    </span>
-                 </div>
+                  <div className="mt-12 pt-8 border-t border-white/10 flex items-center gap-4">
+                     <div className="flex -space-x-3">
+                        {[
+                          { icon: "Shirt" },
+                          { icon: "Laptop" },
+                          { icon: "Store" },
+                          { icon: "Utensils" }
+                        ].map((item, i) => (
+                           <div key={i} className="w-10 h-10 rounded-full border-2 border-[#09358c] bg-white flex items-center justify-center relative z-10 shadow-sm text-[#09358c]">
+                              <AnimatedLucideIcon name={item.icon} size={16} className="#09358c" />
+                           </div>
+                        ))}
+                     </div>
+                     <span className="text-sm font-medium text-blue-100">
+                       Serving 10+ industry verticals
+                     </span>
+                  </div>
               </div>
            </div>
         </div>

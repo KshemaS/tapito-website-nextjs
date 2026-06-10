@@ -4,10 +4,14 @@ import { motion } from "framer-motion";
 import Container from "@/components/Container";
 import { Sparkles, ArrowRight } from "lucide-react";
 import CardSwap, { Card } from "@/components/ui/CardSwap";
+import Image from "next/image";
+import about1 from '@/public/assets/images/about/about-1.avif';
+import about2 from '@/public/assets/images/about/about-2.avif';
+import about3 from '@/public/assets/images/about/about-3.avif';
 
 export default function AboutHero() {
   return (
-    <section className="relative h-auto min-h-screen flex items-center bg-transparent overflow-hidden py-24 sm:py-0">
+    <section className="relative h-auto min-h-screen flex items-center bg-transparent overflow-hidden pt-28 pb-12 sm:py-0">
       {/* Background Patterns */}
       <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:32px_32px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-20 pointer-events-none" />
       
@@ -27,7 +31,7 @@ export default function AboutHero() {
             >
               <div className="inline-flex items-center gap-2.5 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-[#09358c] bg-white/80 backdrop-blur-xl rounded-full border border-blue-100 shadow-sm">
                 <Sparkles size={12} className="text-[#05a0ec] animate-pulse" />
-                About Tapito
+                About Us
               </div>
             </motion.div>
 
@@ -37,10 +41,10 @@ export default function AboutHero() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="space-y-4"
             >
-              <h1 className="text-4xl sm:text-5xl lg:text-[48px] xl:text-[60px] 2xl:text-[72px] 4xl:text-8xl font-bold text-slate-900 leading-[1.05] sm:leading-[0.95] tracking-tighter text-balance">
-                Grow your data, <br className="hidden sm:block" />
-                <span className="text-slate-800">harvest the</span> <br className="hidden sm:block" />
-                <span className="text-[#09358c]">results.</span>
+              <h1 className="text-4xl sm:text-5xl lg:text-[48px] xl:text-[60px] 2xl:text-[72px] 4xl:text-8xl font-bold text-slate-900 leading-[1.05] sm:leading-[0.95] tracking-normal capitalize text-balance">
+                Innovating<br className="hidden sm:block" />
+                <span className="text-slate-800">beyond</span> <br className="hidden sm:block" />
+                <span className="text-[#09358c]">transformation.</span>
               </h1>
             </motion.div>
 
@@ -56,17 +60,17 @@ export default function AboutHero() {
                 and anchor a true intelligence culture at the heart of your strategy.
               </p>
 
-              <div className="flex lg:justify-start mt-6 sm:mt-8 px-4 sm:px-0">
+              {/* <div className="flex lg:justify-start mt-6 sm:mt-8 px-4 sm:px-0">
                 <button className="btn-premium flex items-center gap-2 text-base sm:text-lg px-10 py-5 w-full sm:w-auto justify-center font-normal shadow-xl shadow-blue-900/10">
                   Know more
                   <ArrowRight size={20} />
                 </button>
-              </div>
+              </div> */}
             </motion.div>
           </div>
 
           {/* Right Side: CardSwap */}
-          <div className="relative w-full lg:w-[500px] h-[300px] sm:h-[400px] flex justify-center lg:block lg:translate-y-20 scale-75 sm:scale-90 lg:scale-100">
+          <div className="relative w-full lg:w-[500px] h-[300px] sm:h-[400px] flex justify-center lg:block lg:translate-y-20">
             <CardSwap
               width={500}
               height={400}
@@ -75,16 +79,24 @@ export default function AboutHero() {
               delay={3500}
               skewAmount={6}
               pauseOnHover={true}
+              easing="linear"
             >
               {[
-                { img: "/retail_ai_dashboard_premium_1775651628420.png" },
-                { img: "/about-hero.png" },
-                { img: "/retail_customer_analytics_digital_overlay_1775651982487.png" }
+                { img: about1 },
+                { img: about2 },
+                { img: about3 }
               ].map((item, idx) => (
                 <Card key={idx}>
                   <div className="relative w-full h-full bg-white flex flex-col items-center justify-center">
-                    <div className="w-full h-full rounded-xl overflow-hidden shadow-inner border border-slate-100">
-                      <div className={`w-full h-full bg-cover bg-center`} style={{ backgroundImage: `url('${item.img}')` }} />
+                    <div className="w-full h-full rounded-xl overflow-hidden shadow-inner border border-slate-100 relative">
+                      <Image
+                        src={item.img}
+                        alt={`About Tapito ${idx + 1}`}
+                        fill
+                        priority={idx === 0}
+                        sizes="(max-width: 1024px) 100vw, 500px"
+                        className="object-cover"
+                      />
                     </div>
                   </div>
                 </Card>

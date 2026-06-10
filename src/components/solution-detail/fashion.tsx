@@ -27,6 +27,9 @@ import {
 } from "lucide-react";
 import AnimatedLucideIcon from "../AnimatedLucideIcon";
 import { ActivityIcon } from "lucide-animated";
+import Image from "next/image";
+// import analyzesBg from "@/public/assets/images/solutions/analyzes-fashion.jpg";
+// import generatesBg from "@/public/assets/images/solutions/generates-fashion.jpg";
 
 const Fashion = () => {
   const containerRef = useRef<HTMLElement>(null);
@@ -189,11 +192,13 @@ const Fashion = () => {
                 {/* Background Image Overlay */}
                 <div className="absolute inset-0 z-0">
                   <div className="absolute inset-0 bg-slate-950" />
-                  <img 
-                    src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80&w=1000" 
+                  {/* <Image 
+                    src={analyzesBg} 
                     alt="Fashion Analyzes" 
-                    className="w-full h-full object-cover opacity-40 mix-blend-overlay group-hover:scale-105 transition-transform duration-700"
-                  />
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover opacity-40 mix-blend-overlay group-hover:scale-105 transition-transform duration-700"
+                  /> */}
                   <div className="absolute inset-0 bg-gradient-to-t from-blue-600/20 via-transparent to-transparent" />
                 </div>
 
@@ -242,11 +247,13 @@ const Fashion = () => {
                 {/* Background Image Overlay */}
                 <div className="absolute inset-0 z-0">
                   <div className="absolute inset-0 bg-slate-950" />
-                  <img 
-                    src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&q=80&w=1000" 
+                  {/* <Image 
+                    src={generatesBg} 
                     alt="Fashion Generates" 
-                    className="w-full h-full object-cover opacity-40 mix-blend-overlay group-hover:scale-105 transition-transform duration-700"
-                  />
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover opacity-40 mix-blend-overlay group-hover:scale-105 transition-transform duration-700"
+                  /> */}
                   <div className="absolute inset-0 bg-gradient-to-t from-purple-600/20 via-transparent to-transparent" />
                 </div>
 

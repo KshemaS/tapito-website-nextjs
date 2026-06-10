@@ -51,7 +51,7 @@ export default function CTASection({
               isCentered ? "justify-center" : "lg:justify-end"
             )}>
               <button className="btn-premium px-10 py-5 text-lg whitespace-nowrap">
-                Book a Demo
+                Book Demo
               </button>
               <button className="btn-secondary bg-transparent border-slate-700 text-white hover:bg-white/5 px-10 py-5 text-lg rounded-full whitespace-nowrap">
                 Talk to Experts

@@ -3,12 +3,19 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ChevronDown, Users, BookOpen, Mail } from "lucide-react";
+import { Menu, X, ChevronDown, Users, BookOpen, Mail, Shield, ArrowRight, Globe } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 import { features } from "@/components/features/FeaturesGrid";
 import { solutionsData } from "@/components/solutions/SolutionsGrid";
 import AnimatedLucideIcon from "@/components/AnimatedLucideIcon";
+import BusinessIntelligence from "@/public/assets/images/features/Business Intelligence Dashboard.png";
+import AIsmartanaliticsengine from "@/public/assets/images/features/AI Smart Analytics Engine.png";
+import campaignautomation from "@/public/assets/images/features/Campaign Automation.png";
+import revanuegrowth from "@/public/assets/images/features/Revenue Growth Insights.png";
+import voicepowered from "@/public/assets/images/features/Voice-Powered AI Command Center.png";
+import smartscheme from "@/public/assets/images/features/Smart Scheme Generator.png";
+
 
 const companyLinks = [
   {
@@ -22,23 +29,96 @@ const companyLinks = [
     href: "/case-studies",
     icon: BookOpen,
     description: "Real-world results from retailers who transformed their operations with Tapito.",
-  },
-  {
-    label: "Contact",
-    href: "/contact",
-    icon: Mail,
-    description: "Get in touch with our sales and support team for tailored solutions.",
-  },
+  }
 ];
 
 const navLinks = [
   { label: "Features", href: "/features" },
   { label: "Solutions", href: "/solutions" },
-  { label: "Plans", href: "/pricing" },
+  { label: "Plans", href: "/plans" },
   { label: "Partners", href: "/partners" },
   { label: "Company", href: "#" },
   { label: "Contact", href: "/contact" },
 ];
+
+const FeatureSlider = () => {
+  const [index, setIndex] = useState(0);
+  const slides = [
+    { src: voicepowered.src, title: "Voice-Powered AI Command Center" },
+    { src: smartscheme.src, title: "Smart Scheme Generator" },
+    { src: BusinessIntelligence.src, title: "Business Intelligence Dashboard" },
+    { src: AIsmartanaliticsengine.src, title: "AI Smart Analytics Engine" },
+    { src: campaignautomation.src, title: "Campaign Automation" },
+    { src: revanuegrowth.src, title: "Revenue Growth Insights" },
+
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % slides.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="relative mt-8 h-[240px] flex items-center justify-center overflow-hidden rounded-3xl bg-white/50 border border-white/20">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, scale: 0.8, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.8, y: -20 }}
+          transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+          className="absolute inset-0 flex flex-col items-center justify-center p-3 text-center"
+        >
+          <div className="absolute inset-0 bg-blue-500/5 blur-3xl rounded-full scale-110" />
+          <img src={slides[index].src} alt={slides[index].title} className="w-60 h-auto drop-shadow-2xl mb-4" />
+          <span className="text-sm font-semibold font-black text-slate-900/40 uppercase tracking-normal">{slides[index].title}</span>
+        </motion.div>
+      </AnimatePresence>
+    </div>
+  );
+};
+
+const SolutionSlider = () => {
+  const [index, setIndex] = useState(0);
+  const slides = [
+    { src: "/assets/images/home/retail.png", title: "Smart Retail" },
+    { src: "/assets/images/home/supermarket.png", title: "Supermarket AI" },
+    { src: "/assets/images/home/fashion.png", title: "Fashion Tech" },
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % slides.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="relative mt-8 h-[240px] flex items-center justify-center overflow-hidden rounded-3xl bg-white/50 border border-white/20">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, scale: 0.8, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.8, y: -20 }}
+          transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+          className="absolute inset-0 flex flex-col items-center justify-center text-center"
+        >
+          <div className="absolute inset-0 bg-blue-500/5 blur-3xl rounded-full scale-110" />
+          <img src={slides[index].src} alt={slides[index].title} className="w-full h-auto drop-shadow-2xl mb-4" />
+          <span className="text-sm font-black text-slate-900/40 uppercase tracking-[0.2em]">{slides[index].title}</span>
+        </motion.div>
+      </AnimatePresence>
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+        {slides.map((_, i) => (
+          <div key={i} className={cn("w-1.5 h-1.5 rounded-full transition-all duration-300", i === index ? "bg-[#09358c] w-4" : "bg-slate-200")} />
+        ))}
+      </div>
+    </div>
+  );
+};
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -120,21 +200,23 @@ export default function Navbar() {
   // Check if any company sub-link is active
   const isCompanyActive = companyLinks.some((l) => pathname.startsWith(l.href));
 
+  const isHomePage = pathname === "/";
+
   return (
     <>
       <header
         onMouseEnter={() => setIsHeaderHovered(true)}
         onMouseLeave={() => setIsHeaderHovered(false)}
         className={cn(
-          "fixed top-0 left-0 right-0 z-100 transition-all duration-500 ease-in-out w-full",
+          "fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ease-in-out w-full",
           isVisible ? "translate-y-0" : "-translate-y-full"
         )}
       >
         <div
           className={cn(
             "w-full transition-all duration-500 ease-in-out py-3 lg:py-4 2xl:py-6",
-            isScrolled
-              ? "bg-white/80 backdrop-blur-xl shadow-md"
+            isScrolled || !isHomePage
+              ? "bg-white shadow-md border-b border-slate-100"
               : "bg-transparent"
           )}
         >
@@ -145,7 +227,9 @@ export default function Navbar() {
                 <img
                   src="/logo.svg"
                   alt="Tapito Logo"
-                  className="w-full h-full object-contain"
+                  className={cn(
+                    "w-full h-full object-contain transition-all duration-500",
+                  )}
                 />
               </div>
             </Link>
@@ -153,7 +237,7 @@ export default function Navbar() {
             {/* Desktop Nav */}
             <nav className="hidden lg:flex items-center gap-10">
               <ul className="flex items-center gap-8 xl:gap-12">
-                {navLinks.map((item) => {
+                {navLinks?.map((item) => {
                   const isActive =
                     item.label === "Company"
                       ? isCompanyActive
@@ -177,7 +261,9 @@ export default function Navbar() {
                           "text-[14px] lg:text-[18px] font-semibold transition-colors flex items-center gap-1.5",
                           isActive || activeMenu === item.label
                             ? "text-[#09358c]"
-                            : "text-slate-600 hover:text-[#09358c]"
+                            : isScrolled || !isHomePage
+                            ? "text-slate-900 hover:text-[#09358c]"
+                            : "text-white/80 hover:text-[#09358c]"
                         )}
                       >
                         {item.label}
@@ -204,7 +290,7 @@ export default function Navbar() {
               {/* CTA's */}
               <div className="hidden lg:flex items-center gap-4">
                 <Link href="/contact" className="bg-[#09358c] text-white py-3 px-7 text-[12px] uppercase tracking-widest font-black rounded-full hover:shadow-lg hover:bg-[#09358c] transition-all duration-300">
-                  Request Demo
+                  Book Demo
                 </Link>
               </div>
             </div>
@@ -222,69 +308,72 @@ export default function Navbar() {
         <AnimatePresence>
           {activeMenu === "Features" && (
             <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 10, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 10, scale: 0.95 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
               onMouseEnter={() => handleMouseEnter("Features")}
               onMouseLeave={handleMouseLeave}
-              className="absolute left-0 right-0 top-full bg-white/95 backdrop-blur-2xl border-b border-slate-200/60 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] pointer-events-auto"
+              className="absolute left-1/2 -translate-x-1/2 top-full w-[calc(100vw-120px)] max-w-[1400px] bg-white/95 backdrop-blur-2xl rounded-[2.5rem] border border-slate-200/60 shadow-[0_40px_100px_-20px_rgba(9,53,140,0.12)] pointer-events-auto overflow-hidden mt-2"
             >
-              <div className="max-w-[1500px] mx-auto p-10">
-                <div className="grid grid-cols-3 gap-8 items-start">
-                  {features.map((feature) => {
-                    const isActive = pathname === `/features/${feature.slug}`;
-                    return (
+              <div className="flex">
+                {/* Left: Featured Image/CTA */}
+                <div className="w-[380px] bg-slate-50 p-12 border-r border-slate-100 flex flex-col justify-between">
+                  <div>
+                    <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 text-[#09358c] text-[10px] font-black uppercase tracking-widest mb-6">Latest Update</span>
+                    <h3 className="text-3xl font-black text-slate-900 mb-4 leading-tight">AI Voice <br />Command Center</h3>
+                    <p className="text-sm text-slate-500 leading-relaxed font-medium mb-8">Manage your entire retail operation using simple natural language voice commands.</p>
+                    <Link href="/features/mobile-app" onClick={closeMenu} className="inline-flex items-center gap-2 text-[#09358c] font-black text-xs uppercase tracking-widest group/btn">
+                      Explore Module <ChevronDown className="-rotate-90 group-hover:translate-x-1 transition-transform" size={14} />
+                    </Link>
+                  </div>
+                  <FeatureSlider />
+                </div>
+
+                {/* Right: Grid of Features */}
+                <div className="flex-1 p-12">
+                  <div className="grid grid-cols-3 gap-x-10 gap-y-12">
+                    {features.slice(0, 6).map((feature) => (
                       <Link
                         key={feature.slug}
                         href={`/features/${feature.slug}`}
                         onClick={closeMenu}
-                        className={cn(
-                          "group relative rounded-3xl transition-all duration-300 border shadow-sm overflow-hidden",
-                          isActive
-                            ? "bg-[#09358c]/5 border-[#09358c]/20 shadow-inner"
-                            : "bg-white border-slate-100/60 hover:bg-white hover:border-[#09358c]/10 hover:shadow-[0_20px_40px_rgba(9,53,140,0.08)] hover:-translate-y-1"
-                        )}
+                        className="group flex gap-5"
                       >
-                        <motion.div
-                          initial="initial"
-                          whileHover="hover"
-                          className="flex gap-5 w-full p-6 relative z-10"
-                        >
-                          <div className={cn(
-                            "shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 shadow-sm relative overflow-hidden",
-                            isActive 
-                              ? "bg-[#09358c] text-white shadow-[#09358c]/20 shadow-lg" 
-                              : "bg-slate-50 text-slate-600 group-hover:bg-[#09358c] group-hover:text-white group-hover:shadow-[#09358c]/30 group-hover:shadow-xl group-hover:scale-110"
-                          )}>
-                            <AnimatedLucideIcon icon={feature.icon} size={26} className="relative z-10 transition-transform duration-500 group-hover:rotate-6" />
-                            <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <h4 className={cn(
-                              "text-lg font-extrabold transition-colors mb-1.5",
-                              isActive ? "text-[#09358c]" : "text-slate-900 group-hover:text-[#09358c]"
-                            )}>{feature.title}</h4>
-                            <motion.div
-                              variants={{
-                                initial: { height: 22 },
-                                hover: { height: "auto" }
-                              }}
-                              transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-                              className="relative overflow-hidden"
-                            >
-                              <p className="text-[14px] text-slate-500 font-medium leading-relaxed line-clamp-1 group-hover:line-clamp-none group-hover:text-slate-600">
-                                {feature.description}
-                              </p>
-                            </motion.div>
-                          </div>
-                        </motion.div>
-                        {/* Subtle background glow on hover */}
-                        {!isActive && (
-                          <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#09358c]/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                        )}
+                        <div className="shrink-0 w-14 h-14 rounded-2xl bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-[#09358c] group-hover:text-white group-hover:shadow-lg group-hover:shadow-[#09358c]/20 transition-all duration-300">
+                        <AnimatedLucideIcon icon={feature.icon} size={24} />
+                        </div>
+                        <div>
+                          <h4 className="text-[17px] font-extrabold text-slate-900 mb-1.5 group-hover:text-[#09358c] transition-colors">{feature.title}</h4>
+                          <motion.div
+                            initial={{ height: "40px" }}
+                            whileHover={{ height: "auto" }}
+                            className="overflow-hidden"
+                          >
+                            <p className="text-[13px] text-slate-500 leading-relaxed font-medium group-hover:line-clamp-none line-clamp-2">
+                              {feature.description}
+                            </p>
+                          </motion.div>
+                        </div>
                       </Link>
-                    );
-                  })}
+                    ))}
+                  </div>
+
+                  <div className="mt-16 pt-10 border-t border-slate-100 flex items-center justify-between">
+                     <div className="flex items-center gap-6">
+                        <div className="flex -space-x-3">
+                           {[1,2,3,4].map(i => (
+                             <div key={i} className="w-9 h-9 rounded-full border-2 border-white bg-slate-100 overflow-hidden shadow-sm">
+                               <img src={`https://i.pravatar.cc/100?u=${i+10}`} alt="user" />
+                             </div>
+                           ))}
+                        </div>
+                        <p className="text-xs font-bold text-slate-400">Join <span className="text-slate-900">2,500+</span> retailers scaling with AI.</p>
+                     </div>
+                     <Link href="/features" onClick={closeMenu} className="px-8 py-3 rounded-full bg-slate-900 text-white text-[11px] font-black uppercase tracking-widest hover:bg-[#09358c] transition-colors shadow-xl shadow-slate-900/10">
+                        View All Capabilities
+                     </Link>
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -292,68 +381,68 @@ export default function Navbar() {
 
           {activeMenu === "Solutions" && (
             <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 10, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 10, scale: 0.95 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
               onMouseEnter={() => handleMouseEnter("Solutions")}
               onMouseLeave={handleMouseLeave}
-              className="absolute left-0 right-0 top-full bg-white/95 backdrop-blur-2xl border-b border-slate-200/60 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] pointer-events-auto"
+              className="absolute left-1/2 -translate-x-1/2 top-full w-[calc(100vw-120px)] max-w-[1400px] bg-white/95 backdrop-blur-2xl rounded-[2.5rem] border border-slate-200/60 shadow-[0_40px_100px_-20px_rgba(9,53,140,0.12)] pointer-events-auto overflow-hidden mt-2"
             >
-              <div className="max-w-[1500px] mx-auto p-10">
-                <div className="grid grid-cols-3 gap-8 items-start">
-                  {solutionsData.map((solution) => {
-                    const isActive = pathname === `/solutions/${solution.slug}`;
-                    return (
+              <div className="flex">
+                {/* Left: Featured Image/CTA */}
+                <div className="w-[380px] bg-slate-50 p-12 border-r border-slate-100 flex flex-col justify-between">
+                  <div>
+                    <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 text-[#09358c] text-[10px] font-black uppercase tracking-widest mb-6">Industry Focus</span>
+                    <h3 className="text-3xl font-black text-slate-900 mb-4 leading-tight">Retail Innovation <br />Framework</h3>
+                    <p className="text-sm text-slate-500 leading-relaxed font-medium mb-8">Tailored AI solutions designed specifically for the unique challenges of modern physical retail.</p>
+                    <Link href="/solutions" onClick={closeMenu} className="inline-flex items-center gap-2 text-[#09358c] font-black text-xs uppercase tracking-widest group/btn">
+                      Explore All Verticals <ChevronDown className="-rotate-90 group-hover:translate-x-1 transition-transform" size={14} />
+                    </Link>
+                  </div>
+                  <SolutionSlider />
+                </div>
+
+                {/* Right: Grid of Solutions */}
+                <div className="flex-1 p-12">
+                  <div className="grid grid-cols-3 gap-x-10 gap-y-12">
+                    {solutionsData.slice(0, 9).map((solution) => (
                       <Link
                         key={solution.slug}
                         href={`/solutions/${solution.slug}`}
                         onClick={closeMenu}
-                        className={cn(
-                          "group relative rounded-3xl transition-all duration-300 border shadow-sm overflow-hidden",
-                          isActive
-                            ? "bg-[#09358c]/5 border-[#09358c]/20 shadow-inner"
-                            : "bg-white border-slate-100/60 hover:bg-white hover:border-[#09358c]/10 hover:shadow-[0_20px_40px_rgba(9,53,140,0.08)] hover:-translate-y-1"
-                        )}
+                        className="group flex gap-5"
                       >
-                        <motion.div
-                          initial="initial"
-                          whileHover="hover"
-                          className="flex gap-5 w-full p-6 relative z-10"
-                        >
-                          <div className={cn(
-                            "shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 shadow-sm relative overflow-hidden",
-                            isActive 
-                              ? "bg-[#09358c] text-white shadow-[#09358c]/20 shadow-lg" 
-                              : "bg-slate-50 text-slate-600 group-hover:bg-[#09358c] group-hover:text-white group-hover:shadow-[#09358c]/30 group-hover:shadow-xl group-hover:scale-110"
-                          )}>
-                             <AnimatedLucideIcon icon={solution.icon} size={26} className="relative z-10 transition-transform duration-500 group-hover:rotate-6" />
-                            <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <h4 className={cn(
-                              "text-lg font-extrabold transition-colors mb-1.5",
-                              isActive ? "text-[#09358c]" : "text-slate-900 group-hover:text-[#09358c]"
-                            )}>{solution.title}</h4>
-                            <motion.div
-                              variants={{
-                                initial: { height: 22 },
-                                hover: { height: "auto" }
-                              }}
-                              transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-                              className="relative overflow-hidden"
-                            >
-                              <p className="text-[14px] text-slate-500 font-medium leading-relaxed line-clamp-1 group-hover:line-clamp-none group-hover:text-slate-600">
-                                {solution.desc}
-                              </p>
-                            </motion.div>
-                          </div>
-                        </motion.div>
-                        {!isActive && (
-                          <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#09358c]/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                        )}
+                        <div className="shrink-0 w-14 h-14 rounded-2xl bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-[#09358c] group-hover:text-white group-hover:shadow-lg group-hover:shadow-[#09358c]/20 transition-all duration-300">
+                        <AnimatedLucideIcon icon={solution.icon} size={24} />
+                        </div>
+                        <div>
+                          <h4 className="text-[17px] font-extrabold text-slate-900 mb-1.5 group-hover:text-[#09358c] transition-colors">{solution.title}</h4>
+                          <motion.div
+                            initial={{ height: "40px" }}
+                            whileHover={{ height: "auto" }}
+                            className="overflow-hidden"
+                          >
+                            <p className="text-[13px] text-slate-500 leading-relaxed font-medium group-hover:line-clamp-none line-clamp-2">
+                              {solution.desc}
+                            </p>
+                          </motion.div>
+                        </div>
                       </Link>
-                    );
-                  })}
+                    ))}
+                  </div>
+
+                  <div className="mt-16 pt-10 border-t border-slate-100 flex items-center justify-between">
+                     <div className="flex items-center gap-4">
+                        <div className="w-10 h-10 rounded-full bg-[#09358c]/5 flex items-center justify-center text-[#09358c]">
+                           <Shield size={20} />
+                        </div>
+                        <p className="text-xs font-bold text-slate-400">Enterprise-grade security and <span className="text-slate-900">GDPR compliance</span> for all retail data.</p>
+                     </div>
+                     <Link href="/contact" onClick={closeMenu} className="px-8 py-3 rounded-full bg-slate-900 text-white text-[11px] font-black uppercase tracking-widest hover:bg-[#09358c] transition-colors shadow-xl shadow-slate-900/10">
+                        Request Customized Solution
+                     </Link>
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -361,68 +450,52 @@ export default function Navbar() {
 
           {activeMenu === "Company" && (
             <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 10, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 10, scale: 0.95 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
               onMouseEnter={() => handleMouseEnter("Company")}
               onMouseLeave={handleMouseLeave}
-              className="absolute left-0 right-0 top-full bg-white/95 backdrop-blur-2xl border-b border-slate-200/60 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] pointer-events-auto"
+              className="absolute left-1/2 -translate-x-1/2 top-full w-[calc(100vw-120px)] max-w-[1200px] bg-white/95 backdrop-blur-2xl rounded-[2.5rem] border border-slate-200/60 shadow-[0_40px_100px_-20px_rgba(9,53,140,0.12)] pointer-events-auto overflow-hidden mt-2"
             >
-              <div className="max-w-7xl mx-auto px-10 py-8">
-                <div className="grid grid-cols-3 gap-6 items-start">
-                  {companyLinks.map((link) => {
-                    const isActive = pathname === link.href;
-                    return (
+              <div className="flex">
+                {/* Left: About Banner */}
+                <div className="w-[350px] bg-slate-900 p-12 text-white flex flex-col justify-between relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/20 blur-[60px] rounded-full -mr-10 -mt-10" />
+                  <div className="relative z-10">
+                    <span className="text-blue-400 text-[10px] font-black uppercase tracking-widest mb-6 block">Our Mission</span>
+                    <h3 className="text-2xl font-black mb-4">Empowering <br />Retail Growth</h3>
+                    <p className="text-sm text-slate-400 leading-relaxed font-medium mb-8">We build the intelligence layer that powers the next generation of physical retail stores.</p>
+                  </div>
+                  <div className="relative z-10 pt-8 border-t border-white/10">
+                     <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-4">Global HQ</p>
+                     <div className="flex items-center gap-3">
+                        <Globe size={16} className="text-blue-400" />
+                        <span className="text-xs font-bold">Kochi • Dubai • London</span>
+                     </div>
+                  </div>
+                </div>
+
+                {/* Right: Company Links */}
+                <div className="flex-1 p-10">
+                  <div className="grid grid-cols-2 gap-6">
+                    {companyLinks.map((link) => (
                       <Link
                         key={link.href}
                         href={link.href}
                         onClick={closeMenu}
-                        className={cn(
-                          "group relative rounded-3xl transition-all duration-300 border shadow-sm overflow-hidden",
-                          isActive
-                            ? "bg-[#09358c]/5 border-[#09358c]/20 shadow-inner"
-                            : "bg-white border-slate-100/60 hover:bg-white hover:border-[#09358c]/10 hover:shadow-[0_20px_40px_rgba(9,53,140,0.08)] hover:-translate-y-1"
-                        )}
+                        className="group flex gap-5 p-6 rounded-3xl hover:bg-slate-50 transition-all duration-300 border border-transparent hover:border-slate-100"
                       >
-                        <motion.div
-                          initial="initial"
-                          whileHover="hover"
-                          className="flex gap-5 w-full p-6 relative z-10"
-                        >
-                          <div className={cn(
-                            "shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 shadow-sm relative overflow-hidden",
-                            isActive 
-                              ? "bg-[#09358c] text-white shadow-[#09358c]/20 shadow-lg" 
-                              : "bg-slate-50 text-slate-600 group-hover:bg-[#09358c] group-hover:text-white group-hover:shadow-[#09358c]/30 group-hover:shadow-xl group-hover:scale-110"
-                          )}>
-                            <AnimatedLucideIcon icon={link.icon} size={26} className="relative z-10 transition-transform duration-500 group-hover:rotate-6" />
-                            <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <h4 className={cn(
-                              "text-lg font-extrabold transition-colors mb-1.5",
-                              isActive ? "text-[#09358c]" : "text-slate-900 group-hover:text-[#09358c]"
-                            )}>{link.label}</h4>
-                            <motion.div
-                              variants={{
-                                initial: { height: 22 },
-                                hover: { height: "auto" }
-                              }}
-                              transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-                              className="relative overflow-hidden"
-                            >
-                              <p className="text-[14px] text-slate-500 font-medium leading-relaxed line-clamp-1 group-hover:line-clamp-none group-hover:text-slate-600">
-                                {link.description}
-                              </p>
-                            </motion.div>
-                          </div>
-                        </motion.div>
-                        {!isActive && (
-                          <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#09358c]/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                        )}
+                        <div className="shrink-0 w-14 h-14 rounded-2xl bg-slate-50 text-slate-600 group-hover:bg-[#09358c] group-hover:text-white flex items-center justify-center transition-all duration-300 shadow-sm">
+                          <link.icon size={26} />
+                        </div>
+                        <div>
+                          <h4 className="text-lg font-extrabold text-slate-900 mb-1 group-hover:text-[#09358c] transition-colors">{link.label}</h4>
+                          <p className="text-sm text-slate-500 leading-relaxed font-medium">{link.description}</p>
+                        </div>
                       </Link>
-                    );
-                  })}
+                    ))}
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -440,7 +513,7 @@ export default function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={closeMenu}
-              className="fixed inset-0 z-200 bg-black/60 backdrop-blur-sm lg:hidden"
+              className="fixed inset-0 z-[200] bg-black/60 backdrop-blur-sm lg:hidden"
             />
 
             {/* Menu Panel */}
@@ -449,7 +522,7 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed inset-y-0 right-0 z-201 w-full max-w-100 bg-white lg:hidden shadow-2xl flex flex-col"
+              className="fixed inset-y-0 right-0 z-[201] w-full max-w-100 bg-white lg:hidden shadow-2xl flex flex-col"
             >
               <div className="flex items-center justify-between p-8 border-b border-slate-50">
                 <img src="/logo.svg" alt="Logo" className="h-8" />
@@ -503,24 +576,26 @@ export default function Navbar() {
                             >
                               <ChevronDown
                                 size={22}
-                                className={cn("transition-transform", isExpanded && "rotate-180")}
+                                className={cn("transition-transform duration-300", isExpanded && "rotate-180 text-[#09358c]")}
                               />
                             </button>
                           )}
                         </div>
 
-                        {/* Nested items for mobile */}
                         <AnimatePresence>
                           {item.label === "Features" && mobileFeaturesOpen && (
                             <motion.div
                               initial={{ height: 0, opacity: 0 }}
                               animate={{ height: "auto", opacity: 1 }}
                               exit={{ height: 0, opacity: 0 }}
-                              className="mt-6 pl-8 flex flex-col gap-4 overflow-hidden"
+                              className="mt-6 pl-8 grid grid-cols-1 gap-3 overflow-hidden"
                             >
                               {features.map((f) => (
-                                <Link key={f.slug} href={`/features/${f.slug}`} onClick={closeMenu} className="text-[16px] font-bold text-slate-600 hover:text-[#09358c]">
-                                  {f.title}
+                                <Link key={f.slug} href={`/features/${f.slug}`} onClick={closeMenu} className="flex items-center gap-3 p-3 rounded-xl bg-slate-50/50 hover:bg-slate-100 transition-colors">
+                                  <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center text-[#09358c] shadow-sm">
+                                    <f.icon size={14} color="#09358c" />
+                                  </div>
+                                  <span className="text-[14px] font-bold text-slate-700">{f.title}</span>
                                 </Link>
                               ))}
                             </motion.div>
@@ -530,11 +605,14 @@ export default function Navbar() {
                               initial={{ height: 0, opacity: 0 }}
                               animate={{ height: "auto", opacity: 1 }}
                               exit={{ height: 0, opacity: 0 }}
-                              className="mt-6 pl-8 flex flex-col gap-4 overflow-hidden"
+                              className="mt-6 pl-8 grid grid-cols-1 gap-3 overflow-hidden"
                             >
                               {solutionsData.map((s) => (
-                                <Link key={s.slug} href={`/solutions/${s.slug}`} onClick={closeMenu} className="text-[16px] font-bold text-slate-600 hover:text-[#09358c]">
-                                  {s.title}
+                                <Link key={s.slug} href={`/solutions/${s.slug}`} onClick={closeMenu} className="flex items-center gap-3 p-3 rounded-xl bg-slate-50/50 hover:bg-slate-100 transition-colors">
+                                  <div className={cn("w-8 h-8 rounded-lg flex items-center justify-center text-white shadow-sm", s.color)}>
+                                    <s.icon size={14} color="#09358c"/>
+                                  </div>
+                                  <span className="text-[14px] font-bold text-slate-700">{s.title}</span>
                                 </Link>
                               ))}
                             </motion.div>
@@ -544,11 +622,14 @@ export default function Navbar() {
                               initial={{ height: 0, opacity: 0 }}
                               animate={{ height: "auto", opacity: 1 }}
                               exit={{ height: 0, opacity: 0 }}
-                              className="mt-6 pl-8 flex flex-col gap-4 overflow-hidden"
+                              className="mt-6 pl-8 flex flex-col gap-3 overflow-hidden"
                             >
                               {companyLinks.map((l) => (
-                                <Link key={l.href} href={l.href} onClick={closeMenu} className="text-lg font-bold text-slate-600 hover:text-[#09358c]">
-                                  {l.label}
+                                <Link key={l.href} href={l.href} onClick={closeMenu} className="flex items-center gap-3 p-3 rounded-xl bg-slate-50/50 hover:bg-slate-100 transition-colors">
+                                  <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center text-slate-400 shadow-sm">
+                                    <l.icon size={14} />
+                                  </div>
+                                  <span className="text-[14px] font-bold text-slate-700">{l.label}</span>
                                 </Link>
                               ))}
                             </motion.div>
@@ -561,8 +642,8 @@ export default function Navbar() {
               </div>
 
               <div className="p-8 border-t border-slate-50 bg-slate-50/50">
-                <Link href="/contact" className="w-full bg-[#09358c] text-white py-5 rounded-2xl font-black uppercase tracking-widest text-[13px] shadow-lg active:scale-95 transition-transform">
-                  Request Demo
+                <Link href="/contact" onClick={closeMenu} className="w-full bg-[#09358c] text-white py-5 rounded-2xl font-black uppercase tracking-widest text-[13px] shadow-lg active:scale-95 transition-transform flex items-center justify-center gap-3">
+                  Book Demo <ArrowRight size={16} />
                 </Link>
                 <div className="mt-8 flex gap-6 grayscale opacity-50">
                   <span className="text-xs font-black uppercase tracking-widest text-slate-400">Follow us</span>

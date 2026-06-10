@@ -29,21 +29,6 @@ export default function DashboardPreview({ keyHighlights }: DashboardPreviewProp
 
    return (
       <div className="w-full flex flex-col gap-6 transform lg:scale-105 xl:scale-110 origin-left">
-         <div className="h-10">
-            <AnimatePresence mode="wait">
-               <motion.h3
-                  key={activeIndex}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.5 }}
-                  className="text-2xl lg:text-3xl font-black text-slate-900 leading-tight capitalize"
-               >
-                  {keyHighlights[activeIndex]?.name}
-               </motion.h3>
-            </AnimatePresence>
-         </div>
-
          <div className="relative bg-[#f0f4f9] rounded-[1.5rem] border border-slate-200 flex overflow-hidden h-[600px] max-w-[736px] w-full ">
             <div className="w-[180px] bg-[#1e293b] flex flex-col shrink-0 rounded-l-[12px]">
                 <div className="p-5 flex items-center gap-3">
