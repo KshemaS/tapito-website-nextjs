@@ -53,21 +53,25 @@ const nextConfig: NextConfig = {
           {
             key: "Content-Security-Policy",
             value: [
-              "default-src 'self'",
-              // Production: strict script policy | Development: allow unsafe for HMR
+              "default-src 'none'",
+              // Production: strict | Development: allow unsafe-eval/inline for HMR
               isDevelopment
                 ? "script-src 'self' 'unsafe-eval' 'unsafe-inline'"
                 : "script-src 'self'",
-              "style-src 'self' 'unsafe-inline'", // Tailwind requires unsafe-inline
+              "style-src 'self'",
               "img-src 'self' data: https://images.unsplash.com",
               "font-src 'self' data:",
               "media-src 'self' blob:",
-              "connect-src 'self'",
+              // Development: allow WebSocket for HMR
+              isDevelopment
+                ? "connect-src 'self' ws://localhost:*"
+                : "connect-src 'self'",
+              "worker-src blob:",
+              "manifest-src 'self'",
               "frame-ancestors 'none'",
               "base-uri 'self'",
               "form-action 'self'",
-              "upgrade-insecure-requests", // Automatically upgrade HTTP to HTTPS
-              "block-all-mixed-content", // Block mixed content (HTTP on HTTPS page)
+              "upgrade-insecure-requests",
             ].join("; "),
           },
           // HSTS - Force HTTPS (only enable in production with HTTPS)
