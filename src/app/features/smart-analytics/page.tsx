@@ -49,8 +49,6 @@ import { ExploreMoreFeatures } from "@/components/features/ExploreMoreFeatures";
 import { useEffect, useState } from "react";
 
 export default function SmartAnalyticsPage() {
-  const feature = featuresData.find(f => f.slug === "smart-analytics");
-  if (!feature) return null;
   const [isExtraSmall, setIsExtraSmall] = useState(false);
 
   useEffect(() => {
@@ -60,7 +58,10 @@ export default function SmartAnalyticsPage() {
         setIsExtraSmall(true);
       }
     }
-  },[])
+  },[]);
+
+  const feature = featuresData.find(f => f.slug === "smart-analytics");
+  if (!feature) return null;
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-white pt-24 text-slate-900 selection:bg-[#09358c]/10 selection:text-[#09358c]">
