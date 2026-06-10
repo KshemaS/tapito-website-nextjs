@@ -3,6 +3,7 @@
 ## ✅ Completed Security Measures
 
 ### Configuration (next.config.ts)
+
 - [x] `poweredByHeader: false` - Hide technology stack
 - [x] `reactStrictMode: true` - Enable React strict mode
 - [x] X-Content-Type-Options: nosniff
@@ -23,12 +24,14 @@
 - [x] Cross-Origin-Embedder-Policy: require-corp
 
 ### Files
+
 - [x] security.txt created (RFC 9116)
 - [x] robots.txt with security considerations
 - [x] .env files properly gitignored
 - [x] External links use rel="noopener noreferrer"
 
 ### Code Quality
+
 - [x] TypeScript strict mode enabled
 - [x] No dangerouslySetInnerHTML usage
 - [x] No eval() or Function() constructors
@@ -41,11 +44,13 @@
 ### High Priority (Before Production Launch)
 
 #### 1. Contact Form Backend Implementation
+
 - [ ] Create `/api/contact` route handler
 - [ ] Implement input validation and sanitization
+
   ```typescript
   // Example validation
-  import { z } from 'zod';
+  import { z } from "zod";
 
   const contactSchema = z.object({
     firstName: z.string().min(1).max(100),
@@ -53,10 +58,11 @@
     email: z.string().email(),
     company: z.string().max(200),
     country: z.string().max(100),
-    reason: z.enum(['demo', 'partner', 'support', 'press', 'careers']),
+    reason: z.enum(["demo", "partner", "support", "press", "careers"]),
     message: z.string().min(10).max(5000),
   });
   ```
+
 - [ ] Add rate limiting
   ```bash
   npm install @upstash/ratelimit @upstash/redis
@@ -71,6 +77,7 @@
 - [ ] Add logging for security events
 
 #### 2. HTTPS & HSTS Configuration
+
 - [ ] Deploy with HTTPS certificate
 - [ ] Uncomment HSTS header in next.config.ts
   ```typescript
@@ -82,7 +89,8 @@
 - [ ] Submit to HSTS preload list: https://hstspreload.org
 
 #### 3. Update security.txt
-- [ ] Replace `security@tapito.com` with actual security contact
+
+- [ ] Replace `security@tapito.ai` with actual security contact
 - [ ] Update canonical URL with production domain
 - [ ] Create `/security-policy` page
 - [ ] Create `/security-acknowledgments` page (optional)
@@ -92,6 +100,7 @@
 ## 📊 Medium Priority (1-2 Weeks)
 
 ### Monitoring & Logging
+
 - [ ] Set up error tracking (Sentry, LogRocket, or Bugsnag)
   ```bash
   npm install @sentry/nextjs
@@ -100,12 +109,13 @@
 - [ ] Configure CSP violation reporting
   ```typescript
   // Add to CSP:
-  "report-uri https://your-domain.com/api/csp-report"
+  "report-uri https://your-domain.com/api/csp-report";
   ```
 - [ ] Add analytics (privacy-focused: Plausible or Fathom)
 - [ ] Set up uptime monitoring (UptimeRobot, Pingdom, or Better Uptime)
 
 ### Dependency Management
+
 - [ ] Enable Dependabot for automated updates
   ```yaml
   # .github/dependabot.yml
@@ -131,7 +141,7 @@
   name: Security Audit
   on:
     schedule:
-      - cron: '0 0 * * 1' # Weekly on Monday
+      - cron: "0 0 * * 1" # Weekly on Monday
     push:
       branches: [master, main]
   jobs:
@@ -144,6 +154,7 @@
   ```
 
 ### Additional Headers
+
 - [ ] Add Server-Timing restrictions (if using)
 - [ ] Configure cache-control headers for static assets
   ```typescript
@@ -168,6 +179,7 @@
 ## 🔧 Low Priority (Nice to Have)
 
 ### Advanced Security
+
 - [ ] Implement Subresource Integrity (SRI) for external scripts
 - [ ] Add nonce-based CSP for stricter policy
   ```typescript
@@ -181,6 +193,7 @@
   - [ ] Enable CSRF protection
 
 ### Testing & Validation
+
 - [ ] Run security header validation
   - Visit: https://securityheaders.com
   - Visit: https://observatory.mozilla.org
@@ -193,6 +206,7 @@
   ```
 
 ### Documentation
+
 - [ ] Create security incident response plan
 - [ ] Document security architecture
 - [ ] Create developer security guidelines
@@ -203,6 +217,7 @@
 ## 🚀 Deployment Checklist
 
 ### Pre-Deployment
+
 - [ ] All environment variables configured in hosting platform
 - [ ] HTTPS certificate provisioned
 - [ ] DNS records configured (CAA records for SSL)
@@ -216,9 +231,10 @@
   ```
 
 ### Post-Deployment
+
 - [ ] Test all security headers using curl
   ```bash
-  curl -I https://tapito.com
+  curl -I https://tapito.ai
   ```
 - [ ] Verify CSP is not blocking legitimate resources
 - [ ] Test contact form submission
@@ -226,7 +242,7 @@
 - [ ] Check SSL Labs score: https://www.ssllabs.com/ssltest/
 - [ ] Verify security.txt accessibility
   ```bash
-  curl https://tapito.com/.well-known/security.txt
+  curl https://tapito.ai/.well-known/security.txt
   ```
 
 ---
@@ -234,16 +250,19 @@
 ## 📋 Ongoing Maintenance
 
 ### Weekly
+
 - [ ] Review npm audit results
 - [ ] Check error tracking for security issues
 - [ ] Review CSP violation reports
 
 ### Monthly
+
 - [ ] Update dependencies
 - [ ] Review access logs for suspicious activity
 - [ ] Test backup and recovery procedures
 
 ### Quarterly
+
 - [ ] Full security audit
 - [ ] Review and update security policies
 - [ ] Penetration testing
@@ -255,6 +274,7 @@
 ## 📚 Security Resources
 
 ### Tools
+
 - https://securityheaders.com - Header checker
 - https://observatory.mozilla.org - Security scanner
 - https://www.ssllabs.com/ssltest/ - SSL/TLS tester
@@ -262,11 +282,13 @@
 - https://hstspreload.org - HSTS preload checker
 
 ### Documentation
+
 - https://owasp.org/www-project-top-ten/ - OWASP Top 10
 - https://cheatsheetseries.owasp.org - Security cheat sheets
 - https://nextjs.org/docs/app/building-your-application/configuring/content-security-policy
 
 ### Security Headers Reference
+
 - https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy
 - https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security
 
@@ -275,6 +297,7 @@
 ## 🏆 Current Security Score: 92/100
 
 ### Scoring Breakdown
+
 - ✅ Injection Prevention: 100%
 - ✅ Security Headers: 100%
 - ✅ Data Protection: 100%
@@ -287,4 +310,4 @@
 
 ---
 
-*Last Updated: June 10, 2026*
+_Last Updated: June 10, 2026_
