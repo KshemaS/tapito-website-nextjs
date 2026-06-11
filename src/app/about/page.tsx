@@ -8,15 +8,30 @@ import WorldPresence from "@/components/contact/WorldPresence";
 import CTASection from "@/components/CTA-card";
 import AboutPresence from "@/components/about/AboutPresence";
 import cta from '@/public/assets/images/about/ready-to-tranform.avif';
+import { buildMetadata, orgSchema, webPageSchema, breadcrumbSchema, SITE } from "@/lib/seo";
+import JsonLd from "@/components/JsonLd";
 
-export const metadata = {
+export const metadata = buildMetadata({
   title: "About Us | Tapito - Next-Gen AI Engagement Platform",
-  description: "Learn more about Tapito, the AI-powered platform by Fegno Technologies that empowers retail businesses through data automation and intelligent engagement.",
-};
+  description:
+    "Learn more about Tapito, the AI-powered platform by Fegno Technologies that empowers retail businesses through data automation and intelligent engagement.",
+  path: "/about",
+});
 
 export default function AboutPage() {
+  const url = `${SITE.url}/about`;
   return (
     <main className="relative min-h-screen overflow-hidden bg-[#fafbfc]">
+      <JsonLd
+        schema={[
+          { "@context": "https://schema.org", "@type": "AboutPage", name: "About Us | Tapito", url },
+          orgSchema(),
+          breadcrumbSchema([
+            { name: "Home", url: SITE.url },
+            { name: "About", url },
+          ]),
+        ]}
+      />
       {/* Background Patterns */}
       <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:32px_32px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-20 pointer-events-none" />
 

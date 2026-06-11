@@ -1,283 +1,34 @@
-"use client";
+import { buildMetadata, softwareAppSchema, webPageSchema, breadcrumbSchema, SITE } from "@/lib/seo";
+import JsonLd from "@/components/JsonLd";
+import PageContent from "./PageContent";
 
-import Link from "next/link";
-import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  CheckCircle2,
-  Play,
-  SlidersHorizontal,
-  Tag,
-  Quote,
-  Sparkles,
-} from "lucide-react";
-import { featuresData } from "@/components/features/FeaturesGrid";
-import Container from "@/components/Container";
-import { InteractiveGrid } from "@/components/InteractiveGrid";
-
-import { ExploreMoreFeatures } from "@/components/features/ExploreMoreFeatures";
-
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 30, filter: "blur(8px)" },
-  whileInView: { opacity: 1, y: 0, filter: "blur(0px)" },
-  viewport: { once: true, amount: 0.2 },
-  transition: { duration: 0.8, delay, ease: "easeOut" },
-} as any);
-
-const staggerContainer = {
-  initial: {},
-  whileInView: { transition: { staggerChildren: 0.1 } },
-} as any;
-
-const cardHover = {
-  whileHover: { 
-    y: -10, 
-    scale: 1.02,
-    transition: { duration: 0.4, ease: "easeOut" } 
-  },
-} as any;
-
-const revealVariant = {
-  initial: { opacity: 0, scale: 0.94, filter: "blur(10px)" },
-  whileInView: { opacity: 1, scale: 1, filter: "blur(0px)" },
-  viewport: { once: true, amount: 0.3 },
-  transition: { duration: 1, delay: 0.2, ease: "easeOut" },
-} as any;
+export const metadata = buildMetadata({
+  title: "Smart Scheme Generator | Tapito",
+  description:
+    "AI-driven staff incentives that turn single purchases into multi-category revenue. Generate and simulate staff-level incentive schemes automatically.",
+  path: "/features/scheme-generator",
+});
 
 export default function SchemeGeneratorPage() {
-  const feature = featuresData.find(f => f.slug === "scheme-generator");
-  if (!feature) return null;
-
+  const url = `${SITE.url}/features/scheme-generator`;
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-white pt-24 text-slate-900 selection:bg-[#09358c]/10 selection:text-[#09358c] font-inter">
-      <InteractiveGrid />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-[400px] lg:h-[520px] bg-[radial-gradient(circle_at_top_right,rgba(9,53,140,0.1),transparent_36%),radial-gradient(circle_at_top_left,rgba(5,160,236,0.08),transparent_24%)]" />
-
-      <section className="relative py-8 4xl:py-28">
-        <Container>
-          <div className="grid items-center gap-8 lg:gap-16 lg:grid-cols-[0.92fr_1.08fr]">
-            <div className="text-reveal">
-              <motion.div {...fadeUp()} className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#09358c]/10 bg-[#09358c]/5 px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-[#09358c] shadow-sm">
-                <SlidersHorizontal size={14} className="animate-pulse" /> Offer creation engine
-              </motion.div>
-              <motion.h1 {...fadeUp(0.08)} className="max-w-3xl text-3xl sm:text-4xl md:text-5xl 4xl:text-7xl font-black tracking-[-0.06em] text-slate-950">
-                Turn Every Purchase Into <span className="text-[#09358c]">Multiple Opportunities</span>.
-              </motion.h1>
-              <motion.p {...fadeUp(0.16)} className="mt-6 max-w-4xl text-base md:text-lg 4xl:text-xl font-medium leading-7 md:leading-8 text-slate-600 font-inter">
-                Generate AI-powered schemes that automatically identify connected purchase opportunities. When a salesman closes a primary category sale, Tapito predicts the next logical category and triggers the right staff incentive to convert the full project.
-              </motion.p>
-              <motion.div {...fadeUp(0.24)} className="mt-10 flex flex-wrap items-center gap-4">
-                <Link href="/contact" className="group inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-[#09358c] to-[#05a0ec] px-8 py-4 text-base font-black text-white shadow-[0_22px_60px_-18px_rgba(9,53,140,0.4)] transition-all hover:scale-[1.05] hover:shadow-[0_25px_70px_-15px_rgba(5,160,236,0.4)]">
-                  <Play size={16} fill="currentColor" className="transition-transform group-hover:rotate-12" /> Book a Demo
-                </Link>
-                <div className="flex flex-col">
-                  <span className="text-sm font-bold text-slate-500">Simulation-led recommendations</span>
-                  <span className="text-xs font-black uppercase tracking-widest text-emerald-600">Margin-safe logic</span>
-                </div>
-              </motion.div>
-            </div>
-
-            <motion.div variants={revealVariant} initial="initial" whileInView="whileInView" viewport={{ once: true, amount: 0.3 }} className="rounded-[2.5rem] md:rounded-[3.5rem] border border-slate-200 bg-white p-6 md:p-7 shadow-[0_50px_140px_-70px_rgba(9,53,140,0.3)] relative overflow-hidden backdrop-blur-md">
-              <div className="absolute top-0 left-0 w-64 h-64 bg-[#05a0ec]/10 blur-[100px] rounded-full pointer-events-none -translate-y-1/2 -translate-x-1/2" />
-              
-              <div className="flex items-center justify-between rounded-4xl border border-[#09358c]/10 bg-[#09358c]/5 px-6 py-4 relative z-10 transition-colors hover:bg-[#09358c]/10">
-                <div>
-                  <p className="text-[10px] font-black uppercase tracking-[0.25em] text-[#09358c]">Salesman Incentive Simulator</p>
-                  <p className="mt-1 text-sm font-black text-slate-950">Single-Category to Multi-Category Conversion</p>
-                </div>
-                <div className="flex items-center gap-2 rounded-full bg-slate-950 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.2em] text-white soft-shine">
-                  <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" /> AI ranked
-                </div>
-              </div>
-
-              <div className="mt-8 space-y-7 relative z-10 px-2 lg:px-4">
-                {[
-                   { label: "Incentive depth", value: "25%", width: "25%" },
-                   { label: "Target fulfillment", value: "60%", width: "60%" },
-                ].map((item, index) => (
-                  <div key={item.label} className="group/slider">
-                    <div className="mb-3 flex items-center justify-between text-xs font-black text-slate-500 uppercase tracking-widest group-hover/slider:text-[#09358c] transition-colors">
-                      <span>Cross-sell depth</span>
-                      <span className="text-[#09358c] text-sm">{item.value}</span>
-                    </div>
-                    <div className="relative h-3.5 rounded-full bg-slate-100 shadow-inner overflow-hidden">
-                      <motion.div initial={{ width: 0 }} whileInView={{ width: item.width }} viewport={{ once: true }} transition={{ duration: 1.2, delay: 0.3 + index * 0.1, ease: [0.16, 1, 0.3, 1] }} className="h-full rounded-full bg-gradient-to-r from-[#09358c] via-[#05a0ec] to-[#09358c] relative">
-                        <motion.div animate={{ x: ["0%", "100%", "0%"] }} transition={{ duration: 3, repeat: Infinity, ease: "linear" }} className="absolute top-0 left-0 h-full w-20 bg-gradient-to-r from-transparent via-white/30 to-transparent" />
-                      </motion.div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-10 grid gap-6 md:grid-cols-2 relative z-10">
-                <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: 0.8 }} className="rounded-[2rem] border border-slate-100 bg-white p-6 shadow-sm hover:shadow-md transition-shadow group/list">
-                  <p className="text-[11px] font-black uppercase tracking-[0.2em] text-slate-400">Scheme structure stack</p>
-                  <div className="mt-5 space-y-3">
-                    {[
-                      "Multi-Category Fulfillment Credit",
-                      "Secondary Category Staff Bonus",
-                      "Total Project Completion Incentive"
-                    ].map((item, index) => (
-                      <motion.div key={item} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 1 + index * 0.1 }} className="luminous-card luminous-surface-strong rounded-4xl bg-slate-50 px-5 py-4 text-sm font-bold text-slate-700 border border-transparent hover:border-[#09358c]/20 hover:bg-[#09358c]/5 transition-all cursor-default flex items-center gap-3">
-                         <span className="flex h-1.5 w-1.5 rounded-full bg-[#05a0ec]" /> {item}
-                      </motion.div>
-                    ))}
-                  </div>
-                </motion.div>
-                <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ delay: 1.2 }} className="luminous-card-dark soft-shine rounded-[2rem] bg-slate-950 p-6 text-white shadow-[0_30px_90px_-30px_rgba(9,53,140,0.4)] relative overflow-hidden group/winner">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#09358c]/20 blur-[50px] rounded-full pointer-events-none" />
-                  <p className="text-[10px] font-black uppercase tracking-[0.25em] text-[#05a0ec]">AI RECOMMENDED SCHEME</p>
-                  <p className="mt-4 text-3xl font-black text-white group-hover/winner:text-[#05a0ec] transition-colors tracking-tight">Cross-Sell Bonus</p>
-                  <p className="mt-4 text-sm font-medium leading-relaxed text-slate-400 italic">"Grants salesman 5% additional commission if a secondary category is added to a primary order. Reduces single-category sales bias by 38%."</p>
-                  <motion.p initial={{ opacity: 0.6 }} animate={{ opacity: [0.6, 1, 0.6] }} transition={{ duration: 2, repeat: Infinity }} className="mt-6 text-xs font-black text-emerald-400 uppercase tracking-widest flex items-center gap-2"><CheckCircle2 size={14} /> Ready for POS approval</motion.p>
-                </motion.div>
-              </div>
-            </motion.div>
-          </div>
-        </Container>
-      </section>
-
-      <section className="border-y border-slate-200 bg-slate-50/80 py-16 4xl:py-24">
-        <Container>
-          <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="grid gap-6 lg:grid-cols-3">
-            {[["Business problem", "Building material businesses lose revenue because sales teams miss cross-selling intent across categories.", "text-rose-500"], ["What Tapito detects", "Tapito detects connected purchase patterns and predicts what a customer needs in their next project stage.", "text-[#09358c]"], ["What action it enables", "Teams can automatically deploy personalized incentives that capture the entire project budget, not just one sale.", "text-emerald-600"]].map(([title, text, tone], index) => (
-              <motion.div key={title} {...fadeUp(index * 0.12)} {...cardHover} className={`rounded-[1.5rem] md:rounded-[2.5rem] border bg-white p-10 group transition-all ${index === 1 ? "border-[#09358c]/20 shadow-[0_45px_100px_-50px_rgba(9,53,140,0.3)]" : "border-slate-200 hover:border-[#09358c]/20"}`}>
-                <p className={`text-[11px] font-black uppercase tracking-[0.25em] ${tone}`}>{title}</p>
-                <p className="mt-5 text-xl font-black leading-9 text-slate-950 uppercase tracking-tight">{text}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </Container>
-      </section>
-
-      <section className="py-16 4xl:py-24 relative overflow-hidden font-inter">
-        <div className="absolute top-0 left-0 w-2/3 h-full bg-[radial-gradient(circle_at_top_left,rgba(9,53,140,0.02),transparent_70%)] pointer-events-none" />
-        <Container>
-          <div className="mb-14 max-w-3xl">
-            <motion.p {...fadeUp()} className="text-xs font-black uppercase tracking-[0.22em] text-[#09358c]">How it works</motion.p>
-            <motion.h2 {...fadeUp(0.08)} className="mt-4 text-3xl md:text-4xl 4xl:text-5xl font-black tracking-[-0.05em] text-slate-950">Simulate before you suggest.</motion.h2>
-          </div>
-          <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] items-center">
-            <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="space-y-6">
-              {[["01", "Detect Sales Bias", "Tapito analyzes staff performance to identify salesmen who only focus on one category (e.g. only selling Category A)."], ["02", "Simulate Cross-Incentives", "Test various commission structures to find the one that best motivates staff to push connected categories."], ["03", "Automate Staff Nudges", "Trigger real-time notifications to salesman phones when a cross-sell opportunity is detected in a live order."]].map(([step, title, text], index) => (
-                <motion.div key={step} {...fadeUp(index * 0.15)} {...cardHover} className="rounded-[2.2rem] border border-slate-200 bg-white p-8 group hover:bg-slate-50 transition-colors h-full flex items-start gap-7">
-                  <motion.div whileHover={{ scale: 1.1, rotate: 10 }} className="flex h-14 w-14 shrink-0 items-center justify-center rounded-4xl bg-slate-950 text-base font-black text-white group-hover:bg-[#09358c] transition-colors shadow-lg">{step}</motion.div>
-                  <div>
-                    <h3 className="text-4xl font-black text-slate-950 group-hover:text-[#09358c] transition-colors">{title}</h3>
-                    <p className="mt-4 text-base font-medium leading-8 text-slate-600">{text}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
-            <motion.div variants={revealVariant} initial="initial" whileInView="whileInView" viewport={{ once: true, amount: 0.14 }} className="rounded-[2.5rem] md:rounded-[3.5rem] border border-blue-200 bg-gradient-to-br from-white via-blue-50/30 to-blue-50/50 p-10 lg:p-14 relative group shadow-inner">
-               <div className="grid gap-6 md:grid-cols-3 relative z-10">
-                {[
-                  { label: "Simulations", value: "12,000+", icon: Play },
-                  { label: "Margin shield", value: "+15%", icon: Sparkles },
-                  { label: "Clearance cost", value: "-22%", icon: Tag },
-                ].map((item, index) => (
-                  <motion.div key={item.label} variants={fadeUp(0.2 + index * 0.1)} {...cardHover} className="luminous-card luminous-surface-strong rounded-[2.2rem] border border-slate-100 bg-white p-7 text-center group/card">
-                    <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-4xl bg-[#09358c]/5 text-[#09358c] group-hover/card:bg-[#09358c] group-hover/card:text-white transition-all shadow-sm"><item.icon size={26} /></div>
-                    <p className="mt-5 text-[10px] font-black uppercase tracking-[0.25em] text-slate-400">{item.label}</p>
-                    <p className="mt-2 text-4xl font-black text-slate-950 transition-transform group-hover/card:scale-105">{item.value}</p>
-                  </motion.div>
-                ))}
-              </div>
-              <motion.div initial={{ y: 20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ delay: 0.6 }} className="mt-8 rounded-[2.5rem] border border-blue-100 bg-white p-8 relative z-10 shadow-sm group-hover:shadow-md transition-shadow cursor-default">
-                 <p className="text-sm font-black text-slate-800 uppercase tracking-widest">Offer production output</p>
-                 <div className="mt-6 grid gap-4 md:grid-cols-2">
-                    {[
-                      { label: "Selected scheme", value: "Staff Cross-Sell Bonus", theme: "bg-[#09358c]/5 text-[#09358c]" },
-                      { label: "Commission status", value: "Within budget limits", theme: "bg-emerald-50 text-emerald-700" },
-                      { label: "Staff productivity", value: "+18% projected", theme: "bg-[#09358c]/5 text-[#09358c]" },
-                      { label: "Payout path", value: "Payroll Direct Sync", theme: "bg-slate-50 text-slate-700" }
-                    ].map(out => (
-                      <div key={out.label} className={`rounded-4xl p-4 border border-transparent hover:border-black/5 transition-all ${out.theme}`}>
-                        <p className="text-[10px] font-black uppercase tracking-widest opacity-60">{out.label}</p>
-                        <p className="mt-1.5 text-sm font-black">{out.value}</p>
-                      </div>
-                    ))}
-                 </div>
-              </motion.div>
-            </motion.div>
-          </div>
-        </Container>
-      </section>
-
-      <section className="py-16 md:py-24 relative overflow-hidden font-inter">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle,rgba(9,53,140,0.02),transparent_70%)] pointer-events-none" />
-        <Container>
-          <div className="mb-14 text-center">
-            <motion.p {...fadeUp()} className="text-xs font-black uppercase tracking-[0.22em] text-[#09358c]">Business impact</motion.p>
-            <motion.h2 {...fadeUp(0.08)} className="mt-4 text-3xl md:text-4xl font-black tracking-[-0.05em] text-slate-950">Stop revenue leakage across categories.</motion.h2>
-          </div>
-          <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {[["+24%", "Basket value", "Increase in average order value through cross-category bundles"], ["+42%", "Customer retention", "Customers stay for the entire project journey instead of one-off buys"], ["-80%", "Marketing waste", "Eliminate generic promotions and target only high-intent customers"]].map(([value, label, note], index) => (
-              <motion.div key={label} {...fadeUp(index * 0.15)} {...cardHover} className={`rounded-[2.5rem] md:rounded-[3rem] border border-slate-200 bg-white p-8 lg:p-12 text-center group hover:bg-[#09358c]/5 transition-all shadow-sm ${index === 2 ? "sm:col-span-2 lg:col-span-1" : ""}`}>
-                <motion.p animate={{ scale: [1, 1.08, 1] }} transition={{ duration: 3.5, repeat: Infinity }} className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[#09358c] transition-transform group-hover:scale-110">{value}</motion.p>
-                <p className="mt-6 text-xl lg:text-2xl font-black text-slate-950 uppercase tracking-tighter break-words">{label}</p>
-                <p className="mt-4 text-sm font-medium leading-7 md:leading-8 text-slate-500 max-w-xs mx-auto opacity-70 italic group-hover:opacity-100 transition-opacity">"{note}"</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </Container>
-      </section>
-
-
-
-      <section className="py-16 4xl:py-24">
-        <Container>
-          <motion.div {...fadeUp()} className="mb-14 text-center"><h2 className="text-3xl md:text-4xl 4xl:text-5xl font-black tracking-[-0.05em] text-slate-950 font-outfit uppercase tracking-tight">What Happens After You Enable This Feature?</h2></motion.div>
-          <div className="grid overflow-hidden rounded-[2rem] border border-slate-200 shadow-[0_50px_140px_-60px_rgba(15,23,42,0.4)] md:grid-cols-2 relative h-full">
-            <motion.div initial={{ x: -100, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1 }} className="bg-white p-8 lg:p-12 relative overflow-hidden group">
-              <p className="text-xs font-black uppercase tracking-[0.4em] text-slate-400 relative z-10">Before Tapito Schemes</p>
-              <div className="mt-6 lg:mt-12 space-y-4 lg:space-y-9 text-lg lg:text-3xl font-bold text-slate-400 relative z-10 opacity-60">
-                <p>Missed cross-selling opportunities</p>
-                <p>Revenue leakage to competitors</p>
-                <p>Generic, wasteful discounts</p>
-                <p>Limited visibility into intent</p>
-              </div>
-            </motion.div>
-            <motion.div initial={{ x: 100, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1 }} className="bg-slate-950 p-8 lg:p-12 text-white relative h-full group">
-               <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(9,53,140,0.15),transparent_70%)] pointer-events-none" />
-              <p className="text-xs font-black uppercase tracking-[0.4em] text-[#05a0ec] relative z-10">After Tapito Schemes</p>
-              <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" className="mt-6 lg:mt-12 space-y-4 lg:space-y-9 text-lg lg:text-3xl font-black relative z-10">
-                {["Connected purchase intelligence", "Project-aware personalized schemes", "Maximized category capture", "Automated intent-based triggers"].map((item) => (
-                  <motion.div key={item} variants={{ initial: { x: 40, opacity: 0 }, whileInView: { x: 0, opacity: 1 } }} transition={{ duration: 0.6 }} className="flex items-center gap-7 group hover:translate-x-3 transition-transform cursor-default"><CheckCircle2 size={34} className="text-emerald-400 shrink-0" />{item}</motion.div>
-                ))}
-              </motion.div>
-            </motion.div>
-          </div>
-        </Container>
-      </section>
-
-      {feature.quote && (
-        <section className="py-16">
-          <Container>
-            <motion.div
-              {...fadeUp(0)}
-              className="bg-gradient-to-br from-[#09358c] to-[#05a0ec] rounded-[2.5rem] p-10 md:p-14 lg:p-20 relative overflow-hidden"
-            >
-              {/* Decorative blobs */}
-              <div className="absolute top-0 right-0 w-64 h-64 rounded-full bg-white/5 translate-x-1/3 -translate-y-1/3" />
-              <div className="absolute bottom-0 left-0 w-48 h-48 rounded-full bg-white/5 -translate-x-1/3 translate-y-1/3" />
-
-              <div className="relative z-10 max-w-3xl">
-                <Quote size={48} className="text-white/20 mb-6" />
-                <blockquote className="text-2xl md:text-3xl lg:text-4xl font-black text-white leading-tight mb-8">
-                  {feature.quote.text}
-                </blockquote>
-                <p className="text-white/70 font-bold text-base">
-                  — {feature.quote.author}
-                </p>
-              </div>
-            </motion.div>
-          </Container>
-        </section>
-      )}
-
-      <ExploreMoreFeatures currentSlug="scheme-generator" />
-    </div>
+    <>
+      <JsonLd
+        schema={[
+          softwareAppSchema(
+            "Smart Scheme Generator",
+            "AI-driven staff incentives. Turn single purchases into multi-category revenue.",
+            url,
+          ),
+          webPageSchema("Smart Scheme Generator | Tapito", "AI-driven staff incentives. Turn single purchases into multi-category revenue.", url),
+          breadcrumbSchema([
+            { name: "Home", url: SITE.url },
+            { name: "Features", url: `${SITE.url}/features` },
+            { name: "Smart Scheme Generator", url },
+          ]),
+        ]}
+      />
+      <PageContent />
+    </>
   );
 }
-
