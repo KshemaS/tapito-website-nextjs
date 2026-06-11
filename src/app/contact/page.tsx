@@ -5,15 +5,30 @@ import ContactReasons from "@/components/contact/ContactReasons";
 import WorldPresence from "@/components/contact/WorldPresence";
 import ContactResources from "@/components/contact/ContactResources";
 import { PageBackground } from "@/components/PageBackground";
+import { buildMetadata, orgSchema, webPageSchema, breadcrumbSchema, SITE } from "@/lib/seo";
+import JsonLd from "@/components/JsonLd";
 
-export const metadata = {
+export const metadata = buildMetadata({
   title: "Contact Us | Tapito - Retail AI Platform",
-  description: "Get in touch with our team to explore how Tapito AI can elevate your retail business with automated orchestration and multi-location tracking.",
-};
+  description:
+    "Get in touch with our team to explore how Tapito AI can elevate your retail business with automated orchestration and multi-location tracking.",
+  path: "/contact",
+});
 
 const ContactPage = () => {
+  const url = `${SITE.url}/contact`;
   return (
     <main className="relative min-h-screen overflow-hidden bg-[#fafbfc]">
+      <JsonLd
+        schema={[
+          { "@context": "https://schema.org", "@type": "ContactPage", name: "Contact Us | Tapito", url },
+          orgSchema(),
+          breadcrumbSchema([
+            { name: "Home", url: SITE.url },
+            { name: "Contact", url },
+          ]),
+        ]}
+      />
 
       {/* ── Background Patterns ──────────────────────────────── */}
       <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:32px_32px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-20 pointer-events-none" />

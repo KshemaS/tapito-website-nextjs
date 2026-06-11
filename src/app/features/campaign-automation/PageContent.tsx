@@ -1,0 +1,349 @@
+"use client";
+
+import Link from "next/link";
+import { motion } from "framer-motion";
+import {
+  ArrowRight,
+  CheckCircle2,
+  MessageSquare,
+  Play,
+  Repeat,
+  Send,
+  Sparkles,
+  Target,
+  Users,
+  Zap,
+  Quote,
+} from "lucide-react";
+import { useState, useEffect } from "react";
+import { cn } from "@/lib/utils";
+import { featuresData } from "@/components/features/FeaturesGrid";
+import Container from "@/components/Container";
+import { InteractiveGrid } from "@/components/InteractiveGrid";
+
+import { ExploreMoreFeatures } from "@/components/features/ExploreMoreFeatures";
+
+const fadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 30, filter: "blur(8px)" },
+  whileInView: { opacity: 1, y: 0, filter: "blur(0px)" },
+  viewport: { once: true, amount: 0.2 },
+  transition: { duration: 0.8, delay, ease: "easeOut" },
+} as any);
+
+const staggerContainer = {
+  initial: {},
+  whileInView: { transition: { staggerChildren: 0.1 } },
+} as any;
+
+const cardHover = {
+  whileHover: {
+    y: -10,
+    scale: 1.02,
+    transition: { duration: 0.4, ease: "easeOut" }
+  },
+} as any;
+
+const revealVariant = {
+  initial: { opacity: 0, scale: 0.94, filter: "blur(10px)" },
+  whileInView: { opacity: 1, scale: 1, filter: "blur(0px)" },
+  viewport: { once: true, amount: 0.3 },
+  transition: { duration: 1, delay: 0.2, ease: "easeOut" },
+} as any;
+
+export default function CampaignAutomationPage() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev === 0 ? 1 : 0));
+    }, 10000);
+    return () => clearInterval(timer);
+  }, [currentSlide, isPaused]);
+  const feature = featuresData.find(f => f.slug === "campaign-automation");
+  if (!feature) return null;
+
+  return (
+    <div className="relative min-h-screen overflow-x-hidden bg-white pt-24 text-slate-900 selection:bg-[#09358c]/10 selection:text-[#09358c]">
+      <InteractiveGrid />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[400px] lg:h-[520px] bg-[radial-gradient(circle_at_top_left,rgba(9,53,140,0.1),transparent_38%),radial-gradient(circle_at_top_right,rgba(5,160,236,0.08),transparent_24%)]" />
+
+      <section className="relative py-10 4xl:py-28">
+        <Container>
+          <div className="block lg:grid items-center gap-8 lg:gap-16 grid-cols-1 md:grid-cols-2">
+            <div className="">
+              <motion.div {...fadeUp()} className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#09358c]/10 bg-[#09358c]/5 px-4 py-2 text-xs font-black uppercase tracking-wide md:tracking-[0.22em] text-[#09358c]">
+                <Repeat size={14} /> Automation workflow builder UI
+              </motion.div>
+              <motion.h1 {...fadeUp(0.08)} className="max-w-3xl text-3xl sm:text-4xl md:text-5xl 4xl:text-[60px] font-black tracking-normal text-slate-950">
+                Set Campaigns Once. <span className="text-[#09358c]">Let AI Run Them Forever.</span>
+              </motion.h1>
+              <motion.p {...fadeUp(0.16)} className="mt-6 max-w-4xl text-base md:text-lg 4xl:text-xl font-medium leading-7 md:leading-8 text-slate-600 tracking-wide">
+                Build always-on customer journeys that segment, trigger, message, and optimize themselves around live customer intent and revenue context.
+              </motion.p>
+              <motion.div {...fadeUp(0.24)} className="mt-10 flex flex-wrap items-center gap-4">
+                <Link href="/contact" className="group inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-[#09358c] to-[#05a0ec] px-8 py-4 text-base font-black text-white shadow-[0_22px_60px_-18px_rgba(9,53,140,0.4)] transition-all hover:scale-[1.05] hover:shadow-[0_25px_70px_-15px_rgba(5,160,236,0.4)]">
+                  <Play size={16} fill="currentColor" className="transition-transform group-hover:scale-110" />
+                  Book a Demo
+                </Link>
+                <div className="flex flex-col sm:block hidden">
+                  <span className="text-sm font-bold text-slate-500">Always-on journeys across</span>
+                  <span className="text-xs font-black uppercase tracking-widest text-[#09358c]">WhatsApp • SMS • Email</span>
+                </div>
+              </motion.div>
+            </div>
+
+            <div className="relative lg:block hidden">
+              <motion.div
+                variants={revealVariant}
+                initial="initial"
+                whileInView="whileInView"
+                viewport={{ once: true, amount: 0.3 }}
+                onMouseEnter={() => setIsPaused(true)}
+                onMouseLeave={() => setIsPaused(false)}
+                className="relative w-full"
+              >
+                <div className="overflow-hidden rounded-[2.5rem] md:rounded-[3rem] w-full">
+                  <motion.div
+                    animate={{ x: `-${currentSlide * 100}%` }}
+                    transition={{ type: "spring", damping: 25, stiffness: 120 }}
+                    className="flex w-full"
+                  >
+                    {/* Slide 1: Original Dashboard Mockup */}
+                    <div className="w-full shrink-0">
+                      <div className="rounded-[2rem] md:rounded-[3rem] border border-slate-200 bg-slate-950 p-4 sm:p-6 md:p-8 shadow-[0_50px_130px_-60px_rgba(9,53,140,0.4)] relative overflow-hidden h-full">
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-[#09358c]/10 blur-[80px] rounded-full -translate-y-1/2 translate-x-1/2" />
+
+                        <div className="flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-between rounded-3xl sm:rounded-4xl border border-white/10 bg-white/5 px-4 py-3 sm:px-5 sm:py-4">
+                          <div>
+                            <p className="text-xs font-black uppercase tracking-[0.22em] text-[#05a0ec]">Journey builder</p>
+                            <p className="mt-1 text-sm font-bold text-white">Staff Nudge Flow active</p>
+                          </div>
+                          <div className="flex items-center gap-2 rounded-full bg-emerald-400/10 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.2em] text-emerald-300 soft-shine w-fit">
+                            <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" /> Active
+                          </div>
+                        </div>
+
+                        <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="mt-8 grid grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-3 sm:gap-4">
+                          {[
+                            { icon: Users, title: "Staff Segment", text: "Single-Category Staff" },
+                            { icon: Target, title: "Trigger", text: "Low cross-sell rate" },
+                            { icon: MessageSquare, title: "Nudge", text: "Incentive Boost 2.5%" },
+                            { icon: Send, title: "Execution", text: "App Push & SMS" },
+                          ].map((item, index) => (
+                            <motion.div key={item.title} variants={{ initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 } }} className="luminous-card-dark rounded-[1.5rem] sm:rounded-[1.75rem] border border-white/10 bg-white/5 p-4 sm:p-5 group hover:bg-white/10 transition-colors">
+                              <motion.div whileHover={{ rotate: 15, scale: 1.1 }} className="flex h-12 w-12 items-center justify-center rounded-4xl bg-[#09358c]/20 text-[#05a0ec] transition-colors group-hover:bg-[#09358c] group-hover:text-white"><item.icon size={22} /></motion.div>
+                              <p className="mt-5 text-[10px] font-black uppercase tracking-[0.2em] text-white/40">{item.title}</p>
+                              <p className="mt-2 text-sm font-black leading-6 text-white">{item.text}</p>
+                            </motion.div>
+                          ))}
+                        </motion.div>
+
+                        <motion.div initial={{ scale: 0.9, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.8 }} className="mt-8 rounded-[1.5rem] sm:rounded-[2rem] bg-gradient-to-r from-[#09358c] to-[#05a0ec] p-5 sm:p-8 text-white shadow-[0_30px_90px_-30px_rgba(9,53,140,0.5)] group">
+                          <p className="text-xs font-black uppercase tracking-[0.22em] text-white/80 ">Performance outcome</p>
+                          <div className="mt-6 flex flex-wrap items-end justify-between gap-6">
+                            <div>
+                              <p className="text-4xl sm:text-5xl font-black transition-transform group-hover:scale-105">12.5%</p>
+                              <p className="mt-2 text-sm font-bold text-white/80">Cross-sell conversion rate</p>
+                            </div>
+                            <div className="text-left sm:text-right">
+                              <p className="text-3xl sm:text-4xl font-black">$12,400 Protected</p>
+                              <p className="mt-1 text-sm font-medium text-white/70 italic">"from staff incentive nudges"</p>
+                            </div>
+                          </div>
+                        </motion.div>
+                      </div>
+                    </div>
+
+                    {/* Slide 2: Video Walkthrough */}
+                    <div className="w-full shrink-0">
+                      <div className="rounded-[2rem] md:rounded-[3rem] border border-slate-200 bg-slate-950 p-4 sm:p-6 md:p-8 shadow-[0_50px_130px_-60px_rgba(9,53,140,0.4)] relative overflow-hidden h-full flex flex-col">
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-[#05a0ec]/10 blur-[80px] rounded-full -translate-y-1/2 translate-x-1/2" />
+
+                        <div className="flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-between rounded-3xl sm:rounded-4xl border border-white/10 bg-white/5 px-4 py-3 sm:px-5 sm:py-4">
+                          <div>
+                            <p className="text-xs font-black uppercase tracking-[0.22em] text-[#05a0ec]">Feature Walkthrough</p>
+                            <p className="mt-1 text-sm font-bold text-white">Campaign Automation in Action</p>
+                          </div>
+                          <div className="flex items-center gap-2 rounded-full bg-blue-400/10 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.2em] text-[#05a0ec] soft-shine w-fit">
+                            <Sparkles size={12} className="text-[#05a0ec]" /> AI Powered
+                          </div>
+                        </div>
+
+                        <div className="mt-8 relative flex-1 rounded-[2rem] overflow-hidden border border-white/10 bg-white/5 shadow-2xl group min-h-[300px] md:min-h-[400px]">
+                          <video
+                            src="/assets/videos/campaign-automation.webm"
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            aria-label="Campaign automation workflow simulation"
+                            className="w-full h-full object-cover"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent pointer-events-none" />
+                          <div className="absolute bottom-6 left-6 flex items-center gap-3">
+                            <div className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+                            <p className="text-xs font-bold text-white/80 uppercase tracking-widest">Workflow Simulation</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
+
+                {/* Slider Controls */}
+                <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-6 z-20">
+                  <div className="flex gap-2">
+                    {[0, 1].map((idx) => (
+                      <button
+                        key={idx}
+                        type="button"
+                        onClick={() => setCurrentSlide(idx)}
+                        aria-label={`Go to slide ${idx + 1}`}
+                        className={cn(
+                          "h-1.5 rounded-full transition-all duration-500",
+                          currentSlide === idx ? "w-8 bg-[#09358c]" : "w-2 bg-slate-300"
+                        )}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <section className="border-y border-slate-200 bg-slate-50/80 py-16 4xl:py-24">
+        <Container>
+          <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="grid gap-6 lg:grid-cols-3">
+            {[["Business problem", "Growth teams burn time on repetitive campaign setup and still miss the right moment to engage.", "text-rose-500"], ["What Tapito detects", "Tapito detects buying behavior, inactivity, offer sensitivity, and stock-aware targeting windows automatically.", "text-[#09358c]"], ["What action it enables", "Retention, reactivation, and conversion flows launch without adding manual campaign workload.", "text-emerald-600"]].map(([title, text, tone], index) => (
+              <motion.div key={title} {...fadeUp(index * 0.12)} {...cardHover} className={`rounded-[1.5rem] md:rounded-[2.5rem] border bg-white p-10 group transition-all ${index === 1 ? "border-[#09358c]/20 shadow-[0_40px_80px_-40px_rgba(9,53,140,0.3)]" : "border-slate-200 hover:border-[#09358c]/20"}`}>
+                <p className={`text-[11px] font-black uppercase tracking-[0.22em] ${tone}`}>{title}</p>
+                <p className="mt-4 text-xl font-black leading-8 text-slate-950 group-hover:text-slate-900 transition-colors">{text}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </section>
+
+      <section className="py-16 4xl:py-24 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-2/3 h-full bg-[radial-gradient(circle_at_top_right,rgba(9,53,140,0.03),transparent_70%)] pointer-events-none" />
+        <Container>
+          <div className="mb-14 max-w-3xl">
+            <motion.p {...fadeUp()} className="text-xs font-black uppercase tracking-[0.22em] text-[#09358c]">How it works</motion.p>
+            <motion.h2 {...fadeUp(0.08)} className="mt-4 text-3xl md:text-4xl 4xl:text-5xl font-black tracking-[-0.05em] text-slate-950 transition-all">An AI workflow builder that keeps campaigns moving without babysitting.</motion.h2>
+          </div>
+          <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] items-center">
+            <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="space-y-6">
+              {[["01", "Segment continuously", "Customer groups update themselves as spend, recency, and loyalty behavior change."], ["02", "Trigger with timing", "Automation launches the right message when inactivity or intent signals show up."], ["03", "Optimize channel & offer", "Tapito keeps improving timing and incentive based on response data tokens."]].map(([step, title, text], index) => (
+                <motion.div key={step} {...fadeUp(index * 0.15)} {...cardHover} className="rounded-[2rem] border border-slate-200 bg-white p-6 sm:p-8 group hover:bg-slate-50 transition-colors relative h-full">
+                  <div className="flex items-start gap-6">
+                    <motion.div whileHover={{ scale: 1.1, rotate: 10 }} className="flex h-14 w-14 shrink-0 items-center justify-center rounded-4xl bg-slate-950 text-base font-black text-white group-hover:bg-[#09358c] transition-colors shadow-lg">{step}</motion.div>
+                    <div>
+                      <h3 className="text-2xl sm:text-4xl font-black text-slate-950 group-hover:text-[#09358c] transition-colors">{title}</h3>
+                      <p className="mt-3 text-base font-medium leading-8 text-slate-600">{text}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+            <motion.div variants={revealVariant} initial="initial" whileInView="whileInView" viewport={{ once: true, amount: 0.14 }} className="rounded-[2rem] md:rounded-[3.5rem] border border-[#09358c]/10 bg-gradient-to-br from-[#09358c]/5 via-white to-[#05a0ec]/5 p-10 lg:p-14 relative backdrop-blur-sm shadow-inner group">
+              <div className="absolute inset-0 bg-white/40 pointer-events-none rounded-[3.5rem]" />
+              <div className="grid gap-6 md:grid-cols-2 relative z-10">
+                {[
+                  { label: "Audience", value: "VIP lapse risk", icon: Users },
+                  { label: "Trigger", value: "30-day inactivity", icon: Zap },
+                  { label: "Message", value: "Offer + reminder copy", icon: MessageSquare },
+                  { label: "Execution", value: "Send across channels", icon: Send },
+                ].map((item, index) => (
+                  <motion.div key={item.label} variants={fadeUp(0.2 + index * 0.1)} {...cardHover} className="luminous-card luminous-surface-strong rounded-[2rem] border border-blue-100 bg-white p-8 shadow-sm group/card">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-4xl bg-blue-50 text-blue-600 group-hover/card:bg-blue-600 group-hover/card:text-white transition-all shadow-sm"><item.icon size={26} /></div>
+                    <p className="mt-6 text-[10px] font-black uppercase tracking-[0.25em] text-slate-400">{item.label}</p>
+                    <p className="mt-3 text-xl font-black text-slate-950">{item.value}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </Container>
+      </section>
+
+      <section className="py-16 md:py-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(9,53,140,0.02),transparent_60%)] pointer-events-none" />
+        <Container>
+          <div className="mb-14 text-center">
+            <motion.p {...fadeUp()} className="text-xs font-black uppercase tracking-[0.22em] text-[#09358c]">Business impact</motion.p>
+            <motion.h2 {...fadeUp(0.08)} className="mt-4 text-3xl md:text-4xl font-black tracking-[-0.05em] text-slate-950">Automation that lifts retention forever.</motion.h2>
+          </div>
+          <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="grid gap-6 md:grid-cols-3">
+            {[["+40%", "Retention lift", "Measured across VIP customer segments"], ["-90%", "Manual workload", "Zero spreadsheets or manual CSV uploads"], ["2.5x ROI", "Conversion gain", "Attributed revenue from automated triggers"]].map(([value, label, note], index) => (
+              <motion.div key={label} {...fadeUp(index * 0.12)} {...cardHover} className="rounded-[2rem] md:rounded-[2.5rem] border border-slate-200 bg-white p-8 lg:p-12 text-center group shadow-sm hover:shadow-xl transition-all">
+                <motion.p initial={{ scale: 0.8, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.4 + index * 0.1 }} className="text-5xl lg:text-6xl font-black text-[#09358c] transition-transform group-hover:scale-110">{value}</motion.p>
+                <p className="mt-6 text-xl lg:text-2xl font-black text-slate-950">{label}</p>
+                <p className="mt-3 text-sm font-medium leading-7 text-slate-500 italic">"{note}"</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </section>
+
+
+
+      <section className="py-16 4xl:py-24">
+        <Container>
+          <motion.div {...fadeUp()} className="mb-14 text-center"><h2 className="text-3xl md:text-4xl 4xl:text-5xl font-black tracking-[-0.05em] text-slate-950 font-outfit uppercase tracking-tight">What Happens After You Enable This Feature?</h2></motion.div>
+          <div className="grid overflow-hidden rounded-[2rem] md:rounded-[3.5rem] border border-slate-400 shadow-[0_50px_140px_-60px_rgba(15,23,42,0.4)] md:grid-cols-2 relative h-full">
+            <motion.div initial={{ x: -100, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1 }} className="bg-white p-6 sm:p-12 lg:p-20 relative overflow-hidden group">
+              <div className="absolute top-0 left-0 w-full h-full bg-slate-50 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+              <p className="text-xs font-black uppercase tracking-[0.3em] text-slate-400 relative z-10">Before Tapito Automation</p>
+              <div className="mt-6 lg:mt-12 space-y-4 lg:space-y-8 text-base sm:text-xl lg:text-3xl xl:text-4xl font-bold text-slate-600 relative z-10">
+                <p className="flex items-center gap-4 opacity-60">Manual customer blasts</p>
+                <p className="flex items-center gap-4 opacity-60">Generic, thin offers</p>
+                <p className="flex items-center gap-4 opacity-60">Low engagement rates</p>
+                <p className="flex items-center gap-4 opacity-60">Revenue leakage via inactivity</p>
+              </div>
+            </motion.div>
+            <motion.div initial={{ x: 100, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1 }} className="bg-slate-950 p-6 sm:p-12 lg:p-20 text-white relative h-full">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(9,53,140,0.15),transparent_70%)] pointer-events-none" />
+              <p className="text-xs font-black uppercase tracking-[0.3em] text-[#05a0ec] relative z-10">After Tapito Automation</p>
+              <motion.div variants={staggerContainer} initial="initial" whileInView="whileInView" viewport={{ once: true }} className="mt-6 lg:mt-12 space-y-4 lg:space-y-8 text-base sm:text-xl lg:text-3xl xl:text-4xl font-bold text-slate-600 relative z-10">
+                {["Automated intent flows", "Personalized value logic", "Maximized customer LTV", "Real-time behavior triggers"].map((item) => (
+                  <motion.div key={item} variants={{ initial: { x: 40, opacity: 0 }, whileInView: { x: 0, opacity: 1 } }} transition={{ duration: 0.6 }} className="flex items-center gap-6"><CheckCircle2 size={32} className="text-emerald-400" />{item}</motion.div>
+                ))}
+              </motion.div>
+            </motion.div>
+          </div>
+        </Container>
+      </section>
+
+      {feature.quote && (
+        <section className="py-16">
+          <Container>
+            <motion.div
+              {...fadeUp(0)}
+              className="bg-gradient-to-br from-[#09358c] to-[#05a0ec] rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-10 md:p-14 lg:p-20 relative overflow-hidden"
+            >
+              {/* Decorative blobs */}
+              <div className="absolute top-0 right-0 w-64 h-64 rounded-full bg-white/5 translate-x-1/3 -translate-y-1/3" />
+              <div className="absolute bottom-0 left-0 w-48 h-48 rounded-full bg-white/5 -translate-x-1/3 translate-y-1/3" />
+
+              <div className="relative z-10 max-w-3xl">
+                <Quote size={48} className="text-white/20 mb-6" />
+                <blockquote className="text-xl sm:text-2xl lg:text-4xl font-black text-white leading-tight mb-8">
+                  {feature.quote.text}
+                </blockquote>
+                <p className="text-white/70 font-bold text-base">
+                  — {feature.quote.author}
+                </p>
+              </div>
+            </motion.div>
+          </Container>
+        </section>
+      )}
+
+      <ExploreMoreFeatures currentSlug="campaign-automation" />
+    </div>
+  );
+}
