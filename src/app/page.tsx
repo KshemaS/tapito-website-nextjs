@@ -1,3 +1,5 @@
+import { buildMetadata, softwareAppSchema, webPageSchema, SITE } from "@/lib/seo";
+import JsonLd from "@/components/JsonLd";
 import Hero from "@/components/Hero";
 import Overview from "@/components/Overview";
 import ValueStrip from "@/components/ValueStrip";
@@ -54,9 +56,31 @@ const keyHighlights = [
   }
 ];
 
+export const metadata = buildMetadata({
+  title: "Tapito | AI-Powered Customer Engagement Platform",
+  description:
+    "Turn your retail data into revenue automatically with Tapito's AI-powered analytics, real-time insights, and automated engagement.",
+  path: "",
+});
+
 export default function Home() {
+  const url = SITE.url;
   return (
     <div className="relative w-full overflow-x-hidden">
+      <JsonLd
+        schema={[
+          softwareAppSchema(
+            "Tapito",
+            "AI-powered customer engagement platform for modern retail.",
+            url,
+          ),
+          webPageSchema(
+            "Tapito | AI-Powered Customer Engagement Platform",
+            "Turn your retail data into revenue automatically with Tapito's AI-powered analytics, real-time insights, and automated engagement.",
+            url,
+          ),
+        ]}
+      />
       <main className="flex flex-col w-full">
         <Hero />
         <Process />

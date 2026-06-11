@@ -1,28 +1,33 @@
-"use client";
+import { buildMetadata, collectionPageSchema, breadcrumbSchema, softwareAppSchema, SITE } from "@/lib/seo";
+import JsonLd from "@/components/JsonLd";
+import FeaturesPageContent from "./FeaturesPageContent";
 
-import { FeaturesHero } from "@/components/features/FeaturesHero";
-import { FeaturesGrid } from "@/components/features/FeaturesGrid";
-import CTASection from "@/components/CTA-card";
+export const metadata = buildMetadata({
+  title: "Features | Tapito AI Platform",
+  description:
+    "Explore Tapito's full suite of retail AI features — from business intelligence dashboards to campaign automation, revenue insights, and more.",
+  path: "/features",
+});
 
 export default function FeaturesPage() {
+  const url = `${SITE.url}/features`;
   return (
-    <div className="relative min-h-screen bg-[#fcfcfd] overflow-hidden selection:bg-blue-100 selection:text-blue-900">
-      
-      {/* Hero Section */}
-      <FeaturesHero />
-
-      {/* Features Grid Section - Now handles navigation internally */}
-      <FeaturesGrid />
-
-      {/* Call to Action Section */}
-      <CTASection
-        title="Ready to revolutionize your retail analytics?"
-        description="Join 500+ leading retailers who use Tapito to make smarter, faster, more profitable decisions every day."
-        badge="GET STARTED"
-        image="/assets/images/about/ready-to-tranform.png"
-        isAbout={false}
-        showTalkButton={false}
+    <>
+      <JsonLd
+        schema={[
+          collectionPageSchema(
+            "Tapito Features",
+            "Explore Tapito's full suite of retail AI features.",
+            url,
+          ),
+          softwareAppSchema("Tapito", "AI-powered customer engagement platform for modern retail.", SITE.url),
+          breadcrumbSchema([
+            { name: "Home", url: SITE.url },
+            { name: "Features", url },
+          ]),
+        ]}
       />
-    </div>
+      <FeaturesPageContent />
+    </>
   );
 }
