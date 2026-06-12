@@ -7,14 +7,6 @@ const nextConfig: NextConfig = {
   // Enable React strict mode for better development warnings
   reactStrictMode: true,
 
-  experimental: {
-    // SRI generates sha256 integrity hashes for JS chunks at build time, allowing the browser
-    // to verify scripts without unsafe-inline. This is compatible with PPR (static shell).
-    sri: {
-      algorithm: "sha256",
-    },
-  },
-
   images: {
     remotePatterns: [
       {
@@ -29,9 +21,8 @@ const nextConfig: NextConfig = {
 
     const csp = [
       "default-src 'none'",
-      // unsafe-inline is unavoidable with App Router: Next.js emits inline RSC flight-data
+      // unsafe-inline is required: Next.js App Router emits inline RSC flight-data
       // scripts (self.__next_f.push) that cannot be hashed or nonced without disabling PPR.
-      // SRI (experimental.sri) still verifies external JS chunks against their build-time hash.
       // unsafe-eval is only needed in dev for React's enhanced error stacks.
       isDevelopment
         ? "script-src 'self' 'unsafe-inline' 'unsafe-eval'"
