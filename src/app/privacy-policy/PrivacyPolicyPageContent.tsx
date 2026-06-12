@@ -21,6 +21,7 @@ const PrivacyPage = () => {
     { id: "rights", label: "Your Rights" },
     { id: "deletion", label: "Account Deletion" },
     { id: "changes", label: "Changes to Policy" },
+    { id: "voice-ai", label: "Voice AI Feature" },
     { id: "contact", label: "Contact Us" },
   ];
 
@@ -51,7 +52,7 @@ const PrivacyPage = () => {
             transition={{ duration: 0.6 }}
             className="text-center lg:text-left"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-[10px] font-black uppercase tracking-widest text-[#05a0ec] mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-[10px] font-black uppercase tracking-widest text-brand-sky mb-6">
               <Shield size={12} />
               Trust & Safety
             </div>
@@ -244,6 +245,64 @@ const PrivacyPage = () => {
                 We may update this Privacy Policy periodically.<br />
                 Changes will be posted with an updated effective date.
               </p>
+            </section>
+
+            <section id="voice-ai" className="scroll-mt-32">
+              <h2 className="text-3xl font-black text-slate-900 mb-8 tracking-tight">Voice AI Feature — Data Collection and Third-Party Sharing</h2>
+              <div className="space-y-6">
+                <div className="p-8 rounded-[2rem] bg-white border border-slate-100 hover:border-blue-100 transition-all duration-500">
+                  <h3 className="text-xl font-bold text-slate-900 mb-4">What data is collected</h3>
+                  <p className="text-slate-600 leading-relaxed font-medium mb-4">When you use the Voice Assistant feature, the app collects:</p>
+                  <ul className="space-y-3 text-slate-600 font-medium">
+                    <li className="flex gap-3"><span className="text-brand-sky font-black shrink-0">•</span><span><span className="font-bold text-slate-800">Voice audio</span> — your speech is recorded from the device microphone as raw audio (16 kHz PCM) while a voice session is active.</span></li>
+                    <li className="flex gap-3"><span className="text-brand-sky font-black shrink-0">•</span><span><span className="font-bold text-slate-800">Text transcriptions</span> — your spoken words are converted to text by the AI service and returned to the app.</span></li>
+                    <li className="flex gap-3"><span className="text-brand-sky font-black shrink-0">•</span><span><span className="font-bold text-slate-800">Session identifiers</span> — an anonymous session ID used to maintain conversation context during the active session.</span></li>
+                  </ul>
+                </div>
+
+                <div className="p-8 rounded-[2rem] bg-white border border-slate-100 hover:border-blue-100 transition-all duration-500">
+                  <h3 className="text-xl font-bold text-slate-900 mb-4">How data is collected</h3>
+                  <p className="text-slate-600 leading-relaxed font-medium">
+                    Audio is captured only while you are in an active voice session (after you tap the microphone button and explicitly accept the data notice). Recording stops as soon as the session ends or you leave the screen. No audio is recorded in the background.
+                  </p>
+                </div>
+
+                <div className="p-8 rounded-[2rem] bg-white border border-slate-100 hover:border-blue-100 transition-all duration-500">
+                  <h3 className="text-xl font-bold text-slate-900 mb-4">How data is used</h3>
+                  <p className="text-slate-600 leading-relaxed font-medium mb-4">The collected audio and transcriptions are used solely to:</p>
+                  <ul className="space-y-2 text-slate-600 font-medium">
+                    <li className="flex gap-3"><span className="text-brand-sky font-black shrink-0">•</span>Generate AI-powered responses to your spoken queries.</li>
+                    <li className="flex gap-3"><span className="text-brand-sky font-black shrink-0">•</span>Maintain conversation context within the active session.</li>
+                  </ul>
+                  <p className="text-slate-600 leading-relaxed font-medium mt-4">
+                    The app does not store voice audio or transcriptions on-device or on Tapito's servers beyond the duration of the active session.
+                  </p>
+                </div>
+
+                <div className="p-8 rounded-[2rem] bg-blue-50 border border-blue-100 transition-all duration-500">
+                  <h3 className="text-xl font-bold text-slate-900 mb-4">Third-party sharing — Google Gemini AI</h3>
+                  <p className="text-slate-600 leading-relaxed font-medium">
+                    Your voice audio is transmitted in real time to <span className="font-bold text-slate-800">Google Gemini</span>, an AI service operated by Google LLC, via Tapito's backend servers. Google processes the audio to generate responses.
+                  </p>
+                  <p className="text-slate-600 leading-relaxed font-medium mt-4">
+                    Google's handling of data is governed by the <span className="font-bold text-slate-800">Google Privacy Policy</span> and <span className="font-bold text-slate-800">Google's Generative AI Additional Terms</span>. Google provides equivalent or greater data protection standards in accordance with applicable law.
+                  </p>
+                </div>
+
+                <div className="p-8 rounded-[2rem] bg-white border border-slate-100 hover:border-blue-100 transition-all duration-500">
+                  <h3 className="text-xl font-bold text-slate-900 mb-4">User consent</h3>
+                  <p className="text-slate-600 leading-relaxed font-medium">
+                    Before the voice feature is used for the first time, the app displays a clear notice identifying what data is sent and to whom, and requires your explicit acceptance. You may decline at any time by not using the voice feature.
+                  </p>
+                </div>
+
+                <div className="p-8 rounded-[2rem] bg-white border border-slate-100 hover:border-blue-100 transition-all duration-500">
+                  <h3 className="text-xl font-bold text-slate-900 mb-4">Your rights</h3>
+                  <p className="text-slate-600 leading-relaxed font-medium">
+                    You may withdraw from use of the voice AI feature at any time by simply not initiating a voice session. No voice data persists after a session ends.
+                  </p>
+                </div>
+              </div>
             </section>
 
             <section id="contact" className="scroll-mt-32">

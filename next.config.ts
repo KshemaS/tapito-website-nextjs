@@ -29,7 +29,7 @@ const nextConfig: NextConfig = {
         : "script-src 'self' 'unsafe-inline'",
       "style-src 'self' 'unsafe-inline'",
       // blob: required for Next.js image optimisation; data: for inline SVG/base64 sources.
-      "img-src 'self' blob: data: https://images.unsplash.com",
+      "img-src 'self' blob: data: https://images.unsplash.com https://flagcdn.com",
       "font-src 'self'",
       "object-src 'none'",
       "media-src 'self' blob:",
