@@ -25,8 +25,8 @@ const nextConfig: NextConfig = {
       // scripts (self.__next_f.push) that cannot be hashed or nonced without disabling PPR.
       // unsafe-eval is only needed in dev for React's enhanced error stacks.
       isDevelopment
-        ? "script-src 'self' 'unsafe-inline' 'unsafe-eval'"
-        : "script-src 'self' 'unsafe-inline'",
+        ? "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google.com https://www.gstatic.com"
+        : "script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com",
       "style-src 'self' 'unsafe-inline'",
       // blob: required for Next.js image optimisation; data: for inline SVG/base64 sources.
       "img-src 'self' blob: data: https://images.unsplash.com https://flagcdn.com",
@@ -35,8 +35,9 @@ const nextConfig: NextConfig = {
       "media-src 'self' blob:",
       // ws: required for Next.js HMR websocket in development.
       isDevelopment
-        ? "connect-src 'self' ws://localhost:* wss://localhost:*"
-        : "connect-src 'self'",
+        ? "connect-src 'self' ws://localhost:* wss://localhost:* https://www.google.com"
+        : "connect-src 'self' https://www.google.com",
+      "frame-src https://www.google.com",
       "worker-src blob:",
       "manifest-src 'self'",
       "frame-ancestors 'none'",
