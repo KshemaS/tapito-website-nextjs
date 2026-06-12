@@ -1,6 +1,6 @@
 import Container from "@/components/Container";
 import ContactHero from "@/components/contact/ContactHero";
-import ContactForm from "@/components/contact/ContactForm";
+import ContactFormWithProvider from "@/components/contact/ContactFormWithProvider";
 import ContactReasons from "@/components/contact/ContactReasons";
 import WorldPresence from "@/components/contact/WorldPresence";
 import ContactResources from "@/components/contact/ContactResources";
@@ -43,7 +43,7 @@ const ContactPage = () => {
             <ContactHero />
           </div>
           <div className="lg:col-span-12 xl:col-span-7">
-            <ContactForm />
+            <ContactFormWithProvider />
           </div>
         </div>
       </Container>
