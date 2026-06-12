@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import { motion, AnimatePresence, useMotionValue, useTransform } from "framer-motion";
 import { Send, CheckCircle2, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -18,8 +19,17 @@ function Field({ children }: { children: React.ReactNode }) {
 
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [company, setCompany] = useState("");
   const [country, setCountry] = useState("");
   const [reason, setReason] = useState("");
+  const [message, setMessage] = useState("");
+
+  const { executeRecaptcha } = useGoogleReCaptcha();
 
   // Spotlight effect
   const mouseX = useMotionValue(0);
@@ -63,23 +73,55 @@ export default function ContactForm() {
                 exit={{ opacity: 0, scale: 0.97 }}
                 transition={{ duration: 0.25 }}
                 className="space-y-6 sm:space-y-7 relative z-10"
-                onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}
+                onSubmit={async (e) => {
+                  e.preventDefault();
+                  if (message.trim().length < 10) {
+                    setErrorMsg("Message must be at least 10 characters.");
+                    return;
+                  }
+                  if (!executeRecaptcha) {
+                    setErrorMsg("reCAPTCHA not ready. Please refresh and try again.");
+                    return;
+                  }
+                  setLoading(true);
+                  setErrorMsg("");
+                  try {
+                    const recaptchaToken = await executeRecaptcha("contact");
+                    const res = await fetch("/api/contact", {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({ firstName, lastName, email, company, country, reason, message, recaptchaToken }),
+                    });
+                    if (res.ok) {
+                      setSubmitted(true);
+                    } else if (res.status === 429) {
+                      setErrorMsg("Too many requests. Please wait a bit before trying again.");
+                    } else {
+                      const data = await res.json().catch(() => ({}));
+                      setErrorMsg((data as { error?: string }).error ?? "Something went wrong. Please try again.");
+                    }
+                  } catch {
+                    setErrorMsg("Network error. Please check your connection and try again.");
+                  } finally {
+                    setLoading(false);
+                  }
+                }}
               >
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
                   <Field>
-                    <input type="text" className={inputCls} placeholder="First Name *" aria-label="First Name" />
+                    <input type="text" name="firstName" className={inputCls} placeholder="First Name *" aria-label="First Name" value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
                   </Field>
                   <Field>
-                    <input type="text" className={inputCls} placeholder="Last Name *" aria-label="Last Name" />
+                    <input type="text" name="lastName" className={inputCls} placeholder="Last Name *" aria-label="Last Name" value={lastName} onChange={(e) => setLastName(e.target.value)} required />
                   </Field>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
                   <Field>
-                    <input type="email" className={inputCls} placeholder="Work Email *" aria-label="Work Email" />
+                    <input type="email" name="email" className={inputCls} placeholder="Work Email *" aria-label="Work Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
                   </Field>
                   <Field>
-                    <input type="text" className={inputCls} placeholder="Company *" aria-label="Company Name" />
+                    <input type="text" name="company" className={inputCls} placeholder="Company *" aria-label="Company Name" value={company} onChange={(e) => setCompany(e.target.value)} required />
                   </Field>
                 </div>
 
@@ -126,11 +168,21 @@ export default function ContactForm() {
 
                 <Field>
                   <textarea
+                    name="message"
                     className={cn(inputCls, "min-h-[150px] resize-none")}
                     placeholder="How can we help you?"
                     aria-label="Message"
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    required
                   />
                 </Field>
+
+                {errorMsg && (
+                  <p role="alert" className="text-sm text-red-600 font-medium bg-red-50 border border-red-200 rounded-xl px-5 py-3">
+                    {errorMsg}
+                  </p>
+                )}
 
                 <div className="pt-4 flex flex-col md:flex-row items-center justify-between gap-8">
                   <p className="text-[13px] text-slate-500 font-medium leading-relaxed max-w-sm">
@@ -141,10 +193,11 @@ export default function ContactForm() {
                   </p>
                   <button
                     type="submit"
-                    className="btn-premium whitespace-nowrap min-w-[200px] shadow-blue-600/30 inline-flex items-center gap-2.5"
+                    disabled={loading}
+                    className="btn-premium whitespace-nowrap min-w-[200px] shadow-blue-600/30 inline-flex items-center gap-2.5 disabled:opacity-70 disabled:cursor-not-allowed"
                   >
                     <Send size={16} />
-                    Send Message
+                    {loading ? "Sending…" : "Send Message"}
                   </button>
                 </div>
               </motion.form>
@@ -164,7 +217,7 @@ export default function ContactForm() {
                   Thanks for reaching out. Our team will get back to you within 2 business hours.
                 </p>
                 <button
-                  onClick={() => { setSubmitted(false); setCountry(""); setReason(""); }}
+                  onClick={() => { setSubmitted(false); setFirstName(""); setLastName(""); setEmail(""); setCompany(""); setCountry(""); setReason(""); setMessage(""); setErrorMsg(""); }}
                   className="mt-2 text-sm text-[#05a0ec] hover:text-[#09358c] font-bold transition-colors"
                 >
                   ← Send another message
