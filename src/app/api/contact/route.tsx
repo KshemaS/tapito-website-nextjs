@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { Resend } from "resend";
+import { render } from "react-email";
+import ContactEmail from "@/emails/ContactEmail";
 
 const schema = z.object({
   firstName: z.string().min(1).max(100).trim(),
@@ -79,6 +81,11 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Bot check failed. Please try again." }, { status: 400 });
   }
 
+  // Render email template
+  const props = { firstName, lastName, email, company, country, reasonLabel, message };
+  const html = await render(<ContactEmail {...props} />);
+  const text = await render(<ContactEmail {...props} />, { plainText: true });
+
   // Send via Resend
   try {
     const resend = new Resend(process.env.RESEND_API_KEY);
@@ -88,26 +95,8 @@ export async function POST(req: NextRequest) {
       to: "hello@tapito.ai",
       replyTo: email,
       subject: `[Contact] ${reasonLabel} — ${firstName} ${lastName}`,
-      text: [
-        `Name:    ${firstName} ${lastName}`,
-        `Email:   ${email}`,
-        `Company: ${company}`,
-        `Country: ${country}`,
-        `Reason:  ${reasonLabel}`,
-        ``,
-        message,
-      ].join("\n"),
-      html: `
-        <table style="font-family:sans-serif;font-size:15px;line-height:1.6;color:#1e293b;max-width:600px">
-          <tr><td style="padding:24px 0 8px"><strong>Name</strong></td><td style="padding:24px 0 8px">${firstName} ${lastName}</td></tr>
-          <tr><td style="padding:4px 16px 4px 0"><strong>Email</strong></td><td style="padding:4px 0"><a href="mailto:${email}">${email}</a></td></tr>
-          <tr><td style="padding:4px 16px 4px 0"><strong>Company</strong></td><td style="padding:4px 0">${company}</td></tr>
-          <tr><td style="padding:4px 16px 4px 0"><strong>Country</strong></td><td style="padding:4px 0">${country}</td></tr>
-          <tr><td style="padding:4px 16px 4px 0"><strong>Reason</strong></td><td style="padding:4px 0">${reasonLabel}</td></tr>
-          <tr><td colspan="2" style="padding:16px 0 4px"><strong>Message</strong></td></tr>
-          <tr><td colspan="2" style="padding:4px 0;white-space:pre-wrap">${message}</td></tr>
-        </table>
-      `,
+      html,
+      text,
     });
   } catch (err) {
     console.error("[contact] Resend error:", err);
